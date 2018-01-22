@@ -20,7 +20,7 @@ import com.hust.microsoul.service.GoodsService;
  * @Description:AdministratorAction.java
  * @author  huwentao 
  * @date 创建时间：2018年1月22日 下午2:22:46 
- * @version 1.0   ---11111212312
+ * @version 1.0   ---11111212312wdqwdqwdqw
  */
 @Controller
 @RequestMapping("microsoul/admin")
