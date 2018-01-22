@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hust.microsoul.mapper.GoodsMapper">
+	 <resultMap id="goodsMap" type="goodsModel">
+	 	<result column="id" property="id" jdbcType="BIGINT"/>
+	</resultMap>
+	<select id="getInfo" resultType="Integer">
+		select count(*) from tbl_goods
+	</select>
+</mapper>

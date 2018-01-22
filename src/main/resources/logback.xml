@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="org.apache.commons.validator.ValidatorResources" level="ERROR" />
+	<logger name="org.springframework" level="WARN" />
+	<logger name="net.sf.ehcache" level="ERROR" />
+	<logger name="org.mybatis.spring.SqlSessionUtils" level="WARN" />
+	<logger name="java.sql.Connection" level="DEBUG" />
+	<logger name="java.sql.PreparedStatement" level="DEBUG" />
+	<logger name="java.sql.ResultSet" level="DEBUG" /> 
+	<logger name="rootCategory" level="debug"></logger>
+	<root level="info"> 
+    	<appender-ref ref="stdout" />  
+  	</root> 	
+</configuration>
+
