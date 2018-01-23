@@ -16,6 +16,7 @@ public class SellerServiceImpl implements SellerService{
     @Override
     public void sellerLogin(HttpServletRequest request, HttpServletResponse response) {
 
+
     }
 
     @Override
