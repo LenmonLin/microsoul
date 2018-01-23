@@ -3,6 +3,7 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hust.microsoul.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,6 @@ import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.AdministratorService;
 import com.hust.microsoul.service.BussinessService;
 import com.hust.microsoul.service.BuyerService;
-import com.hust.microsoul.service.GoodsService;
 
 /** 
  * @Description:AdministratorAction.java
@@ -25,7 +25,7 @@ import com.hust.microsoul.service.GoodsService;
 @Controller
 @RequestMapping("microsoul/admin")
 public class AdministratorAction {
-	
+
 	@Autowired
 	public AdministratorService administratorService;
 	
@@ -37,7 +37,7 @@ public class AdministratorAction {
 	
 	@Autowired
 	public GoodsService goodsService;
-	
+
 	@RequestMapping("login")
 	public void adminLogin(HttpServletRequest request,HttpServletResponse response,AdministratorModel administratorModel){
 		

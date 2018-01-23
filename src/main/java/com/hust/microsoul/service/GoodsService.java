@@ -1,50 +1,27 @@
 package com.hust.microsoul.service;
 
+
+import com.hust.microsoul.model.GoodsModel;
+import com.hust.microsoul.model.GoodsModelExample;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-/** 
- * @Description:GoodsService.java
- * @author  huwentao 
- * @date 创建时间：2018年1月17日 下午4:45:15 
- * @version 1.0  
+/**
+ * @author lemonLin
+ * @Description :GoodsService
+ * @date 2018/1/23-11:02
  */
-@Service
 public interface GoodsService {
-	
-	//测试
-	public void HelloWorld(HttpServletRequest request,HttpServletResponse response);
-	
-	/**
-	 * 
-	 * @Description:管理员查看商品信息
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:37:51
-	 * @param
-	 * @return
-	 */
-	public void goodsInfo(HttpServletRequest request,HttpServletResponse response);
-	
-	/**
-	 * 
-	 * @Description:封禁异常商品
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:40:43
-	 * @param
-	 * @return
-	 */
-	public void disableGoods(HttpServletRequest request,HttpServletResponse response);
-	
-	/**
-	 * 
-	 * @Description:推荐商品到广告位
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:40:49
-	 * @param
-	 * @return
-	 */
-	public void recommendGoods(HttpServletRequest request,HttpServletResponse response);
+
+    public int insert(GoodsModel record);
+
+    public List<GoodsModel> selectByCriteria(GoodsModelExample example);
+
+    public  int deleteByPrimaryKey(Integer goodsId);
+
+    public int updateByPrimaryKey(GoodsModel record);
+
+    public void HelloWorld(HttpServletRequest request, HttpServletResponse response);
 }

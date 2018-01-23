@@ -1,46 +1,69 @@
 package com.hust.microsoul.service.impl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
+import com.hust.microsoul.model.GoodsModel;
+import com.hust.microsoul.model.GoodsModelExample;
 import com.hust.microsoul.service.GoodsService;
 
-/** 
- * @Description:GoodsServiceImpl.java
- * @author  huwentao 
- * @date 创建时间：2018年1月17日 下午4:46:02 
- * @version 1.0  
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
+/**
+ * @author LemonLin
+ * @Description :GoodsServiceImpl
+ * @date 2018/1/23-14:18
  */
-@Service
-public class GoodsServiceImpl implements GoodsService {
-	/**
-	 * 日志记录
-	 */
-	Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	
-	public void HelloWorld(HttpServletRequest request,
-			HttpServletResponse response) {
-		logger.error("HelloWorld!");
-	}
+public class GoodsServiceImpl  implements GoodsService{
 
-	@Override
-	public void goodsInfo(HttpServletRequest request,
-			HttpServletResponse response) {
-	}
 
-	@Override
-	public void disableGoods(HttpServletRequest request,
-			HttpServletResponse response) {
-	}
+    @Override
+    public void HelloWorld(HttpServletRequest request, HttpServletResponse response) {
 
-	@Override
-	public void recommendGoods(HttpServletRequest request,
-			HttpServletResponse response) {
-	}
+    }
+
+    /**
+     *@Description 插入商品记录
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public int insert(GoodsModel record) {
+        return 0;
+    }
+
+    /**
+     *@Description 搜索商品
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public List<GoodsModel> selectByCriteria(GoodsModelExample example) {
+        return null;
+    }
+
+    /**
+     *@Description  删除商品记录
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public int deleteByPrimaryKey(Integer goodsId) {
+        return 0;
+    }
+    /**
+     *@Description 更新商品记录
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public int updateByPrimaryKey(GoodsModel record) {
+        return 0;
+    }
+
+
 
 }
