@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hust.microsoul.model.AdministratorModel;
+import com.hust.microsoul.model.AdvertisementModel;
 import com.hust.microsoul.model.BussinessModel;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.GoodsModel;
@@ -65,6 +66,10 @@ public class AdministratorAction {
 	
 	@RequestMapping("goodsInfo")
 	public void goodsInfo(HttpServletRequest request,HttpServletResponse response,GoodsModel goodsModel){
+		
+	}
+	@RequestMapping("addAdvertise")
+	public void addAdvertise(HttpServletRequest request,HttpServletResponse response,AdvertisementModel advertisementModel){
 		
 	}
 }
