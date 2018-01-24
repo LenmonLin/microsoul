@@ -19,4 +19,5 @@ public class AdministratorServiceImpl implements AdministratorService {
 			HttpServletResponse response, AdministratorModel administratorModel) {
 	}
 
+
 }

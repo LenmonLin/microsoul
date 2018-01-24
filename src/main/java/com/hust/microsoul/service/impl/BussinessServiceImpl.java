@@ -15,6 +15,31 @@ import com.hust.microsoul.service.BussinessService;
 public class BussinessServiceImpl implements BussinessService {
 
 	@Override
+	public void sellerLogin(HttpServletRequest request, HttpServletResponse response) {
+
+	}
+
+	@Override
+	public void sellerRegister(HttpServletRequest request, HttpServletResponse response) {
+
+	}
+
+	@Override
+	public void sellerInfo(HttpServletRequest request, HttpServletResponse response) {
+
+	}
+
+	@Override
+	public void disableSeller(HttpServletRequest request, HttpServletResponse response) {
+
+	}
+
+	@Override
+	public void sellerChangePassword(HttpServletRequest request, HttpServletResponse response) {
+
+	}
+
+	/*@Override
 	public void bussinessLogin(HttpServletRequest request,
 			HttpServletResponse response) {
 	}
@@ -32,6 +57,6 @@ public class BussinessServiceImpl implements BussinessService {
 	@Override
 	public void authorizationBussiness(HttpServletRequest request,
 			HttpServletResponse response, BussinessModel bussinessModel) {
-	}
+	}*/
 
 }

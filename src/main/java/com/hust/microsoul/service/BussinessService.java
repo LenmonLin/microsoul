@@ -13,40 +13,17 @@ import com.hust.microsoul.model.BussinessModel;
  */
 public interface BussinessService {
 	/**
-	 * 
-	 * @Description:TODO
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:26:01
-	 * @param
-	 * @return
+	 *@Description
+	 *@author LemonLin
+	 *@date  2018/1/23
 	 */
-	public void bussinessLogin(HttpServletRequest request,HttpServletResponse response);
-	/**
-	 * 
-	 * @Description:TODO
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:26:05
-	 * @param
-	 * @return
-	 */
-	public void bussinessRegister(HttpServletRequest request,HttpServletResponse response);
-	/**
-	 * 
-	 * @Description:TODO
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:26:09
-	 * @param
-	 * @return
-	 */
-	public void bussinessInfo(HttpServletRequest request,HttpServletResponse response);
-	
-	/**
-	 * 
-	 * @Description:TODO
-	 * @author  huwentao 
-	 * @date 创建时间：2018年1月22日 下午3:47:57
-	 * @param
-	 * @return
-	 */
-	public void authorizationBussiness(HttpServletRequest request,HttpServletResponse response,BussinessModel bussinessModel);
+	public void sellerLogin(HttpServletRequest request, HttpServletResponse response);
+
+	public void sellerRegister(HttpServletRequest request,HttpServletResponse response);
+
+	public void sellerInfo(HttpServletRequest request,HttpServletResponse response);
+
+	public void disableSeller(HttpServletRequest request,HttpServletResponse response);
+
+	public void sellerChangePassword(HttpServletRequest request,HttpServletResponse response);
 }
