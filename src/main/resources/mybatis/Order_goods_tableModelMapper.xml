@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.microsoul.mapper.Order_goods_tableModelMapper">
+  <resultMap id="BaseResultMap" type="com.hust.microsoul.model.Order_goods_tableModel">
+    <id column="ORDER_GOODS_ID" jdbcType="INTEGER" property="orderGoodsId" />
+    <result column="ORDER_ORDER_GOODS_ID" jdbcType="INTEGER" property="orderOrderGoodsId" />
+    <result column="NUM" jdbcType="INTEGER" property="num" />
+    <result column="GRADE" jdbcType="REAL" property="grade" />
+    <result column="GOODS_ORDER_GOODS_ID" jdbcType="INTEGER" property="goodsOrderGoodsId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ORDER_GOODS_ID, ORDER_ORDER_GOODS_ID, NUM, GRADE, GOODS_ORDER_GOODS_ID
+  </sql>
+  <select id="selectByExample" parameterType="com.hust.microsoul.model.Order_goods_tableModelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_goods_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_goods_table
+    where ORDER_GOODS_ID = #{orderGoodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_goods_table
+    where ORDER_GOODS_ID = #{orderGoodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hust.microsoul.model.Order_goods_tableModelExample">
+    delete from order_goods_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hust.microsoul.model.Order_goods_tableModel">
+    insert into order_goods_table (ORDER_GOODS_ID, ORDER_ORDER_GOODS_ID, 
+      NUM, GRADE, GOODS_ORDER_GOODS_ID
+      )
+    values (#{orderGoodsId,jdbcType=INTEGER}, #{orderOrderGoodsId,jdbcType=INTEGER}, 
+      #{num,jdbcType=INTEGER}, #{grade,jdbcType=REAL}, #{goodsOrderGoodsId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hust.microsoul.model.Order_goods_tableModel">
+    insert into order_goods_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderGoodsId != null">
+        ORDER_GOODS_ID,
+      </if>
+      <if test="orderOrderGoodsId != null">
+        ORDER_ORDER_GOODS_ID,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="goodsOrderGoodsId != null">
+        GOODS_ORDER_GOODS_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderGoodsId != null">
+        #{orderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="orderOrderGoodsId != null">
+        #{orderOrderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=REAL},
+      </if>
+      <if test="goodsOrderGoodsId != null">
+        #{goodsOrderGoodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hust.microsoul.model.Order_goods_tableModelExample" resultType="java.lang.Long">
+    select count(*) from order_goods_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order_goods_table
+    <set>
+      <if test="record.orderGoodsId != null">
+        ORDER_GOODS_ID = #{record.orderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderOrderGoodsId != null">
+        ORDER_ORDER_GOODS_ID = #{record.orderOrderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.num != null">
+        NUM = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null">
+        GRADE = #{record.grade,jdbcType=REAL},
+      </if>
+      <if test="record.goodsOrderGoodsId != null">
+        GOODS_ORDER_GOODS_ID = #{record.goodsOrderGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order_goods_table
+    set ORDER_GOODS_ID = #{record.orderGoodsId,jdbcType=INTEGER},
+      ORDER_ORDER_GOODS_ID = #{record.orderOrderGoodsId,jdbcType=INTEGER},
+      NUM = #{record.num,jdbcType=INTEGER},
+      GRADE = #{record.grade,jdbcType=REAL},
+      GOODS_ORDER_GOODS_ID = #{record.goodsOrderGoodsId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hust.microsoul.model.Order_goods_tableModel">
+    update order_goods_table
+    <set>
+      <if test="orderOrderGoodsId != null">
+        ORDER_ORDER_GOODS_ID = #{orderOrderGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        NUM = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        GRADE = #{grade,jdbcType=REAL},
+      </if>
+      <if test="goodsOrderGoodsId != null">
+        GOODS_ORDER_GOODS_ID = #{goodsOrderGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ORDER_GOODS_ID = #{orderGoodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hust.microsoul.model.Order_goods_tableModel">
+    update order_goods_table
+    set ORDER_ORDER_GOODS_ID = #{orderOrderGoodsId,jdbcType=INTEGER},
+      NUM = #{num,jdbcType=INTEGER},
+      GRADE = #{grade,jdbcType=REAL},
+      GOODS_ORDER_GOODS_ID = #{goodsOrderGoodsId,jdbcType=INTEGER}
+    where ORDER_GOODS_ID = #{orderGoodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

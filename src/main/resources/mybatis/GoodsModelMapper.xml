@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.microsoul.mapper.GoodsModelMapper">
+  <resultMap id="BaseResultMap" type="com.hust.microsoul.model.GoodsModel">
+    <id column="GOODS_ID" jdbcType="INTEGER" property="goodsId" />
+    <result column="DETAIL" jdbcType="VARCHAR" property="detail" />
+    <result column="IMAGE_URL" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="CATEGORY" jdbcType="VARCHAR" property="category" />
+    <result column="STORE" jdbcType="INTEGER" property="store" />
+    <result column="UNIT_PRICE" jdbcType="INTEGER" property="unitPrice" />
+    <result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName" />
+    <result column="DISCOUNT" jdbcType="INTEGER" property="discount" />
+    <result column="PURCHASE_QUANTITY" jdbcType="INTEGER" property="purchaseQuantity" />
+    <result column="COLLECTION_GOODS_ID" jdbcType="INTEGER" property="collectionGoodsId" />
+    <result column="SELLER_GOODS_ID" jdbcType="INTEGER" property="sellerGoodsId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    GOODS_ID, DETAIL, IMAGE_URL, CATEGORY, STORE, UNIT_PRICE, GOODS_NAME, DISCOUNT, PURCHASE_QUANTITY, 
+    COLLECTION_GOODS_ID, SELLER_GOODS_ID
+  </sql>
+  <select id="selectByExample" parameterType="com.hust.microsoul.model.GoodsModelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hust.microsoul.model.GoodsModelExample">
+    delete from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hust.microsoul.model.GoodsModel">
+    insert into goods (GOODS_ID, DETAIL, IMAGE_URL, 
+      CATEGORY, STORE, UNIT_PRICE, 
+      GOODS_NAME, DISCOUNT, PURCHASE_QUANTITY, 
+      COLLECTION_GOODS_ID, SELLER_GOODS_ID)
+    values (#{goodsId,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{store,jdbcType=INTEGER}, #{unitPrice,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=VARCHAR}, #{discount,jdbcType=INTEGER}, #{purchaseQuantity,jdbcType=INTEGER}, 
+      #{collectionGoodsId,jdbcType=INTEGER}, #{sellerGoodsId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hust.microsoul.model.GoodsModel">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        GOODS_ID,
+      </if>
+      <if test="detail != null">
+        DETAIL,
+      </if>
+      <if test="imageUrl != null">
+        IMAGE_URL,
+      </if>
+      <if test="category != null">
+        CATEGORY,
+      </if>
+      <if test="store != null">
+        STORE,
+      </if>
+      <if test="unitPrice != null">
+        UNIT_PRICE,
+      </if>
+      <if test="goodsName != null">
+        GOODS_NAME,
+      </if>
+      <if test="discount != null">
+        DISCOUNT,
+      </if>
+      <if test="purchaseQuantity != null">
+        PURCHASE_QUANTITY,
+      </if>
+      <if test="collectionGoodsId != null">
+        COLLECTION_GOODS_ID,
+      </if>
+      <if test="sellerGoodsId != null">
+        SELLER_GOODS_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        #{store,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseQuantity != null">
+        #{purchaseQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="collectionGoodsId != null">
+        #{collectionGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerGoodsId != null">
+        #{sellerGoodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hust.microsoul.model.GoodsModelExample" resultType="java.lang.Long">
+    select count(*) from goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update goods
+    <set>
+      <if test="record.goodsId != null">
+        GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.detail != null">
+        DETAIL = #{record.detail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageUrl != null">
+        IMAGE_URL = #{record.imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null">
+        CATEGORY = #{record.category,jdbcType=VARCHAR},
+      </if>
+      <if test="record.store != null">
+        STORE = #{record.store,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitPrice != null">
+        UNIT_PRICE = #{record.unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsName != null">
+        GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.discount != null">
+        DISCOUNT = #{record.discount,jdbcType=INTEGER},
+      </if>
+      <if test="record.purchaseQuantity != null">
+        PURCHASE_QUANTITY = #{record.purchaseQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.collectionGoodsId != null">
+        COLLECTION_GOODS_ID = #{record.collectionGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sellerGoodsId != null">
+        SELLER_GOODS_ID = #{record.sellerGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update goods
+    set GOODS_ID = #{record.goodsId,jdbcType=INTEGER},
+      DETAIL = #{record.detail,jdbcType=VARCHAR},
+      IMAGE_URL = #{record.imageUrl,jdbcType=VARCHAR},
+      CATEGORY = #{record.category,jdbcType=VARCHAR},
+      STORE = #{record.store,jdbcType=INTEGER},
+      UNIT_PRICE = #{record.unitPrice,jdbcType=INTEGER},
+      GOODS_NAME = #{record.goodsName,jdbcType=VARCHAR},
+      DISCOUNT = #{record.discount,jdbcType=INTEGER},
+      PURCHASE_QUANTITY = #{record.purchaseQuantity,jdbcType=INTEGER},
+      COLLECTION_GOODS_ID = #{record.collectionGoodsId,jdbcType=INTEGER},
+      SELLER_GOODS_ID = #{record.sellerGoodsId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hust.microsoul.model.GoodsModel">
+    update goods
+    <set>
+      <if test="detail != null">
+        DETAIL = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="store != null">
+        STORE = #{store,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        UNIT_PRICE = #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        DISCOUNT = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseQuantity != null">
+        PURCHASE_QUANTITY = #{purchaseQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="collectionGoodsId != null">
+        COLLECTION_GOODS_ID = #{collectionGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerGoodsId != null">
+        SELLER_GOODS_ID = #{sellerGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hust.microsoul.model.GoodsModel">
+    update goods
+    set DETAIL = #{detail,jdbcType=VARCHAR},
+      IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      STORE = #{store,jdbcType=INTEGER},
+      UNIT_PRICE = #{unitPrice,jdbcType=INTEGER},
+      GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      DISCOUNT = #{discount,jdbcType=INTEGER},
+      PURCHASE_QUANTITY = #{purchaseQuantity,jdbcType=INTEGER},
+      COLLECTION_GOODS_ID = #{collectionGoodsId,jdbcType=INTEGER},
+      SELLER_GOODS_ID = #{sellerGoodsId,jdbcType=INTEGER}
+    where GOODS_ID = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>
