@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.AdministratorModel;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:AdministratorService.java
@@ -11,6 +12,7 @@ import com.hust.microsoul.model.AdministratorModel;
  * @date 创建时间：2018年1月22日 下午2:19:15 
  * @version 1.0  
  */
+@Service
 public interface AdministratorService {
 	/**
 	 * 

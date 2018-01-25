@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.AdministratorModel;
 import com.hust.microsoul.model.AdvertisementModel;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:AdvertisementService.java
@@ -12,6 +13,8 @@ import com.hust.microsoul.model.AdvertisementModel;
  * @date 创建时间：2018年1月22日 下午2:18:55 
  * @version 1.0  
  */
+
+@Service
 public interface AdvertisementService {
 	/**
 	 * 增加新广告

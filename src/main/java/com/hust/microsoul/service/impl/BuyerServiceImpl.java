@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.service.BuyerService;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:BuyerServiceImpl.java
@@ -12,6 +13,8 @@ import com.hust.microsoul.service.BuyerService;
  * @date 创建时间：2018年1月22日 下午2:20:57 
  * @version 1.0  
  */
+
+@Service
 public class BuyerServiceImpl implements BuyerService {
 
 	@Override

@@ -3,21 +3,23 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONArray;
 import com.hust.microsoul.service.GoodsService;
+import com.hust.microsoul.service.SellerService;
+import com.hust.microsoul.util.CommonCode;
+import com.hust.microsoul.util.JSONCommon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hust.microsoul.model.AdministratorModel;
 import com.hust.microsoul.model.AdvertisementModel;
-import com.hust.microsoul.model.BussinessModel;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.AdministratorService;
-import com.hust.microsoul.service.BussinessService;
 import com.hust.microsoul.service.BuyerService;
 
-/** 
+/**
  * @Description:AdministratorAction.java
  * @author  huwentao 
  * @date 创建时间：2018年1月22日 下午2:22:46 
@@ -34,14 +36,15 @@ public class AdministratorAction {
 	public BuyerService buyerService;
 
 	@Autowired
-	public BussinessService bussinessService;
+	public SellerService sellerService;
 	
 	@Autowired
 	public GoodsService goodsService;
 
 	@RequestMapping("login")
 	public void adminLogin(HttpServletRequest request,HttpServletResponse response,AdministratorModel administratorModel){
-		
+//		JSONArray m = new
+		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
 	}
 	
 	@RequestMapping("disableBuyer")
@@ -50,7 +53,7 @@ public class AdministratorAction {
 	}
 	
 	@RequestMapping("authorizationBussiness")
-	public void authorizationBussiness(HttpServletRequest request,HttpServletResponse response,BussinessModel bussinessModel){
+	public void authorizationBussiness(HttpServletRequest request,HttpServletResponse response,SellerService sellerService){
 		
 	}
 	

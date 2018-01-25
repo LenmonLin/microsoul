@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.BuyerModel;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:BuyerService.java
@@ -11,6 +12,8 @@ import com.hust.microsoul.model.BuyerModel;
  * @date 创建时间：2018年1月22日 下午2:18:13 
  * @version 1.0  
  */
+
+@Service
 public interface BuyerService {
 	
 	/**

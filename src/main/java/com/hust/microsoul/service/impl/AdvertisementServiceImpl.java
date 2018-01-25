@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.AdvertisementModel;
 import com.hust.microsoul.service.AdvertisementService;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:AdvertisementServiceImpl.java
@@ -12,6 +13,8 @@ import com.hust.microsoul.service.AdvertisementService;
  * @date 创建时间：2018年1月22日 下午2:21:54 
  * @version 1.0  
  */
+
+@Service
 public class AdvertisementServiceImpl implements AdvertisementService {
 
 	@Override

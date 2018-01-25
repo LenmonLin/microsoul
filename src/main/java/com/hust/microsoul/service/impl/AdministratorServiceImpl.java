@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.AdministratorModel;
 import com.hust.microsoul.service.AdministratorService;
+import org.springframework.stereotype.Service;
 
 /** 
  * @Description:AdministratorServiceImpl.java
@@ -12,13 +13,12 @@ import com.hust.microsoul.service.AdministratorService;
  * @date 创建时间：2018年1月22日 下午2:22:23 
  * @version 1.0  
  */
+@Service
 public class AdministratorServiceImpl implements AdministratorService {
-
 	@Override
 	public void adminLogin(HttpServletRequest request,
 			HttpServletResponse response, AdministratorModel administratorModel) {
 	}
 
-	
 
 }

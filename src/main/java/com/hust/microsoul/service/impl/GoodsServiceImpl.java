@@ -3,6 +3,7 @@ package com.hust.microsoul.service.impl;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
 import com.hust.microsoul.service.GoodsService;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,8 @@ import java.util.List;
  * @Description :GoodsServiceImpl
  * @date 2018/1/23-14:18
  */
+
+@Service
 public class GoodsServiceImpl  implements GoodsService{
 
 
