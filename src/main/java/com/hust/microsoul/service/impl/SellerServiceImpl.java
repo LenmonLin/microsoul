@@ -25,16 +25,51 @@ public class SellerServiceImpl implements SellerService{
     @Autowired
     SellerModelMapper sellerModelMapper;
 
-
+/**
+ *@Description  登录通过登录名和密码做校验，先给密码加密，再查询
+ *@params
+ *@author LemonLin
+ *@date  2018/1/25
+ */
     @Override
-    public void sellerLogin(HttpServletRequest request, HttpServletResponse response) {
+    public SellerModel sellerLogin(String accountName,String password) {
+        //加密
+        String pwd = MD5Utils.md5(password);
 
+        SellerModelExample sellerModelExample = new SellerModelExample();
 
+        SellerModelExample.Criteria criteriaSeller = sellerModelExample.createCriteria();
+
+        criteriaSeller.andAccountNameEqualTo(accountName);
+        criteriaSeller.andPasswordEqualTo(pwd);
+
+        List<SellerModel> sellerModels = sellerModelMapper.selectByExample(sellerModelExample);
+
+        if (sellerModels != null && sellerModels.size()>0){
+            return sellerModels.get(0);
+        }
+        return null;
     }
-
+    /**
+     *@Description 把注册的设置从action搬到service,使action看上去更简洁
+     *@params
+     *@author LemonLin
+     *@date  2018/1/25
+     */
     @Override
-    public void sellerRegister(HttpServletRequest request, HttpServletResponse response) {
+    public void sellerRegister(String accountName,String password) {
+        SellerModel sellerModel = new SellerModel();
+        sellerModel.setAccountName(accountName);
+        //给密码加密
+        sellerModel.setPassword(MD5Utils.md5(password));
+        //用户的状态默认为1状态
+        sellerModel.setState(1);
 
+        //暂时测试使用，OrderSeller是外键的暂时设置
+        sellerModel.setOrderSellerId(1);
+        sellerModel.setRealName("hello");
+        //调用持久层
+        sellerModelMapper.insert(sellerModel);
     }
 
     @Override
@@ -82,7 +117,7 @@ public class SellerServiceImpl implements SellerService{
      *@date  2018/1/24
      */
     @Override
-    //@Transactional //加事物
+    @Transactional //加事务
     public void insert(SellerModel sellerModel) {
 //        System.out.println("运行到service的 insert");
 //        if(sellerModel ==null){
@@ -107,7 +142,10 @@ public class SellerServiceImpl implements SellerService{
 //        System.out.println("运行到7");
 //        System.out.println("要调用持久层了");
          //调用持久层
-        sellerModelMapper.insert(sellerModel);
+
+        //以上代码注销原因：是因为插入代码不运行在service，否则就要insert需要
+        //传入很多的参数，才能运行,这样麻烦，直接在control层设置参数更快
+        //sellerModelMapper.insert(sellerModel);
     }
 
     @Override

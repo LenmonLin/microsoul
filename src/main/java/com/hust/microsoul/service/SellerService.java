@@ -18,9 +18,9 @@ import java.util.List;
 @Service
 public interface SellerService {
 
-    public void sellerLogin(HttpServletRequest request, HttpServletResponse response);
+    public SellerModel sellerLogin(String accountName,String password);
 
-    public void sellerRegister(HttpServletRequest request,HttpServletResponse response);
+    public void sellerRegister(String accountName,String password);
 
     public void sellerInfo(HttpServletRequest request,HttpServletResponse response);
 

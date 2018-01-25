@@ -51,23 +51,25 @@ public class SellerAction {
     @RequestMapping("login")
 //    @ResponseBody
 //    public Msg sellerLogin(@RequestParam String password, @RequestParam String accountName){
-    public void sellerLogin(HttpServletResponse response){
-        //判空，若为空，提示错误
-//        if (password ==null || accountName == null){
-//            return Msg.success() ;
-//        }else {
-//            return Msg.success();
-//        }
-        System.out.println("后台显示");
-        //通过登录名，判断，登录名是否已经存在，调用业务层，查询
-        JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+    public void sellerLogin(@RequestParam(value = "password") String password,
+                            @RequestParam(value = "accountName") String accountName,HttpServletResponse response){
+        SellerModel existUser = sellerService.sellerLogin(accountName,password);
+
+        //判断，登录名或者密码错误了
+        if(existUser == null){
+            JSONCommon.outputResultCodeJson(CommonCode.FAIL,response);
+        }else {
+            //登录成功
+            JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+        }
+
 
     }
 
     @RequestMapping("register")
 //    @ResponseBody
-    public void sellerRegister(@RequestParam(value = "password",defaultValue = "1") String password,
-                               @RequestParam(value = "accountName",defaultValue = "1") String accountName,
+    public void sellerRegister(@RequestParam(value = "password") String password,
+                               @RequestParam(value = "accountName") String accountName,
                                HttpServletResponse response){
 
 
@@ -76,31 +78,16 @@ public class SellerAction {
             JSONCommon.outputResultCodeJson(CommonCode.FAIL,response);
         }else {
             //判断登录名是否已经存在，存在的话就不能注册
+            SellerModel sellerModel1 = sellerService.checkSeller(accountName);
 
-            System.out.println(accountName);
-            SellerModel sellerModel2 = sellerService.checkSeller(accountName);
-
-            if (sellerModel2 != null){
+            if (sellerModel1 != null){
                 //登录名查询到用户了，说明登录已经存在，不能注册
                 JSONCommon.outputResultCodeJson(CommonCode.FAIL,response);
-
-                System.out.println("sellerModel不为空");
             }else {
-                //说明登录不存在，能注册
-//                System.out.println("运行到insert");
-                SellerModel sellerModel = new SellerModel();
-                sellerModel.setAccountName(accountName);
 
-                //给密码加密
-                sellerModel.setPassword(MD5Utils.md5(password));
-                //用户的状态默认师1状态
-                sellerModel.setState(1);
-                //暂时测试使用
-                sellerModel.setOrderSellerId(1);
-                sellerModel.setRealName("hello");
-                //调用持久层
-                sellerService.insert(sellerModel);
-                //sellerService.insert(sellerModel);
+                //说明登录不存在，能注册
+                sellerService.sellerRegister(accountName,password);
+
                 JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
             }
         }
