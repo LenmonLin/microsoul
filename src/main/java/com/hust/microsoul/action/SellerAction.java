@@ -4,6 +4,7 @@ import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.SellerService;
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
+import com.hust.microsoul.util.MD5Utils;
 import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,7 +89,18 @@ public class SellerAction {
                 //说明登录不存在，能注册
 //                System.out.println("运行到insert");
                 SellerModel sellerModel = new SellerModel();
+                sellerModel.setAccountName(accountName);
+
+                //给密码加密
+                sellerModel.setPassword(MD5Utils.md5(password));
+                //用户的状态默认师1状态
+                sellerModel.setState(1);
+                //暂时测试使用
+                sellerModel.setOrderSellerId(1);
+                sellerModel.setRealName("hello");
+                //调用持久层
                 sellerService.insert(sellerModel);
+                //sellerService.insert(sellerModel);
                 JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
             }
         }
