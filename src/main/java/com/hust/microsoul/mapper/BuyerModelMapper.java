@@ -4,7 +4,9 @@ import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.BuyerModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface BuyerModelMapper {
     long countByExample(BuyerModelExample example);
 

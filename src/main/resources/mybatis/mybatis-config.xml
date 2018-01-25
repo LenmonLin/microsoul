@@ -5,9 +5,36 @@
         <setting name="lazyLoadingEnabled" value="false"/>
     </settings>
 	<typeAliases>
+
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Ad_info_tableModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Ad_info_tableModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.AdministratorModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.AdvertisementModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.BuyerModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.BuyerModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModelKey" />
 		<typeAlias alias="goodsModel" type="com.hust.microsoul.model.GoodsModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.GoodsModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_goods_tableModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_goods_tableModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_tableModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_tableModelExample" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.OrderModel" />
+		<typeAlias alias="SellerModel" type="com.hust.microsoul.model.SellerModel" />
+		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.SellerModelExample" />
 	</typeAliases>
    <mappers>
   		<mapper resource="mybatis/goods.xml"/>
+  		<mapper resource="mybatis/Ad_info_tableModelMapper.xml"/>
+  		<mapper resource="mybatis/Adminitrator_tableModelMapper.xml"/>
+  		<mapper resource="mybatis/BuyerModelMapper.xml"/>
+  		<mapper resource="mybatis/GoodsModelMapper.xml"/>
+  		<mapper resource="mybatis/Order_goods_tableModelMapper.xml"/>
+  		<mapper resource="mybatis/Order_tableModelMapper.xml"/>
+  		<mapper resource="mybatis/SellerModelMapper.xml"/>
    </mappers>
 </configuration>

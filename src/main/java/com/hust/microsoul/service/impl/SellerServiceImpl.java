@@ -84,18 +84,28 @@ public class SellerServiceImpl implements SellerService{
     @Override
     //@Transactional //加事物
     public void insert(SellerModel sellerModel) {
+        System.out.println("运行到service的 insert");
+        if(sellerModel ==null){
+            System.out.println("sellerModel为空");
+        }
+        System.out.println(sellerModel.getAccountName());
+        System.out.println("运行到1");
+        sellerModel.setAccountName("hell");
+        System.out.println("运行到2");
         String pwd = sellerModel.getPassword();
-
+        System.out.println("运行到3");
         //给密码加密
         sellerModel.setPassword(MD5Utils.md5(pwd));
         //用户的状态默认师1状态
+        System.out.println("运行到4");
         sellerModel.setState(1);
-
+        System.out.println("运行到5");
         //暂时测试使用
         sellerModel.setOrderSellerId(1);
+        System.out.println("运行到6");
         sellerModel.setRealName("hello");
-
-
+        System.out.println("运行到7");
+        System.out.println("要调用持久层了");
          //调用持久层
         sellerModelMapper.insert(sellerModel);
     }

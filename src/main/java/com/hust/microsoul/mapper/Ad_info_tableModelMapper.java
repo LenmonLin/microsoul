@@ -4,7 +4,9 @@ import com.hust.microsoul.model.Ad_info_tableModel;
 import com.hust.microsoul.model.Ad_info_tableModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Ad_info_tableModelMapper {
     long countByExample(Ad_info_tableModelExample example);
 

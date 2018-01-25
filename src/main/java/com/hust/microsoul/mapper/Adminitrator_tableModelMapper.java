@@ -4,7 +4,9 @@ import com.hust.microsoul.model.Adminitrator_tableModel;
 import com.hust.microsoul.model.Adminitrator_tableModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Adminitrator_tableModelMapper {
     long countByExample(Adminitrator_tableModelExample example);
 

@@ -4,7 +4,9 @@ import com.hust.microsoul.model.Order_tableModel;
 import com.hust.microsoul.model.Order_tableModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Order_tableModelMapper {
     long countByExample(Order_tableModelExample example);
 
