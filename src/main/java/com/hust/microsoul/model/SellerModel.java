@@ -120,4 +120,22 @@ public class SellerModel {
     public void setOrderSellerId(Integer orderSellerId) {
         this.orderSellerId = orderSellerId;
     }
+
+    @Override
+    public String toString() {
+        return "SellerModel{" +
+                "idSeller=" + idSeller +
+                ", accountName='" + accountName + '\'' +
+                ", password='" + password + '\'' +
+                ", zhifubaoAccount='" + zhifubaoAccount + '\'' +
+                ", email='" + email + '\'' +
+                ", qqAccount=" + qqAccount +
+                ", district='" + district + '\'' +
+                ", realName='" + realName + '\'' +
+                ", address='" + address + '\'' +
+                ", telephone=" + telephone +
+                ", state=" + state +
+                ", orderSellerId=" + orderSellerId +
+                '}';
+    }
 }
