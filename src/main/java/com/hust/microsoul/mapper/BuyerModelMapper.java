@@ -29,4 +29,6 @@ public interface BuyerModelMapper {
     int updateByPrimaryKeySelective(BuyerModel record);
 
     int updateByPrimaryKey(BuyerModel record);
+    
+    public String buyerLogin(String accountName); 
 }

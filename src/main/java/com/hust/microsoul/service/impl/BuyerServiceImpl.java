@@ -3,8 +3,14 @@ package com.hust.microsoul.service.impl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hust.microsoul.util.CommonCode;
+import com.hust.microsoul.util.JSONCommon;
+import com.hust.microsoul.mapper.BuyerModelMapper;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.service.BuyerService;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /** 
@@ -16,10 +22,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BuyerServiceImpl implements BuyerService {
-
-	@Override
+    @Autowired
+    private BuyerModelMapper buyerModelMapper;
+	
+    @Override
 	public void buyerLogin(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response,String accountName) {
+    	String loginResult=buyerModelMapper.buyerLogin(accountName);
+    	String psw=request.getParameter("password");
+    	if(loginResult.equals(psw)) {
+    		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+    		
+    	}else {
+    		JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+    	}
 	}
 
 	@Override

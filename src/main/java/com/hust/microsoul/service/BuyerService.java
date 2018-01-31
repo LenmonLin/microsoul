@@ -24,7 +24,7 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
-	public void buyerLogin(HttpServletRequest request,HttpServletResponse response);
+	public void buyerLogin(HttpServletRequest request,HttpServletResponse response,String accountName);
 	
 	/**
 	 * 

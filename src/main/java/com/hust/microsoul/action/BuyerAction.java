@@ -3,10 +3,13 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.service.BuyerService;
 
 /** 
@@ -22,9 +25,12 @@ public class BuyerAction {
 	@Autowired
 	private BuyerService buyerService;
 	
+	Logger logger =LoggerFactory.getLogger(this.getClass());
+	
 	@RequestMapping("login")
-	public void buyerLogin(HttpServletRequest request,HttpServletResponse response){
-		
+	public void buyerLogin(HttpServletRequest request,HttpServletResponse response,String accountName){
+		buyerService.buyerLogin(request, response,accountName);
+		logger.error("1111111");
 	}
 	
 	@RequestMapping("register")
