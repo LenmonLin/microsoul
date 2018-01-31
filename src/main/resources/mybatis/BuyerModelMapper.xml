@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.microsoul.mapper.BuyerModelMapper">
-  <resultMap id="BaseResultMap" type="com.hust.microsoul.model.BuyerModel">
+  <resultMap id="BaseResultMap" type="buyerModel">
     <id column="BUYERS_ID" jdbcType="INTEGER" property="buyersId" />
     <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
@@ -288,4 +288,14 @@
       STATE = #{state,jdbcType=INTEGER}
     where BUYERS_ID = #{buyersId,jdbcType=INTEGER}
   </update>
+  <select id="buyerLogin" parameterType="String" resultType="String">
+   select
+  	 	PASSWORD
+   from 
+   		buyer
+   where 
+   		ACCOUNT_NAME= #{accountName}  
+  </select>
+  	
+  	
 </mapper>

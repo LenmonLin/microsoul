@@ -12,7 +12,7 @@
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModel" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModelExample" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.AdvertisementModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.BuyerModel" />
+		<typeAlias alias="buyerModel" type="com.hust.microsoul.model.BuyerModel" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.BuyerModelExample" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModel" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModelExample" />
