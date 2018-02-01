@@ -6,24 +6,24 @@
     </settings>
 	<typeAliases>
 
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Ad_info_tableModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Ad_info_tableModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.AdministratorModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Adminitrator_tableModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.AdvertisementModel" />
+		<typeAlias alias="Ad_info_tableModel" type="com.hust.microsoul.model.Ad_info_tableModel" />
+		<typeAlias alias="Ad_info_tableModelExample" type="com.hust.microsoul.model.Ad_info_tableModelExample" />
+		<typeAlias alias="AdministratorModel" type="com.hust.microsoul.model.AdministratorModel" />
+		<typeAlias alias="Adminitrator_tableModel" type="com.hust.microsoul.model.Adminitrator_tableModel" />
+		<typeAlias alias="Adminitrator_tableModelExample" type="com.hust.microsoul.model.Adminitrator_tableModelExample" />
+		<typeAlias alias="AdvertisementModel" type="com.hust.microsoul.model.AdvertisementModel" />
 		<typeAlias alias="buyerModel" type="com.hust.microsoul.model.BuyerModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.BuyerModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.CollectionModelKey" />
+		<typeAlias alias="BuyerModelExample" type="com.hust.microsoul.model.BuyerModelExample" />
+		<typeAlias alias="CollectionModel" type="com.hust.microsoul.model.CollectionModel" />
+		<typeAlias alias="CollectionModelExample" type="com.hust.microsoul.model.CollectionModelExample" />
+		<typeAlias alias="CollectionModelKey" type="com.hust.microsoul.model.CollectionModelKey" />
 		<typeAlias alias="goodsModel" type="com.hust.microsoul.model.GoodsModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.GoodsModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_goods_tableModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_goods_tableModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_tableModel" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.Order_tableModelExample" />
-		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.OrderModel" />
+		<typeAlias alias="GoodsModelExample" type="com.hust.microsoul.model.GoodsModelExample" />
+		<typeAlias alias="Order_goods_tableModel" type="com.hust.microsoul.model.Order_goods_tableModel" />
+		<typeAlias alias="Order_goods_tableModelExample" type="com.hust.microsoul.model.Order_goods_tableModelExample" />
+		<typeAlias alias="Order_tableModel" type="com.hust.microsoul.model.Order_tableModel" />
+		<typeAlias alias="Order_tableModelExample" type="com.hust.microsoul.model.Order_tableModelExample" />
+		<typeAlias alias="OrderModel" type="com.hust.microsoul.model.OrderModel" />
 		<typeAlias alias="SellerModel" type="com.hust.microsoul.model.SellerModel" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.SellerModelExample" />
 	</typeAliases>

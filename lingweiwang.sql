@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-01-24 15:40:56
+Date: 2018-01-26 10:49:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,11 +66,12 @@ CREATE TABLE `buyer` (
   `TELEPHONE` int(15) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
   PRIMARY KEY (`BUYERS_ID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of buyer
 -- ----------------------------
+INSERT INTO `buyer` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '01');
 
 -- ----------------------------
 -- Table structure for collection
@@ -158,6 +159,7 @@ CREATE TABLE `order_table` (
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
+INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
@@ -179,8 +181,14 @@ CREATE TABLE `seller` (
   PRIMARY KEY (`ID_SELLER`) USING BTREE,
   KEY `ORDER_SELLER_ID` (`ORDER_SELLER_ID`),
   CONSTRAINT `ORDER_SELLER_ID` FOREIGN KEY (`ORDER_SELLER_ID`) REFERENCES `order_table` (`ORDER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
+INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01', '1');
+INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
