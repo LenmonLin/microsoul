@@ -296,6 +296,45 @@
    where 
    		ACCOUNT_NAME= #{accountName}  
   </select>
-  	
-  	
+    <insert id="buyerRegister" parameterType="com.hust.microsoul.model.BuyerModel" >
+    insert into buyer 
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="accountName != null">
+					ACCOUNT_NAME,
+				</if>
+				<if test="password != null">
+					PASSWORD,
+				</if>
+				<if test="telephone!= null">
+					TELEPHONE,
+				</if>
+				<if test="email!= null">
+					EMAIL,
+				</if>
+					STATE,
+			</trim>
+			<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="accountName != null">
+					#{accountName},
+				</if>
+				<if test="telephone != null">
+					#{password},
+				</if>
+				<if test="password != null">
+					#{telephone},
+				</if>
+				<if test="email != null">
+					#{email},
+				</if>
+					1,
+			</trim>
+		</insert>	
+		 <select id="checkaccountName" parameterType="String" resultType="BuyerModel">
+         select 
+			*
+   		 from 
+   		 	buyer
+    	 where 
+    	 	ACCOUNT_NAME = #{accountName}
+ 		 </select>
 </mapper>

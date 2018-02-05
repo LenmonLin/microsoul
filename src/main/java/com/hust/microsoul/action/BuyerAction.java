@@ -34,8 +34,8 @@ public class BuyerAction {
 	}
 	
 	@RequestMapping("register")
-	public void buyerRegister(HttpServletRequest request,HttpServletResponse response){
-		
+	public void buyerRegister(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
+		buyerService.buyerRegister(request, response,buyerModel);
 	}
 	
 	@RequestMapping("info")

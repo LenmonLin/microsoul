@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
+import com.hust.microsoul.util.MD5Utils;
 import com.hust.microsoul.mapper.BuyerModelMapper;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.service.BuyerService;
@@ -40,7 +41,16 @@ public class BuyerServiceImpl implements BuyerService {
 
 	@Override
 	public void buyerRegister(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response,BuyerModel buyerModel) {
+		BuyerModel checkResult = buyerModelMapper.checkaccountName(buyerModel.getAccountName());
+		if(checkResult != null) {	
+			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+		}
+		else {
+			buyerModel.setPassword(MD5Utils.md5(buyerModel.getPassword()));
+			buyerModelMapper.buyerRegister(buyerModel);
+			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+		}
 	}
 
 	@Override

@@ -31,4 +31,8 @@ public interface BuyerModelMapper {
     int updateByPrimaryKey(BuyerModel record);
     
     public String buyerLogin(String accountName); 
+    
+    public BuyerModel checkaccountName(String accountName);
+    
+    public void buyerRegister(BuyerModel buyerModel) ;
 }
