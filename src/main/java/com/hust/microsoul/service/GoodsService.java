@@ -26,5 +26,8 @@ public interface GoodsService {
 
     public int updateByPrimaryKey(GoodsModel record);
 
+
+    GoodsModel selectByPrimaryKey(Integer goodsId);
+
     public void HelloWorld(HttpServletRequest request, HttpServletResponse response);
 }

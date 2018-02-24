@@ -11,12 +11,14 @@ public class GoodsModel {
 
     private Integer store;
 
+    //商品的单价
     private Integer unitPrice;
 
     private String goodsName;
 
     private Integer discount;
 
+    //商品的购买数量
     private Integer purchaseQuantity;
 
     private Integer collectionGoodsId;
