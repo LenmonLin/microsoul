@@ -34,7 +34,7 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
-	public void buyerRegister(HttpServletRequest request,HttpServletResponse response);
+	public void buyerRegister(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
 	
 	/**
 	 * 
