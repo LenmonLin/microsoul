@@ -1,5 +1,7 @@
 package com.hust.microsoul.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +10,7 @@ import com.hust.microsoul.util.JSONCommon;
 import com.hust.microsoul.util.MD5Utils;
 import com.hust.microsoul.mapper.BuyerModelMapper;
 import com.hust.microsoul.model.BuyerModel;
+import com.hust.microsoul.model.BuyerModelExample;
 import com.hust.microsoul.service.BuyerService;
 
 
@@ -28,10 +31,14 @@ public class BuyerServiceImpl implements BuyerService {
 	
     @Override
 	public void buyerLogin(HttpServletRequest request,
-			HttpServletResponse response,String accountName) {
-    	String loginResult=buyerModelMapper.buyerLogin(accountName);
-    	String psw=request.getParameter("password");
-    	if(loginResult.equals(psw)) {
+			HttpServletResponse response,BuyerModel buyerModel) {
+    	String pwd = MD5Utils.md5(buyerModel.getPassword());
+    	BuyerModelExample buyerModelExample = new BuyerModelExample();
+    	BuyerModelExample.Criteria criteriaBuyer = buyerModelExample.createCriteria();
+    	criteriaBuyer.andAccountNameEqualTo(buyerModel.getAccountName());
+    	criteriaBuyer.andPasswordEqualTo(pwd);
+    	List<BuyerModel> buyerModels = buyerModelMapper.selectByExample(buyerModelExample);
+    	if(buyerModels!=null&&buyerModels.size()>0) {
     		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
     		
     	}else {

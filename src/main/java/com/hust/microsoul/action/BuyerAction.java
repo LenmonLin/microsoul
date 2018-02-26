@@ -28,8 +28,8 @@ public class BuyerAction {
 	Logger logger =LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping("login")
-	public void buyerLogin(HttpServletRequest request,HttpServletResponse response,String accountName){
-		buyerService.buyerLogin(request, response,accountName);
+	public void buyerLogin(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
+		buyerService.buyerLogin(request, response,buyerModel);
 		logger.error("1111111");
 	}
 	
