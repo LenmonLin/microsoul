@@ -139,6 +139,7 @@ public class SellerAction {
 
     }
 
+    
     @RequestMapping("info")
     public void sellerInfo(HttpServletRequest request,HttpServletResponse response){
 
