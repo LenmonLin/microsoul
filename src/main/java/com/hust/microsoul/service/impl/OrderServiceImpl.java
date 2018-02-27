@@ -28,7 +28,11 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	@Override
 	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer[] goodsId) {
-		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 	/**
