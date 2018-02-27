@@ -1,5 +1,7 @@
 package com.hust.microsoul.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
@@ -78,5 +80,22 @@ public class GoodsServiceImpl  implements GoodsService{
         return goodsModelMapper.selectByPrimaryKey(goodsId);
     }
 
+    /**
+     *@Description 查询商品列表
+     *@params  page=当前页，rows=每一页显示的记录数，返回结果的pageInfo已经对goodsModelist进行了包装
+     *@author LemonLin
+     *@date  2018/2/27
+     */
+    @Override
+    public PageInfo<GoodsModel> showGoodsList(Integer page, Integer rows) {
+        //设置分页信息
+        PageHelper.startPage(page,rows);
+        //执行查询
+        GoodsModelExample example = new GoodsModelExample();
+        List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(example);
+        //返回查询结果
+        PageInfo pageInfo = new PageInfo(goodsModelList);
 
+        return pageInfo;
+    }
 }

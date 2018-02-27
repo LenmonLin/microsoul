@@ -3,10 +3,15 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.GoodsService;
+import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description:GoodsAction.java
@@ -25,5 +30,15 @@ public class GoodsAction {
 	public String HelloWorld(HttpServletRequest request,HttpServletResponse response) {
 		goodsService.HelloWorld(request, response);
 		return "WEB-INF/login";
+	}
+
+	@RequestMapping("showGoodsList")
+	@ResponseBody
+	public Msg showGoodsList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+							 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
+
+		PageInfo<GoodsModel> goodsModelList = goodsService.showGoodsList(page,rows);
+
+		return Msg.success().add("goodsModelList",goodsModelList);
 	}
 }
