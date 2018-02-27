@@ -208,6 +208,14 @@
 		  <version>2.9.2</version>
 	  </dependency>
 
+	  <!--引入pageHelper 分页插件-->
+	  <dependency>
+		  <groupId>com.github.pagehelper</groupId>
+		  <artifactId>pagehelper</artifactId>
+		  <version>5.0.0</version>
+	  </dependency>
+
+
   </dependencies>
   <build>
     <finalName>MicroSoul</finalName>

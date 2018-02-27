@@ -1,17 +1,17 @@
 package com.hust.microsoul.action;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.GoodsService;
-import com.hust.microsoul.util.CommonCode;
-import com.hust.microsoul.util.CookieUtils;
-import com.hust.microsoul.util.JSONCommon;
-import com.hust.microsoul.util.JsonUtils;
+import com.hust.microsoul.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -134,15 +134,24 @@ public class CartAction {
 
         JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
     }
-
     //显示购物车列表，
     @RequestMapping("/cartList")
-    public void showCartList(HttpServletRequest request,HttpServletResponse response){
+    @ResponseBody
+    public Msg showCartList(HttpServletRequest request, HttpServletResponse response,
+                            @RequestParam(value = "pn",defaultValue = "1") Integer pn){
+                /*
+        * pn显示第几页，pageSize每页显示的记录数
+        * */
+        PageHelper.startPage(pn,6);
+
+
         //从cookie中取出购物车列表
         List<GoodsModel> goodsModelList = getCartGoodsList(request);
-        //存放到request中去，这样前端就能够获得了
-        request.setAttribute("goodsModelList",goodsModelList);
 
-        JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+
+//        用pageInfo对结果进行包装,之后只要将pageInfo交给前端页面就可以
+//        pageInfo封装了详细的分页信息,navigatePages传入连续显示的页数
+        PageInfo pageInfo = new PageInfo(goodsModelList);
+        return Msg.success().add("pageInfo", pageInfo);
     }
 }
