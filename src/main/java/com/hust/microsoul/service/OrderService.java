@@ -23,7 +23,7 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:04:30   
 	 * @version V1.0
 	 */
-	public void buyerCreateOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+	public void buyerCreateOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,Integer[] goodsId);
 
 
 	/**

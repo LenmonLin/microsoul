@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
-	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer[] goodsId) {
 		
 		
 	}
