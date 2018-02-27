@@ -138,8 +138,7 @@ public class SellerAction {
         }
 
     }
-
-    
+    //测试版本
     @RequestMapping("info")
     public void sellerInfo(HttpServletRequest request,HttpServletResponse response){
 

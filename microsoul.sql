@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : mysql
 Source Server Version : 50717
 Source Host           : localhost:3306
-Source Database       : lingweiwang
+Source Database       : microsoul
 
 Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-01-26 10:49:33
+Date: 2018-02-27 11:17:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,7 +82,7 @@ CREATE TABLE `collection` (
   `CREATETIME` datetime NOT NULL,
   `BUYER_ID` int(15) NOT NULL,
   `GOODS_ID` int(15) NOT NULL,
-  PRIMARY KEY (ID),
+  PRIMARY KEY (`ID`),
   KEY `BUYER_ID` (`BUYER_ID`) USING BTREE,
   KEY `GOODS_ID` (`GOODS_ID`) USING BTREE,
   CONSTRAINT `BUYER_ID` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`),
@@ -118,12 +118,13 @@ CREATE TABLE `goods` (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
+INSERT INTO `goods` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for order_goods_table
 -- ----------------------------
 DROP TABLE IF EXISTS `order_goods_table`;
-CREATE TABLE `order_goods_table` (		
+CREATE TABLE `order_goods_table` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `GOODS_ID` int(11) NOT NULL,
   `ORDER_ID` int(11) NOT NULL,
@@ -131,7 +132,6 @@ CREATE TABLE `order_goods_table` (
   `GRADE` float(255,0) DEFAULT NULL COMMENT '评分',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
 
 -- ----------------------------
 -- Records of order_goods_table
@@ -142,7 +142,7 @@ CREATE TABLE `order_goods_table` (
 -- ----------------------------
 DROP TABLE IF EXISTS `order_table`;
 CREATE TABLE `order_table` (
-  `ORDER_ID` int(11) NOT NULL auto_increment COMMENT '订单ID',
+  `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
   `STATE` int(1) NOT NULL COMMENT '订单状态',
   `LOGISTIC_ID` int(11) DEFAULT NULL COMMENT '物流单号',
   `BUYER_ID` int(11) NOT NULL COMMENT '买家ID',
@@ -153,12 +153,12 @@ CREATE TABLE `order_table` (
   PRIMARY KEY (`ORDER_ID`) USING BTREE,
   KEY `1` (`BUYER_ID`) USING BTREE,
   CONSTRAINT `1` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
-INSERT INTO `order_table` VALUES (12, 1,'1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
@@ -180,7 +180,7 @@ CREATE TABLE `seller` (
   PRIMARY KEY (`ID_SELLER`) USING BTREE,
   KEY `ORDER_SELLER_ID` (`ORDER_SELLER_ID`),
   CONSTRAINT `ORDER_SELLER_ID` FOREIGN KEY (`ORDER_SELLER_ID`) REFERENCES `order_table` (`ORDER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
@@ -191,3 +191,4 @@ INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null,
 INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '1');
 INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
 INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01', '1');
