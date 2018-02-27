@@ -22,8 +22,12 @@
     <context:component-scan base-package="com.hust.microsoul" />
 
 	<!-- 激活@Autowired等功能，若使用了<context:component-scan/> 此标签则不需要使用-->
-	<context:annotation-config /> 
-	
+	<context:annotation-config />
+
+	<!-- 启用srping mvc注解 -->
+	<mvc:annotation-driven/>
+
+
 	<mvc:interceptors>
 		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 		<bean id="userLoginInterceptor" class="com.hust.microsoul.interceptor.UserLoginInterceptor" />
