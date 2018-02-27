@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-27 21:55:37
+Date: 2018-02-27 22:01:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -145,7 +145,7 @@ DROP TABLE IF EXISTS `order_table`;
 CREATE TABLE `order_table` (
   `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
   `STATE` int(1) NOT NULL COMMENT '订单状态',
-  `LOGISTIC_ID` int(11) DEFAULT NULL COMMENT '物流单号',
+  `LOGISTIC_ID` varchar(11) DEFAULT NULL COMMENT '物流单号',
   `BUYER_ID` int(11) NOT NULL COMMENT '买家ID',
   `SELLER_ID` int(11) NOT NULL COMMENT '买家ID',
   `ORDER_TIME` datetime NOT NULL COMMENT '下单时间',
