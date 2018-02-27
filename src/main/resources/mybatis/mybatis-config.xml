@@ -22,6 +22,7 @@
 		<typeAlias alias="Order_goods_tableModel" type="com.hust.microsoul.model.Order_goods_tableModel" />
 		<typeAlias alias="Order_goods_tableModelExample" type="com.hust.microsoul.model.Order_goods_tableModelExample" />
 		<typeAlias alias="Order_tableModel" type="com.hust.microsoul.model.Order_tableModel" />
+		<typeAlias alias="OrderModel" type="com.hust.microsoul.model.OrderModel" />
 		<typeAlias alias="Order_tableModelExample" type="com.hust.microsoul.model.Order_tableModelExample" />
 		<typeAlias alias="SellerModel" type="com.hust.microsoul.model.SellerModel" />
 		<typeAlias alias="SellerModelExample" type="com.hust.microsoul.model.SellerModelExample" />
@@ -52,5 +53,6 @@ environments?, databaseIdProvider?, mappers?
 		<mapper resource="mybatis/Order_goods_tableModelMapper.xml"/>
 		<mapper resource="mybatis/Order_tableModelMapper.xml"/>
 		<mapper resource="mybatis/SellerModelMapper.xml"/>
+		<mapper resource="mybatis/OrderMapper.xml"/>
 	</mappers>
 </configuration>

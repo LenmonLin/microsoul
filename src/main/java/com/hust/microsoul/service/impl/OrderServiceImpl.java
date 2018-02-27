@@ -1,11 +1,17 @@
 package com.hust.microsoul.service.impl;
 
+import com.hust.microsoul.mapper.OrderMapper;
 import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.service.OrderService;
+
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /** 
@@ -18,6 +24,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+	@Autowired
+	private OrderMapper orderMapper;
+	
+	private Logger Logger = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * @Description:
 	 * @author:huwentao
@@ -30,8 +40,13 @@ public class OrderServiceImpl implements OrderService {
 	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer[] goodsId) {
 		try {
 			
+			orderModel.setOrderTime(new Date(System.currentTimeMillis()));
+			int insertResult = orderMapper.buyerCreateOrder(orderModel);
+			Logger.error(insertResult+":"+orderModel.getBuyerId());
+			if(insertResult>0) {
+				Logger.error("插入成功！");
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		
 	}
