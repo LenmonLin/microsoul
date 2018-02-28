@@ -4,5 +4,5 @@ import com.hust.microsoul.model.OrderModel;
 
 public interface OrderMapper {
 
-    public int buyerCreateOrder(OrderModel order);
+    public Integer buyerCreateOrder(OrderModel orderModel);
 }

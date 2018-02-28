@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.microsoul.mapper.OrderMapper">
-  <resultMap id="orderMap" type="OrderModel">
+  <resultMap id="orderMap" type="orderModel">
     <id column="ORDER_ID" jdbcType="INTEGER" property="orderId" />
     <result column="STATE" jdbcType="INTEGER" property="state" />
     <result column="LOGISTIC_ID" jdbcType="VARCHAR" property="logisticId" />
@@ -12,7 +12,7 @@
     <result column="DELIVER_TIME" jdbcType="TIMESTAMP" property="deliverTime" />
   </resultMap>
 
-  <insert id="buyerCreateOrder" parameterType="OrderModel">
+  <insert id="buyerCreateOrder" parameterType="orderModel">
     insert into order_table
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="state != null">

@@ -39,10 +39,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer[] goodsId) {
 		try {
-			
+			Logger.error(":"+orderModel.getBuyerId());
 			orderModel.setOrderTime(new Date(System.currentTimeMillis()));
+			Logger.error(":"+(orderMapper==null));
 			int insertResult = orderMapper.buyerCreateOrder(orderModel);
-			Logger.error(insertResult+":"+orderModel.getBuyerId());
+			
 			if(insertResult>0) {
 				Logger.error("插入成功！");
 			}
