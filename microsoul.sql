@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-27 11:17:50
+Date: 2018-02-27 22:01:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -108,17 +108,18 @@ CREATE TABLE `goods` (
   `DISCOUNT` int(15) DEFAULT NULL,
   `PURCHASE_QUANTITY` int(15) NOT NULL,
   `COLLECTION_GOODS_ID` int(15) NOT NULL,
-  `SELLER_ID` int(15) NOT NULL,
+  `SELLER_GOODS_ID` int(15) NOT NULL,
   PRIMARY KEY (`GOODS_ID`) USING BTREE,
-  KEY `SELLER_ID` (`SELLER_ID`) USING BTREE,
+  KEY `SELLER_ID` (`SELLER_GOODS_ID`) USING BTREE,
   KEY `COLLECTION_GOODS_ID` (`COLLECTION_GOODS_ID`) USING BTREE,
-  CONSTRAINT `SELLER_ID` FOREIGN KEY (`SELLER_ID`) REFERENCES `seller` (`ID_SELLER`)
+  CONSTRAINT `SELLER_ID` FOREIGN KEY (`SELLER_GOODS_ID`) REFERENCES `seller` (`ID_SELLER`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
 INSERT INTO `goods` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `goods` VALUES ('2', '12', '122', '123', '123', '123', '1233', '45', '5', '56', '2');
 
 -- ----------------------------
 -- Table structure for order_goods_table
@@ -180,7 +181,7 @@ CREATE TABLE `seller` (
   PRIMARY KEY (`ID_SELLER`) USING BTREE,
   KEY `ORDER_SELLER_ID` (`ORDER_SELLER_ID`),
   CONSTRAINT `ORDER_SELLER_ID` FOREIGN KEY (`ORDER_SELLER_ID`) REFERENCES `order_table` (`ORDER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
@@ -192,3 +193,5 @@ INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null
 INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
 INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
 INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('10', '密码1234', '81dc9bdb52d04dc20036dbd8313ed055', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84e7b', null, null, null, null, 'hello', null, null, '01', '1');
