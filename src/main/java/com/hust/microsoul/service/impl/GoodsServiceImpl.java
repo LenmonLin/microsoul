@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,8 +40,29 @@ public class GoodsServiceImpl  implements GoodsService{
      *@date  2018/1/23
      */
     @Override
-    public int insert(GoodsModel record) {
-        return 0;
+    public GoodsModel  insert(GoodsModel goodsModel) {
+
+
+        //1、补全goodsModel的属性
+        goodsModel.setGoodsName(goodsModel.getGoodsName());
+        goodsModel.setUnitPrice(goodsModel.getUnitPrice());
+        goodsModel.setCategory(goodsModel.getCategory());
+        goodsModel.setStore(goodsModel.getStore());
+        /*java.sql.Date只包含年月日信息
+            java.util.Date 包含年月日时分秒毫秒
+        */
+        goodsModel.setCreated(new Date());
+        goodsModel.setUpdated(new Date());
+
+        //设置商品的状态，1在售2下架3删除
+        goodsModel.setStatus(1);
+
+        goodsModel.setSellerId(goodsModel.getSellerId());
+        //2、向商品表插入数据
+        goodsModelMapper.insert(goodsModel);
+        //3、返回结果
+
+        return goodsModel;
     }
 
     /**

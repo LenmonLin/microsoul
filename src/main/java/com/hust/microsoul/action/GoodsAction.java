@@ -31,6 +31,20 @@ public class GoodsAction {
 		goodsService.HelloWorld(request, response);
 		return "WEB-INF/login";
 	}
+	/**
+	 *@Description  插入商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/2/28
+	 */
+	@RequestMapping("insertGoodsModel")
+	@ResponseBody
+	public  Msg insertGoodsModel(GoodsModel goodsModel){
+
+		goodsService.insert(goodsModel);
+
+		return Msg.success();
+	}
 
 	@RequestMapping("showGoodsList")
 	@ResponseBody

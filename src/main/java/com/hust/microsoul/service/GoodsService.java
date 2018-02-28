@@ -19,7 +19,13 @@ import java.util.List;
 @Service
 public interface GoodsService {
 
-    public int insert(GoodsModel record);
+    /**
+     *@Description 添加商品
+     *@params
+     *@author LemonLin
+     *@date  2018/2/28
+     */
+    public GoodsModel insert(GoodsModel record);
 
     public List<GoodsModel> selectByCriteria(GoodsModelExample example);
 

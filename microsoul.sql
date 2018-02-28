@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-28 15:57:42
+Date: 2018-02-28 16:54:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,7 +102,7 @@ CREATE TABLE `goods` (
   `TITLE` varchar(255) DEFAULT NULL COMMENT '商品标题',
   `SELLPOINT` varchar(255) DEFAULT NULL COMMENT '商品卖点',
   `UNIT_PRICE` int(16) NOT NULL COMMENT '商品单价',
-  `PURCHASE_QUANTITY` int(16) NOT NULL COMMENT '商品购买数量',
+  `PURCHASE_QUANTITY` int(16) DEFAULT NULL COMMENT '商品购买数量',
   `BARCODE` int(32) DEFAULT NULL COMMENT '商品条形码',
   `IMAGE_URL` varchar(255) DEFAULT NULL COMMENT '商品图片链接',
   `CATEGORY` int(32) NOT NULL COMMENT '商品分类：\r\n女装 1\r\n男装 2\r\n美妆 3\r\n手机数码 4\r\n母婴玩具 5\r\n零食茶酒 6\r\n家电 7\r\n汽车配件用品 8\r\n图书音像 9\r\n其他 10',
@@ -117,13 +117,14 @@ CREATE TABLE `goods` (
   PRIMARY KEY (`GOODS_ID`) USING BTREE,
   KEY `SELLER_ID` (`SELLER_ID`) USING BTREE,
   KEY `COLLECTION_GOODS_ID` (`COLLECTION_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
 INSERT INTO `goods` VALUES ('1', '1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, null, '1', '1');
 INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
+INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
 
 -- ----------------------------
 -- Table structure for order_goods_table
