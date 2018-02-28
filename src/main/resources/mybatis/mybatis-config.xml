@@ -3,6 +3,8 @@
 <configuration>
 	<settings>
 		<setting name="lazyLoadingEnabled" value="false"/>
+		<!-- SQL语句打印 -->
+		<setting name="logImpl" value="STDOUT_LOGGING" />
 	</settings>
 	<typeAliases>
 
