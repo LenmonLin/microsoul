@@ -4,9 +4,7 @@ import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface GoodsModelMapper {
     long countByExample(GoodsModelExample example);
 

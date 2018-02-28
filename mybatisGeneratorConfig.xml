@@ -45,10 +45,10 @@
 		<!--<table tableName="adminitrator_table" domainObjectName="Adminitrator_tableModel"></table>-->
 		<!--<table tableName="buyer" domainObjectName="BuyerModel"></table>-->
 		<!--<table tableName="collection" domainObjectName="CollectionModel"></table>-->
-		<!--<table tableName="goods" domainObjectName="GoodsModel"></table>-->
+		<table tableName="goods" domainObjectName="GoodsModel"></table>
 		<!--<table tableName="order_goods_table" domainObjectName="Order_goods_tableModel"></table>-->
 		<!--<table tableName="order_table" domainObjectName="Order_tableModel"></table>-->
-		<table tableName="seller" domainObjectName="SellerModel"></table>
+		<!--<table tableName="seller" domainObjectName="SellerModel"></table>-->
 
 
 	</context>

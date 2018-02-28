@@ -1,29 +1,41 @@
 package com.hust.microsoul.model;
 
+import java.util.Date;
+
 public class GoodsModel {
     private Integer goodsId;
 
-    private String detail;
+    private String goodsName;
+
+    private String title;
+
+    private String sellpoint;
+
+    private Integer unitPrice;
+
+    private Integer purchaseQuantity;
+
+    private Integer barcode;
 
     private String imageUrl;
 
-    private String category;
+    private Integer category;
 
     private Integer store;
 
-    //商品的单价
-    private Integer unitPrice;
-
-    private String goodsName;
+    private String detail;
 
     private Integer discount;
 
-    //商品的购买数量
-    private Integer purchaseQuantity;
+    private Integer status;
 
-    private Integer collectionGoodsId;
+    private Date created;
 
-    private Integer sellerGoodsId;
+    private Date updated;
+
+    private Integer collectionId;
+
+    private Integer sellerId;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -31,46 +43,6 @@ public class GoodsModel {
 
     public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail == null ? null : detail.trim();
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl == null ? null : imageUrl.trim();
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
-    }
-
-    public Integer getStore() {
-        return store;
-    }
-
-    public void setStore(Integer store) {
-        this.store = store;
-    }
-
-    public Integer getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(Integer unitPrice) {
-        this.unitPrice = unitPrice;
     }
 
     public String getGoodsName() {
@@ -81,12 +53,28 @@ public class GoodsModel {
         this.goodsName = goodsName == null ? null : goodsName.trim();
     }
 
-    public Integer getDiscount() {
-        return discount;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getSellpoint() {
+        return sellpoint;
+    }
+
+    public void setSellpoint(String sellpoint) {
+        this.sellpoint = sellpoint == null ? null : sellpoint.trim();
+    }
+
+    public Integer getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Integer unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public Integer getPurchaseQuantity() {
@@ -97,19 +85,91 @@ public class GoodsModel {
         this.purchaseQuantity = purchaseQuantity;
     }
 
-    public Integer getCollectionGoodsId() {
-        return collectionGoodsId;
+    public Integer getBarcode() {
+        return barcode;
     }
 
-    public void setCollectionGoodsId(Integer collectionGoodsId) {
-        this.collectionGoodsId = collectionGoodsId;
+    public void setBarcode(Integer barcode) {
+        this.barcode = barcode;
     }
 
-    public Integer getSellerGoodsId() {
-        return sellerGoodsId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setSellerGoodsId(Integer sellerGoodsId) {
-        this.sellerGoodsId = sellerGoodsId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl == null ? null : imageUrl.trim();
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public Integer getStore() {
+        return store;
+    }
+
+    public void setStore(Integer store) {
+        this.store = store;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Integer collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
     }
 }
