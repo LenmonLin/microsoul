@@ -4,9 +4,7 @@ import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.model.SellerModelExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface SellerModelMapper {
     long countByExample(SellerModelExample example);
 

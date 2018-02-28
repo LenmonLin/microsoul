@@ -833,66 +833,6 @@ public class SellerModelExample {
             addCriterion("STATE not between", value1, value2, "state");
             return (Criteria) this;
         }
-
-        public Criteria andOrderSellerIdIsNull() {
-            addCriterion("ORDER_SELLER_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdIsNotNull() {
-            addCriterion("ORDER_SELLER_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdEqualTo(Integer value) {
-            addCriterion("ORDER_SELLER_ID =", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdNotEqualTo(Integer value) {
-            addCriterion("ORDER_SELLER_ID <>", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdGreaterThan(Integer value) {
-            addCriterion("ORDER_SELLER_ID >", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ORDER_SELLER_ID >=", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdLessThan(Integer value) {
-            addCriterion("ORDER_SELLER_ID <", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdLessThanOrEqualTo(Integer value) {
-            addCriterion("ORDER_SELLER_ID <=", value, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdIn(List<Integer> values) {
-            addCriterion("ORDER_SELLER_ID in", values, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdNotIn(List<Integer> values) {
-            addCriterion("ORDER_SELLER_ID not in", values, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdBetween(Integer value1, Integer value2) {
-            addCriterion("ORDER_SELLER_ID between", value1, value2, "orderSellerId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderSellerIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("ORDER_SELLER_ID not between", value1, value2, "orderSellerId");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {
