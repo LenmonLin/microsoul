@@ -138,9 +138,17 @@ public class SellerAction {
         }
 
     }
-    //测试版本
-    @RequestMapping("info")
-    public void sellerInfo(HttpServletRequest request,HttpServletResponse response){
+    /**
+     *@Description 更新卖家信息
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    @RequestMapping("sellerInfo")
+    @ResponseBody
+    public Msg sellerInfo(SellerModel sellerModel){
 
+        Msg msg=sellerService.sellerInfo(sellerModel);
+        return msg;
     }
 }

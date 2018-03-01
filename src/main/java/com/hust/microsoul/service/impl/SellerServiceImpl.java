@@ -5,6 +5,7 @@ import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.model.SellerModelExample;
 import com.hust.microsoul.service.SellerService;
 import com.hust.microsoul.util.MD5Utils;
+import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,9 +73,33 @@ public class SellerServiceImpl implements SellerService{
         sellerModelMapper.insert(sellerModel);
     }
 
+    /**
+     *@Description 更新卖家信息
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
     @Override
-    public void sellerInfo(HttpServletRequest request, HttpServletResponse response) {
+    public Msg sellerInfo(SellerModel record) {
 
+        //从数据库中查询到需要修改的用户记录
+
+        SellerModel sellerModel=sellerModelMapper.selectByPrimaryKey(record.getIdSeller());
+        //如果密码不对应，就不能修改
+        if (!checkOldPassword(record.getPassword(),record.getIdSeller()))
+            return Msg.fail();
+        //修改需要修改的属性
+        sellerModel.setAccountName(record.getAccountName());
+        sellerModel.setZhifubaoAccount(record.getZhifubaoAccount());
+        sellerModel.setEmail(record.getEmail());
+        sellerModel.setQqAccount(record.getQqAccount());
+        sellerModel.setDistrict(record.getDistrict());
+        sellerModel.setRealName(record.getRealName());
+        sellerModel.setAddress(record.getAddress());
+        sellerModel.setTelephone(record.getTelephone());
+        //更新到数据库中
+        sellerModelMapper.updateByPrimaryKeySelective(sellerModel);
+        return Msg.success();
     }
 
     @Override
@@ -148,6 +173,33 @@ public class SellerServiceImpl implements SellerService{
         //sellerModelMapper.insert(sellerModel);
     }
 
+
+    /**
+     *@Description 判断旧密码是否相同
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    public boolean checkOldPassword(String oldPassword,Integer idSeller){
+
+        //加密
+        String pwd = MD5Utils.md5(oldPassword);
+
+        SellerModelExample sellerModelExample = new SellerModelExample();
+
+        SellerModelExample.Criteria criteriaSeller = sellerModelExample.createCriteria();
+
+
+        criteriaSeller.andIdSellerEqualTo(idSeller);
+        criteriaSeller.andPasswordEqualTo(pwd);
+
+        List<SellerModel> sellerModels = sellerModelMapper.selectByExample(sellerModelExample);
+
+        if (sellerModels != null && sellerModels.size()>0){
+            return true;
+        }
+        return false;
+    }
     @Override
     public void HelloWorld(HttpServletRequest request, HttpServletResponse response) {
 

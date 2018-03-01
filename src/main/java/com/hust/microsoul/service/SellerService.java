@@ -3,6 +3,7 @@ package com.hust.microsoul.service;
 
 import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.model.SellerModelExample;
+import com.hust.microsoul.util.Msg;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ public interface SellerService {
 
     public void sellerRegister(String accountName,String password);
 
-    public void sellerInfo(HttpServletRequest request,HttpServletResponse response);
+    public Msg sellerInfo(SellerModel sellerModel);
 
     public void disableSeller(HttpServletRequest request,HttpServletResponse response);
 

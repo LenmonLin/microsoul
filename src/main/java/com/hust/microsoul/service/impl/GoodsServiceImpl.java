@@ -85,7 +85,7 @@ public class GoodsServiceImpl  implements GoodsService{
         return goodsModelMapper.updateByPrimaryKeySelective(goodsModel);
     }
     /**
-     *@Description 更新商品记录方法1，写法繁琐
+     *@Description 更新商品记录方法1，写法繁琐，但是可用于更新用户信息时，不更改密码的情况
      *@params
      *@author LemonLin
      *@date  2018/1/23
@@ -152,7 +152,7 @@ public class GoodsServiceImpl  implements GoodsService{
         //商品状态为删除的不显示
         GoodsModelExample.Criteria criteria = goodsModelExample.createCriteria();
         criteria.andStatusNotEqualTo(3);
-        
+
         List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(goodsModelExample);
         //返回查询结果
         PageInfo pageInfo = new PageInfo(goodsModelList);
