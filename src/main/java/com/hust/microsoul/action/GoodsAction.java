@@ -54,8 +54,9 @@ public class GoodsAction {
 	 */
 	@RequestMapping("updateGoodsModel")
 	@ResponseBody
-	public Msg updateByPrimaryKey(GoodsModel record) {
-		goodsService.updateByPrimaryKey(record);
+	public Msg updateByExampleSelective(GoodsModel record) {
+//		goodsService.updateByPrimaryKeySelective(record);
+		goodsService.updateByExampleSelective(record);
 		return Msg.success();
 	}
 

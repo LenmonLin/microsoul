@@ -31,8 +31,10 @@ public interface GoodsService {
 
     public  int deleteByPrimaryKey(Integer goodsId);
 
-    public int updateByPrimaryKey(GoodsModel record);
+    public int updateByPrimaryKeySelective(GoodsModel record);
 
+
+    public int updateByExampleSelective(GoodsModel record);
 
     GoodsModel selectByPrimaryKey(Integer goodsId);
 

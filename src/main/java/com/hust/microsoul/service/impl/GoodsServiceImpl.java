@@ -76,13 +76,13 @@ public class GoodsServiceImpl  implements GoodsService{
         return 0;
     }
     /**
-     *@Description 更新商品记录
+     *@Description 更新商品记录方法1，写法繁琐
      *@params
      *@author LemonLin
      *@date  2018/1/23
      */
     @Override
-    public int updateByPrimaryKey(GoodsModel record) {
+    public int updateByPrimaryKeySelective(GoodsModel record) {
 
         //从数据库中搜索对应的商品记录
         GoodsModel goodsModel = goodsModelMapper.selectByPrimaryKey(record.getGoodsId());
@@ -102,9 +102,24 @@ public class GoodsServiceImpl  implements GoodsService{
         goodsModel.setStatus(record.getStatus());
         goodsModel.setSellerId(record.getSellerId());
         goodsModel.setUpdated(new Date());
-
         //更新该记录到数据库
         return goodsModelMapper.updateByPrimaryKeySelective(goodsModel);
+    }
+
+    /**
+     *@Description 更新商品记录方法2
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    public int updateByExampleSelective(GoodsModel record){
+        GoodsModelExample goodsModelExample = new GoodsModelExample();
+
+        GoodsModelExample.Criteria criteria = goodsModelExample.createCriteria();
+
+        criteria.andGoodsIdEqualTo(record.getGoodsId());
+
+        return goodsModelMapper.updateByExampleSelective(record,goodsModelExample);
     }
 
     @Override
