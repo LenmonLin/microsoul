@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.microsoul.mapper.OrderGoodsMapper">
+  <resultMap id="orderGoodsMap" type="OrderGoodsModel">
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+    <result column="GOODS_ID" jdbcType="INTEGER" property="goodsId" />
+    <result column="ORDER_ID" jdbcType="INTEGER" property="orderId" />
+    <result column="NUM" jdbcType="INTEGER" property="num" />
+    <result column="GRADE" jdbcType="REAL" property="grade" />
+  </resultMap>
+	<insert id="insertOrderGoods" parameterType="OrderGoodsModel">
+    insert into order_goods_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ID != null">
+        ID,
+      </if>
+      <if test="goodsId != null">
+        GOODS_ID,
+      </if>
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="ID != null">
+        #{ID},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId},
+      </if>
+      <if test="orderId != null">
+        #{orderId},
+      </if>
+      <if test="num != null">
+        #{num},
+      </if>
+      <if test="grade != null">
+        #{grade},
+      </if>
+    </trim>
+  </insert>
+</mapper>

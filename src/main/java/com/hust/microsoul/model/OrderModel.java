@@ -1,6 +1,7 @@
 package com.hust.microsoul.model;
 
 import java.util.Date;
+import java.util.List;
 
 /** 
  * @Description:OrderModel.java
@@ -19,7 +20,9 @@ public class OrderModel {
     private Integer buyerId;
 
     private Integer sellerId;
-   
+    
+    private List<GoodsModel> goods;
+    
     private Date orderTime;
 
     private Date payTime;
@@ -88,5 +91,13 @@ public class OrderModel {
 
 	public void setDeliverTime(Date deliverTime) {
 		this.deliverTime = deliverTime;
+	}
+
+	public List<GoodsModel> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(List<GoodsModel> goods) {
+		this.goods = goods;
 	}
 }
