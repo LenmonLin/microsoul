@@ -147,8 +147,13 @@ public class GoodsServiceImpl  implements GoodsService{
         //设置分页信息
         PageHelper.startPage(page,rows);
         //执行查询
-        GoodsModelExample example = new GoodsModelExample();
-        List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(example);
+        GoodsModelExample goodsModelExample = new GoodsModelExample();
+
+        //商品状态为删除的不显示
+        GoodsModelExample.Criteria criteria = goodsModelExample.createCriteria();
+        criteria.andStatusNotEqualTo(3);
+        
+        List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(goodsModelExample);
         //返回查询结果
         PageInfo pageInfo = new PageInfo(goodsModelList);
 
