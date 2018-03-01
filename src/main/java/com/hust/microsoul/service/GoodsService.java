@@ -29,7 +29,7 @@ public interface GoodsService {
 
     public List<GoodsModel> selectByCriteria(GoodsModelExample example);
 
-    public  int deleteByPrimaryKey(Integer goodsId);
+    public  int deleteByPrimaryKeySelective(Integer goodsId);
 
     public int updateByPrimaryKeySelective(GoodsModel record);
 

@@ -47,6 +47,18 @@ public class GoodsAction {
 	}
 
 	/**
+	 *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/1/23
+	 */
+	@RequestMapping("deleteGoodsModel")
+	@ResponseBody
+	public Msg deleteByPrimaryKey(Integer goodsId) {
+		goodsService.deleteByPrimaryKeySelective(goodsId);
+		return Msg.success();
+	}
+	/**
 	 *@Description 更新商品记录
 	 *@params
 	 *@author LemonLin

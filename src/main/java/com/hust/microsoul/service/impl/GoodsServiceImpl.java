@@ -66,14 +66,23 @@ public class GoodsServiceImpl  implements GoodsService{
     }
 
     /**
-     *@Description  删除商品记录
+     *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
      *@params
      *@author LemonLin
      *@date  2018/1/23
      */
     @Override
-    public int deleteByPrimaryKey(Integer goodsId) {
-        return 0;
+    public int deleteByPrimaryKeySelective(Integer goodsId) {
+
+        //从数据库中查询到需要删除的商品记录
+        GoodsModel goodsModel = goodsModelMapper.selectByPrimaryKey(goodsId);
+
+            /*商品状态1在售2下架3删除*/
+            //设置商品状态为3
+        goodsModel.setStatus(3);
+
+        //更新数据
+        return goodsModelMapper.updateByPrimaryKeySelective(goodsModel);
     }
     /**
      *@Description 更新商品记录方法1，写法繁琐
