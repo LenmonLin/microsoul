@@ -46,6 +46,19 @@ public class GoodsAction {
 		return Msg.success();
 	}
 
+	/**
+	 *@Description 更新商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/1
+	 */
+	@RequestMapping("updateGoodsModel")
+	@ResponseBody
+	public Msg updateByPrimaryKey(GoodsModel record) {
+		goodsService.updateByPrimaryKey(record);
+		return Msg.success();
+	}
+
 	@RequestMapping("showGoodsList")
 	@ResponseBody
 	public Msg showGoodsList(@RequestParam(value = "page",defaultValue = "1") Integer page,

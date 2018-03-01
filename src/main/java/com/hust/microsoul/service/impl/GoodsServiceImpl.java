@@ -66,17 +66,6 @@ public class GoodsServiceImpl  implements GoodsService{
     }
 
     /**
-     *@Description 搜索商品
-     *@params
-     *@author LemonLin
-     *@date  2018/1/23
-     */
-    @Override
-    public List<GoodsModel> selectByCriteria(GoodsModelExample example) {
-        return null;
-    }
-
-    /**
      *@Description  删除商品记录
      *@params
      *@author LemonLin
@@ -94,7 +83,28 @@ public class GoodsServiceImpl  implements GoodsService{
      */
     @Override
     public int updateByPrimaryKey(GoodsModel record) {
-        return 0;
+
+        //从数据库中搜索对应的商品记录
+        GoodsModel goodsModel = goodsModelMapper.selectByPrimaryKey(record.getGoodsId());
+
+        //更新该商品记录的变量
+        goodsModel.setGoodsName(record.getGoodsName());
+        goodsModel.setTitle(record.getTitle());
+        goodsModel.setSellpoint(record.getSellpoint());
+        goodsModel.setUnitPrice(record.getUnitPrice());
+        goodsModel.setPurchaseQuantity(record.getPurchaseQuantity());
+        goodsModel.setBarcode(record.getBarcode());
+        goodsModel.setImageUrl(record.getImageUrl());
+        goodsModel.setCategory(record.getCategory());
+        goodsModel.setStore(record.getStore());
+        goodsModel.setDetail(record.getDetail());
+        goodsModel.setDiscount(record.getDiscount());
+        goodsModel.setStatus(record.getStatus());
+        goodsModel.setSellerId(record.getSellerId());
+        goodsModel.setUpdated(new Date());
+
+        //更新该记录到数据库
+        return goodsModelMapper.updateByPrimaryKeySelective(goodsModel);
     }
 
     @Override
@@ -119,5 +129,17 @@ public class GoodsServiceImpl  implements GoodsService{
         PageInfo pageInfo = new PageInfo(goodsModelList);
 
         return pageInfo;
+    }
+
+
+    /**
+     *@Description 搜索商品
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public List<GoodsModel> selectByCriteria(GoodsModelExample example) {
+        return null;
     }
 }
