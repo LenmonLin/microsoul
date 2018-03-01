@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-27 22:01:25
+Date: 2018-02-28 16:54:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,8 +85,7 @@ CREATE TABLE `collection` (
   PRIMARY KEY (`ID`),
   KEY `BUYER_ID` (`BUYER_ID`) USING BTREE,
   KEY `GOODS_ID` (`GOODS_ID`) USING BTREE,
-  CONSTRAINT `BUYER_ID` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`),
-  CONSTRAINT `GOODS_ID` FOREIGN KEY (`GOODS_ID`) REFERENCES `goods` (`GOODS_ID`)
+  CONSTRAINT `BUYER_ID` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
@@ -98,28 +97,34 @@ CREATE TABLE `collection` (
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
-  `GOODS_ID` int(15) NOT NULL,
-  `DETAIL` varchar(255) NOT NULL,
-  `IMAGE_URL` varchar(255) NOT NULL,
-  `CATEGORY` varchar(255) NOT NULL,
-  `STORE` int(15) NOT NULL,
-  `UNIT_PRICE` int(10) NOT NULL,
-  `GOODS_NAME` varchar(255) NOT NULL,
-  `DISCOUNT` int(15) DEFAULT NULL,
-  `PURCHASE_QUANTITY` int(15) NOT NULL,
-  `COLLECTION_GOODS_ID` int(15) NOT NULL,
-  `SELLER_GOODS_ID` int(15) NOT NULL,
+  `GOODS_ID` int(16) NOT NULL AUTO_INCREMENT COMMENT '商品Id',
+  `GOODS_NAME` varchar(255) NOT NULL COMMENT '商品名称',
+  `TITLE` varchar(255) DEFAULT NULL COMMENT '商品标题',
+  `SELLPOINT` varchar(255) DEFAULT NULL COMMENT '商品卖点',
+  `UNIT_PRICE` int(16) NOT NULL COMMENT '商品单价',
+  `PURCHASE_QUANTITY` int(16) DEFAULT NULL COMMENT '商品购买数量',
+  `BARCODE` int(32) DEFAULT NULL COMMENT '商品条形码',
+  `IMAGE_URL` varchar(255) DEFAULT NULL COMMENT '商品图片链接',
+  `CATEGORY` int(32) NOT NULL COMMENT '商品分类：\r\n女装 1\r\n男装 2\r\n美妆 3\r\n手机数码 4\r\n母婴玩具 5\r\n零食茶酒 6\r\n家电 7\r\n汽车配件用品 8\r\n图书音像 9\r\n其他 10',
+  `STORE` int(32) NOT NULL COMMENT '商品库存',
+  `DETAIL` varchar(255) DEFAULT NULL COMMENT '商品详情',
+  `DISCOUNT` int(16) DEFAULT NULL COMMENT '商品折扣',
+  `STATUS` int(8) DEFAULT NULL COMMENT '商品状态：1在售2下架3删除',
+  `CREATED` datetime(6) DEFAULT NULL,
+  `UPDATED` datetime(6) DEFAULT NULL,
+  `COLLECTION_ID` int(15) DEFAULT NULL,
+  `SELLER_ID` int(16) NOT NULL,
   PRIMARY KEY (`GOODS_ID`) USING BTREE,
-  KEY `SELLER_ID` (`SELLER_GOODS_ID`) USING BTREE,
-  KEY `COLLECTION_GOODS_ID` (`COLLECTION_GOODS_ID`) USING BTREE,
-  CONSTRAINT `SELLER_ID` FOREIGN KEY (`SELLER_GOODS_ID`) REFERENCES `seller` (`ID_SELLER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `SELLER_ID` (`SELLER_ID`) USING BTREE,
+  KEY `COLLECTION_GOODS_ID` (`COLLECTION_ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
-INSERT INTO `goods` VALUES ('2', '12', '122', '123', '123', '123', '1233', '45', '5', '56', '2');
+INSERT INTO `goods` VALUES ('1', '1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, null, '1', '1');
+INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
+INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
 
 -- ----------------------------
 -- Table structure for order_goods_table
@@ -177,21 +182,21 @@ CREATE TABLE `seller` (
   `ADDRESS` varchar(255) DEFAULT NULL,
   `TELEPHONE` int(20) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
-  `ORDER_SELLER_ID` int(15) NOT NULL,
-  PRIMARY KEY (`ID_SELLER`) USING BTREE,
-  KEY `ORDER_SELLER_ID` (`ORDER_SELLER_ID`),
-  CONSTRAINT `ORDER_SELLER_ID` FOREIGN KEY (`ORDER_SELLER_ID`) REFERENCES `order_table` (`ORDER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`ID_SELLER`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01', '1');
-INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('10', '密码1234', '81dc9bdb52d04dc20036dbd8313ed055', null, null, null, null, 'hello', null, null, '01', '1');
-INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84e7b', null, null, null, null, 'hello', null, null, '01', '1');
+INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01');
+INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01');
+INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('10', '密码1234', '81dc9bdb52d04dc20036dbd8313ed055', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84e7b', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('12', '密码1237', 'a9eb812238f753132652ae09963a05e9', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('13', '密码1235565', '7953bcdc416332990843fd95dbb9c493', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('14', '密码111', '698d51a19d8a121ce581499d7b701668', null, null, null, null, 'hello', null, null, '01');

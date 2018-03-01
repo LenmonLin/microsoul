@@ -13,7 +13,6 @@
     <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
     <result column="TELEPHONE" jdbcType="INTEGER" property="telephone" />
     <result column="STATE" jdbcType="INTEGER" property="state" />
-    <result column="ORDER_SELLER_ID" jdbcType="INTEGER" property="orderSellerId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     ID_SELLER, ACCOUNT_NAME, PASSWORD, ZHIFUBAO_ACCOUNT, EMAIL, QQ_ACCOUNT, DISTRICT, 
-    REAL_NAME, ADDRESS, TELEPHONE, STATE, ORDER_SELLER_ID
+    REAL_NAME, ADDRESS, TELEPHONE, STATE
   </sql>
   <select id="selectByExample" parameterType="com.hust.microsoul.model.SellerModelExample" resultMap="BaseResultMap">
     select
@@ -111,13 +110,11 @@
     insert into seller (ID_SELLER, ACCOUNT_NAME, PASSWORD, 
       ZHIFUBAO_ACCOUNT, EMAIL, QQ_ACCOUNT, 
       DISTRICT, REAL_NAME, ADDRESS, 
-      TELEPHONE, STATE, ORDER_SELLER_ID
-      )
+      TELEPHONE, STATE)
     values (#{idSeller,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{zhifubaoAccount,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qqAccount,jdbcType=INTEGER}, 
       #{district,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{orderSellerId,jdbcType=INTEGER}
-      )
+      #{telephone,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.SellerModel">
     insert into seller
@@ -155,9 +152,6 @@
       <if test="state != null">
         STATE,
       </if>
-      <if test="orderSellerId != null">
-        ORDER_SELLER_ID,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="idSeller != null">
@@ -192,9 +186,6 @@
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
-      </if>
-      <if test="orderSellerId != null">
-        #{orderSellerId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -240,9 +231,6 @@
       <if test="record.state != null">
         STATE = #{record.state,jdbcType=INTEGER},
       </if>
-      <if test="record.orderSellerId != null">
-        ORDER_SELLER_ID = #{record.orderSellerId,jdbcType=INTEGER},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -260,8 +248,7 @@
       REAL_NAME = #{record.realName,jdbcType=VARCHAR},
       ADDRESS = #{record.address,jdbcType=VARCHAR},
       TELEPHONE = #{record.telephone,jdbcType=INTEGER},
-      STATE = #{record.state,jdbcType=INTEGER},
-      ORDER_SELLER_ID = #{record.orderSellerId,jdbcType=INTEGER}
+      STATE = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -299,9 +286,6 @@
       <if test="state != null">
         STATE = #{state,jdbcType=INTEGER},
       </if>
-      <if test="orderSellerId != null">
-        ORDER_SELLER_ID = #{orderSellerId,jdbcType=INTEGER},
-      </if>
     </set>
     where ID_SELLER = #{idSeller,jdbcType=INTEGER}
   </update>
@@ -316,8 +300,7 @@
       REAL_NAME = #{realName,jdbcType=VARCHAR},
       ADDRESS = #{address,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=INTEGER},
-      STATE = #{state,jdbcType=INTEGER},
-      ORDER_SELLER_ID = #{orderSellerId,jdbcType=INTEGER}
+      STATE = #{state,jdbcType=INTEGER}
     where ID_SELLER = #{idSeller,jdbcType=INTEGER}
   </update>
 </mapper>

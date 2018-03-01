@@ -66,7 +66,7 @@ public class SellerServiceImpl implements SellerService{
         sellerModel.setState(1);
 
         //暂时测试使用，OrderSeller是外键的暂时设置
-        sellerModel.setOrderSellerId(1);
+        //sellerModel.setOrderSellerId(1);
         sellerModel.setRealName("hello");
         //调用持久层
         sellerModelMapper.insert(sellerModel);

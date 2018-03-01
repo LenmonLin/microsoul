@@ -19,14 +19,22 @@ import java.util.List;
 @Service
 public interface GoodsService {
 
-    public int insert(GoodsModel record);
+    /**
+     *@Description 添加商品
+     *@params
+     *@author LemonLin
+     *@date  2018/2/28
+     */
+    public GoodsModel insert(GoodsModel record);
 
     public List<GoodsModel> selectByCriteria(GoodsModelExample example);
 
-    public  int deleteByPrimaryKey(Integer goodsId);
+    public  int deleteByPrimaryKeySelective(Integer goodsId);
 
-    public int updateByPrimaryKey(GoodsModel record);
+    public int updateByPrimaryKeySelective(GoodsModel record);
 
+
+    public int updateByExampleSelective(GoodsModel record);
 
     GoodsModel selectByPrimaryKey(Integer goodsId);
 

@@ -31,6 +31,46 @@ public class GoodsAction {
 		goodsService.HelloWorld(request, response);
 		return "WEB-INF/login";
 	}
+	/**
+	 *@Description  插入商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/2/28
+	 */
+	@RequestMapping("insertGoodsModel")
+	@ResponseBody
+	public  Msg insertGoodsModel(GoodsModel goodsModel){
+
+		goodsService.insert(goodsModel);
+
+		return Msg.success();
+	}
+
+	/**
+	 *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/1/23
+	 */
+	@RequestMapping("deleteGoodsModel")
+	@ResponseBody
+	public Msg deleteByPrimaryKey(Integer goodsId) {
+		goodsService.deleteByPrimaryKeySelective(goodsId);
+		return Msg.success();
+	}
+	/**
+	 *@Description 更新商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/1
+	 */
+	@RequestMapping("updateGoodsModel")
+	@ResponseBody
+	public Msg updateByExampleSelective(GoodsModel record) {
+//		goodsService.updateByPrimaryKeySelective(record);
+		goodsService.updateByExampleSelective(record);
+		return Msg.success();
+	}
 
 	@RequestMapping("showGoodsList")
 	@ResponseBody
