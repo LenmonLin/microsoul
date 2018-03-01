@@ -148,7 +148,27 @@ public class SellerAction {
     @ResponseBody
     public Msg sellerInfo(SellerModel sellerModel){
 
-        Msg msg=sellerService.sellerInfo(sellerModel);
-        return msg;
+        if (sellerService.sellerInfo(sellerModel)){
+            return Msg.success();
+        }
+        return Msg.fail();
+    }
+
+
+    /**
+     *@Description 修改旧密码
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    @RequestMapping("sellerChangePassword")
+    @ResponseBody
+    public Msg sellerChangePassword(SellerModel sellerModel,
+                                    @RequestParam(value = "newPassword")String newPassword) {
+        if (sellerService.sellerChangePassword(sellerModel,newPassword)){
+            return Msg.success();
+        }else {
+            return Msg.fail();
+        }
     }
 }

@@ -23,11 +23,11 @@ public interface SellerService {
 
     public void sellerRegister(String accountName,String password);
 
-    public Msg sellerInfo(SellerModel sellerModel);
+    public boolean sellerInfo(SellerModel sellerModel);
 
     public void disableSeller(HttpServletRequest request,HttpServletResponse response);
 
-    public void sellerChangePassword(HttpServletRequest request,HttpServletResponse response);
+    public boolean sellerChangePassword(SellerModel sellerModel,String newPassword);
 
     SellerModel checkSeller(String  accountName);
 
