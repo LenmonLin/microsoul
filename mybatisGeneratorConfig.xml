@@ -15,7 +15,7 @@
 
 		<!--配置数据库连接-->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://127.0.0.1:3306/lingweiwang"
+						connectionURL="jdbc:mysql://127.0.0.1:3306/microsoul"
 						userId="root"
 						password="root">
 		</jdbcConnection>
@@ -40,15 +40,15 @@
 		<!--指定对应的数据库表和对应的Java代码，-->
 		
 		<!-- tableName="数据库的表名" domainObjectName="对应的JavaBean的类名（自定义）"  -->
-		
-		<table tableName="ad_info_table" domainObjectName="Ad_info_tableModel"></table>
-		<table tableName="adminitrator_table" domainObjectName="Adminitrator_tableModel"></table>
-		<table tableName="buyer" domainObjectName="BuyerModel"></table>
-		<table tableName="collection" domainObjectName="CollectionModel"></table>
+		<!---->
+		<!--<table tableName="ad_info_table" domainObjectName="Ad_info_tableModel"></table>-->
+		<!--<table tableName="adminitrator_table" domainObjectName="Adminitrator_tableModel"></table>-->
+		<!--<table tableName="buyer" domainObjectName="BuyerModel"></table>-->
+		<!--<table tableName="collection" domainObjectName="CollectionModel"></table>-->
 		<table tableName="goods" domainObjectName="GoodsModel"></table>
-		<table tableName="order_goods_table" domainObjectName="Order_goods_tableModel"></table>
-		<table tableName="order_table" domainObjectName="Order_tableModel"></table>
-		<table tableName="seller" domainObjectName="SellerModel"></table>
+		<!--<table tableName="order_goods_table" domainObjectName="Order_goods_tableModel"></table>-->
+		<!--<table tableName="order_table" domainObjectName="Order_tableModel"></table>-->
+		<!--<table tableName="seller" domainObjectName="SellerModel"></table>-->
 
 
 	</context>

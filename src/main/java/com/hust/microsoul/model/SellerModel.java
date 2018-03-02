@@ -23,8 +23,6 @@ public class SellerModel {
 
     private Integer state;
 
-    private Integer orderSellerId;
-
     public Integer getIdSeller() {
         return idSeller;
     }
@@ -111,31 +109,5 @@ public class SellerModel {
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public Integer getOrderSellerId() {
-        return orderSellerId;
-    }
-
-    public void setOrderSellerId(Integer orderSellerId) {
-        this.orderSellerId = orderSellerId;
-    }
-
-    @Override
-    public String toString() {
-        return "SellerModel{" +
-                "idSeller=" + idSeller +
-                ", accountName='" + accountName + '\'' +
-                ", password='" + password + '\'' +
-                ", zhifubaoAccount='" + zhifubaoAccount + '\'' +
-                ", email='" + email + '\'' +
-                ", qqAccount=" + qqAccount +
-                ", district='" + district + '\'' +
-                ", realName='" + realName + '\'' +
-                ", address='" + address + '\'' +
-                ", telephone=" + telephone +
-                ", state=" + state +
-                ", orderSellerId=" + orderSellerId +
-                '}';
     }
 }

@@ -1,10 +1,13 @@
 package com.hust.microsoul.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.OrderModel;
 
 /**
@@ -23,7 +26,7 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:04:30   
 	 * @version V1.0
 	 */
-	public void buyerCreateOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,Integer[] goodsId);
+	public void buyerCreateOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,Integer[] goodsId,Integer[] nums);
 
 
 	/**
@@ -32,7 +35,7 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:07:06   
 	 * @version V1.0
 	 */
-	public void buyerGetOrderList(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+	public PageInfo<OrderModel> buyerGetOrderList(Integer page, Integer rows,OrderModel orderModel);
 
 
 	/**

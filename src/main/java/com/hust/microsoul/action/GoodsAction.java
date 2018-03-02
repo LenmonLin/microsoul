@@ -3,10 +3,15 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.GoodsService;
+import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description:GoodsAction.java
@@ -25,5 +30,55 @@ public class GoodsAction {
 	public String HelloWorld(HttpServletRequest request,HttpServletResponse response) {
 		goodsService.HelloWorld(request, response);
 		return "WEB-INF/login";
+	}
+	/**
+	 *@Description  插入商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/2/28
+	 */
+	@RequestMapping("insertGoodsModel")
+	@ResponseBody
+	public  Msg insertGoodsModel(GoodsModel goodsModel){
+
+		goodsService.insert(goodsModel);
+
+		return Msg.success();
+	}
+
+	/**
+	 *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/1/23
+	 */
+	@RequestMapping("deleteGoodsModel")
+	@ResponseBody
+	public Msg deleteByPrimaryKey(Integer goodsId) {
+		goodsService.deleteByPrimaryKeySelective(goodsId);
+		return Msg.success();
+	}
+	/**
+	 *@Description 更新商品记录
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/1
+	 */
+	@RequestMapping("updateGoodsModel")
+	@ResponseBody
+	public Msg updateByExampleSelective(GoodsModel record) {
+//		goodsService.updateByPrimaryKeySelective(record);
+		goodsService.updateByExampleSelective(record);
+		return Msg.success();
+	}
+
+	@RequestMapping("showGoodsList")
+	@ResponseBody
+	public Msg showGoodsList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+							 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
+
+		PageInfo<GoodsModel> goodsModelList = goodsService.showGoodsList(page,rows);
+
+		return Msg.success().add("goodsModelList",goodsModelList);
 	}
 }

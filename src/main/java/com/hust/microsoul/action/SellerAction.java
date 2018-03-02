@@ -138,9 +138,38 @@ public class SellerAction {
         }
 
     }
-    //测试版本
-    @RequestMapping("info")
-    public void sellerInfo(HttpServletRequest request,HttpServletResponse response){
 
+    /**
+     *@Description 更新卖家信息
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    @RequestMapping("sellerInfo")
+    @ResponseBody
+    public Msg sellerInfo(SellerModel sellerModel){
+
+        if (sellerService.sellerInfo(sellerModel)){
+            return Msg.success();
+        }
+        return Msg.fail();
+    }
+
+
+    /**
+     *@Description 修改旧密码
+     *@params
+     *@author LemonLin
+     *@date  2018/3/1
+     */
+    @RequestMapping("sellerChangePassword")
+    @ResponseBody
+    public Msg sellerChangePassword(SellerModel sellerModel,
+                                    @RequestParam(value = "newPassword")String newPassword) {
+        if (sellerService.sellerChangePassword(sellerModel,newPassword)){
+            return Msg.success();
+        }else {
+            return Msg.fail();
+        }
     }
 }
