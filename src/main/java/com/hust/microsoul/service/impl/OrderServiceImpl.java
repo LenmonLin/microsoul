@@ -11,6 +11,7 @@ import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.service.OrderService;
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
+import com.hust.microsoul.util.OrderStateCode;
 
 import java.util.Date;
 import java.util.List;
@@ -53,6 +54,7 @@ public class OrderServiceImpl implements OrderService {
 		try {
 			Logger.error(":"+orderModel.getBuyerId());
 			orderModel.setOrderTime(new Date(System.currentTimeMillis()));
+			orderModel.setState(OrderStateCode.UNPAID);
 			Logger.error(":"+(orderMapper==null));
 			int insertResult = orderMapper.buyerCreateOrder(orderModel);
 			
