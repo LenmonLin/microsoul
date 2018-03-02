@@ -1,5 +1,20 @@
 # microsoul
 灵微网
+购物车模块：
+
+    查看购物车：
+            http://localhost:8080/microsoul/cart/cartList.do
+            必须参数：goodsId
+    添加购物项：
+               http://localhost:8080/microsoul/cart/addCartItem.do
+               必须参数：goodsId；purchaseQuantity
+    删除购物项：
+                http://localhost:8080/microsoul/cart/delete.do
+                必须参数：goodsId
+    修改购物项：   
+                http://localhost:8080/microsoul/cart/update.do
+                必须参数：goodsId；purchaseQuantity
+
 卖家商品模块：
 
 	查看商品：http://localhost:8080/microsoul/goods/showGoodsList.do
