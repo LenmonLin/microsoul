@@ -4,7 +4,7 @@
 
     查看购物车：
             http://localhost:8080/microsoul/cart/cartList.do
-            必须参数：goodsId
+           
     添加购物项：
                http://localhost:8080/microsoul/cart/addCartItem.do
                必须参数：goodsId；purchaseQuantity
