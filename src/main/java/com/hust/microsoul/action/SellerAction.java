@@ -109,8 +109,7 @@ public class SellerAction {
             }
         }
     }
-
-
+    
     @RequestMapping("register")
 //    @ResponseBody
     public void sellerRegister(@RequestParam(value = "password") String password,
