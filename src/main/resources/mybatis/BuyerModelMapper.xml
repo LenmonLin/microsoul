@@ -245,12 +245,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hust.microsoul.model.BuyerModel">
     update buyer
     <set>
-      <if test="accountName != null">
-        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        PASSWORD = #{password,jdbcType=VARCHAR},
-      </if>
       <if test="zhifubaoAccount != null">
         ZHIFUBAO_ACCOUNT = #{zhifubaoAccount,jdbcType=VARCHAR},
       </if>
@@ -277,7 +271,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hust.microsoul.model.BuyerModel">
     update buyer
-    set ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+    set 
       PASSWORD = #{password,jdbcType=VARCHAR},
       ZHIFUBAO_ACCOUNT = #{zhifubaoAccount,jdbcType=VARCHAR},
       EMAIL = #{email,jdbcType=VARCHAR},
@@ -317,10 +311,10 @@
 				<if test="accountName != null">
 					#{accountName},
 				</if>
-				<if test="telephone != null">
+				<if test="password != null">
 					#{password},
 				</if>
-				<if test="password != null">
+				<if test="telephone != null">
 					#{telephone},
 				</if>
 				<if test="email != null">

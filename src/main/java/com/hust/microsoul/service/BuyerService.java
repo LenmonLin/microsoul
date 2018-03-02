@@ -44,7 +44,7 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
-	public void buyerInfo(HttpServletRequest request,HttpServletResponse response);
+	public void buyerUpdateInfo(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
 	
 	/**
 	 * 
@@ -54,5 +54,8 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
+	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response);
+	
+	
 	public void disableBuyer(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
 }

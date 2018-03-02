@@ -38,8 +38,14 @@ public class BuyerAction {
 		buyerService.buyerRegister(request, response,buyerModel);
 	}
 	
-	@RequestMapping("info")
-	public void buyerInfo(HttpServletRequest request,HttpServletResponse response){
-		
+	@RequestMapping("updateinfo")
+	public void buyerUpdateInfo(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
+		buyerService.buyerUpdateInfo(request, response,buyerModel);
 	}
+	
+	@RequestMapping("selectinfo")
+	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response){
+		buyerService.buyerSelectInfo(request, response);
+	}
+		
 }

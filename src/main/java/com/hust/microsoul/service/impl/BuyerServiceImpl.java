@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
@@ -39,6 +40,7 @@ public class BuyerServiceImpl implements BuyerService {
     	criteriaBuyer.andPasswordEqualTo(pwd);
     	List<BuyerModel> buyerModels = buyerModelMapper.selectByExample(buyerModelExample);
     	if(buyerModels!=null&&buyerModels.size()>0) {
+    		request.getSession().setAttribute("loginedBuyer",buyerModels.get(0));
     		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
     		
     	}else {
@@ -50,6 +52,7 @@ public class BuyerServiceImpl implements BuyerService {
 	public void buyerRegister(HttpServletRequest request,
 			HttpServletResponse response,BuyerModel buyerModel) {
 		BuyerModel checkResult = buyerModelMapper.checkaccountName(buyerModel.getAccountName());
+		System.out.println(buyerModel.getPassword());
 		if(checkResult != null) {	
 			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
 		}
@@ -61,10 +64,32 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public void buyerInfo(HttpServletRequest request,
-			HttpServletResponse response) {
-	}
-
+	public void buyerUpdateInfo(HttpServletRequest request,
+			HttpServletResponse response,BuyerModel buyerModel) {
+		/*
+		 * 先从session中取出当前用户ID，然后更新买家信息
+		 */
+		HttpSession session = request.getSession();
+		BuyerModel loginedBuyer = (BuyerModel)session.getAttribute("loginedBuyer");
+		buyerModel.setBuyersId(loginedBuyer.getBuyersId());
+		int infoResult=buyerModelMapper.updateByPrimaryKeySelective(buyerModel);
+		/*
+		 * 若修改成功
+		 */
+		if(infoResult != 0) {	
+			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+		}
+		else JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+	} 
+	
+    @Override
+	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response) {
+    	HttpSession session = request.getSession();
+		BuyerModel loginedBuyer = (BuyerModel)session.getAttribute("loginedBuyer");
+		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyer.getBuyersId());
+    }
+    
+    
 	@Override
 	public void disableBuyer(HttpServletRequest request,
 			HttpServletResponse response, BuyerModel buyerModel) {
