@@ -35,4 +35,6 @@ public interface BuyerModelMapper {
     public BuyerModel checkaccountName(String accountName);
     
     public void buyerRegister(BuyerModel buyerModel) ;
+    
+    public void modifyBuyersPsw(String newpsw);
 }

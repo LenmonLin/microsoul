@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.service.BuyerService;
@@ -36,6 +37,12 @@ public class BuyerAction {
 	@RequestMapping("register")
 	public void buyerRegister(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
 		buyerService.buyerRegister(request, response,buyerModel);
+	}
+	
+	@RequestMapping("modifypsw")
+	public void buyerModifyPsw(HttpServletRequest request,HttpServletResponse response,@RequestParam(value = "oldpsw") String oldpsw,
+            @RequestParam(value = "newpsw") String newpsw){
+		buyerService.buyerModifyPsw(request, response ,oldpsw ,newpsw);
 	}
 	
 	@RequestMapping("updateinfo")

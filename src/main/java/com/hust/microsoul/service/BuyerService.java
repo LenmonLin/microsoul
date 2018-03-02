@@ -44,6 +44,10 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
+	public void buyerModifyPsw(HttpServletRequest request,HttpServletResponse response,String oldpsw,String newpsw);
+		
+	
+		
 	public void buyerUpdateInfo(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
 	
 	/**

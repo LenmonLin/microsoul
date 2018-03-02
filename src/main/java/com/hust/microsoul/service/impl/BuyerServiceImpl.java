@@ -40,7 +40,8 @@ public class BuyerServiceImpl implements BuyerService {
     	criteriaBuyer.andPasswordEqualTo(pwd);
     	List<BuyerModel> buyerModels = buyerModelMapper.selectByExample(buyerModelExample);
     	if(buyerModels!=null&&buyerModels.size()>0) {
-    		request.getSession().setAttribute("loginedBuyer",buyerModels.get(0));
+    		Integer loginedBuyersID = buyerModels.get(0).getBuyersId();
+    		request.getSession().setAttribute("loginedBuyersID",loginedBuyersID);
     		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
     		
     	}else {
@@ -62,6 +63,19 @@ public class BuyerServiceImpl implements BuyerService {
 			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
 		}
 	}
+	
+	//修改密码
+	public void buyerModifyPsw(HttpServletRequest request,HttpServletResponse response,String oldpsw,String newpsw) {
+		HttpSession session = request.getSession();
+		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
+		oldpsw=MD5Utils.md5(oldpsw);
+		if (buyerModel.getPassword().equals(oldpsw)) {
+			buyerModelMapper.modifyBuyersPsw(MD5Utils.md5(newpsw));
+			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+		}
+		else JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+	}
 
 	@Override
 	public void buyerUpdateInfo(HttpServletRequest request,
@@ -70,8 +84,8 @@ public class BuyerServiceImpl implements BuyerService {
 		 * 先从session中取出当前用户ID，然后更新买家信息
 		 */
 		HttpSession session = request.getSession();
-		BuyerModel loginedBuyer = (BuyerModel)session.getAttribute("loginedBuyer");
-		buyerModel.setBuyersId(loginedBuyer.getBuyersId());
+		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+		buyerModel.setBuyersId(loginedBuyersID);
 		int infoResult=buyerModelMapper.updateByPrimaryKeySelective(buyerModel);
 		/*
 		 * 若修改成功
