@@ -109,7 +109,7 @@ public class SellerAction {
             }
         }
     }
-    
+
     @RequestMapping("register")
 //    @ResponseBody
     public void sellerRegister(@RequestParam(value = "password") String password,
@@ -153,8 +153,7 @@ public class SellerAction {
         }
         return Msg.fail();
     }
-
-
+    
     /**
      *@Description 修改旧密码
      *@params

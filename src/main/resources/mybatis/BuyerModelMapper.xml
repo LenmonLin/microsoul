@@ -330,4 +330,8 @@
     	 where 
     	 	ACCOUNT_NAME = #{accountName}
  		 </select>
+ 		 <update id="modifyBuyersPsw" parameterType="String">
+ 		 update buyer
+ 		 set PASSWORD = #{newpsw,jdbcType=VARCHAR}
+ 		 </update>
 </mapper>
