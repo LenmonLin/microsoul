@@ -1,5 +1,13 @@
 # microsoul
 灵微网
+
+
+商品首页显示模块：
+
+    添加内容选项：
+                   http://localhost:8080/microsoul/content/insert.do
+                   必须参数：categoryId
+
 购物车模块：
 
     查看购物车：

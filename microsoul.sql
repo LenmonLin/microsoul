@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-28 16:54:40
+Date: 2018-03-03 18:14:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -90,6 +90,32 @@ CREATE TABLE `collection` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for contenttable
+-- ----------------------------
+DROP TABLE IF EXISTS `contenttable`;
+CREATE TABLE `contenttable` (
+  `content_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '内容类目id',
+  `category_id` int(11) DEFAULT NULL COMMENT '分类id',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `subTitle` varchar(100) DEFAULT NULL COMMENT '子标题',
+  `titleDesc` varchar(500) DEFAULT NULL COMMENT '标题描述',
+  `url` varchar(100) DEFAULT NULL COMMENT '内容链接',
+  `pic` varchar(500) DEFAULT NULL COMMENT '图片绝对路径',
+  `pic2` varchar(500) DEFAULT NULL COMMENT '图片2',
+  `content` text COMMENT '内容',
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`content_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of contenttable
+-- ----------------------------
+INSERT INTO `contenttable` VALUES ('1', '4', null, null, null, null, null, null, null, '2018-03-03 18:03:45', '2018-03-03 18:03:45');
+INSERT INTO `contenttable` VALUES ('2', '4', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', '2018-03-03 18:05:30', '2018-03-03 18:05:30');
+INSERT INTO `contenttable` VALUES ('3', '4', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', '2018-03-03 18:14:19', '2018-03-03 18:14:19');
+
+-- ----------------------------
 -- Table structure for goods
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
@@ -112,7 +138,7 @@ CREATE TABLE `goods` (
   `COLLECTION_ID` int(15) DEFAULT NULL,
   `SELLER_ID` int(16) NOT NULL,
   PRIMARY KEY (`GOODS_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
@@ -120,6 +146,7 @@ CREATE TABLE `goods` (
 INSERT INTO `goods` VALUES ('1', '1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, null, '1', '1');
 INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
 INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
+INSERT INTO `goods` VALUES ('4', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
 
 -- ----------------------------
 -- Table structure for order_goods_table
@@ -152,7 +179,7 @@ CREATE TABLE `order_table` (
   `PAY_TIME` datetime DEFAULT NULL COMMENT '付款时间',
   `DELIVER_TIME` datetime DEFAULT NULL COMMENT '发货时间',
   PRIMARY KEY (`ORDER_ID`) USING BTREE
-  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table
