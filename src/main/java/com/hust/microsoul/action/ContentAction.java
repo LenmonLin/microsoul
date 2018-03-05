@@ -54,6 +54,15 @@ public class ContentAction {
         return Msg.success();
     }
 
+
+
+    @RequestMapping("update")
+    @ResponseBody
+    public Msg updateByExampleSelective(ContentsModel record) {
+        contentService.updateByExampleSelective(record);
+        return Msg.success();
+    }
+
     /**
      *@Description 管理员后台分页显示商品首页内容
      *@params

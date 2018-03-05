@@ -23,4 +23,7 @@ public interface ContentService {
 
     //管理员后台删除商品首页内容
     public void deleteByPrimaryKeySelective(Integer contentId) ;
+
+//管理员后台修改商品首页内容
+    public int updateByExampleSelective(ContentsModel record);
 }

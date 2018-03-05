@@ -17,8 +17,10 @@
     删除内容选项：
                      http://localhost:8080/microsoul/content/delete.do
                      必须参数：contentId
-                     showsList
-     查看内容选项：
+    修改内容选项：
+                    http://localhost:8080/microsoul/content/update.do
+                       必须参数：contentId
+    查看内容选项：
                    http://localhost:8080/microsoul/content/showsList.do              
         
                      

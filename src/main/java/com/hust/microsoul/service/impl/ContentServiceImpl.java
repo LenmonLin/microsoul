@@ -59,6 +59,17 @@ public class ContentServiceImpl  implements ContentService{
         contentsModelMapper.deleteByPrimaryKey(contentId);
     }
 
+    @Override
+    public int updateByExampleSelective(ContentsModel record) {
+        //获取数据
+        ContentsModelExample contentsModelExample = new ContentsModelExample();
+        ContentsModelExample.Criteria criteria = contentsModelExample.createCriteria();
+        criteria.andContentIdEqualTo(record.getContentId());
+        //更新到数据库中
+
+        return   contentsModelMapper.updateByExampleSelective(record,contentsModelExample);
+    }
+
 
     //通过分类方法获取内容列表
     @Override
