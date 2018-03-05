@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-02-28 16:54:40
+Date: 2018-03-05 10:44:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,15 +82,41 @@ CREATE TABLE `collection` (
   `CREATETIME` datetime NOT NULL,
   `BUYER_ID` int(15) NOT NULL,
   `GOODS_ID` int(15) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `BUYER_ID` (`BUYER_ID`) USING BTREE,
-  KEY `GOODS_ID` (`GOODS_ID`) USING BTREE,
-  CONSTRAINT `BUYER_ID` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of collection
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for contenttable
+-- ----------------------------
+DROP TABLE IF EXISTS `contenttable`;
+CREATE TABLE `contenttable` (
+  `content_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '内容类目id',
+  `category_id` int(11) DEFAULT NULL COMMENT '分类id',
+  `title` varchar(255) DEFAULT NULL COMMENT '标题',
+  `subTitle` varchar(100) DEFAULT NULL COMMENT '子标题',
+  `titleDesc` varchar(500) DEFAULT NULL COMMENT '标题描述',
+  `url` varchar(100) DEFAULT NULL COMMENT '内容链接',
+  `pic` varchar(500) DEFAULT NULL COMMENT '图片绝对路径',
+  `pic2` varchar(500) DEFAULT NULL COMMENT '图片2',
+  `content` text COMMENT '内容',
+  `content_price` int(11) DEFAULT NULL COMMENT '内容价格',
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`content_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of contenttable
+-- ----------------------------
+INSERT INTO `contenttable` VALUES ('1', '89', null, null, null, null, null, null, null, null, '2018-03-03 18:03:45', '2018-03-03 18:03:45');
+INSERT INTO `contenttable` VALUES ('2', '89', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', null, '2018-03-03 18:05:30', '2018-03-03 18:05:30');
+INSERT INTO `contenttable` VALUES ('3', '89', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', null, '2018-03-03 18:14:19', '2018-03-03 18:14:19');
+INSERT INTO `contenttable` VALUES ('4', '90', '23', '23', '344', '424', '432', '343', '4343', null, null, null);
+INSERT INTO `contenttable` VALUES ('5', '90', '34温柔', ' CDFD', '苟富贵', '打发打发', '风格的', '对方', '放第', null, '2018-03-05 10:34:44', '2018-03-05 10:34:48');
 
 -- ----------------------------
 -- Table structure for goods
@@ -114,10 +140,8 @@ CREATE TABLE `goods` (
   `UPDATED` datetime(6) DEFAULT NULL,
   `COLLECTION_ID` int(15) DEFAULT NULL,
   `SELLER_ID` int(16) NOT NULL,
-  PRIMARY KEY (`GOODS_ID`) USING BTREE,
-  KEY `SELLER_ID` (`SELLER_ID`) USING BTREE,
-  KEY `COLLECTION_GOODS_ID` (`COLLECTION_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`GOODS_ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
@@ -125,6 +149,7 @@ CREATE TABLE `goods` (
 INSERT INTO `goods` VALUES ('1', '1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, null, '1', '1');
 INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
 INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
+INSERT INTO `goods` VALUES ('4', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
 
 -- ----------------------------
 -- Table structure for order_goods_table
@@ -156,10 +181,8 @@ CREATE TABLE `order_table` (
   `ORDER_TIME` datetime NOT NULL COMMENT '下单时间',
   `PAY_TIME` datetime DEFAULT NULL COMMENT '付款时间',
   `DELIVER_TIME` datetime DEFAULT NULL COMMENT '发货时间',
-  PRIMARY KEY (`ORDER_ID`) USING BTREE,
-  KEY `1` (`BUYER_ID`) USING BTREE,
-  CONSTRAINT `1` FOREIGN KEY (`BUYER_ID`) REFERENCES `buyer` (`BUYER_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`ORDER_ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table

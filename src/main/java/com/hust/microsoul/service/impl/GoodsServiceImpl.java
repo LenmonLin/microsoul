@@ -44,10 +44,22 @@ public class GoodsServiceImpl  implements GoodsService{
 
 
         //1、补全goodsModel的属性
-        goodsModel.setGoodsName(goodsModel.getGoodsName());
+/*        goodsModel.setGoodsName(goodsModel.getGoodsName());
         goodsModel.setUnitPrice(goodsModel.getUnitPrice());
         goodsModel.setCategory(goodsModel.getCategory());
         goodsModel.setStore(goodsModel.getStore());
+        goodsModel.setSellerId(goodsModel.getSellerId());*/
+
+        //1、判断必须属性是否传入，没有返回空，有的话，返回goodsModel，
+        //这里不用重新get之后再set,因为最后插入的是insert(goodsModel)
+        //所以model附带进来的属性就都能插入
+        if((goodsModel.getGoodsName()==null)||
+                (goodsModel.getUnitPrice()==null)||
+                (goodsModel.getCategory()==null)||
+                (goodsModel.getStore()==null)||
+                (goodsModel.getSellerId()==null)){
+            return null;
+        }
         /*java.sql.Date只包含年月日信息
             java.util.Date 包含年月日时分秒毫秒
         */
@@ -57,7 +69,6 @@ public class GoodsServiceImpl  implements GoodsService{
         //设置商品的状态，1在售2下架3删除
         goodsModel.setStatus(1);
 
-        goodsModel.setSellerId(goodsModel.getSellerId());
         //2、向商品表插入数据
         goodsModelMapper.insert(goodsModel);
         //3、返回结果

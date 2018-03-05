@@ -41,7 +41,10 @@ public class GoodsAction {
 	@ResponseBody
 	public  Msg insertGoodsModel(GoodsModel goodsModel){
 
-		goodsService.insert(goodsModel);
+		GoodsModel exitGoods = goodsService.insert(goodsModel);
+		if (exitGoods == null){
+			return Msg.fail();
+		}
 
 		return Msg.success();
 	}

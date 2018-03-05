@@ -1,5 +1,29 @@
 # microsoul
 灵微网
+
+商品首页显示模块：
+
+    查看首页内容：
+                    http://localhost:8080/microsoul/contentIndex/index.do
+
+
+商品首页显示管理员后台模块：
+
+
+
+    添加内容选项：
+                   http://localhost:8080/microsoul/content/insert.do
+                   必须参数：categoryId ；广告位id=89，商品展示id=90
+    删除内容选项：
+                     http://localhost:8080/microsoul/content/delete.do
+                     必须参数：contentId
+    修改内容选项：
+                    http://localhost:8080/microsoul/content/update.do
+                       必须参数：contentId
+    查看内容选项：
+                   http://localhost:8080/microsoul/content/showsList.do              
+        
+                     
 购物车模块：
 
     查看购物车：
