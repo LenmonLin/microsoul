@@ -64,6 +64,7 @@ public class ContentServiceImpl  implements ContentService{
         //获取数据
         ContentsModelExample contentsModelExample = new ContentsModelExample();
         ContentsModelExample.Criteria criteria = contentsModelExample.createCriteria();
+        record.setUpdated(new Date());
         criteria.andContentIdEqualTo(record.getContentId());
         //更新到数据库中
 

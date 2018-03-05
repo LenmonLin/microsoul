@@ -137,8 +137,8 @@ public class GoodsServiceImpl  implements GoodsService{
 
         GoodsModelExample.Criteria criteria = goodsModelExample.createCriteria();
 
+        record.setUpdated(new Date());
         criteria.andGoodsIdEqualTo(record.getGoodsId());
-
         return goodsModelMapper.updateByExampleSelective(record,goodsModelExample);
     }
 
