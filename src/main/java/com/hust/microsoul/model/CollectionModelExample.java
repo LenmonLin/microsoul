@@ -105,183 +105,243 @@ public class CollectionModelExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andBuyerCollectionIdIsNull() {
-            addCriterion("BUYER_COLLECTION_ID is null");
+        public Criteria andIdIsNull() {
+            addCriterion("ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdIsNotNull() {
-            addCriterion("BUYER_COLLECTION_ID is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdEqualTo(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID =", value, "buyerCollectionId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("ID =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdNotEqualTo(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID <>", value, "buyerCollectionId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("ID <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdGreaterThan(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID >", value, "buyerCollectionId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("ID >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID >=", value, "buyerCollectionId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ID >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdLessThan(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID <", value, "buyerCollectionId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("ID <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdLessThanOrEqualTo(Integer value) {
-            addCriterion("BUYER_COLLECTION_ID <=", value, "buyerCollectionId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("ID <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdIn(List<Integer> values) {
-            addCriterion("BUYER_COLLECTION_ID in", values, "buyerCollectionId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("ID in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdNotIn(List<Integer> values) {
-            addCriterion("BUYER_COLLECTION_ID not in", values, "buyerCollectionId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("ID not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdBetween(Integer value1, Integer value2) {
-            addCriterion("BUYER_COLLECTION_ID between", value1, value2, "buyerCollectionId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("ID between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBuyerCollectionIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("BUYER_COLLECTION_ID not between", value1, value2, "buyerCollectionId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ID not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdIsNull() {
-            addCriterion("GOODS_COLLECTION_ID is null");
+        public Criteria andCreatetimeIsNull() {
+            addCriterion("CREATETIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdIsNotNull() {
-            addCriterion("GOODS_COLLECTION_ID is not null");
+        public Criteria andCreatetimeIsNotNull() {
+            addCriterion("CREATETIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdEqualTo(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID =", value, "goodsCollectionId");
+        public Criteria andCreatetimeEqualTo(Date value) {
+            addCriterion("CREATETIME =", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdNotEqualTo(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID <>", value, "goodsCollectionId");
+        public Criteria andCreatetimeNotEqualTo(Date value) {
+            addCriterion("CREATETIME <>", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdGreaterThan(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID >", value, "goodsCollectionId");
+        public Criteria andCreatetimeGreaterThan(Date value) {
+            addCriterion("CREATETIME >", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID >=", value, "goodsCollectionId");
+        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("CREATETIME >=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdLessThan(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID <", value, "goodsCollectionId");
+        public Criteria andCreatetimeLessThan(Date value) {
+            addCriterion("CREATETIME <", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdLessThanOrEqualTo(Integer value) {
-            addCriterion("GOODS_COLLECTION_ID <=", value, "goodsCollectionId");
+        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
+            addCriterion("CREATETIME <=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdIn(List<Integer> values) {
-            addCriterion("GOODS_COLLECTION_ID in", values, "goodsCollectionId");
+        public Criteria andCreatetimeIn(List<Date> values) {
+            addCriterion("CREATETIME in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdNotIn(List<Integer> values) {
-            addCriterion("GOODS_COLLECTION_ID not in", values, "goodsCollectionId");
+        public Criteria andCreatetimeNotIn(List<Date> values) {
+            addCriterion("CREATETIME not in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdBetween(Integer value1, Integer value2) {
-            addCriterion("GOODS_COLLECTION_ID between", value1, value2, "goodsCollectionId");
+        public Criteria andCreatetimeBetween(Date value1, Date value2) {
+            addCriterion("CREATETIME between", value1, value2, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCollectionIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("GOODS_COLLECTION_ID not between", value1, value2, "goodsCollectionId");
+        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
+            addCriterion("CREATETIME not between", value1, value2, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIsNull() {
-            addCriterion("TIME is null");
+        public Criteria andBuyerIdIsNull() {
+            addCriterion("BUYER_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIsNotNull() {
-            addCriterion("TIME is not null");
+        public Criteria andBuyerIdIsNotNull() {
+            addCriterion("BUYER_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTimeEqualTo(Date value) {
-            addCriterion("TIME =", value, "time");
+        public Criteria andBuyerIdEqualTo(Integer value) {
+            addCriterion("BUYER_ID =", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotEqualTo(Date value) {
-            addCriterion("TIME <>", value, "time");
+        public Criteria andBuyerIdNotEqualTo(Integer value) {
+            addCriterion("BUYER_ID <>", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThan(Date value) {
-            addCriterion("TIME >", value, "time");
+        public Criteria andBuyerIdGreaterThan(Integer value) {
+            addCriterion("BUYER_ID >", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("TIME >=", value, "time");
+        public Criteria andBuyerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("BUYER_ID >=", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThan(Date value) {
-            addCriterion("TIME <", value, "time");
+        public Criteria andBuyerIdLessThan(Integer value) {
+            addCriterion("BUYER_ID <", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThanOrEqualTo(Date value) {
-            addCriterion("TIME <=", value, "time");
+        public Criteria andBuyerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("BUYER_ID <=", value, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIn(List<Date> values) {
-            addCriterion("TIME in", values, "time");
+        public Criteria andBuyerIdIn(List<Integer> values) {
+            addCriterion("BUYER_ID in", values, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotIn(List<Date> values) {
-            addCriterion("TIME not in", values, "time");
+        public Criteria andBuyerIdNotIn(List<Integer> values) {
+            addCriterion("BUYER_ID not in", values, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeBetween(Date value1, Date value2) {
-            addCriterion("TIME between", value1, value2, "time");
+        public Criteria andBuyerIdBetween(Integer value1, Integer value2) {
+            addCriterion("BUYER_ID between", value1, value2, "buyerId");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotBetween(Date value1, Date value2) {
-            addCriterion("TIME not between", value1, value2, "time");
+        public Criteria andBuyerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("BUYER_ID not between", value1, value2, "buyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdIsNull() {
+            addCriterion("GOODS_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdIsNotNull() {
+            addCriterion("GOODS_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdEqualTo(Integer value) {
+            addCriterion("GOODS_ID =", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdNotEqualTo(Integer value) {
+            addCriterion("GOODS_ID <>", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdGreaterThan(Integer value) {
+            addCriterion("GOODS_ID >", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GOODS_ID >=", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdLessThan(Integer value) {
+            addCriterion("GOODS_ID <", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdLessThanOrEqualTo(Integer value) {
+            addCriterion("GOODS_ID <=", value, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdIn(List<Integer> values) {
+            addCriterion("GOODS_ID in", values, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdNotIn(List<Integer> values) {
+            addCriterion("GOODS_ID not in", values, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdBetween(Integer value1, Integer value2) {
+            addCriterion("GOODS_ID between", value1, value2, "goodsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("GOODS_ID not between", value1, value2, "goodsId");
             return (Criteria) this;
         }
     }

@@ -2,7 +2,6 @@ package com.hust.microsoul.mapper;
 
 import com.hust.microsoul.model.CollectionModel;
 import com.hust.microsoul.model.CollectionModelExample;
-import com.hust.microsoul.model.CollectionModelKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -13,7 +12,7 @@ public interface CollectionModelMapper {
 
     int deleteByExample(CollectionModelExample example);
 
-    int deleteByPrimaryKey(CollectionModelKey key);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(CollectionModel record);
 
@@ -21,7 +20,7 @@ public interface CollectionModelMapper {
 
     List<CollectionModel> selectByExample(CollectionModelExample example);
 
-    CollectionModel selectByPrimaryKey(CollectionModelKey key);
+    CollectionModel selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") CollectionModel record, @Param("example") CollectionModelExample example);
 
