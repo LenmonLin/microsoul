@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hust.microsoul.model.AdministratorModel;
+import com.hust.microsoul.model.Adminitrator_tableModel;
 import com.hust.microsoul.model.AdvertisementModel;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.GoodsModel;
@@ -41,15 +42,14 @@ public class AdministratorAction {
 	@Autowired
 	public GoodsService goodsService;
 
-	@RequestMapping("login")
-	public void adminLogin(HttpServletRequest request,HttpServletResponse response,AdministratorModel administratorModel){
-//		JSONArray m = new
-		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+	@RequestMapping("adminlogin")
+	public void adminLogin(HttpServletRequest request,HttpServletResponse response,Adminitrator_tableModel adminitrator_tableModel){
+		administratorService.adminLogin(request, response, adminitrator_tableModel);
 	}
 	
 	@RequestMapping("disableBuyer")
 	public void disableBuyer(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
-		
+		buyerService.disableBuyer(request, response, buyerModel);
 	}
 	
 	@RequestMapping("authorizationBussiness")

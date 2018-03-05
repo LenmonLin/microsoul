@@ -36,5 +36,8 @@ public interface BuyerModelMapper {
     
     public void buyerRegister(BuyerModel buyerModel) ;
     
-    public void modifyBuyersPsw(String newpsw);
+    public void modifyBuyersPsw(@Param(value="newpsw")String newpsw,@Param(value="buyersId")Integer buyersId);
+    
+    public int disableBuyer(Integer buyersId);
+		
 }

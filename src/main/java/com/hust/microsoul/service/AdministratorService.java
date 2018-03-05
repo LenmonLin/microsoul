@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hust.microsoul.model.AdministratorModel;
+import com.hust.microsoul.model.Adminitrator_tableModel;
+
 import org.springframework.stereotype.Service;
 
 /** 
@@ -22,5 +24,5 @@ public interface AdministratorService {
 	 * @param
 	 * @return
 	 */
-	public void adminLogin(HttpServletRequest request,HttpServletResponse response,AdministratorModel administratorModel);
+	public void adminLogin(HttpServletRequest request,HttpServletResponse response,Adminitrator_tableModel adminitrator_tableModel);
 }

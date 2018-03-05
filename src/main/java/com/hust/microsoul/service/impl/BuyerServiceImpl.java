@@ -70,8 +70,9 @@ public class BuyerServiceImpl implements BuyerService {
 		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
 		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
 		oldpsw=MD5Utils.md5(oldpsw);
+		System.out.println(oldpsw+newpsw);
 		if (buyerModel.getPassword().equals(oldpsw)) {
-			buyerModelMapper.modifyBuyersPsw(MD5Utils.md5(newpsw));
+			buyerModelMapper.modifyBuyersPsw(MD5Utils.md5(newpsw),loginedBuyersID);
 			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
 		}
 		else JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
@@ -99,14 +100,21 @@ public class BuyerServiceImpl implements BuyerService {
     @Override
 	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response) {
     	HttpSession session = request.getSession();
-		BuyerModel loginedBuyer = (BuyerModel)session.getAttribute("loginedBuyer");
-		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyer.getBuyersId());
+		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
     }
     
     
 	@Override
 	public void disableBuyer(HttpServletRequest request,
 			HttpServletResponse response, BuyerModel buyerModel) {
+		Integer buyersID=buyerModel.getBuyersId();
+		if(buyersID!=0) {
+			buyerModelMapper.disableBuyer(buyersID);
+			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+		}
+		else
+			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
 	}
 
 }

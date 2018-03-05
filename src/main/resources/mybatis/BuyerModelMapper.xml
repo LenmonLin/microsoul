@@ -330,8 +330,14 @@
     	 where 
     	 	ACCOUNT_NAME = #{accountName}
  		 </select>
- 		 <update id="modifyBuyersPsw" parameterType="String">
+ 		 <update id="modifyBuyersPsw">
  		 update buyer
  		 set PASSWORD = #{newpsw,jdbcType=VARCHAR}
+ 		 where BUYER_ID = #{buyersId,jdbcType=INTEGER}
+ 		 </update>
+ 		 <update id="disableBuyer" parameterType="Integer">
+ 		 update buyer
+ 		 set STATE=0
+ 		 where BUYER_ID = #{buyersId,jdbcType=INTEGER}
  		 </update>
 </mapper>
