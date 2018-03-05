@@ -38,6 +38,22 @@ public class ContentAction {
         return Msg.success();
     }
 
+/**
+ *@Description 管理员后台删除首页商品内容
+ *@params
+ *@author LemonLin
+ *@date  2018/3/5
+ */
+    @RequestMapping("delete")
+    @ResponseBody
+    public Msg delete(Integer contentId){
+        if (contentId == null){
+            return Msg.fail();
+        }
+        contentService.deleteByPrimaryKeySelective(contentId);
+        return Msg.success();
+    }
+
     /**
      *@Description 管理员后台分页显示商品首页内容
      *@params

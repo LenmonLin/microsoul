@@ -20,4 +20,7 @@ public interface ContentService {
     PageInfo<ContentsModel> showContentsList(Integer page, Integer rows);
     //通过cid获取内容
     List<ContentsModel> selectContentVByCid(Integer cid);
+
+    //管理员后台删除商品首页内容
+    public void deleteByPrimaryKeySelective(Integer contentId) ;
 }

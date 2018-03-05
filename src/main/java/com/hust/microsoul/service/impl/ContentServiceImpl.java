@@ -53,6 +53,12 @@ public class ContentServiceImpl  implements ContentService{
         return pageInfo;
     }
 
+    public void deleteByPrimaryKeySelective(Integer contentId){
+
+        //数据库中删除
+        contentsModelMapper.deleteByPrimaryKey(contentId);
+    }
+
 
     //通过分类方法获取内容列表
     @Override

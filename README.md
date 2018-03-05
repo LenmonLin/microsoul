@@ -9,10 +9,19 @@
 
 商品首页显示管理员后台模块：
 
+
+
     添加内容选项：
                    http://localhost:8080/microsoul/content/insert.do
                    必须参数：categoryId ；广告位id=89，商品展示id=90
-
+    删除内容选项：
+                     http://localhost:8080/microsoul/content/delete.do
+                     必须参数：contentId
+                     showsList
+     查看内容选项：
+                   http://localhost:8080/microsoul/content/showsList.do              
+        
+                     
 购物车模块：
 
     查看购物车：
