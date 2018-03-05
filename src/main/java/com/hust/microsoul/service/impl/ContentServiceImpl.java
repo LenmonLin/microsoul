@@ -1,5 +1,7 @@
 package com.hust.microsoul.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.ContentsModelMapper;
 import com.hust.microsoul.model.ContentsModel;
 import com.hust.microsoul.model.ContentsModelExample;
@@ -36,6 +38,19 @@ public class ContentServiceImpl  implements ContentService{
 
         contentsModelMapper.insert(contentsModel);
         return contentsModel;
+    }
+
+    @Override
+    public PageInfo<ContentsModel> showContentsList(Integer page, Integer rows) {
+        //设置分页信息
+        PageHelper.startPage(page,rows);
+        //查询数据库
+        ContentsModelExample contentsModelExample = new ContentsModelExample();
+
+        List<ContentsModel> contentModels = contentsModelMapper.selectByExample(contentsModelExample);
+        //返回结果
+        PageInfo pageInfo = new PageInfo(contentModels);
+        return pageInfo;
     }
 
 
