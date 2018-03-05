@@ -19,6 +19,8 @@ public class ContentsModel {
 
     private String pic2;
 
+    private Integer contentPrice;
+
     private Date created;
 
     private Date updated;
@@ -87,6 +89,14 @@ public class ContentsModel {
 
     public void setPic2(String pic2) {
         this.pic2 = pic2 == null ? null : pic2.trim();
+    }
+
+    public Integer getContentPrice() {
+        return contentPrice;
+    }
+
+    public void setContentPrice(Integer contentPrice) {
+        this.contentPrice = contentPrice;
     }
 
     public Date getCreated() {

@@ -1,12 +1,17 @@
 # microsoul
 灵微网
 
-
 商品首页显示模块：
+
+    查看首页内容：
+                    http://localhost:8080/microsoul/contentIndex/index.do
+
+
+商品首页显示管理员后台模块：
 
     添加内容选项：
                    http://localhost:8080/microsoul/content/insert.do
-                   必须参数：categoryId
+                   必须参数：categoryId ；广告位id=89，商品展示id=90
 
 购物车模块：
 

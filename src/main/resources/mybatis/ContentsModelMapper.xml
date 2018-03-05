@@ -10,6 +10,7 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
     <result column="pic2" jdbcType="VARCHAR" property="pic2" />
+    <result column="content_price" jdbcType="INTEGER" property="contentPrice" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
@@ -75,7 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    content_id, category_id, title, subTitle, titleDesc, url, pic, pic2, created, updated
+    content_id, category_id, title, subTitle, titleDesc, url, pic, pic2, content_price, 
+    created, updated
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -131,12 +133,14 @@
   <insert id="insert" parameterType="com.hust.microsoul.model.ContentsModel">
     insert into contenttable (content_id, category_id, title, 
       subTitle, titleDesc, url, 
-      pic, pic2, created, 
-      updated, content)
+      pic, pic2, content_price, 
+      created, updated, content
+      )
     values (#{contentId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{subtitle,jdbcType=VARCHAR}, #{titledesc,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
-      #{pic,jdbcType=VARCHAR}, #{pic2,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+      #{pic,jdbcType=VARCHAR}, #{pic2,jdbcType=VARCHAR}, #{contentPrice,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.ContentsModel">
     insert into contenttable
@@ -164,6 +168,9 @@
       </if>
       <if test="pic2 != null">
         pic2,
+      </if>
+      <if test="contentPrice != null">
+        content_price,
       </if>
       <if test="created != null">
         created,
@@ -199,6 +206,9 @@
       </if>
       <if test="pic2 != null">
         #{pic2,jdbcType=VARCHAR},
+      </if>
+      <if test="contentPrice != null">
+        #{contentPrice,jdbcType=INTEGER},
       </if>
       <if test="created != null">
         #{created,jdbcType=TIMESTAMP},
@@ -244,6 +254,9 @@
       <if test="record.pic2 != null">
         pic2 = #{record.pic2,jdbcType=VARCHAR},
       </if>
+      <if test="record.contentPrice != null">
+        content_price = #{record.contentPrice,jdbcType=INTEGER},
+      </if>
       <if test="record.created != null">
         created = #{record.created,jdbcType=TIMESTAMP},
       </if>
@@ -268,6 +281,7 @@
       url = #{record.url,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       pic2 = #{record.pic2,jdbcType=VARCHAR},
+      content_price = #{record.contentPrice,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
       content = #{record.content,jdbcType=LONGVARCHAR}
@@ -285,6 +299,7 @@
       url = #{record.url,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       pic2 = #{record.pic2,jdbcType=VARCHAR},
+      content_price = #{record.contentPrice,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -315,6 +330,9 @@
       <if test="pic2 != null">
         pic2 = #{pic2,jdbcType=VARCHAR},
       </if>
+      <if test="contentPrice != null">
+        content_price = #{contentPrice,jdbcType=INTEGER},
+      </if>
       <if test="created != null">
         created = #{created,jdbcType=TIMESTAMP},
       </if>
@@ -336,6 +354,7 @@
       url = #{url,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       pic2 = #{pic2,jdbcType=VARCHAR},
+      content_price = #{contentPrice,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -350,6 +369,7 @@
       url = #{url,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       pic2 = #{pic2,jdbcType=VARCHAR},
+      content_price = #{contentPrice,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
     where content_id = #{contentId,jdbcType=INTEGER}

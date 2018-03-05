@@ -645,6 +645,66 @@ public class ContentsModelExample {
             return (Criteria) this;
         }
 
+        public Criteria andContentPriceIsNull() {
+            addCriterion("content_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceIsNotNull() {
+            addCriterion("content_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceEqualTo(Integer value) {
+            addCriterion("content_price =", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceNotEqualTo(Integer value) {
+            addCriterion("content_price <>", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceGreaterThan(Integer value) {
+            addCriterion("content_price >", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("content_price >=", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceLessThan(Integer value) {
+            addCriterion("content_price <", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("content_price <=", value, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceIn(List<Integer> values) {
+            addCriterion("content_price in", values, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceNotIn(List<Integer> values) {
+            addCriterion("content_price not in", values, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceBetween(Integer value1, Integer value2) {
+            addCriterion("content_price between", value1, value2, "contentPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("content_price not between", value1, value2, "contentPrice");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedIsNull() {
             addCriterion("created is null");
             return (Criteria) this;
