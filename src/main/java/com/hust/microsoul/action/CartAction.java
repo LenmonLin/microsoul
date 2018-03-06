@@ -56,9 +56,16 @@ public class CartAction {
 //    private  Integer total;
 
     @RequestMapping("/addCartItem")
-    public void addCartItem(@RequestParam(value = "goodsId") Integer goodsId,
+    @ResponseBody
+    public Msg addCartItem(@RequestParam(value = "goodsId") Integer goodsId,
                             @RequestParam(value = "purchaseQuantity") Integer purchaseQuantity,
                             HttpServletResponse response, HttpServletRequest request){
+
+        //判断只有登录买家才能添加购物车
+
+        Object loginedBuyersID = request.getSession().getAttribute("loginedBuyersID");
+        if (loginedBuyersID==null)
+            return Msg.fail();
 
         //从cookie中取购物车列表
         List<GoodsModel>  cartGoodsList = getCartGoodsList(request);
@@ -86,8 +93,7 @@ public class CartAction {
         CookieUtils.setCookie(request,response,CART_KEY,JsonUtils.objectToJson(cartGoodsList),
                 CART_EXPIER,true);
 
-
-        JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+        return Msg.success();
     }
 
     //删除购物车列表中的购物项

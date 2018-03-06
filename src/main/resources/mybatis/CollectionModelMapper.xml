@@ -193,4 +193,14 @@
       GOODS_ID = #{goodsId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  	<select id="getcollectionList" resultMap="BaseResultMap" parameterType="com.hust.microsoul.model.CollectionModel">
+		select
+			 a.* , b.*
+		from 
+			collection a,goods b
+		where 
+			a.GOODS_ID = b.GOODS_ID
+		and 
+			a.BUYER_ID = #{buyerId}
+	</select>
 </mapper>

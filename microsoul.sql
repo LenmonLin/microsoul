@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql
+Source Server         : window10本机
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : microsoul
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-03-05 10:44:48
+Date: 2018-03-06 10:46:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,19 +59,20 @@ CREATE TABLE `buyer` (
   `ACCOUNT_NAME` varchar(255) NOT NULL,
   `PASSWORD` varchar(255) NOT NULL,
   `ZHIFUBAO_ACCOUNT` varchar(255) DEFAULT NULL,
-  `EMAIL` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) NOT NULL,
   `QQ_ACCOUNT` varchar(15) DEFAULT NULL,
-  `REAL_NAME` varchar(255) NOT NULL,
+  `REAL_NAME` varchar(255) DEFAULT NULL,
   `ADDRESS` varchar(255) DEFAULT NULL,
-  `TELEPHONE` varchar(15) DEFAULT NULL,
+  `TELEPHONE` varchar(15) NOT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
   PRIMARY KEY (`BUYER_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of buyer
 -- ----------------------------
 INSERT INTO `buyer` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '01');
+INSERT INTO `buyer` VALUES ('2', '密码123', '202cb962ac59075b964b07152d234b70', null, '是问问', null, null, null, '12', '01');
 
 -- ----------------------------
 -- Table structure for collection
@@ -107,16 +108,15 @@ CREATE TABLE `contenttable` (
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`content_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of contenttable
 -- ----------------------------
 INSERT INTO `contenttable` VALUES ('1', '89', null, null, null, null, null, null, null, null, '2018-03-03 18:03:45', '2018-03-03 18:03:45');
 INSERT INTO `contenttable` VALUES ('2', '89', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', null, '2018-03-03 18:05:30', '2018-03-03 18:05:30');
-INSERT INTO `contenttable` VALUES ('3', '89', '额外', '温柔', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', null, '2018-03-03 18:14:19', '2018-03-03 18:14:19');
+INSERT INTO `contenttable` VALUES ('3', '89', 'fdsfd', 'dsfsdf', '玩额', 'https://github.com/LenmonLin/microsoul/commit/1cd97f7aa84db7e075eaee999c93d740f469f801', '的', 'd\'s\'f', '的萨芬', null, '2018-03-03 18:14:19', '2018-03-05 15:10:22');
 INSERT INTO `contenttable` VALUES ('4', '90', '23', '23', '344', '424', '432', '343', '4343', null, null, null);
-INSERT INTO `contenttable` VALUES ('5', '90', '34温柔', ' CDFD', '苟富贵', '打发打发', '风格的', '对方', '放第', null, '2018-03-05 10:34:44', '2018-03-05 10:34:48');
 
 -- ----------------------------
 -- Table structure for goods
@@ -146,10 +146,27 @@ CREATE TABLE `goods` (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, null, '1', '1');
+INSERT INTO `goods` VALUES ('1', '更新1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, '2018-03-05 15:15:26.518000', '1', '1');
 INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
 INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
 INSERT INTO `goods` VALUES ('4', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
+
+-- ----------------------------
+-- Table structure for goods_desc
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_desc`;
+CREATE TABLE `goods_desc` (
+  `good_id` bigint(20) NOT NULL,
+  `good_desc` text,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`good_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_desc
+-- ----------------------------
+INSERT INTO `goods_desc` VALUES ('1', '<div class=\"content_tpl\"><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>产品信息</span><span class=\"s2\">Product Information</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs8f0IAAAAAAHFPOz_CGgAAEN-QNc74wAAcVU467.jpg\" /></div>\n</div><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>产品功能</span><span class=\"s2\">Product Function</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs8nsIAAAAAAInrOyorY4AAEN_wK_3mEAAifE337.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs8m8IAAAAAAE5-CgRgakAAEN_wBCe7MAAToQ358.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWVFs8oUIAAAAAADAVLbYtg8AAEOAACmPVAAAMBs533.jpg\" /></div>\n</div><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>产品特色</span><span class=\"s2\">Selling Point</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs8qQIAAAAAAHsS4_fTh8AAEOAQOXouAAAexj796.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWVFs8rkIAAAAAAEUxKnNGIIAAEOAgIRRx4AARTc870.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs8vEIAAAAAAE1xNRq3zMAAEOBAJv6RoAATXc756.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWVFs8wYIAAAAAAFRdqJlDNEAAEOBQFxoA0AAVGO375.jpg\" /></div>\n</div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWFFs9AUIAAAAAAG-foajBukAAEODwLk8EMAAb6W273.jpg\" /></div>\n</div><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>尺寸信息</span><span class=\"s2\">Size Information</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWVFs9BgIAAAAAANwiiKd5KUAAEOEAHmD6sAA3Ci620.jpg\" /></div>\n</div><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>品牌介绍</span><span class=\"s2\">Brand Introduction</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g10/M00/15/13/rBEQWVFs9EQIAAAAAADG7z2qRlAAAEOEgGswScAAMcH397.jpg\" /></div>\n</div><div class=\"formwork_bt\"><div class=\"formwork_bt_dz\"><span>品牌荣誉</span><span class=\"s2\">Brand Awards</span></div></div><div class=\"formwork\">\n<div class=\"formwork_img\"><img src=\"http://img20.360buyimg.com/vc/g15/M09/04/19/rBEhWFIMPPQIAAAAAAOcP0nAlmIAACEYADg_YwAA5xX040.jpg\" /></div>\n</div></div>', '2018-03-06 09:24:53', '2018-03-06 09:24:56');
 
 -- ----------------------------
 -- Table structure for order_goods_table
@@ -176,7 +193,6 @@ CREATE TABLE `order_table` (
   `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
   `STATE` int(1) NOT NULL COMMENT '订单状态',
   `LOGISTIC_ID` varchar(11) DEFAULT NULL COMMENT '物流单号',
-  `LOGISTIC_ID_REJECT` varchar(11) DEFAULT NULL COMMENT '退货物流单号',
   `BUYER_ID` int(11) NOT NULL COMMENT '买家ID',
   `SELLER_ID` int(11) NOT NULL COMMENT '买家ID',
   `ORDER_TIME` datetime NOT NULL COMMENT '下单时间',
@@ -188,7 +204,7 @@ CREATE TABLE `order_table` (
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
-INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1','1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
