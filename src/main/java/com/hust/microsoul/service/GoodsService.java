@@ -2,6 +2,7 @@ package com.hust.microsoul.service;
 
 
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
 import org.springframework.stereotype.Service;
@@ -47,4 +48,7 @@ public interface GoodsService {
      *@date  2018/2/27
      */
     public PageInfo<GoodsModel> showGoodsList(Integer page, Integer rows);
+
+    //商品详情页的展示
+    public GoodsDescModel getGoodsDescById(long goodsId);
 }
