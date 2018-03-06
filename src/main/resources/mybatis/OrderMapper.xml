@@ -9,6 +9,7 @@
     
     <result column="BUYER_ID" jdbcType="INTEGER" property="buyerId" />
     <result column="SELLER_ID" jdbcType="INTEGER" property="sellerId" />
+    <result column="SELLER_NAME" jdbcType="VARCHAR" property="sellerName" />
     <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
     <result column="PAY_TIME" jdbcType="TIMESTAMP" property="payTime" />
     <result column="DELIVER_TIME" jdbcType="TIMESTAMP" property="deliverTime" />
@@ -22,13 +23,15 @@
   </resultMap>
 	<select id="getOrderList" resultMap="orderMap" parameterType="orderModel">
 		select
-			 a.* , c.*,b.num as NUM 
+			 a.* , c.*,b.num as NUM ,d.REAL_NAME as SELLER_NAME
 		from 
-			 order_table a ,order_goods_table b,goods c 
+			 order_table a ,order_goods_table b,goods c ,SELLER d
 		where 
 			a.ORDER_ID = b.ORDER_ID 
 		and 
 			b.GOODS_ID = c.GOODS_ID
+		and 
+			d.ID_SELLER = a.SELLER_ID
 		and 
 			a.ORDER_ID = #{orderId}
 	</select>

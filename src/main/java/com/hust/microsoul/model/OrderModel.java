@@ -23,6 +23,8 @@ public class OrderModel {
 
     private Integer sellerId;
     
+    private String sellerName;
+
     private List<GoodsModel> goods;
     
     private Date orderTime;
@@ -109,5 +111,13 @@ public class OrderModel {
 
 	public void setLogisticIdReject(Integer logisticIdReject) {
 		this.logisticIdReject = logisticIdReject;
+	}
+
+	public String getSellerName() {
+		return sellerName;
+	}
+
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
 	}
 }
