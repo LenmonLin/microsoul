@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 	/**
-	 * @Description:
+	 * @Description:买家查询订单列表
 	 * @author:huwentao
 	 * @date:2018年2月26日
 	 * @param:     
