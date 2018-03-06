@@ -176,6 +176,7 @@ CREATE TABLE `order_table` (
   `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
   `STATE` int(1) NOT NULL COMMENT '订单状态',
   `LOGISTIC_ID` varchar(11) DEFAULT NULL COMMENT '物流单号',
+  `LOGISTIC_ID_REJECT` varchar(11) DEFAULT NULL COMMENT '退货物流单号',
   `BUYER_ID` int(11) NOT NULL COMMENT '买家ID',
   `SELLER_ID` int(11) NOT NULL COMMENT '买家ID',
   `ORDER_TIME` datetime NOT NULL COMMENT '下单时间',
@@ -187,7 +188,7 @@ CREATE TABLE `order_table` (
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
-INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1','1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
