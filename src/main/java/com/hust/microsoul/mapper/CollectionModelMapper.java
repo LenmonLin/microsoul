@@ -29,4 +29,6 @@ public interface CollectionModelMapper {
     int updateByPrimaryKeySelective(CollectionModel record);
 
     int updateByPrimaryKey(CollectionModel record);
+    
+    List<CollectionModel> getcollectionList (CollectionModel collectionModel);
 }

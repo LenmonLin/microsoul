@@ -63,5 +63,6 @@ environments?, databaseIdProvider?, mappers?
 		<mapper resource="mybatis/OrderGoodsMapper.xml"/>
 		<mapper resource="mybatis/ContentsModelMapper.xml"/>
 		<mapper resource="mybatis/GoodsDescModelMapper.xml"/>
+		<mapper resource="mybatis/CollectionModelMapper.xml"/>
 	</mappers>
 </configuration>
