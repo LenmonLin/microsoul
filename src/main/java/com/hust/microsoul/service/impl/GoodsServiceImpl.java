@@ -199,4 +199,28 @@ public class GoodsServiceImpl  implements GoodsService{
     public List<GoodsModel> selectByCriteria(GoodsModelExample example) {
         return null;
     }
+
+
+    /**
+     *@Description 商品搜索框
+     *@params
+     *@author LemonLin
+     *@date  2018/3/6
+     */
+    public PageInfo<GoodsModel> searchGoods(String title,Integer page){
+        //设置分页信息,一页暂定30个商品显示
+        PageHelper.startPage(page,30);
+        //去数据库中搜索信息
+        GoodsModelExample example =new GoodsModelExample();
+        GoodsModelExample.Criteria criteria = example.createCriteria();
+
+        if(title == null){
+            return null;
+        }
+        criteria.andTitleLike("%"+title+"%");
+        List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(example);
+        //返回数据
+        PageInfo pageInfo = new PageInfo(goodsModelList);
+        return pageInfo;
+    }
 }

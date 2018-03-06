@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : window10本机
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server         : 灵微网远程连接
+Source Server Version : 50721
+Source Host           : 120.79.211.216:3306
 Source Database       : microsoul
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-06 10:46:23
+Date: 2018-03-06 17:13:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,13 +66,14 @@ CREATE TABLE `buyer` (
   `TELEPHONE` varchar(15) NOT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
   PRIMARY KEY (`BUYER_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of buyer
 -- ----------------------------
 INSERT INTO `buyer` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '01');
 INSERT INTO `buyer` VALUES ('2', '密码123', '202cb962ac59075b964b07152d234b70', null, '是问问', null, null, null, '12', '01');
+INSERT INTO `buyer` VALUES ('3', 'hlf', '202cb962ac59075b964b07152d234b70', null, '123', null, '林强', null, '123', '01');
 
 -- ----------------------------
 -- Table structure for collection
@@ -146,10 +147,10 @@ CREATE TABLE `goods` (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES ('1', '更新1', null, null, '1', '1', null, '1', '1', '1', '1', '1', null, null, '2018-03-05 15:15:26.518000', '1', '1');
-INSERT INTO `goods` VALUES ('2', '1233', null, null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
-INSERT INTO `goods` VALUES ('3', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
-INSERT INTO `goods` VALUES ('4', '手机', null, null, '34', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
+INSERT INTO `goods` VALUES ('1', '更新1', '鱼缸', null, '1', '1', null, '1', '1', '1', '1', '1', null, null, '2018-03-05 15:15:26.518000', '1', '1');
+INSERT INTO `goods` VALUES ('2', '1233', '大鱼缸', null, '123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
+INSERT INTO `goods` VALUES ('3', '手机', '武昌鱼', null, '34', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
+INSERT INTO `goods` VALUES ('4', '手机', '鱼', null, '34', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
 
 -- ----------------------------
 -- Table structure for goods_desc
@@ -179,32 +180,38 @@ CREATE TABLE `order_goods_table` (
   `NUM` int(11) NOT NULL,
   `GRADE` float(255,0) DEFAULT NULL COMMENT '评分',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_goods_table
 -- ----------------------------
+INSERT INTO `order_goods_table` VALUES ('1', '1', '10', '2', '9');
 
 -- ----------------------------
 -- Table structure for order_table
 -- ----------------------------
 DROP TABLE IF EXISTS `order_table`;
 CREATE TABLE `order_table` (
-  `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
-  `STATE` int(1) NOT NULL COMMENT '订单状态',
-  `LOGISTIC_ID` varchar(11) DEFAULT NULL COMMENT '物流单号',
-  `BUYER_ID` int(11) NOT NULL COMMENT '买家ID',
-  `SELLER_ID` int(11) NOT NULL COMMENT '买家ID',
-  `ORDER_TIME` datetime NOT NULL COMMENT '下单时间',
-  `PAY_TIME` datetime DEFAULT NULL COMMENT '付款时间',
-  `DELIVER_TIME` datetime DEFAULT NULL COMMENT '发货时间',
+  `ORDER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'è®¢å•ID',
+  `STATE` int(1) NOT NULL COMMENT 'è®¢å•çŠ¶æ€',
+  `LOGISTIC_ID` varchar(11) DEFAULT NULL COMMENT 'ç‰©æµå•å·',
+  `LOGISTIC_ID_REJECT` varchar(11) DEFAULT NULL COMMENT 'é€€è´§ç‰©æµå•å·',
+  `BUYER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
+  `SELLER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
+  `ORDER_TIME` datetime NOT NULL COMMENT 'ä¸‹å•æ—¶é—´',
+  `PAY_TIME` datetime DEFAULT NULL COMMENT 'ä»˜æ¬¾æ—¶é—´',
+  `DELIVER_TIME` datetime DEFAULT NULL COMMENT 'å‘è´§æ—¶é—´',
   PRIMARY KEY (`ORDER_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
-INSERT INTO `order_table` VALUES ('1', '1', '1', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('10', '0', '', '', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('11', '0', '', '', '2', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('12', '0', '', '', '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('13', '0', '', '', '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('14', '0', '', '', '2', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
@@ -223,7 +230,7 @@ CREATE TABLE `seller` (
   `TELEPHONE` int(20) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
   PRIMARY KEY (`ID_SELLER`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
@@ -240,3 +247,8 @@ INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84
 INSERT INTO `seller` VALUES ('12', '密码1237', 'a9eb812238f753132652ae09963a05e9', null, null, null, null, 'hello', null, null, '01');
 INSERT INTO `seller` VALUES ('13', '密码1235565', '7953bcdc416332990843fd95dbb9c493', null, null, null, null, 'hello', null, null, '01');
 INSERT INTO `seller` VALUES ('14', '密码111', '698d51a19d8a121ce581499d7b701668', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('15', '0987', '8ae9c55967714bc6c45abe7333f227cc', 'swaddle', null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('16', '密码09876', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('17', 'mima0987', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('18', 'mima09876', '6531401f9a6807306651b87e44c05751', 'dfsdf的萨芬', null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01');

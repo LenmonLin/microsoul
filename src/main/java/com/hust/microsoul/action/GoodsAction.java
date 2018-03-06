@@ -3,6 +3,7 @@ package com.hust.microsoul.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
@@ -87,6 +88,13 @@ public class GoodsAction {
 		return Msg.success().add("goodsModelList",goodsModelList);
 	}
 
+
+	/**
+	 *@Description 商品详情页的展示
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/6
+	 */
 	@RequestMapping("goodDesc")
 	@ResponseBody
 	public Msg showGoodsDesc(@RequestParam(value = "goodsId") Integer goodsId){
@@ -98,4 +106,21 @@ public class GoodsAction {
 
 		return Msg.success().add("goodsModel",goodsModel).add("goodsDescById",goodsDescById);
 	}
+
+
+	/**
+	 *@Description 商品搜索功能
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/6
+	 */
+	@RequestMapping("search")
+	@ResponseBody
+	public Msg searchGoodsList (@RequestParam(value = "page",defaultValue = "1") Integer page,
+								@RequestParam(value = "title") String title){
+
+		PageInfo<GoodsModel> goodsModelPageInfo = goodsService.searchGoods(title, page);
+		return Msg.success().add("goodsModelPageInfo",goodsModelPageInfo);
+	}
+
 }
