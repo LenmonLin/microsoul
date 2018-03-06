@@ -55,6 +55,8 @@ public class SellerAction {
 //    public Msg sellerLogin(@RequestParam String password, @RequestParam String accountName){
     public void sellerLogin(@RequestParam(value = "password") String password,
                             @RequestParam(value = "accountName") String accountName,HttpServletResponse response,HttpServletRequest request){
+
+        //查询数据库中是否已经存在这个用户
         SellerModel existUser = sellerService.sellerLogin(accountName,password);
 
         //判断，登录名或者密码错误了
@@ -146,9 +148,13 @@ public class SellerAction {
      */
     @RequestMapping("sellerInfo")
     @ResponseBody
-    public Msg sellerInfo(SellerModel sellerModel){
+    public Msg sellerInfo(SellerModel sellerModel,HttpServletRequest request){
 
-        if (sellerService.sellerInfo(sellerModel)){
+        Object existUser = request.getSession().getAttribute("existUser");
+
+        System.out.println("153调试session中是否有登录卖家登录账号"+existUser);
+
+        if (existUser!=null && sellerService.sellerInfo(sellerModel)){
             return Msg.success();
         }
         return Msg.fail();

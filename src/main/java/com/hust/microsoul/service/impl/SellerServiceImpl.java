@@ -36,6 +36,8 @@ public class SellerServiceImpl implements SellerService{
     @Override
     public SellerModel sellerLogin(String accountName,String password) {
         //加密
+
+//        System.out.println("查看前端是否传入卖家用户名accountName40"+accountName);
         String pwd = MD5Utils.md5(password);
 
         SellerModelExample sellerModelExample = new SellerModelExample();
@@ -43,6 +45,7 @@ public class SellerServiceImpl implements SellerService{
         SellerModelExample.Criteria criteriaSeller = sellerModelExample.createCriteria();
 
         criteriaSeller.andAccountNameEqualTo(accountName);
+//        criteriaSeller.andIdSellerEqualTo(idSeller);
         criteriaSeller.andPasswordEqualTo(pwd);
 
         List<SellerModel> sellerModels = sellerModelMapper.selectByExample(sellerModelExample);
@@ -83,12 +86,18 @@ public class SellerServiceImpl implements SellerService{
     @Override
     public boolean sellerInfo(SellerModel record) {
 
+
         //从数据库中查询到需要修改的用户记录
 
-        SellerModel sellerModel=sellerModelMapper.selectByPrimaryKey(record.getIdSeller());
+        SellerModel sellerModel = sellerLogin(record.getAccountName(), record.getPassword());
+
+        System.out.println("查看是否数据库中有这个卖家账号91"+sellerModel);
+
         //如果密码不对应，就不能修改
-        if (checkOldPassword(record.getPassword(),record.getIdSeller())==null)
+        if (sellerModel ==null) {
+            System.out.println("卖家账号为null时执行95");
             return false;
+        }
         //修改需要修改的属性
         sellerModel.setAccountName(record.getAccountName());
         sellerModel.setZhifubaoAccount(record.getZhifubaoAccount());
@@ -112,8 +121,13 @@ public class SellerServiceImpl implements SellerService{
     public boolean sellerChangePassword(SellerModel sellerModel,String newPassword) {
         //从数据库中查询对应旧密码和sellerId相同的卖家用户
 
-        SellerModel exitUser = checkOldPassword(sellerModel.getPassword(),sellerModel.getIdSeller());
+        SellerModel exitUser = sellerLogin(sellerModel.getAccountName(),sellerModel.getPassword());
+
+        System.out.println("修改卖家用户名，获取前端是否传入用户名"+sellerModel.getAccountName());
+        System.out.println("修改卖家密码，获取前端是否传入旧密码"+sellerModel.getPassword());
         if (exitUser==null){
+
+            System.out.println("修改卖家密码中是否卖家用户"+exitUser);
             return false;
         }
         //设置更新新密码到密码属性
@@ -192,26 +206,26 @@ public class SellerServiceImpl implements SellerService{
      *@author LemonLin
      *@date  2018/3/1
      */
-    public SellerModel checkOldPassword(String oldPassword,Integer idSeller){
-
-        //加密
-        String pwd = MD5Utils.md5(oldPassword);
-
-        SellerModelExample sellerModelExample = new SellerModelExample();
-
-        SellerModelExample.Criteria criteriaSeller = sellerModelExample.createCriteria();
-
-
-        criteriaSeller.andIdSellerEqualTo(idSeller);
-        criteriaSeller.andPasswordEqualTo(pwd);
-
-        List<SellerModel> sellerModels = sellerModelMapper.selectByExample(sellerModelExample);
-
-        if (sellerModels != null && sellerModels.size()>0){
-            return sellerModels.get(0);
-        }
-        return null;
-    }
+//    public SellerModel checkOldPassword(String oldPassword,String accountName){
+//
+//        //加密
+//        String pwd = MD5Utils.md5(oldPassword);
+//
+//        SellerModelExample sellerModelExample = new SellerModelExample();
+//
+//        SellerModelExample.Criteria criteriaSeller = sellerModelExample.createCriteria();
+//
+//
+//        criteriaSeller.andAccountNameEqualTo(accountName);
+//        criteriaSeller.andPasswordEqualTo(pwd);
+//
+//        List<SellerModel> sellerModels = sellerModelMapper.selectByExample(sellerModelExample);
+//
+//        if (sellerModels != null && sellerModels.size()>0){
+//            return sellerModels.get(0);
+//        }
+//        return null;
+//    }
     @Override
     public void HelloWorld(HttpServletRequest request, HttpServletResponse response) {
 

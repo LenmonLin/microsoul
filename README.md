@@ -61,7 +61,7 @@
 	注册：http://localhost:8080/microsoul/seller/register.do
 			必须参数：accountName	；password
 	更新卖家信息：http://localhost:8080/microsoul/seller/sellerInfo.do
-			必须参数：idSeller
+			必须参数：accountName password
 			
 	修改旧密码：http://localhost:8080/microsoul/seller/sellerChangePassword.do
-			必须参数：idSeller  ； password ；newPassword
+			必须参数：accountName  ； password ；newPassword
