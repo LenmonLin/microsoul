@@ -45,4 +45,7 @@
       </if>
     </trim>
   </insert>
+  <update id="deleteOrderGoods" parameterType="OrderGoodsModel">
+  	delete from table order_goods_table where ORDER_ID =#{orderId}
+  </update>
 </mapper>

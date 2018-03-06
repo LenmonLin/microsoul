@@ -54,4 +54,88 @@ public class OrderAction {
 
 		return Msg.success().add("orderList",orderList);
 	}
+	
+	/**
+	 * @Description:买家删除订单
+	 * @author: huwentao    
+	 * @date:   2018年2月26日 下午3:04:30   
+	 * @version V1.0
+	 */
+	@RequestMapping("delete")
+	public void buyerDeleteOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.buyerDeleteOrder(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:卖家发货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:02:38   
+	 * @version V1.0
+	 */
+	@RequestMapping("sellersetlogisticid")
+	public void sellerDeliveryGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.sellerDeliveryGoods(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:买家确认收货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:15:11   
+	 * @version V1.0
+	 */
+	@RequestMapping("buyerconfirmreceived")
+	public void buyerConfirmReceived(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.buyerConfirmReceived(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:买家申请退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:02:38   
+	 * @version V1.0
+	 */
+	@RequestMapping("buyerreject")
+	public void buyerRejectGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.buyerRejectGoods(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:卖家同意退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:11:46   
+	 * @version V1.0
+	 */
+	@RequestMapping("sellerconfirmreject")
+	public void sellerConfirmRejectGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.sellerConfirmRejectGoods(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:买家填写运单号
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:12:59   
+	 * @version V1.0
+	 */
+	@RequestMapping("buyersetrejectlogistics")
+	public void buyerSetRejectLogistics(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.buyerSetRejectLogistics(request, response, orderModel);
+	}
+
+	/**
+	 * 
+	 * @Description:卖家确认收到退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:13:53   
+	 * @version V1.0
+	 */
+	@RequestMapping("sellerreceivedrejected")
+	public void sellerReceivedRejected(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.sellerReceivedRejected(request, response, orderModel);
+	}
+
 }

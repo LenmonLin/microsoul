@@ -16,7 +16,9 @@ public class OrderModel {
     private Integer state;
 
     private Integer logisticId;
-
+    
+    private Integer logisticIdReject;
+    
     private Integer buyerId;
 
     private Integer sellerId;
@@ -99,5 +101,13 @@ public class OrderModel {
 
 	public void setGoods(List<GoodsModel> goods) {
 		this.goods = goods;
+	}
+
+	public Integer getLogisticIdReject() {
+		return logisticIdReject;
+	}
+
+	public void setLogisticIdReject(Integer logisticIdReject) {
+		this.logisticIdReject = logisticIdReject;
 	}
 }

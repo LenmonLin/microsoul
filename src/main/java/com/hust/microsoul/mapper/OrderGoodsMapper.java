@@ -7,4 +7,7 @@ import com.hust.microsoul.model.OrderGoodsModel;
 @Repository
 public interface OrderGoodsMapper {
 	public Integer insertOrderGoods(OrderGoodsModel orderGoodsModel);
+	
+	public Integer deleteOrderGoods(OrderGoodsModel orderGoodsModel);
+	
 }

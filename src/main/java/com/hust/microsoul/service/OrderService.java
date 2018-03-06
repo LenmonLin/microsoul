@@ -62,4 +62,58 @@ public interface OrderService {
 	 */
 	public void buyerUpdateOrderState(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
 
+	/**
+	 * 
+	 * @Description:卖家发货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:02:38   
+	 * @version V1.0
+	 */
+	public void sellerDeliveryGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	/**
+	 * 
+	 * @Description:买家确认收货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:15:11   
+	 * @version V1.0
+	 */
+	public void buyerConfirmReceived(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	/**
+	 * 
+	 * @Description:买家申请退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:02:38   
+	 * @version V1.0
+	 */
+	public void buyerRejectGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	/**
+	 * 
+	 * @Description:卖家同意退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:11:46   
+	 * @version V1.0
+	 */
+	public void sellerConfirmRejectGoods(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	/**
+	 * 
+	 * @Description:买家填写运单号
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:12:59   
+	 * @version V1.0
+	 */
+	public void buyerSetRejectLogistics(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	/**
+	 * 
+	 * @Description:卖家确认收到退货
+	 * @author: huwentao    
+	 * @date:   2018年3月5日 下午3:13:53   
+	 * @version V1.0
+	 */
+	public void sellerReceivedRejected(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
 }

@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /** 
  * @Description:OrderServiceImpl.java
@@ -120,8 +121,18 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
+	@Transactional
 	public void buyerDeleteOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
-		
+		try {
+			OrderGoodsModel orderGoodsModel = new OrderGoodsModel();
+			orderGoodsModel.setGoodsId(orderModel.getOrderId());
+			orderGoodsMapper.deleteOrderGoods(orderGoodsModel);
+			orderMapper.deleteOrder(orderModel);
+			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -137,6 +148,110 @@ public class OrderServiceImpl implements OrderService {
 	public void buyerUpdateOrderState(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
 		
 		
+	}
+	@Override
+	public void sellerDeliveryGoods(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.UNRECEIVE);
+			orderModel.setDeliverTime(new Date(System.currentTimeMillis()));
+			int updateResult = orderMapper.setLogisticId(orderModel);
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void buyerConfirmReceived(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.DONE);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void buyerRejectGoods(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.BUYERREJECTE);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void sellerConfirmRejectGoods(HttpServletRequest request, HttpServletResponse response,
+			OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.SELLER_CONFIRM_REJECTED);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void buyerSetRejectLogistics(HttpServletRequest request, HttpServletResponse response,
+			OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.BUYERREJECTED);
+			
+			int updateResult = orderMapper.setLogisticIdReject(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void sellerReceivedRejected(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.DONE);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
 	}
 
 }
