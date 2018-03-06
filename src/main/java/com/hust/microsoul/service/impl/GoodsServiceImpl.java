@@ -2,7 +2,9 @@ package com.hust.microsoul.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.mapper.GoodsDescModelMapper;
 import com.hust.microsoul.mapper.GoodsModelMapper;
+import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
 import com.hust.microsoul.service.GoodsService;
@@ -26,6 +28,9 @@ public class GoodsServiceImpl  implements GoodsService{
     //注入dao层
     @Autowired
     private GoodsModelMapper goodsModelMapper;
+
+    @Autowired
+    private GoodsDescModelMapper goodsDescModelMapper;
 
 
     @Override
@@ -169,6 +174,18 @@ public class GoodsServiceImpl  implements GoodsService{
         PageInfo pageInfo = new PageInfo(goodsModelList);
 
         return pageInfo;
+    }
+
+
+    /**
+     *@Description  商品详情页的展示
+     *@params
+     *@author LemonLin
+     *@date  2018/3/5
+     */
+    public GoodsDescModel getGoodsDescById(long goodsId) {
+        GoodsDescModel goodsDescModel = goodsDescModelMapper.selectByPrimaryKey(goodsId);
+        return goodsDescModel;
     }
 
 

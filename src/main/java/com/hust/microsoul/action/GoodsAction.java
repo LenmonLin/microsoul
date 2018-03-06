@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.GoodsService;
 import com.hust.microsoul.util.Msg;
@@ -25,6 +26,7 @@ public class GoodsAction {
 
 	@Autowired
 	private GoodsService goodsService;
+
 
 	@RequestMapping("hello")
 	public String HelloWorld(HttpServletRequest request,HttpServletResponse response) {
@@ -83,5 +85,17 @@ public class GoodsAction {
 		PageInfo<GoodsModel> goodsModelList = goodsService.showGoodsList(page,rows);
 
 		return Msg.success().add("goodsModelList",goodsModelList);
+	}
+
+	@RequestMapping("goodDesc")
+	@ResponseBody
+	public Msg showGoodsDesc(@RequestParam(value = "goodsId") Integer goodsId){
+
+		//商品详情
+		GoodsDescModel goodsDescById = goodsService.getGoodsDescById(goodsId);
+		//商品信息
+		GoodsModel goodsModel = goodsService.selectByPrimaryKey(goodsId);
+
+		return Msg.success().add("goodsModel",goodsModel).add("goodsDescById",goodsDescById);
 	}
 }
