@@ -68,3 +68,37 @@
 			
 	修改旧密码：http://localhost:8080/microsoul/seller/sellerChangePassword.do
 			必须参数：accountName  ； password ；newPassword
+
+买家模块
+      
+      登录：http://localhost:8080/microsoul/buyer/login.do
+          必须参数：accountName  	;	password
+     
+     注册：http://localhost:8080/microsoul/buyer/register.do
+     必须参数：accountName  	;	password ;email ;telephone
+     
+     修改密码：http://localhost:8080/microsoul/buyer/modifypsw.do
+     必须参数：oldpsw  ;newpsw
+     
+     增加/更新个人信息：http://localhost:8080/microsoul/buyer/updateinfo.do
+     可选参数：zhifubaoAccount; email;qqAccount;realName;address;telephone;
+     
+     查看个人信息：http://localhost:8080/microsoul/buyer/selectinfo.do
+     无参数
+     
+     加入收藏夹：http://localhost:8080/microsoul/buyer/addcollection.do
+     必须参数：goodsID
+     
+     移出收藏夹：http://localhost:8080/microsoul/buyer/deletecollection.do
+     必须参数：collectionID
+     
+     展示收藏夹：http://localhost:8080/microsoul/buyer/showcollectionlist.do
+     必须参数:buyerId
+     
+后台管理模块
+
+      管理员登录：  http://localhost:8080/microsoul/admin/adminlogin.do
+      必须参数：accountName  	;	password
+      
+      冻结买家: http://localhost:8080/microsoul/admin/disablebuyer.do
+      必须参数:buyersId

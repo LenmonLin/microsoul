@@ -26,8 +26,8 @@ public class AdministratorServiceImpl implements AdministratorService {
 	@Override
 	public void adminLogin(HttpServletRequest request,
 			HttpServletResponse response, Adminitrator_tableModel adminitrator_tableModel) {
-		Adminitrator_tableModel result= adminitrator_tableModelMapper.selectByPrimaryKey(adminitrator_tableModel.getId());
-		if(result==null)
+		Adminitrator_tableModel result= adminitrator_tableModelMapper.adminLogin(adminitrator_tableModel);
+		if(result!=null)
 			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
 		else 
 			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);

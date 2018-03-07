@@ -102,6 +102,7 @@ public class BuyerServiceImpl implements BuyerService {
     	HttpSession session = request.getSession();
 		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
 		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
+		String zhifubaoAccount=buyerModel.getZhifubaoAccount();
     }
     
     
