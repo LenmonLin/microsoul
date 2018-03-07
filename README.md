@@ -23,6 +23,8 @@
     修改内容选项：
                     http://localhost:8080/microsoul/content/update.do
                        必须参数：contentId
+                       可选参数：categoryId;title;subtitle;title;desc;url;pic;pic2;contentPrice;
+                       content;
     查看内容选项：
                    http://localhost:8080/microsoul/content/showsList.do              
                     可选参数：page  ；  rows
@@ -51,6 +53,8 @@
 
 	修改商品：http://localhost:8080/microsoul/goods/updateGoodsModel.do
 			必须参数：goodsId
+			可选参数：goodsName;title;sellpoint;unitPrice;purchaseQuantity;barcode;imageUrl;
+			category;store;discount;status;sellerId;
 
 	添加商品：http://localhost:8080/microsoul/goods/insertGoodsModel.do
 			必须参数：goodsName ; unitPrice  ; category  ; store   ; status  ; sellerId
@@ -65,6 +69,8 @@
 			必须参数：accountName	；password
 	更新卖家信息：http://localhost:8080/microsoul/seller/sellerInfo.do
 			必须参数：accountName password
+			可选参数：zhifubaoAccount；email;qqAccount;district;realName;address;
+			telephone;
 			
 	修改旧密码：http://localhost:8080/microsoul/seller/sellerChangePassword.do
 			必须参数：accountName  ； password ；newPassword
