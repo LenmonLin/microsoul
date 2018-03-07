@@ -30,12 +30,12 @@ public interface OrderService {
 
 
 	/**
-	 * @Description:买家取得订单信息列表
+	 * @Description:买家或卖家根据订单类型取得订单信息列表
 	 * @author: huwentao    
 	 * @date:   2018年2月26日 下午3:07:06   
 	 * @version V1.0
 	 */
-	public PageInfo<OrderModel> buyerGetOrderList(Integer page, Integer rows,OrderModel orderModel);
+	public PageInfo<OrderModel> getOrderList(Integer page, Integer rows,OrderModel orderModel);
 
 
 	/**

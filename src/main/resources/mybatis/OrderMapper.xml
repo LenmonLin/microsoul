@@ -33,7 +33,13 @@
 		and 
 			d.ID_SELLER = a.SELLER_ID
 		and 
-			a.ORDER_ID = #{orderId}
+			a.state = #{state} 
+			<if test="buyerId !=null">
+				and a.BUYER_ID = #{buyerId} 
+			</if> 
+			<if test="sellerId !=null">
+				and a.SELLER_ID = #{sellerId} 
+			</if> 
 	</select>
   <insert id="buyerCreateOrder" keyProperty="orderId" useGeneratedKeys="true" parameterType="orderModel">
     insert into order_table

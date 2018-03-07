@@ -50,7 +50,7 @@ public class OrderAction {
 	public Msg getOrderList(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel
 			,@RequestParam(value = "page",defaultValue = "1") Integer page,
 			 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
-		PageInfo<OrderModel> orderList = orderService.buyerGetOrderList(page, rows, orderModel);
+		PageInfo<OrderModel> orderList = orderService.getOrderList(page, rows, orderModel);
 
 		return Msg.success().add("orderList",orderList);
 	}

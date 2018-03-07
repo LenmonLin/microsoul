@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 	/**
-	 * @Description:买家查询订单列表
+	 * @Description:买家和卖家查询订单列表
 	 * @author:huwentao
 	 * @date:2018年2月26日
 	 * @param:     
@@ -89,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
-	public PageInfo<OrderModel> buyerGetOrderList(Integer page, Integer rows,OrderModel orderModel){
+	public PageInfo<OrderModel> getOrderList(Integer page, Integer rows,OrderModel orderModel){
 		 //设置分页信息
         PageHelper.startPage(page,rows);
         //执行查询
