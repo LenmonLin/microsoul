@@ -8,7 +8,7 @@
                     
      商品搜索功能：               
                     http://localhost:8080/microsoul/goods/search.do
-                    必须参数：title
+                    必须参数：title       可选参数：page
 
 商品首页显示管理员后台模块：
 
@@ -25,7 +25,7 @@
                        必须参数：contentId
     查看内容选项：
                    http://localhost:8080/microsoul/content/showsList.do              
-        
+                    可选参数：page  ；  rows
                      
 购物车模块：
 
@@ -45,7 +45,7 @@
 卖家商品模块：
 
 	查看商品：http://localhost:8080/microsoul/goods/showGoodsList.do
-
+            可选参数：page;             rows
 	删除商品：http://localhost:8080/microsoul/goods/deleteGoodsModel.do
 			必须参数：goodsId
 
