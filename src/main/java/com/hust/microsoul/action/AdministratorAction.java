@@ -47,7 +47,7 @@ public class AdministratorAction {
 		administratorService.adminLogin(request, response, adminitrator_tableModel);
 	}
 	
-	@RequestMapping("disableBuyer")
+	@RequestMapping("disablebuyer")
 	public void disableBuyer(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
 		buyerService.disableBuyer(request, response, buyerModel);
 	}

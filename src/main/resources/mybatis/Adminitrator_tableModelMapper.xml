@@ -240,4 +240,11 @@
       EMAIL = #{email,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+    <select id="adminLogin" parameterType="com.hust.microsoul.model.Adminitrator_tableModel" resultType="com.hust.microsoul.model.Adminitrator_tableModel">
+    select 
+    *
+    from adminitrator_table
+    where ACOUNT_NAME = #{acountName,jdbcType=VARCHAR}
+    and   PASSWORD = #{password,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -29,4 +29,6 @@ public interface Adminitrator_tableModelMapper {
     int updateByPrimaryKeySelective(Adminitrator_tableModel record);
 
     int updateByPrimaryKey(Adminitrator_tableModel record);
+    
+    Adminitrator_tableModel adminLogin(Adminitrator_tableModel adminitrator_tableModel);
 }
