@@ -49,7 +49,7 @@ public class OrderAction {
 	@ResponseBody
 	public Msg getOrderList(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel
 			,@RequestParam(value = "page",defaultValue = "1") Integer page,
-			 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
+			 @RequestParam(value = "rows",defaultValue = "5") Integer rows){
 		try {
 			
 			Integer buyerId = (Integer)request.getSession().getAttribute("loginedBuyersID");

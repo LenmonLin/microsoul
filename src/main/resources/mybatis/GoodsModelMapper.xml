@@ -407,4 +407,15 @@
 		and 
 			a.BUYER_ID = #{buyerId}
 	</select>
+	
+		<select id="getOrderGoodsList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+			a.num as PURCHASE_QUANTITY,b.*
+		from 
+			order_goods_table a,goods b
+		where 
+			a.GOODS_ID = b.GOODS_ID
+		and 
+			a.ORDER_ID = #{orderId}
+	</select>
 </mapper>

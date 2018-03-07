@@ -2,6 +2,7 @@ package com.hust.microsoul.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.mapper.OrderGoodsMapper;
 import com.hust.microsoul.mapper.OrderMapper;
 import com.hust.microsoul.model.GoodsModel;
@@ -40,6 +41,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private OrderGoodsMapper orderGoodsMapper;
+	
+	@Autowired
+	private GoodsModelMapper goodsModelMapper;
 	
 	private Logger Logger = LoggerFactory.getLogger(this.getClass());
 	/**
@@ -95,6 +99,11 @@ public class OrderServiceImpl implements OrderService {
         PageHelper.startPage(page,rows);
         //执行查询
         List<OrderModel> orderList = orderMapper.getOrderList(orderModel);
+        
+        for (OrderModel order : orderList) {
+			List<GoodsModel> goods = goodsModelMapper.getOrderGoodsList(order.getOrderId());
+			order.setGoods(goods);
+		}
         //返回查询结果
         PageInfo pageInfo = new PageInfo(orderList);
 

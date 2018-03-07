@@ -32,4 +32,6 @@ public interface GoodsModelMapper {
     int updateByPrimaryKey(GoodsModel record);
     
     List<GoodsModel> getcollectionList (CollectionModel collectionModel);
+    
+    List<GoodsModel>  getOrderGoodsList(@Param(value = "orderId")Integer orderId);
 }
