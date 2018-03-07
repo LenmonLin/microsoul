@@ -50,9 +50,24 @@ public class OrderAction {
 	public Msg getOrderList(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel
 			,@RequestParam(value = "page",defaultValue = "1") Integer page,
 			 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
-		PageInfo<OrderModel> orderList = orderService.getOrderList(page, rows, orderModel);
-
-		return Msg.success().add("orderList",orderList);
+		try {
+			
+			Integer buyerId = (Integer)request.getSession().getAttribute("loginedBuyersID");
+			//orderModel.setBuyerId(buyerId);
+			//测试使用
+			if(buyerId==null) {
+				orderModel.setBuyerId(1);	
+			} else {
+				orderModel.setBuyerId(buyerId);
+			}
+			//测试使用
+			
+			PageInfo<OrderModel> orderList = orderService.getOrderList(page, rows, orderModel);
+			return Msg.success().add("orderList",orderList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Msg.fail();
+		}
 	}
 	
 	/**
