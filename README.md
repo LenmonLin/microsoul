@@ -71,7 +71,7 @@
 	注册：http://localhost:8080/microsoul/seller/register.do
 			必须参数：accountName	；password
 	更新卖家信息：http://localhost:8080/microsoul/seller/sellerInfo.do
-			必须参数：accountName password
+			
 			可选参数：zhifubaoAccount；email;qqAccount;district;realName;address;
 			telephone;
 			merid;merkey(merid,merkey必须有才能发布商品)

@@ -84,12 +84,13 @@ public class SellerServiceImpl implements SellerService{
      *@date  2018/3/1
      */
     @Override
-    public boolean sellerInfo(SellerModel record) {
+    public boolean sellerInfo(SellerModel record,Integer idSeller) {
 
 
         //从数据库中查询到需要修改的用户记录
 
-        SellerModel sellerModel = sellerLogin(record.getAccountName(), record.getPassword());
+//        SellerModel sellerModel = sellerLogin(record.getAccountName(), record.getPassword());
+        SellerModel sellerModel = sellerModelMapper.selectByPrimaryKey(idSeller);
 
         System.out.println("查看是否数据库中有这个卖家账号91"+sellerModel);
 

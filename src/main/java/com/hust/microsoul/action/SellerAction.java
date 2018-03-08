@@ -155,10 +155,10 @@ public class SellerAction {
     public Msg sellerInfo(SellerModel sellerModel,HttpServletRequest request){
 
         Object existUser = request.getSession().getAttribute("existUser");
-
+        Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
         System.out.println("153调试session中是否有登录卖家登录账号"+existUser);
 
-        if (existUser!=null && sellerService.sellerInfo(sellerModel)){
+        if (existUser!=null && sellerService.sellerInfo(sellerModel,existUserId)){
             return Msg.success();
         }
         return Msg.fail();

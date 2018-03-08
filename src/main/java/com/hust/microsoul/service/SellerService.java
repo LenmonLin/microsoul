@@ -23,7 +23,7 @@ public interface SellerService {
 
     public void sellerRegister(String accountName,String password);
 
-    public boolean sellerInfo(SellerModel sellerModel);
+    public boolean sellerInfo(SellerModel sellerModel,Integer idSeller);
 
     public void disableSeller(HttpServletRequest request,HttpServletResponse response);
 
