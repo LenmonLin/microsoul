@@ -74,7 +74,9 @@
 			
 	修改旧密码：http://localhost:8080/microsoul/seller/sellerChangePassword.do
 			必须参数：accountName  ； password ；newPassword
-
+			
+	查看卖家信息：http://localhost:8080/microsoul/seller/showSeller.do
+            需先登录才能查看
 买家模块
       
       登录：http://localhost:8080/microsoul/buyer/login.do

@@ -66,6 +66,9 @@ public class SellerAction {
             //登录成功,存放到session中去
 
              request.getSession().setAttribute("existUser",existUser);
+             //查看卖家用户信息的时候使用
+             Integer existUserId = existUser.getIdSeller();
+             request.getSession().setAttribute("existUserId",existUserId);
 
             JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
 
@@ -95,6 +98,7 @@ public class SellerAction {
     public void sellerExit(HttpServletRequest request,HttpServletResponse response){
         //移除session中的用户即可
         request.getSession().removeAttribute("existUser");
+        request.getSession().removeAttribute("existUserId");
 
         JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
 
@@ -159,7 +163,21 @@ public class SellerAction {
         }
         return Msg.fail();
     }
-    
+
+    /**
+     *@Description 更新卖家信息
+     *@params
+     *@author LemonLin
+     *@date  2018/3/8
+     */
+    @RequestMapping("showSeller")
+    @ResponseBody
+    public Msg  showSeller(HttpServletRequest request){
+        SellerModel sellerModel = sellerService.showSeller(request);
+        return Msg.success().add("sellerModel",sellerModel);
+    }
+
+
     /**
      *@Description 修改旧密码
      *@params

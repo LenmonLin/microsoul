@@ -226,6 +226,18 @@ public class SellerServiceImpl implements SellerService{
 //        }
 //        return null;
 //    }
+
+    /**
+     *@Description 查看卖家用户信息
+     *@params
+     *@author LemonLin
+     *@date  2018/3/8
+     */
+    public SellerModel  showSeller(HttpServletRequest request){
+        Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
+        SellerModel sellerModel = sellerModelMapper.selectByPrimaryKey(existUserId);
+        return sellerModel;
+    }
     @Override
     public void HelloWorld(HttpServletRequest request, HttpServletResponse response) {
 

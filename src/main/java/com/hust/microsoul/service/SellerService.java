@@ -33,6 +33,7 @@ public interface SellerService {
 
     void insert(SellerModel record);
 
-
+    //查看卖家信息
+    public SellerModel  showSeller(HttpServletRequest request);
     public void HelloWorld(HttpServletRequest request, HttpServletResponse response);
 }
