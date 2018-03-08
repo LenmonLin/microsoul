@@ -23,6 +23,10 @@ public class SellerModel {
 
     private Integer state;
 
+    private Integer merid;
+
+    private String merkey;
+
     public Integer getIdSeller() {
         return idSeller;
     }
@@ -109,5 +113,21 @@ public class SellerModel {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Integer getMerid() {
+        return merid;
+    }
+
+    public void setMerid(Integer merid) {
+        this.merid = merid;
+    }
+
+    public String getMerkey() {
+        return merkey;
+    }
+
+    public void setMerkey(String merkey) {
+        this.merkey = merkey == null ? null : merkey.trim();
     }
 }

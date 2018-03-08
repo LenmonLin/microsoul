@@ -833,6 +833,136 @@ public class SellerModelExample {
             addCriterion("STATE not between", value1, value2, "state");
             return (Criteria) this;
         }
+
+        public Criteria andMeridIsNull() {
+            addCriterion("MerId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridIsNotNull() {
+            addCriterion("MerId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridEqualTo(Integer value) {
+            addCriterion("MerId =", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridNotEqualTo(Integer value) {
+            addCriterion("MerId <>", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridGreaterThan(Integer value) {
+            addCriterion("MerId >", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridGreaterThanOrEqualTo(Integer value) {
+            addCriterion("MerId >=", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridLessThan(Integer value) {
+            addCriterion("MerId <", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridLessThanOrEqualTo(Integer value) {
+            addCriterion("MerId <=", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridIn(List<Integer> values) {
+            addCriterion("MerId in", values, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridNotIn(List<Integer> values) {
+            addCriterion("MerId not in", values, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridBetween(Integer value1, Integer value2) {
+            addCriterion("MerId between", value1, value2, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridNotBetween(Integer value1, Integer value2) {
+            addCriterion("MerId not between", value1, value2, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyIsNull() {
+            addCriterion("MerKey is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyIsNotNull() {
+            addCriterion("MerKey is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyEqualTo(String value) {
+            addCriterion("MerKey =", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyNotEqualTo(String value) {
+            addCriterion("MerKey <>", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyGreaterThan(String value) {
+            addCriterion("MerKey >", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyGreaterThanOrEqualTo(String value) {
+            addCriterion("MerKey >=", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyLessThan(String value) {
+            addCriterion("MerKey <", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyLessThanOrEqualTo(String value) {
+            addCriterion("MerKey <=", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyLike(String value) {
+            addCriterion("MerKey like", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyNotLike(String value) {
+            addCriterion("MerKey not like", value, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyIn(List<String> values) {
+            addCriterion("MerKey in", values, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyNotIn(List<String> values) {
+            addCriterion("MerKey not in", values, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyBetween(String value1, String value2) {
+            addCriterion("MerKey between", value1, value2, "merkey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerkeyNotBetween(String value1, String value2) {
+            addCriterion("MerKey not between", value1, value2, "merkey");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

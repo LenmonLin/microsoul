@@ -15,7 +15,7 @@
 
 		<!--配置数据库连接-->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://127.0.0.1:3306/microsoul"
+						connectionURL="jdbc:mysql://120.79.211.216:3306/microsoul"
 						userId="root"
 						password="root">
 		</jdbcConnection>
@@ -49,8 +49,8 @@
 		<!--<table tableName="contentTable" domainObjectName="ContentsModel"></table>-->
 		<!--<table tableName="order_goods_table" domainObjectName="Order_goods_tableModel"></table>-->
 		<!--<table tableName="order_table" domainObjectName="Order_tableModel"></table>-->
-		<!--<table tableName="seller" domainObjectName="SellerModel"></table>-->
-		<table tableName="goods_desc" domainObjectName="GoodsDescModel"></table>
+		<table tableName="seller" domainObjectName="SellerModel"></table>
+		<!--<table tableName="goods_desc" domainObjectName="GoodsDescModel"></table>-->
 
 
 	</context>

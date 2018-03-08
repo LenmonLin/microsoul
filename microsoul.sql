@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : window10本机
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server         : 灵微网远程连接
+Source Server Version : 50721
+Source Host           : 120.79.211.216:3306
 Source Database       : microsoul
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-07 09:48:47
+Date: 2018-03-08 14:54:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,6 +33,7 @@ CREATE TABLE `adminitrator_table` (
 -- ----------------------------
 -- Records of adminitrator_table
 -- ----------------------------
+INSERT INTO `adminitrator_table` VALUES ('1', 'hlf', '123', '123', '123', '123456', '123');
 
 -- ----------------------------
 -- Table structure for ad_info_table
@@ -142,7 +143,7 @@ CREATE TABLE `goods` (
   `COLLECTION_ID` int(15) DEFAULT NULL,
   `SELLER_ID` int(16) NOT NULL DEFAULT '1',
   PRIMARY KEY (`GOODS_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=12290 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11301 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
@@ -151,7 +152,7 @@ INSERT INTO `goods` VALUES ('1', '更新1', '鱼缸', null, '0000000000000001', 
 INSERT INTO `goods` VALUES ('2', '1233', '大鱼缸', null, '0000000000000123', '5', null, '122', '123', '123', '12', '45', null, null, null, '56', '2');
 INSERT INTO `goods` VALUES ('3', '手机', '武昌鱼', null, '0000000000000034', null, null, null, '4', '12', null, null, '1', '2018-02-28 16:52:52.931000', '2018-02-28 16:52:52.931000', null, '1');
 INSERT INTO `goods` VALUES ('4', '手机', '鱼', null, '0000000000000034', null, null, null, '4', '12', null, null, '1', '2018-03-03 16:20:05.048000', '2018-03-03 16:20:05.048000', null, '1');
-INSERT INTO `goods` VALUES ('4100', '', 'new2 - 阿尔卡特 (OT-927) 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000029900000', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
+INSERT INTO `goods` VALUES ('4100', '', 'new2 - 阿尔卡特 (OT-927) 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000029900000', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
 INSERT INTO `goods` VALUES ('4101', '', 'new8- 三星 W999 黑色 电信3G手机 双卡双待双通', '下单送12000毫安移动电源！双3.5英寸魔焕炫屏，以非凡视野纵观天下时局，尊崇翻盖设计，张弛中，尽显从容气度！', '0000000000001100', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4102', '', '阿尔卡特 (OT-979) 冰川白 联通3G手机', '清仓！仅上海仓有货！', '0000000000030900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4103', '', '阿尔卡特 (OT-927) 单电版 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000000024900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
@@ -174,7 +175,7 @@ INSERT INTO `goods` VALUES ('4119', '', '长虹（CHANGHONG） 3D51C1080i 51英�
 INSERT INTO `goods` VALUES ('4120', '', 'LG 47LA6800-CA 47英寸 全高清智能3D液晶电视 （红色）', '【疯狂清仓】无边框硬屏，不闪式3D技术，动感应遥控器，“船”型底座设计！仅北京、沈阳、深圳有货！', '0000000000999900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4121', '', '诺基亚(NOKIA) 1050 (RM-908) 黑色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000014900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4122', '', '诺基亚(NOKIA) 1050 (RM-908) 蓝色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000014900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
-INSERT INTO `goods` VALUES ('4123', '', '联想 MA388 老人手机 星夜黑 移动联通2G手机 双卡双待', '孝敬爸妈首选，好评超22000条，大按键 大喇叭 大翻盖，配置1900mAh大容量电池，带来超长续航体验！', '0000000000028700', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
+INSERT INTO `goods` VALUES ('4123', '', '联想 MA388 老人手机 星夜黑 移动联通2G手机 双卡双待', '孝敬爸妈首选，好评超22000条，大按键 大喇叭 大翻盖，配置1900mAh大容量电池，带来超长续航体验！', '0000000000028700', null, null, null, '1', '99999', null, null, null, null, '2018-03-07 15:46:34.793000', null, '1');
 INSERT INTO `goods` VALUES ('4124', '', '海信（Hisense）LED42EC260JD 42英寸 窄边网络 LED电视（黑色）', '<a  target=\"blank\"  href=\"http://sale.jd.com/act/YykdEtrMRaSsT.html\">“春宵一刻值千金”</a>', '0000000000229900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4125', '', '酷派 8076D 咖啡棕 移动3G手机 双卡双待', '4.0英寸屏幕，双核处理器！移动用户无需换号，直接尊享3G网络！', '0000000000019900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('4126', '', '创维(Skyworth)LED 42E5DHR 42英寸 海量影视资源智能网络平板液晶电视二代升级版(黑色)', '二代新品！！智能双系统，正版影视随心看，丰富安卓应用，多屏互动！<a  target=\"blank\"  href=\"http://jmall.jd.com/p117514.html\">“猛戳这里，更多惊喜”</a>', '0000000000249900', null, null, null, '1', '99999', null, null, null, null, null, null, '1');
@@ -3249,30 +3250,30 @@ INSERT INTO `goods` VALUES ('7194', '', '电水壶', '电水壶很漂亮', '0000
 INSERT INTO `goods` VALUES ('7195', '', '121', '121', '0000000000000120', null, null, null, '1', '12', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('7196', '', '11', '111', '0000000000003300', null, null, null, '1', '22', null, null, null, null, null, null, '1');
 INSERT INTO `goods` VALUES ('7197', '', '123', '123', '0000000000012300', null, null, null, '1', '123', null, null, null, null, null, null, '1');
-INSERT INTO `goods` VALUES ('8195', '', 'new2 - 阿尔卡特 (OT-927) 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000029900000', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8196', '', 'new8- 三星 W999 黑色 电信3G手机 双卡双待双通', '下单送12000毫安移动电源！双3.5英寸魔焕炫屏，以非凡视野纵观天下时局，尊崇翻盖设计，张弛中，尽显从容气度！', '0000000000001100', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8197', '', '阿尔卡特 (OT-979) 冰川白 联通3G手机', '清仓！仅上海仓有货！', '0000000000030900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8198', '', '阿尔卡特 (OT-927) 单电版 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000000024900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8199', '', '阿尔卡特 (OT-986+) 玫红 AK47 加强版 联通3G手机', '仅上海，广州，沈阳仓有货！预购从速！', '0000000000049900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8200', '', '阿尔卡特 (OT-986+) 曜石黑 AK47 加强版 联通3G手机', '少量库存，抢完即止！<a  target=\"blank\"  href=\"http://sale.jd.com/act/bxYeI1346g.html?erpad_source=erpad\">“领券更优惠！”</a>', '0000000000049900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8201', '', '三星 B9120 钛灰色 联通3G手机 双卡双待双通', '下单即送10400毫安移动电源！再赠手机魔法盒！', '0000000000439900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8202', '', '三星 Note II (N7100) 云石白 联通3G手机', '经典回顾！超值价格值得拥有。', '0000000000169900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8203', '', '三星 Note II (N7100) 钛金灰 联通3G手机', '下单赠12000毫安移动电源', '0000000000169900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8195', '', 'new2 - 阿尔卡特 (OT-927) 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000029900000', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8196', '', 'new8- 三星 W999 黑色 电信3G手机 双卡双待双通', '下单送12000毫安移动电源！双3.5英寸魔焕炫屏，以非凡视野纵观天下时局，尊崇翻盖设计，张弛中，尽显从容气度！', '0000000000001100', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8197', '', '阿尔卡特 (OT-979) 冰川白 联通3G手机', '清仓！仅上海仓有货！', '0000000000030900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8198', '', '阿尔卡特 (OT-927) 单电版 炭黑 联通3G手机 双卡双待', '清仓！仅北京，武汉仓有货！', '0000000000024900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8199', '', '阿尔卡特 (OT-986+) 玫红 AK47 加强版 联通3G手机', '仅上海，广州，沈阳仓有货！预购从速！', '0000000000049900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8200', '', '阿尔卡特 (OT-986+) 曜石黑 AK47 加强版 联通3G手机', '少量库存，抢完即止！<a  target=\"blank\"  href=\"http://sale.jd.com/act/bxYeI1346g.html?erpad_source=erpad\">“领券更优惠！”</a>', '0000000000049900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8201', '', '三星 B9120 钛灰色 联通3G手机 双卡双待双通', '下单即送10400毫安移动电源！再赠手机魔法盒！', '0000000000439900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8202', '', '三星 Note II (N7100) 云石白 联通3G手机', '经典回顾！超值价格值得拥有。', '0000000000169900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8203', '金风科技按时打算离开', '三星 Note II (N7100) 钛金灰 联通3G手机', '下单赠12000毫安移动电源', '0000000000169900', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:15:23.903000', null, '1');
 INSERT INTO `goods` VALUES ('8204', '', '三星 Note II (N7100) 钻石粉 联通3G手机', '经典回顾！超值特惠！', '0000000000169900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8205', '', '夏普（SHARP）LCD-46DS40A 46英寸 日本原装液晶面板 智能全高清液晶电视', '要好屏，选夏普！日本原装面板，智能电视，高画质高音质！<a  target=\"blank\"  href=\"http://item.jd.com/1278686.html\">还有升级版安卓智能新机46DS52供您选择！</a>', '0000000000379900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8206', '', '飞利浦 老人手机 (X2560) 深情蓝 移动联通2G手机 双卡双待', '赠：九安血压计+8G内存！超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000048900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8207', '', '中兴 U288 珠光白 移动3G手机', '好评过万！超大彩屏，超大字体，超大按键，超大音量，一键SOS紧急呼叫 ！', '0000000000019900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8208', '', '三星 SCH-W899 亮金色 电信3G手机 双卡双待双通', '双3.3英寸魔焕炫屏，CG双网双待，臻尊体验，心系天下！', '0000000000299900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8209', '', '飞利浦 老人手机 (X2560) 喜庆红 移动联通2G手机 双卡双待', '超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000048900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8210', '', '飞利浦 老人手机 (X2560) 硬朗黑 移动联通2G手机 双卡双待', '超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000046900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8205', '', '夏普（SHARP）LCD-46DS40A 46英寸 日本原装液晶面板 智能全高清液晶电视', '要好屏，选夏普！日本原装面板，智能电视，高画质高音质！<a  target=\"blank\"  href=\"http://item.jd.com/1278686.html\">还有升级版安卓智能新机46DS52供您选择！</a>', '0000000000379900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8206', '', '飞利浦 老人手机 (X2560) 深情蓝 移动联通2G手机 双卡双待', '赠：九安血压计+8G内存！超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000048900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8207', '', '中兴 U288 珠光白 移动3G手机', '好评过万！超大彩屏，超大字体，超大按键，超大音量，一键SOS紧急呼叫 ！', '0000000000019900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8208', '', '三星 SCH-W899 亮金色 电信3G手机 双卡双待双通', '双3.3英寸魔焕炫屏，CG双网双待，臻尊体验，心系天下！', '0000000000299900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8209', '', '飞利浦 老人手机 (X2560) 喜庆红 移动联通2G手机 双卡双待', '超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000048900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8210', '', '飞利浦 老人手机 (X2560) 硬朗黑 移动联通2G手机 双卡双待', '超长待机，关爱无限，更好用！飞利浦简单健康老人手机！外观圆滑，手感极佳！', '0000000000046900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
 INSERT INTO `goods` VALUES ('8211', '', '三星 Galaxy S4 (I9500)16G版 皓月白 联通3G手机', '三星经典旗舰机！5英寸1080P高清屏+1300万像素主摄像头！', '0000000000188800', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8212', '', '三星 Galaxy S4 (I9500) 16G版 星空黑 联通3G手机', '年货特价来袭！三星经典旗舰机！', '0000000000188800', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8213', '', '三星 I8552 白色 联通3G手机 双卡双待', '经济实惠机器~~开春入手好时机~', '0000000000079900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8214', '', '长虹（CHANGHONG） 3D51C1080i 51英寸 快门式3D智能Android 电视（黑色）', '智能安卓系统 可自由安装应用程序 <a  target=\"blank\"  href=\"http://sale.jd.com/act/Kt0aHzbU7uR1M.html\">“点击进入长虹新年专场”</a>', '0000000000269900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8215', '', 'LG 47LA6800-CA 47英寸 全高清智能3D液晶电视 （红色）', '【疯狂清仓】无边框硬屏，不闪式3D技术，动感应遥控器，“船”型底座设计！仅北京、沈阳、深圳有货！', '0000000000999900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8216', '', '诺基亚(NOKIA) 1050 (RM-908) 黑色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000014900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8217', '', '诺基亚(NOKIA) 1050 (RM-908) 蓝色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000014900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
-INSERT INTO `goods` VALUES ('8218', '', '联想 MA388 老人手机 星夜黑 移动联通2G手机 双卡双待', '孝敬爸妈首选，好评超22000条，大按键 大喇叭 大翻盖，配置1900mAh大容量电池，带来超长续航体验！', '0000000000028700', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8212', '', '三星 Galaxy S4 (I9500) 16G版 星空黑 联通3G手机', '年货特价来袭！三星经典旗舰机！', '0000000000000500', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:15:04.707000', null, '1');
+INSERT INTO `goods` VALUES ('8213', '', '三星 I8552 白色 联通3G手机 双卡双待', '经济实惠机器~~开春入手好时机~', '0000000000079900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8214', '', '长虹（CHANGHONG） 3D51C1080i 51英寸 快门式3D智能Android 电视（黑色）', '智能安卓系统 可自由安装应用程序 <a  target=\"blank\"  href=\"http://sale.jd.com/act/Kt0aHzbU7uR1M.html\">“点击进入长虹新年专场”</a>', '0000000000269900', null, null, null, '1', '99999', null, null, '3', null, null, null, '1');
+INSERT INTO `goods` VALUES ('8215', '', 'LG 47LA6800-CA 47英寸 全高清智能3D液晶电视 （红色）', '【疯狂清仓】无边框硬屏，不闪式3D技术，动感应遥控器，“船”型底座设计！仅北京、沈阳、深圳有货！', '0000000000000100', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:11:32.005000', null, '1');
+INSERT INTO `goods` VALUES ('8216', '', '诺基亚(NOKIA) 1050 (RM-908) 黑色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000000200', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:11:56.879000', null, '1');
+INSERT INTO `goods` VALUES ('8217', '', '诺基亚(NOKIA) 1050 (RM-908) 蓝色 移动联通2G手机', '经典神器，简单实用,超长待机，更多色彩！', '0000000000000300', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:13:35.151000', null, '1');
+INSERT INTO `goods` VALUES ('8218', '', '联想 MA388 老人手机 星夜黑 移动联通2G手机 双卡双待', '孝敬爸妈首选，好评超22000条，大按键 大喇叭 大翻盖，配置1900mAh大容量电池，带来超长续航体验！', '0000000000000400', '0', null, null, '1', '99999', '', null, '1', null, '2018-03-07 16:14:15.977000', null, '1');
 INSERT INTO `goods` VALUES ('8219', '', '海信（Hisense）LED42EC260JD 42英寸 窄边网络 LED电视（黑色）', '<a  target=\"blank\"  href=\"http://sale.jd.com/act/YykdEtrMRaSsT.html\">“春宵一刻值千金”</a>', '0000000000229900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
 INSERT INTO `goods` VALUES ('8220', '', '酷派 8076D 咖啡棕 移动3G手机 双卡双待', '4.0英寸屏幕，双核处理器！移动用户无需换号，直接尊享3G网络！', '0000000000019900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
 INSERT INTO `goods` VALUES ('8221', '', '创维(Skyworth)LED 42E5DHR 42英寸 海量影视资源智能网络平板液晶电视二代升级版(黑色)', '二代新品！！智能双系统，正版影视随心看，丰富安卓应用，多屏互动！<a  target=\"blank\"  href=\"http://jmall.jd.com/p117514.html\">“猛戳这里，更多惊喜”</a>', '0000000000249900', null, null, null, '1', '99999', null, null, '1', null, null, null, '1');
@@ -6347,6 +6348,14 @@ INSERT INTO `goods` VALUES ('11289', '', '电水壶', '电水壶很漂亮', '000
 INSERT INTO `goods` VALUES ('11290', '', '121', '121', '0000000000000120', null, null, null, '1', '12', null, null, '1', null, null, null, '1');
 INSERT INTO `goods` VALUES ('11291', '', '11', '111', '0000000000003300', null, null, null, '1', '22', null, null, '1', null, null, null, '1');
 INSERT INTO `goods` VALUES ('11292', '', '123', '123', '0000000000012300', null, null, null, '1', '123', null, null, '1', null, null, null, '1');
+INSERT INTO `goods` VALUES ('11293', '', null, null, '0000000000000000', '1', null, null, '10', '0', '', null, '1', '2018-03-08 10:36:37.450000', '2018-03-08 10:36:37.450000', null, '1');
+INSERT INTO `goods` VALUES ('11294', '而微软', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 11:23:56.607000', '2018-03-08 11:23:56.607000', null, '19');
+INSERT INTO `goods` VALUES ('11295', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 11:24:03.525000', '2018-03-08 11:24:03.525000', null, '19');
+INSERT INTO `goods` VALUES ('11296', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 11:24:08.606000', '2018-03-08 11:24:08.606000', null, '19');
+INSERT INTO `goods` VALUES ('11297', '12', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:41:36.130000', '2018-03-08 14:41:36.130000', null, '19');
+INSERT INTO `goods` VALUES ('11298', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:41:43.174000', '2018-03-08 14:41:43.174000', null, '19');
+INSERT INTO `goods` VALUES ('11299', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:43:43.366000', '2018-03-08 14:43:43.366000', null, '19');
+INSERT INTO `goods` VALUES ('11300', 'df', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:49:45.161000', '2018-03-08 14:49:45.161000', null, '19');
 
 -- ----------------------------
 -- Table structure for goods_desc
@@ -6376,12 +6385,62 @@ CREATE TABLE `order_goods_table` (
   `NUM` int(11) NOT NULL,
   `GRADE` float(255,0) DEFAULT NULL COMMENT '评分',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_goods_table
 -- ----------------------------
 INSERT INTO `order_goods_table` VALUES ('1', '1', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('2', '1', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('3', '3', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('4', '2', '11', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('5', '4', '11', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('6', '1', '11', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('7', '3', '13', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('8', '4', '13', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('9', '2', '13', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('10', '4100', '12', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('11', '4101', '12', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('12', '4100', '12', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('13', '2', '11', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('14', '4105', '14', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('15', '2', '14', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('16', '4', '14', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('17', '2', '14', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('18', '3', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('19', '3', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('21', '1', '1', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('22', '1', '2', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('23', '3', '3', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('24', '2', '4', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('25', '4', '5', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('26', '1', '6', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('27', '3', '7', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('28', '4', '8', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('29', '2', '9', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('30', '4100', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('31', '4101', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('32', '4100', '16', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('33', '2', '16', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('34', '4105', '17', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('35', '2', '18', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('36', '4', '19', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('37', '2', '19', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('38', '3', '20', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('39', '3', '21', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('40', '1', '22', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('41', '4101', '23', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('42', '4100', '24', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('43', '2', '25', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('44', '4105', '26', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('45', '2', '27', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('46', '4', '28', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('47', '2', '29', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('48', '3', '30', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('49', '3', '31', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('50', '1', '32', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('99', '1', '10', '2', '9');
+INSERT INTO `order_goods_table` VALUES ('100', '10', '1', '2', '9');
 
 -- ----------------------------
 -- Table structure for order_table
@@ -6398,16 +6457,40 @@ CREATE TABLE `order_table` (
   `PAY_TIME` datetime DEFAULT NULL COMMENT 'ä»˜æ¬¾æ—¶é—´',
   `DELIVER_TIME` datetime DEFAULT NULL COMMENT 'å‘è´§æ—¶é—´',
   PRIMARY KEY (`ORDER_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
+INSERT INTO `order_table` VALUES ('1', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
+INSERT INTO `order_table` VALUES ('2', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
+INSERT INTO `order_table` VALUES ('3', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('5', '2', '121221', null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-03-08 09:44:36');
+INSERT INTO `order_table` VALUES ('6', '8', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('7', '8', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('8', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
+INSERT INTO `order_table` VALUES ('9', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
 INSERT INTO `order_table` VALUES ('10', '0', '', '', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 INSERT INTO `order_table` VALUES ('11', '0', '', '', '2', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 INSERT INTO `order_table` VALUES ('12', '0', '', '', '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 INSERT INTO `order_table` VALUES ('13', '0', '', '', '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 INSERT INTO `order_table` VALUES ('14', '0', '', '', '2', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('15', '0', null, null, '2', '2', '2018-03-07 09:58:16', '2018-03-07 09:58:18', '2018-03-07 09:58:21');
+INSERT INTO `order_table` VALUES ('16', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('17', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('18', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('19', '0', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('20', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('21', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
+INSERT INTO `order_table` VALUES ('22', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
+INSERT INTO `order_table` VALUES ('23', '0', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('24', '1', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('25', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('26', '1', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('27', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('28', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('29', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('30', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
 
 -- ----------------------------
 -- Table structure for seller
@@ -6425,26 +6508,28 @@ CREATE TABLE `seller` (
   `ADDRESS` varchar(255) DEFAULT NULL,
   `TELEPHONE` int(20) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
+  `MerId` int(32) DEFAULT '0' COMMENT '商户编号',
+  `MerKey` varchar(255) DEFAULT NULL COMMENT '密钥',
   PRIMARY KEY (`ID_SELLER`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01');
-INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01');
-INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('10', '密码1234', '81dc9bdb52d04dc20036dbd8313ed055', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84e7b', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('12', '密码1237', 'a9eb812238f753132652ae09963a05e9', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('13', '密码1235565', '7953bcdc416332990843fd95dbb9c493', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('14', '密码111', '698d51a19d8a121ce581499d7b701668', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('15', '0987', '8ae9c55967714bc6c45abe7333f227cc', 'swaddle', null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('16', '密码09876', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('17', 'mima0987', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('18', 'mima09876', '6531401f9a6807306651b87e44c05751', 'dfsdf的萨芬', null, null, null, 'hello', null, null, '01');
-INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01');
+INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01', '0', null);
+INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('5', '小明', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('6', '小郝', '35f4a8d465e6e1edc05f3d8ab658c551', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('9', '密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('10', '密码1234', '81dc9bdb52d04dc20036dbd8313ed055', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('11', '密码12345', '827ccb0eea8a706c4c34a16891f84e7b', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('12', '密码1237', 'a9eb812238f753132652ae09963a05e9', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('13', '密码1235565', '7953bcdc416332990843fd95dbb9c493', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('14', '密码111', '698d51a19d8a121ce581499d7b701668', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('15', '0987', '8ae9c55967714bc6c45abe7333f227cc', 'swaddle', null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('16', '密码09876', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('17', 'mima0987', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('18', 'mima09876', '6531401f9a6807306651b87e44c05751', 'dfsdf的萨芬', null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01', '0', null);

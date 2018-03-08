@@ -7,11 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list id="a5df3cee-722b-43fb-b649-edcb47f4f9ea" name="yyyyy (cherry picked from commit a0b3663)" comment="yyyyy&#10;&#10;(cherry picked from commit a0b3663)" />
-    <list default="true" id="5744f59f-077c-48c3-94e4-06713f14812f" name="Default" comment="添加dao,mapper,model代码；&#10;添加BussinessService,goodsService代码&#10;到master分支上">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml" />
+    <list default="true" id="5744f59f-077c-48c3-94e4-06713f14812f" name="Default" comment="商品表添加：商户编号：MerId，密钥：MerKey">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microsoul.sql" afterPath="$PROJECT_DIR$/microsoul.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mybatisGeneratorConfig.xml" afterPath="$PROJECT_DIR$/mybatisGeneratorConfig.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModelExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModelExample.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,90 +25,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CartAction.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java">
+      <file leaf-file-name="GoodsServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/GoodsServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="137" column="30" lean-forward="false" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="30" />
+            <state relative-caret-position="178">
+              <caret line="64" column="51" lean-forward="false" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SellerModelMapper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/SellerModelMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mybatisGeneratorConfig.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mybatisGeneratorConfig.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" column="66" lean-forward="false" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SellerModelExample.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModelExample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="837" column="0" lean-forward="false" selection-start-line="837" selection-start-column="0" selection-end-line="837" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="microsoul.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microsoul.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SellerModelMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="336" column="11" lean-forward="false" selection-start-line="336" selection-start-column="11" selection-end-line="336" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1520492340092" expanded="true" signature="4238:4353" ph="select from seller" />
+                <marker date="1520492340092" expanded="true" signature="4439:4508" ph="delete from " />
+                <marker date="1520492340092" expanded="true" signature="4617:4635" ph="delete from " />
+                <marker date="1520492340092" expanded="true" signature="4820:5432" ph="insert into seller... " />
+                <marker date="1520492340092" expanded="true" signature="7780:7807" ph="select count... seller" />
+                <marker date="1520492340092" expanded="true" signature="9617:10338" ph="update selle... " />
+                <marker date="1520492340092" expanded="true" signature="10554:11795" ph="update selle... " />
+                <marker date="1520492340092" expanded="true" signature="11900:12533" ph="update selle... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellerAction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/SellerAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2875">
-              <caret line="140" column="10" lean-forward="false" selection-start-line="140" selection-start-column="10" selection-end-line="140" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonCode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/CommonCode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Msg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/Msg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellerServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/SellerServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1311">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1519701298906" expanded="true" signature="2021:2061" ph="//..." />
-                <marker date="1519701298906" expanded="true" signature="2021:2172" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MD5Utils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/MD5Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/JsonUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="215" column="19" lean-forward="false" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,8 +97,18 @@
       <file leaf-file-name="mybatis-config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="506">
+              <caret line="65" column="62" lean-forward="true" selection-start-line="65" selection-start-column="62" selection-end-line="65" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-db.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-db.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -124,9 +117,68 @@
       <file leaf-file-name="spring-servlet.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="276">
               <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SellerModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="28" />
+              <folding>
+                <element signature="e#490#491#0" expanded="true" />
+                <element signature="e#521#522#0" expanded="true" />
+                <element signature="e#570#571#0" expanded="true" />
+                <element signature="e#610#611#0" expanded="true" />
+                <element signature="e#648#649#0" expanded="true" />
+                <element signature="e#682#683#0" expanded="true" />
+                <element signature="e#853#854#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#932#933#0" expanded="true" />
+                <element signature="e#1005#1006#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1085#1086#0" expanded="true" />
+                <element signature="e#1273#1274#0" expanded="true" />
+                <element signature="e#1301#1302#0" expanded="true" />
+                <element signature="e#1343#1344#0" expanded="true" />
+                <element signature="e#1407#1408#0" expanded="true" />
+                <element signature="e#1444#1445#0" expanded="true" />
+                <element signature="e#1476#1477#0" expanded="true" />
+                <element signature="e#1527#1528#0" expanded="true" />
+                <element signature="e#1569#1570#0" expanded="true" />
+                <element signature="e#1604#1605#0" expanded="true" />
+                <element signature="e#1635#1636#0" expanded="true" />
+                <element signature="e#1683#1684#0" expanded="true" />
+                <element signature="e#1756#1757#0" expanded="true" />
+                <element signature="e#1791#1792#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
+                <element signature="e#1870#1871#0" expanded="true" />
+                <element signature="e#1943#1944#0" expanded="true" />
+                <element signature="e#1977#1978#0" expanded="true" />
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#2053#2054#0" expanded="true" />
+                <element signature="e#2123#2124#0" expanded="true" />
+                <element signature="e#2160#2161#0" expanded="true" />
+                <element signature="e#2192#2193#0" expanded="true" />
+                <element signature="e#2243#2244#0" expanded="true" />
+                <element signature="e#2285#2286#0" expanded="true" />
+                <element signature="e#2318#2319#0" expanded="true" />
+                <element signature="e#2346#2347#0" expanded="true" />
+                <element signature="e#2389#2390#0" expanded="true" />
+                <element signature="e#2423#2424#0" expanded="true" />
+                <element signature="e#2456#2457#0" expanded="true" />
+                <element signature="e#2484#2485#0" expanded="true" />
+                <element signature="e#2527#2528#0" expanded="true" />
+                <element signature="e#2561#2562#0" expanded="true" />
+                <element signature="e#2594#2595#0" expanded="true" />
+                <element signature="e#2623#2624#0" expanded="true" />
+                <element signature="e#2667#2668#0" expanded="true" />
+                <element signature="e#2734#2735#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +198,8 @@
       <find>buyerLogin</find>
       <find>selectByExample</find>
       <find>mybatis</find>
+      <find>select</find>
+      <find>page</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,25 +225,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/springmvc-servlet/springmvc-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/properties/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis/spring-mybatis.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Ad_info_tableModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Adminitrator_tableModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Order_goods_tableModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Order_tableModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-db.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/GoodsModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/CookieUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/resource.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/GoodsModelExample.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/BuyerModelMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/CollectionModelMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/GoodsModelMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/BuyerModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/AdministratorAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/BuyerAction.java" />
@@ -199,29 +237,45 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/AdministratorService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/AdvertisementService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/GoodsAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/BuyerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/Adminitrator_copyModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Adminitrator_copyModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/AdminitratorModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/AdvertiseModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/CollectionModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/GoodsModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/OrdergoodsModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/OrdersModelMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/SellerModelMapper.java" />
+        <option value="$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar!/javax/servlet/http/HttpServlet.class" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/contentModelMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/AD1Node.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/resource.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/ContentsModelMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/ContentsModelMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/ContentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/ContentAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/ContentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/ContentsModel.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/CollectionModelMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/CollectionModelMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/GoodsDescModelMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/BuyerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-db.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/IndexAction.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/GoodsModelMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/SellerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/SellerService.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/SellerAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/GoodsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/GoodsAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/GoodsServiceImpl.java" />
         <option value="$PROJECT_DIR$/mybatisGeneratorConfig.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/SellerService.java" />
-        <option value="$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar!/javax/servlet/http/HttpServlet.class" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/SellerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/SellerAction.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/SellerModelMapper.java" />
       </list>
     </option>
   </component>
@@ -254,7 +308,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1358" />
-    <option name="y" value="-263" />
+    <option name="y" value="-193" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
   </component>
@@ -277,7 +331,9 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -319,6 +375,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="microsoul" type="462c0819:PsiDirectoryNode" />
               <item name="action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MicroSoul" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MicroSoul" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microsoul" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MicroSoul" type="b2602c69:ProjectViewProjectNode" />
@@ -422,22 +487,14 @@
               <item name="MicroSoul" type="462c0819:PsiDirectoryNode" />
               <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MicroSoul" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroSoul" type="462c0819:PsiDirectoryNode" />
-              <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -737,6 +794,22 @@
       <workItem from="1519656967051" duration="2856000" />
       <workItem from="1519691892564" duration="9064000" />
       <workItem from="1519711339976" duration="379000" />
+      <workItem from="1520062775171" duration="7310000" />
+      <workItem from="1520072460106" duration="53000" />
+      <workItem from="1520072682989" duration="147000" />
+      <workItem from="1520079502646" duration="1232000" />
+      <workItem from="1520081240989" duration="739000" />
+      <workItem from="1520146005679" duration="987000" />
+      <workItem from="1520211449720" duration="8751000" />
+      <workItem from="1520229956606" duration="8485000" />
+      <workItem from="1520298446795" duration="6429000" />
+      <workItem from="1520316162500" duration="9377000" />
+      <workItem from="1520327369291" duration="1323000" />
+      <workItem from="1520384181738" duration="5792000" />
+      <workItem from="1520402710485" duration="6012000" />
+      <workItem from="1520425479011" duration="657000" />
+      <workItem from="1520471919446" duration="6426000" />
+      <workItem from="1520490480855" duration="1929000" />
     </task>
     <task id="LOCAL-00001" summary="添加dao,mapper,model代码；&#10;添加BussinessService,goodsService代码">
       <created>1516690068546</created>
@@ -766,18 +839,179 @@
       <option name="project" value="LOCAL" />
       <updated>1516775336597</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修改商品添加代码;简洁代码；添加判断未传入必须参数的判断处理">
+      <created>1520065498253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1520065498253</updated>
+    </task>
+    <task id="LOCAL-00006" summary="新建content表，更新了建表sql;&#10;更新了商品首页内容添加功能代码；">
+      <created>1520072157267</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1520072157267</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更新了商品首页内容添加功能代码补充提交；">
+      <created>1520072780445</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520072780446</updated>
+    </task>
+    <task id="LOCAL-00008" summary="商品首页内容展示(广告位和商品)，更新数据库contentTable表字段">
+      <created>1520217809821</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1520217809821</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新数据库表contentTable字段">
+      <created>1520217950787</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1520217950787</updated>
+    </task>
+    <task id="LOCAL-00010" summary="管理员后台商品首页内容展示">
+      <created>1520219998128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1520219998128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="管理员后台商品首页内容删除，">
+      <created>1520221068410</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1520221068410</updated>
+    </task>
+    <task id="LOCAL-00012" summary="管理员后台商品信息的修改">
+      <created>1520231095850</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1520231095850</updated>
+    </task>
+    <task id="LOCAL-00013" summary="管理员内容，商品修改日期的修复">
+      <created>1520234266155</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1520234266155</updated>
+    </task>
+    <task id="LOCAL-00014" summary="mybatis-genertor更新collection的mapper文件">
+      <created>1520238064538</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1520238064538</updated>
+    </task>
+    <task id="LOCAL-00015" summary="商品详情页的展示">
+      <created>1520300317801</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1520300317802</updated>
+    </task>
+    <task id="LOCAL-00016" summary="添加购物车前需要登录买家才能添加">
+      <created>1520304557185</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1520304557185</updated>
+    </task>
+    <task id="LOCAL-00017" summary="sql更新">
+      <created>1520304870996</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1520304870996</updated>
+    </task>
+    <task id="LOCAL-00018" summary="改用远程数据库">
+      <created>1520305046370</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1520305046370</updated>
+    </task>
+    <task id="LOCAL-00019" summary="卖家修改个人信息和修改密码必须登录的情况下才能修改">
+      <created>1520324991557</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1520324991557</updated>
+    </task>
+    <task id="LOCAL-00020" summary="商品模糊搜索功能v1.0">
+      <created>1520327830112</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1520327830112</updated>
+    </task>
+    <task id="LOCAL-00021" summary="商品标题数据导入sql">
+      <created>1520328684157</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1520328684157</updated>
+    </task>
+    <task id="LOCAL-00022" summary="插入商品表数据sql">
+      <created>1520386068459</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1520386068460</updated>
+    </task>
+    <task id="LOCAL-00023" summary="二次更新商品表数据sql">
+      <created>1520387438771</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1520387438771</updated>
+    </task>
+    <task id="LOCAL-00024" summary="readme更新">
+      <created>1520388492401</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1520388492401</updated>
+    </task>
+    <task id="LOCAL-00025" summary="更新readMe;">
+      <created>1520410721645</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1520410721646</updated>
+    </task>
+    <task id="LOCAL-00026" summary="更新查看卖家用户信息功能">
+      <created>1520475696721</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1520475696721</updated>
+    </task>
+    <task id="LOCAL-00027" summary="商品发布功能，商品名的空格和空判断">
+      <created>1520491899572</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1520491899572</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106733000" />
+    <option name="totallyTimeSpent" value="176357000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-263" width="1456" height="876" extended-state="6" />
+    <frame x="1358" y="-193" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -790,27 +1024,63 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32837838" sideWeight="0.49713466" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32702702" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.67702705" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38513514" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67432433" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24355301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27292264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49713466" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49713466" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3864865" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67432433" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28510028" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -860,9 +1130,32 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加dao,mapper,model代码；&#10;添加BussinessService,goodsService代码" />
-    <MESSAGE value="添加dao,mapper,model代码；&#10;添加BussinessService,goodsService代码&#10;到master分支上" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加dao,mapper,model代码；&#10;添加BussinessService,goodsService代码&#10;到master分支上" />
+    <MESSAGE value="修改商品添加代码;简洁代码；添加判断未传入必须参数的判断处理" />
+    <MESSAGE value="新建content表，更新了建表sql;&#10;更新了商品首页内容添加功能代码；" />
+    <MESSAGE value="更新了商品首页内容添加功能代码补充提交；" />
+    <MESSAGE value="商品首页内容展示(广告位和商品)，更新数据库contentTable表字段" />
+    <MESSAGE value="更新数据库表contentTable字段" />
+    <MESSAGE value="管理员后台商品首页内容展示" />
+    <MESSAGE value="管理员后台商品首页内容删除，" />
+    <MESSAGE value="管理员后台商品信息的修改" />
+    <MESSAGE value="管理员内容，商品修改日期的修复" />
+    <MESSAGE value="mybatis-genertor更新collection的mapper文件" />
+    <MESSAGE value="商品详情页的添加" />
+    <MESSAGE value="商品详情页的展示" />
+    <MESSAGE value="添加购物车前需要登录买家才能添加" />
+    <MESSAGE value="sql更新" />
+    <MESSAGE value="改用远程数据库" />
+    <MESSAGE value="卖家修改个人信息和修改密码必须登录的情况下才能修改" />
+    <MESSAGE value="商品模糊搜索功能v1.0" />
+    <MESSAGE value="商品标题数据导入sql" />
+    <MESSAGE value="插入商品表数据sql" />
+    <MESSAGE value="二次更新商品表数据sql" />
+    <MESSAGE value="readme更新" />
+    <MESSAGE value="更新readMe;" />
+    <MESSAGE value="更新查看卖家用户信息功能" />
+    <MESSAGE value="商品发布功能，商品名的空格和空判断" />
+    <MESSAGE value="商品表添加：商户编号：MerId，密钥：MerKey" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品表添加：商户编号：MerId，密钥：MerKey" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -871,148 +1164,209 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/BuyerServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/GoodsModelExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="345">
+          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/OrderServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/AD1Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="61" column="23" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state relative-caret-position="322">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/AdministratorService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/Ad_info_tableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="14" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="92">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/resource.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/MsgTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="58" />
+        <state relative-caret-position="184">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/GoodsAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/ContentsModelMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="20" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="601">
+          <caret line="375" column="11" lean-forward="false" selection-start-line="375" selection-start-column="11" selection-end-line="375" selection-end-column="11" />
+          <folding>
+            <marker date="1520217060107" expanded="true" signature="4795:4965" ph="select , fro... " />
+            <marker date="1520217060107" expanded="true" signature="5051:5128" ph="delete from " />
+            <marker date="1520217060107" expanded="true" signature="5239:5263" ph="delete from " />
+            <marker date="1520217060107" expanded="true" signature="5450:6010" ph="insert into contenttable... " />
+            <marker date="1520217060107" expanded="true" signature="8176:8209" ph="select count... contenttable" />
+            <marker date="1520217060107" expanded="true" signature="9894:10549" ph="update conte... " />
+            <marker date="1520217060107" expanded="true" signature="10720:11319" ph="update conte... " />
+            <marker date="1520217060107" expanded="true" signature="11537:12657" ph="update conte... " />
+            <marker date="1520217060107" expanded="true" signature="12773:13347" ph="update conte... " />
+            <marker date="1520217060107" expanded="true" signature="13454:13979" ph="update conte... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/AdvertisementService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/ContentsModelExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="42" selection-end-column="3" />
+        <state relative-caret-position="23">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/BuyerService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Order_goods_tableModelMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="115">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/OrderService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/AdvertiseModelMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/CollectionModelMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/ContentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/GoodsModelMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/OrdergoodsModelMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/OrdersModelMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/GoodsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="22" column="51" lean-forward="false" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+        <state relative-caret-position="599">
+          <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/GoodsServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/ContentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+        <state relative-caret-position="254">
+          <caret line="66" column="14" lean-forward="false" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/OrderAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/CollectionModelKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/CollectionModelMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
+        <state relative-caret-position="515">
           <caret line="194" column="11" lean-forward="false" selection-start-line="194" selection-start-column="11" selection-end-line="194" selection-end-column="11" />
-          <folding />
+          <folding>
+            <marker date="1520316503233" expanded="true" signature="3489:3595" ph="select from collection" />
+            <marker date="1520316503233" expanded="true" signature="3681:3741" ph="delete from " />
+            <marker date="1520316503233" expanded="true" signature="3854:3876" ph="delete from " />
+            <marker date="1520316503233" expanded="true" signature="4065:4266" ph="insert into collection... " />
+            <marker date="1520316503233" expanded="true" signature="5251:5282" ph="select count... collection" />
+            <marker date="1520316503233" expanded="true" signature="6087:6313" ph="update colle... " />
+            <marker date="1520316503233" expanded="true" signature="6533:6901" ph="update colle... " />
+            <marker date="1520316503233" expanded="true" signature="7010:7211" ph="update colle... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/Adminitrator_copyModelExample.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/BuyerModelExample.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/CollectionModelExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/OrdersModel.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/CollectionModelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/GoodsDescModelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520239983929" expanded="true" signature="4153:4314" ph="select , fro... " />
+            <marker date="1520239983929" expanded="true" signature="4397:4465" ph="delete from " />
+            <marker date="1520239983929" expanded="true" signature="4577:4599" ph="delete from " />
+            <marker date="1520239983929" expanded="true" signature="4787:4997" ph="insert into goods_desc... " />
+            <marker date="1520239983929" expanded="true" signature="5993:6024" ph="select count... goods_desc" />
+            <marker date="1520239983929" expanded="true" signature="6849:7084" ph="update goods... " />
+            <marker date="1520239983929" expanded="true" signature="7255:7431" ph="update goods... " />
+            <marker date="1520239983929" expanded="true" signature="7650:8025" ph="update goods... " />
+            <marker date="1520239983929" expanded="true" signature="8142:8352" ph="update goods... " />
+            <marker date="1520239983929" expanded="true" signature="8460:8618" ph="update goods... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/ContentsModelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/GoodsDescModelExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/GoodsDescModelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/BuyerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="58" column="17" lean-forward="false" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
+        <state relative-caret-position="161">
           <caret line="7" column="110" lean-forward="false" selection-start-line="7" selection-start-column="110" selection-end-line="7" selection-end-column="110" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/Adminitrator_copyModelMapper.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/BuyerModelMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3572">
-          <caret line="289" column="11" lean-forward="false" selection-start-line="289" selection-start-column="11" selection-end-line="289" selection-end-column="11" />
-          <folding>
-            <marker date="1519695651796" expanded="true" signature="4000:4112" ph="select from buyer" />
-            <marker date="1519695651796" expanded="true" signature="4198:4264" ph="delete from " />
-            <marker date="1519695651796" expanded="true" signature="4372:4389" ph="delete from " />
-            <marker date="1519695651796" expanded="true" signature="4573:5058" ph="insert into buyer... " />
-            <marker date="1519695651796" expanded="true" signature="6969:6995" ph="select count... buyer" />
-            <marker date="1519695651796" expanded="true" signature="8486:9052" ph="update buyer... " />
-            <marker date="1519695651796" expanded="true" signature="9267:10232" ph="update buyer... " />
-            <marker date="1519695651796" expanded="true" signature="10336:10835" ph="update buyer... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1022,216 +1376,320 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1135">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mybatisGeneratorConfig.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/BuyerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/IndexAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="87" column="5" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/AdministratorAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/GoodsModelMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="713">
+          <caret line="410" column="0" lean-forward="false" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+          <folding>
+            <element signature="n#resultMap#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#when#0;n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#when#1;n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#when#2;n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#when#3;n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#if#0;n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#when#0;n#choose#0;n#foreach#0;n#trim#0;n#if#0;n#foreach#0;n#where#0;n#sql#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#sql#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#if#0;n#select#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#delete#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#delete#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#insert#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#insert#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#1;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#2;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#update#3;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#3;n#mapper#0;n#!!top" expanded="false" />
+            <element signature="n#select#4;n#mapper#0;n#!!top" expanded="false" />
+            <marker date="1520404536646" expanded="true" signature="4573:4685" ph="select from goods" />
+            <marker date="1520404536646" expanded="true" signature="4771:4837" ph="delete from " />
+            <marker date="1520404536646" expanded="true" signature="4945:4962" ph="delete from " />
+            <marker date="1520404536646" expanded="false" signature="5146:5939" ph="insert into goods... " />
+            <marker date="1520404536646" expanded="true" signature="8894:8920" ph="select count... goods" />
+            <marker date="1520404536646" expanded="true" signature="11178:12122" ph="update goods... " />
+            <marker date="1520404536646" expanded="true" signature="12337:13971" ph="update goods... " />
+            <marker date="1520404536646" expanded="true" signature="14075:14903" ph="update goods... " />
+            <marker date="1520404536646" expanded="false" signature="15038:15153" ph="select b.* f... collection" />
+            <marker date="1520404536646" expanded="true" signature="15263:15412" ph="select a.num... order_goods_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/GoodsModelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/AdvertisementAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/ContentAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="368">
+          <caret line="73" column="93" lean-forward="false" selection-start-line="73" selection-start-column="89" selection-end-line="73" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/BuyerAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/ContentsModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/Adminitrator_copyModelMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/AdminitratorModelMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/Adminitrator_copyModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/AdministratorServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/CollectionModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/OrderAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="92">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/SellerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModelExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="644">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/SellerModelMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="92" column="11" lean-forward="false" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="11" />
-          <folding>
-            <marker date="1519695651815" expanded="true" signature="12142:12160" ph="update selle... " />
-            <marker date="1519695651815" expanded="true" signature="12142:12171" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="271" column="0" lean-forward="false" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-db.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/OrderStateCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/CommonCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/Msg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/MD5Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/util/JsonUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="552">
+            <caret line="78" column="20" lean-forward="false" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/SellerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1311">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="5106">
+          <caret line="235" column="4" lean-forward="false" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1519701298906" expanded="true" signature="2021:2061" ph="//..." />
-            <marker date="1519701298906" expanded="true" signature="2021:2172" ph="{...}" />
+            <marker date="1520475423485" expanded="true" signature="2239:2281" ph="//..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/BuyerAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/BuyerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/SellerAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2875">
-          <caret line="140" column="10" lean-forward="false" selection-start-line="140" selection-start-column="10" selection-end-line="140" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="215" column="19" lean-forward="false" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+        <state relative-caret-position="391">
+          <caret line="32" column="26" lean-forward="false" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/GoodsAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="51" column="46" lean-forward="false" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/GoodsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/GoodsModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/service/impl/GoodsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="64" column="51" lean-forward="false" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="276">
           <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/action/CartAction.java">
+    <entry file="file://$PROJECT_DIR$/microsoul.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="137" column="30" lean-forward="false" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="30" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="65" column="62" lean-forward="true" selection-start-line="65" selection-start-column="62" selection-end-line="65" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-db.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mybatisGeneratorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="66" lean-forward="false" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModelExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="837" column="0" lean-forward="false" selection-start-line="837" selection-start-column="0" selection-end-line="837" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/model/SellerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1407#1408#0" expanded="true" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+            <element signature="e#1569#1570#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
+            <element signature="e#1683#1684#0" expanded="true" />
+            <element signature="e#1756#1757#0" expanded="true" />
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1870#1871#0" expanded="true" />
+            <element signature="e#1943#1944#0" expanded="true" />
+            <element signature="e#1977#1978#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2053#2054#0" expanded="true" />
+            <element signature="e#2123#2124#0" expanded="true" />
+            <element signature="e#2160#2161#0" expanded="true" />
+            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2243#2244#0" expanded="true" />
+            <element signature="e#2285#2286#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+            <element signature="e#2346#2347#0" expanded="true" />
+            <element signature="e#2389#2390#0" expanded="true" />
+            <element signature="e#2423#2424#0" expanded="true" />
+            <element signature="e#2456#2457#0" expanded="true" />
+            <element signature="e#2484#2485#0" expanded="true" />
+            <element signature="e#2527#2528#0" expanded="true" />
+            <element signature="e#2561#2562#0" expanded="true" />
+            <element signature="e#2594#2595#0" expanded="true" />
+            <element signature="e#2623#2624#0" expanded="true" />
+            <element signature="e#2667#2668#0" expanded="true" />
+            <element signature="e#2734#2735#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/SellerModelMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="336" column="11" lean-forward="false" selection-start-line="336" selection-start-column="11" selection-end-line="336" selection-end-column="11" />
+          <folding>
+            <marker date="1520492340092" expanded="true" signature="4238:4353" ph="select from seller" />
+            <marker date="1520492340092" expanded="true" signature="4439:4508" ph="delete from " />
+            <marker date="1520492340092" expanded="true" signature="4617:4635" ph="delete from " />
+            <marker date="1520492340092" expanded="true" signature="4820:5432" ph="insert into seller... " />
+            <marker date="1520492340092" expanded="true" signature="7780:7807" ph="select count... seller" />
+            <marker date="1520492340092" expanded="true" signature="9617:10338" ph="update selle... " />
+            <marker date="1520492340092" expanded="true" signature="10554:11795" ph="update selle... " />
+            <marker date="1520492340092" expanded="true" signature="11900:12533" ph="update selle... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hust/microsoul/mapper/SellerModelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
