@@ -26,7 +26,7 @@ public interface GoodsService {
      *@author LemonLin
      *@date  2018/2/28
      */
-    public GoodsModel insert(GoodsModel record);
+    public GoodsModel insert(GoodsModel record,Integer sellerId);
 
     public List<GoodsModel> selectByCriteria(GoodsModelExample example);
 

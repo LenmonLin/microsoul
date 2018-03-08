@@ -42,9 +42,14 @@ public class GoodsAction {
 	 */
 	@RequestMapping("insertGoodsModel")
 	@ResponseBody
-	public  Msg insertGoodsModel(GoodsModel goodsModel){
+	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request){
 
-		GoodsModel exitGoods = goodsService.insert(goodsModel);
+		Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
+
+		if (existUserId==null){
+			return Msg.fail();
+		}
+		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId);
 		if (exitGoods == null){
 			return Msg.fail();
 		}

@@ -45,7 +45,7 @@ public class GoodsServiceImpl  implements GoodsService{
      *@date  2018/1/23
      */
     @Override
-    public GoodsModel  insert(GoodsModel goodsModel) {
+    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId) {
 
 
         //1、补全goodsModel的属性
@@ -58,16 +58,20 @@ public class GoodsServiceImpl  implements GoodsService{
         //1、判断必须属性是否传入，没有返回空，有的话，返回goodsModel，
         //这里不用重新get之后再set,因为最后插入的是insert(goodsModel)
         //所以model附带进来的属性就都能插入
-        if((goodsModel.getGoodsName()==null)||
+
+        System.out.println("测试商品名输入为空的做法"+goodsModel.getGoodsName()+"是否是空格");
+        System.out.println("测试商品名输入为空的做法===="+goodsModel.getGoodsName().trim()+"是否是空格");
+        if((goodsModel.getGoodsName().trim().length() == 0)||
+                goodsModel.getGoodsName() == null||
                 (goodsModel.getUnitPrice()==null)||
                 (goodsModel.getCategory()==null)||
-                (goodsModel.getStore()==null)||
-                (goodsModel.getSellerId()==null)){
+                (goodsModel.getStore()==null)){
             return null;
         }
         /*java.sql.Date只包含年月日信息
             java.util.Date 包含年月日时分秒毫秒
         */
+        goodsModel.setSellerId(sellerId);
         goodsModel.setCreated(new Date());
         goodsModel.setUpdated(new Date());
 

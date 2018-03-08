@@ -165,7 +165,7 @@ public class SellerAction {
     }
 
     /**
-     *@Description 更新卖家信息
+     *@Description 查看卖家信息
      *@params
      *@author LemonLin
      *@date  2018/3/8
