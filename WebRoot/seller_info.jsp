@@ -91,7 +91,7 @@
   <el-col :span="12" offset="4">
     <el-form :model="form" label-width="150px" size="medium">
       <el-form-item label="用户名" prop="accountName">
-        <el-input v-model="form.accountName"></el-input>
+        {{form.accountName}}
       </el-form-item>
       <el-form-item label="手机号" prop="telephone">
         <el-input v-model="form.telephone"></el-input>
@@ -109,7 +109,7 @@
         <el-input v-model="form.merkey"></el-input>
       </el-form-item>
       <el-form-item label="真实姓名">
-        <el-input v-model="form.realname"></el-input>
+        <el-input v-model="form.realName"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">确认修改</el-button>      
@@ -165,10 +165,9 @@
           type: 'warning'
         }).then(() => {
           $.ajax({
-          url : 'http://localhost:8080/microsoul/seller/sellerChangePassword.do',
+          url : 'http://localhost:8080/microsoul/seller/sellerInfo.do',
           type : 'post',
-          data:{
-             accountName:info.accountName,
+          data:{         
           telephone:info.telephone,
           district:info.district,
           email:info.email,
@@ -186,20 +185,14 @@
             }
           },
           error : function(data) {           
-            return;
+            alert('发生错误')
           },
           dataType : 'json',
         })
-          this.$message({
-            type: 'success',
-            message: '修改成功!'
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })})},
+          
+        })},
       changePassword(){
+      var that=this;
         var password=this.password;
         var password1=this.password1;
         var password2=this.password2;
@@ -219,20 +212,22 @@
           url : 'http://localhost:8080/microsoul/seller/sellerChangePassword.do',
           type : 'post',
           data:{
+          accountName:that.form.accountName,
             password:password,
             newPassword:password1  
           },
-          success : function(data) {
-            that.form=data.extend.sellerModel;
+          success : function(data) {          
             var result=data.code;
             if(result == 100){
-				alert('密码修改成功')
+				alert('密码修改成功');
+				that.dialogVisible=false;
+	
             }else {
               alert("密码修改失败");
             }
           },
           error : function(data) {
-            alert(data);
+            alert('666');
           },
           dataType : 'json',
         })
