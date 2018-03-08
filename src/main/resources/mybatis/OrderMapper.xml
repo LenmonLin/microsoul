@@ -81,18 +81,18 @@
   </insert>
   
   <update id="deleteOrder" parameterType="OrderModel">
-  	delete from table order_table where ORDER_ID =#{orderId}
+  	delete from order_table where ORDER_ID =#{orderId}
   </update>
   
   <update id="setLogisticId" parameterType="OrderModel">
-  	update table set DELIVER_TIME = #{deliverTime},LOGISTIC_ID = #{logisticId} ,STATE = #{state} where ORDER_ID =#{orderId}
+  	update order_table set DELIVER_TIME = #{deliverTime},LOGISTIC_ID = #{logisticId} ,STATE = #{state} where ORDER_ID =#{orderId}
   </update>
  
   <update id="setLogisticIdReject" parameterType="OrderModel">
-  	update table set LOGISTIC_ID_REJECT = #{logisticIdReject} ,STATE = #{state} where ORDER_ID =#{orderId}
+  	update order_table set LOGISTIC_ID_REJECT = #{logisticIdReject} ,STATE = #{state} where ORDER_ID =#{orderId}
   </update>
  
   <update id="updateOrderState" parameterType="OrderModel">
-  	update table set STATE = #{state} where ORDER_ID =#{orderId}
+  	update order_table set STATE = #{state} where ORDER_ID =#{orderId}
   </update>
 </mapper>
