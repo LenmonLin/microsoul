@@ -58,16 +58,16 @@ public class OrderAction {
 			SellerModel seller = (SellerModel)request.getSession().getAttribute("existUser");
 			//orderModel.setBuyerId(buyerId);
 			//测试使用
-			if(buyerId!=null) {
-				orderModel.setBuyerId(buyerId);
-				
-			} else if(seller!=null){
-				orderModel.setSellerId(seller.getIdSeller());
-			} else {
-				return Msg.fail();
-			}
+			orderModel.setBuyerId(1);
 			//测试使用
-			
+//			if(buyerId!=null) {
+//				orderModel.setBuyerId(buyerId);
+//				
+//			} else if(seller!=null){
+//				orderModel.setSellerId(seller.getIdSeller());
+//			} else {
+//				return Msg.fail();
+//			}
 			PageInfo<OrderModel> orderList = orderService.getOrderList(page, rows, orderModel);
 			return Msg.success().add("orderList",orderList);
 		} catch (Exception e) {
