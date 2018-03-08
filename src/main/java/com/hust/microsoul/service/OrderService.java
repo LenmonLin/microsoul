@@ -116,4 +116,12 @@ public interface OrderService {
 	 */
 	public void sellerReceivedRejected(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
 
+	/**
+	 * 
+	 * @Description:买家取消订单
+	 * @author: huwentao    
+	 * @date:   2018年3月8日 上午9:14:16   
+	 * @version V1.0
+	 */
+	public void cancelOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
 }

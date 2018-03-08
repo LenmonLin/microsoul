@@ -153,4 +153,8 @@ public class OrderAction {
 		orderService.sellerReceivedRejected(request, response, orderModel);
 	}
 
+	@RequestMapping("cancelOrder")
+	public void cancelOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.sellerReceivedRejected(request, response, orderModel);
+	}
 }

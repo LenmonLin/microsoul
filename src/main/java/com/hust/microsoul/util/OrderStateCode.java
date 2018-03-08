@@ -42,6 +42,11 @@ public interface OrderStateCode {
 	 */
 	public static final Integer BUYERREJECTED = 6;
 	
+	
+	/*
+	 * 买家已填写退货单号
+	 */
+	public static final Integer CANCEL = 8;
 	/*
 	 * 完成订单
 	 */

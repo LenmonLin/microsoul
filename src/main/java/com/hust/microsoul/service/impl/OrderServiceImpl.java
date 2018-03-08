@@ -6,7 +6,6 @@ import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.mapper.OrderGoodsMapper;
 import com.hust.microsoul.mapper.OrderMapper;
 import com.hust.microsoul.model.GoodsModel;
-import com.hust.microsoul.model.GoodsModelExample;
 import com.hust.microsoul.model.OrderGoodsModel;
 import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.service.OrderService;
@@ -250,6 +249,23 @@ public class OrderServiceImpl implements OrderService {
 	public void sellerReceivedRejected(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
 		try {
 			orderModel.setState(OrderStateCode.DONE);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void cancelOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.CANCEL);
 			
 			int updateResult = orderMapper.updateOrderState(orderModel);
 			
