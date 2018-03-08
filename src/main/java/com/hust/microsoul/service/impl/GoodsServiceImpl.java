@@ -4,10 +4,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsDescModelMapper;
 import com.hust.microsoul.mapper.GoodsModelMapper;
+import com.hust.microsoul.mapper.SellerModelMapper;
 import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
+import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.GoodsService;
+import com.hust.microsoul.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +34,9 @@ public class GoodsServiceImpl  implements GoodsService{
 
     @Autowired
     private GoodsDescModelMapper goodsDescModelMapper;
+
+    @Autowired
+    private SellerModelMapper sellerModelMapper;
 
 
     @Override
@@ -61,11 +67,17 @@ public class GoodsServiceImpl  implements GoodsService{
 
         System.out.println("测试商品名输入为空的做法"+goodsModel.getGoodsName()+"是否是空格");
         System.out.println("测试商品名输入为空的做法===="+goodsModel.getGoodsName().trim()+"是否是空格");
+
+        SellerModel sellerModel = sellerModelMapper.selectByPrimaryKey(sellerId);
+
+        Integer merid = sellerModel.getMerid();
+        String merkey = sellerModel.getMerkey();
         if((goodsModel.getGoodsName().trim().length() == 0)||
                 goodsModel.getGoodsName() == null||
                 (goodsModel.getUnitPrice()==null)||
                 (goodsModel.getCategory()==null)||
-                (goodsModel.getStore()==null)){
+                (goodsModel.getStore()==null)||
+                merid==null||merkey== null){
             return null;
         }
         /*java.sql.Date只包含年月日信息

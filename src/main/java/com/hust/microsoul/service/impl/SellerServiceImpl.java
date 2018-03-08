@@ -107,6 +107,9 @@ public class SellerServiceImpl implements SellerService{
         sellerModel.setRealName(record.getRealName());
         sellerModel.setAddress(record.getAddress());
         sellerModel.setTelephone(record.getTelephone());
+        //补充商户编号：MerId，密钥：MerKey
+        sellerModel.setMerid(record.getMerid());
+        sellerModel.setMerkey(record.getMerkey());
         //更新到数据库中
         sellerModelMapper.updateByPrimaryKeySelective(sellerModel);
         return true;

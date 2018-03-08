@@ -71,6 +71,7 @@
 			必须参数：accountName password
 			可选参数：zhifubaoAccount；email;qqAccount;district;realName;address;
 			telephone;
+			merid;merkey(merid,merkey必须有才能发布商品)
 			
 	修改旧密码：http://localhost:8080/microsoul/seller/sellerChangePassword.do
 			必须参数：accountName  ； password ；newPassword
