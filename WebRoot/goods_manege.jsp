@@ -45,25 +45,25 @@
             <i class="el-icon-location"></i>
             <span>订单管理</span>
           </template>
-          <el-menu-item index="1-1"><a href="./seller_unpaid_order.html" >未付款订单</a></el-menu-item>
-          <el-menu-item index="1-2"><a href="./seller_payoff_order.html" >已付款订单</a></el-menu-item>
-          <el-menu-item index="1-3"><a href="./seller_delivery_order.html" >配送中订单</a></el-menu-item>
-          <el-menu-item index="1-4"><a href="./seller_completed_order.html" >已完成订单</a></el-menu-item>
+          <el-menu-item index="1-1"><a href="./seller_unpaid_order.jsp" >未付款订单</a></el-menu-item>
+          <el-menu-item index="1-2"><a href="./seller_payoff_order.jsp" >已付款订单</a></el-menu-item>
+          <el-menu-item index="1-3"><a href="./seller_delivery_order.jsp" >配送中订单</a></el-menu-item>
+          <el-menu-item index="1-4"><a href="./seller_completed_order.jsp" >已完成订单</a></el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu"></i>
             <span>商品管理</span>
           </template>
-          <el-menu-item index="2-1"><a href="./goods_issue.html" >商品发布</a></el-menu-item>
-          <el-menu-item index="2-2"><a href="./goods_manege.html" >商品管理</a></el-menu-item>
+          <el-menu-item index="2-1"><a href="./goods_issue.jsp" >商品发布</a></el-menu-item>
+          <el-menu-item index="2-2"><a href="./goods_manege.jsp" >商品管理</a></el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-setting"></i>
             <span>设置</span>
           </template>
-          <el-menu-item index="3-1"><a href="./seller_info.html">个人信息</a></el-menu-item>
+          <el-menu-item index="3-1"><a href="./seller_info.jsp">个人信息</a></el-menu-item>
         </el-submenu>
       </el-menu>
     </el-col>

@@ -40,25 +40,25 @@
             <i class="el-icon-location"></i>
             <span>订单管理</span>
           </template>
-          <el-menu-item index="1-1"><a href="./seller_unpaid_order.html" >未付款订单</a></el-menu-item>
-          <el-menu-item index="1-2"><a href="./seller_payoff_order.html" >已付款订单</a></el-menu-item>
-          <el-menu-item index="1-3"><a href="./seller_delivery_order.html" >配送中订单</a></el-menu-item>
-          <el-menu-item index="1-4"><a href="./seller_completed_order.html" >已完成订单</a></el-menu-item>
+          <el-menu-item index="1-1"><a href="./seller_unpaid_order.jsp" >未付款订单</a></el-menu-item>
+          <el-menu-item index="1-2"><a href="./seller_payoff_order.jsp" >已付款订单</a></el-menu-item>
+          <el-menu-item index="1-3"><a href="./seller_delivery_order.jsp" >配送中订单</a></el-menu-item>
+          <el-menu-item index="1-4"><a href="./seller_completed_order.jsp" >已完成订单</a></el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu"></i>
             <span>商品管理</span>
           </template>
-          <el-menu-item index="2-1"><a href="./goods_issue.html" >商品发布</a></el-menu-item>
-          <el-menu-item index="2-2"><a href="./goods_manege.html" >商品管理</a></el-menu-item>
+          <el-menu-item index="2-1"><a href="./goods_issue.jsp" >商品发布</a></el-menu-item>
+          <el-menu-item index="2-2"><a href="./goods_manege.jsp" >商品管理</a></el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-setting"></i>
             <span>设置</span>
           </template>
-          <el-menu-item index="3-1"><a href="./seller_info.html">个人信息</a></el-menu-item>
+          <el-menu-item index="3-1"><a href="./seller_info.jsp">个人信息</a></el-menu-item>
         </el-submenu>
       </el-menu>
     </el-col>
@@ -90,27 +90,29 @@
 <el-row>
   <el-col :span="12" offset="4">
     <el-form :model="form" label-width="150px" size="medium">
-      <el-form-item label="用户名" prop="name">
-        <el-input v-model="form.name"></el-input>
+      <el-form-item label="用户名" prop="accountName">
+        <el-input v-model="form.accountName"></el-input>
       </el-form-item>
-      <el-form-item label="手机号" prop="phone">
-        <el-input v-model="form.phone"></el-input>
+      <el-form-item label="手机号" prop="telephone">
+        <el-input v-model="form.telephone"></el-input>
       </el-form-item>
       <el-form-item label="地区">
-        <el-input v-model="form.region"></el-input>
+        <el-input v-model="form.district"></el-input>
       </el-form-item>
       <el-form-item label="邮箱">
         <el-input v-model="form.email"></el-input>
       </el-form-item>
-      <el-form-item label="支付宝账号">
-        <el-input v-model="form.alipay_account"></el-input>
+      <el-form-item label="易宝账号">
+        <el-input v-model="form.merid"></el-input>
+      </el-form-item>
+      <el-form-item label="易宝密钥">
+        <el-input v-model="form.merkey"></el-input>
       </el-form-item>
       <el-form-item label="真实姓名">
-        <el-input v-model="form.real_name"></el-input>
+        <el-input v-model="form.realname"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">确认修改</el-button>
-        <el-button>取消</el-button>
+        <el-button type="primary" @click="onSubmit">确认修改</el-button>      
       </el-form-item>
     </el-form>
   </el-col>
@@ -143,26 +145,54 @@
         password2:'',
         dialogVisible:false,
         form:{
-          name:'',
-          phone:'',
-          region:'',
+          accountName:'',
+          telephone:'',
+          district:'',
           email:'',
-          alipay_account:"",
+          merkey:"",
+          merid:'',
+          realName:'',
 
         }
       }
     },
     methods:{
       onSubmit(){
+      var info=this.form;
         this.$confirm('此操作将修改个人信息, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          axios.post();
+          $.ajax({
+          url : 'http://localhost:8080/microsoul/seller/sellerChangePassword.do',
+          type : 'post',
+          data:{
+             accountName:info.accountName,
+          telephone:info.telephone,
+          district:info.district,
+          email:info.email,
+          merkey:info.merkey,
+          merid:info.merid,
+          realName:info.realName,
+          },
+          success : function(data) {
+            that.form=data.extend.sellerModel;
+            var result=data.code;
+            if(result == 100){
+				alert('个人信息修改成功');
+            }else {
+              alert("信息修改失败");
+            }
+          },
+          error : function(data) {           
+            return;
+          },
+          dataType : 'json',
+        })
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: '修改成功!'
           });
         }).catch(() => {
           this.$message({
@@ -185,34 +215,45 @@
               type: 'error'
             });
           return;}
-
+		$.ajax({
+          url : 'http://localhost:8080/microsoul/seller/sellerChangePassword.do',
+          type : 'post',
+          data:{
+            password:password,
+            newPassword:password1  
+          },
+          success : function(data) {
+            that.form=data.extend.sellerModel;
+            var result=data.code;
+            if(result == 100){
+				alert('密码修改成功')
+            }else {
+              alert("密码修改失败");
+            }
+          },
+          error : function(data) {
+            alert(data);
+          },
+          dataType : 'json',
+        })
           }
 
-    }
+    },
     mounted:function(){
         var that=this;
         $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          url : 'http://localhost:8080/microsoul/seller/showSeller.do',
           type : 'post',
           data:{
-            sellerId:1,
-            rows:10,
+       
           },
           success : function(data) {
-            that.total=data.extend.goodsModelList.total;
-            var list=data.extend.goodsModelList.list;
-            for (var i=0;i<list.length;i++)
-            {
-              if(list[i].status==1)
-                list[i].status='是';
-              else list[i].status='否';
-            }
-            that.goods_info = list;
+            that.form=data.extend.sellerModel;
             var result=data.code;
             if(result == 100){
 
             }else {
-              alert("商品加载失败");
+              alert("信息加载失败");
             }
           },
           error : function(data) {
