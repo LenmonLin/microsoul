@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.OrderModel;
+import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.OrderService;
 import com.hust.microsoul.util.Msg;
 
@@ -53,12 +54,17 @@ public class OrderAction {
 		try {
 			
 			Integer buyerId = (Integer)request.getSession().getAttribute("loginedBuyersID");
+			
+			SellerModel seller = (SellerModel)request.getSession().getAttribute("existUser");
 			//orderModel.setBuyerId(buyerId);
 			//测试使用
-			if(buyerId==null) {
-				orderModel.setBuyerId(1);	
-			} else {
+			if(buyerId!=null) {
 				orderModel.setBuyerId(buyerId);
+				
+			} else if(seller!=null){
+				orderModel.setSellerId(seller.getIdSeller());
+			} else {
+				return Msg.fail();
 			}
 			//测试使用
 			
@@ -156,5 +162,10 @@ public class OrderAction {
 	@RequestMapping("cancelOrder")
 	public void cancelOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
 		orderService.cancelOrder(request, response, orderModel);
+	}
+	
+	@RequestMapping("payOrder")
+	public void payOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
+		orderService.buyerPayOrder(request, response, orderModel);
 	}
 }

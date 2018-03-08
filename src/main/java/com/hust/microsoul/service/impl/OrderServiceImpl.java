@@ -155,7 +155,20 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	@Override
 	public void buyerUpdateOrderState(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
-		
+		try {
+			orderModel.setState(OrderStateCode.UNDELIVERY);
+			
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+			} else {
+				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+			}
+		} catch (Exception e) {
+			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
