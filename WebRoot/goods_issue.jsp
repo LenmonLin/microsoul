@@ -91,27 +91,27 @@
                 </el-upload>
             </el-col>
             <el-col :span="10" :offset='2'>
-                <el-form :model="info" label-width="100px">
-                    <el-form-item label="商品名称">
+                <el-form :model="info" :rules='rules' label-width="100px">
+                    <el-form-item label="商品名称" prop='goodsName'>
                         <el-input v-model="info.goodsName"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="商品单价">
+                    <el-form-item label="商品单价" prop='unitPrice'>
                         <el-input v-model="info.unitPrice"></el-input>
                     </el-form-item>
-                    <el-form-item label="商品类别">
+                    <el-form-item label="商品类别" prop='category'>
                         <el-select v-model="info.category" placeholder="请选择商品类别">
                             <el-option v-for="item in options" :label="item.label" :value="item.value"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="商品库存" >
+                    <el-form-item label="商品库存" prop='store'>
                         <el-input-number v-model="info.store"></el-input-number>
                     </el-form-item>
 
                     <el-form-item label="最小批发数量">
                         <el-input-number v-model="info.purchaseQuantity"></el-input-number>
                     </el-form-item>
-                    <el-form-item label="是否上架">
+                    <el-form-item label="是否上架" prop='status'>
                         <el-switch v-model="info.status"></el-switch>
                     </el-form-item>
                 </el-form>
@@ -125,7 +125,7 @@
         <div> <p></p></div>
         <el-row>
             <el-col :span="4" :offset="16">
-                <el-button type="primary" @click="">确定发布</el-button>
+                <el-button type="primary" @click="issue">确定发布</el-button>
             </el-col>
         </el-row>
     </div>
@@ -202,43 +202,70 @@
         ],
         info:{
           goodsName:'',
-          unitPrice:'',
-          category:'',
+          unitPrice:0,
+          category:10,
           store:0,
           purchaseQuantity:1,
           status:false,
           detail:''
-        }
-
-      }
+        },
+        rules:{
+      goodsName: [
+            { required: true, message: '请输入商品名称', trigger: 'blur' },
+            { min: 3, max: 40, message: '长度在 3 到 40 个字符', trigger: 'blur' }
+          ],
+          unitPrice: [
+            { type:'number',required: true, message: '请输入单价' }
+          ],
+         category: [
+            {  required: true, message: '请选择类别', trigger: 'change' }
+          ],
+		store: [
+            {  required: true, message: '请输入库存', trigger: 'change' }
+          ],
+          status:[
+          {required:true}
+          ]
+ 
+      }}
     },
     methods:{
       issue:function () {
-        $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/insertGoodsModel.do',
-          type : 'post',
-          data : { 
-                sellerId:;
-                goodsName:;
-                unitPrice:;
-                category:;
-                store:;
-                status:;
-           
-          },
-          success : function(data) {
-            var result = data.result;
-            if(result == '99999'){
-              alert("发布成功");
-            }else {
-              alert("发布失败");
-            }
-          },
-          error : function(data) {
-            alert(data);
-          },
-          dataType : 'json',
-        })
+      if(this.info.status==true)
+            this.info.status='1';
+          else this.info.status='2';
+          var info=this.info;  
+        var that=this;
+          $.ajax({
+            url :'http://localhost:8080/microsoul/goods/insertGoodsModel.do',
+            type :'post',            
+            data:{
+            sellerId:1,
+            goodsId:info.goodsId,
+            goodsName:info.goodsName,
+            unitPrice:info.unitPrice,
+            category:info.category,
+            store:info.store,
+            purchaseQuantity:info.purchaseQuantity,
+            status:info.status,
+            detail:info.detail           
+            },
+            success : function(data) {
+              var result=data.code;
+              if(result == 100){
+                alert('商品发布成功');
+               if(info.status==1)
+            	   info.status=true;
+               else info.status=false;
+              }else {
+                alert("商品发布失败");
+              }
+            },
+            error : function(data) {
+              alert(data);
+            },
+            dataType : 'json',
+          }) 
 
       }
     }
