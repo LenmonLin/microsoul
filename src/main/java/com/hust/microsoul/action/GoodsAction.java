@@ -128,4 +128,19 @@ public class GoodsAction {
 		return Msg.success().add("goodsModelPageInfo",goodsModelPageInfo);
 	}
 
+	/**
+	 *@Description 商品分类搜索功能
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/3/6
+	 */
+	@RequestMapping("searchCategory")
+	@ResponseBody
+	public Msg searchGoodsList (@RequestParam(value = "page",defaultValue = "1") Integer page,
+								@RequestParam(value = "category") Integer category){
+
+		PageInfo<GoodsModel> goodsModelPageInfo = goodsService.searchGoodsByCategoryId(category,page);
+		return Msg.success().add("goodsModelPageInfo",goodsModelPageInfo);
+	}
+
 }

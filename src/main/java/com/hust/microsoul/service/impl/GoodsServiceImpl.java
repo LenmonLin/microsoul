@@ -239,4 +239,27 @@ public class GoodsServiceImpl  implements GoodsService{
         PageInfo pageInfo = new PageInfo(goodsModelList);
         return pageInfo;
     }
+
+    /**
+     *@Description 按类别搜索商品
+     *@params
+     *@author LemonLin
+     *@date  2018/3/8
+     */
+    public PageInfo<GoodsModel> searchGoodsByCategoryId(Integer category,Integer page){
+        //设置分页信息,一页暂定30个商品显示
+        PageHelper.startPage(page,30);
+        //去数据库中搜索信息
+        GoodsModelExample example =new GoodsModelExample();
+        GoodsModelExample.Criteria criteria = example.createCriteria();
+
+        if(category == null){
+            return null;
+        }
+        criteria.andCategoryEqualTo(category);
+        List<GoodsModel> goodsModelList = goodsModelMapper.selectByExample(example);
+        //返回数据
+        PageInfo pageInfo = new PageInfo(goodsModelList);
+        return pageInfo;
+    }
 }

@@ -54,4 +54,6 @@ public interface GoodsService {
 
 
     public PageInfo<GoodsModel> searchGoods(String title,Integer page);
+
+    public PageInfo<GoodsModel> searchGoodsByCategoryId(Integer category,Integer page);
 }

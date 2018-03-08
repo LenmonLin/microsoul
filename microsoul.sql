@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-08 14:54:30
+Date: 2018-03-08 15:39:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,7 +143,7 @@ CREATE TABLE `goods` (
   `COLLECTION_ID` int(15) DEFAULT NULL,
   `SELLER_ID` int(16) NOT NULL DEFAULT '1',
   PRIMARY KEY (`GOODS_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11301 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11306 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
@@ -6356,6 +6356,11 @@ INSERT INTO `goods` VALUES ('11297', '12', null, null, '0000000000000001', null,
 INSERT INTO `goods` VALUES ('11298', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:41:43.174000', '2018-03-08 14:41:43.174000', null, '19');
 INSERT INTO `goods` VALUES ('11299', '', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:43:43.366000', '2018-03-08 14:43:43.366000', null, '19');
 INSERT INTO `goods` VALUES ('11300', 'df', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 14:49:45.161000', '2018-03-08 14:49:45.161000', null, '19');
+INSERT INTO `goods` VALUES ('11301', '', null, null, '0000000000000000', '1', null, null, '10', '0', '', null, '1', '2018-03-08 15:10:38.785000', '2018-03-08 15:10:38.785000', null, '1');
+INSERT INTO `goods` VALUES ('11302', '', null, null, '0000000000000000', '1', null, null, '10', '0', '', null, '1', '2018-03-08 15:11:20.240000', '2018-03-08 15:11:20.240000', null, '1');
+INSERT INTO `goods` VALUES ('11303', 'daf', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 15:32:13.960000', '2018-03-08 15:32:13.960000', null, '19');
+INSERT INTO `goods` VALUES ('11304', 'daf', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 15:34:09.355000', '2018-03-08 15:34:09.355000', null, '19');
+INSERT INTO `goods` VALUES ('11305', 'daf', null, null, '0000000000000001', null, null, null, '1', '1', null, null, '1', '2018-03-08 15:36:46.066000', '2018-03-08 15:36:46.066000', null, '20');
 
 -- ----------------------------
 -- Table structure for goods_desc
@@ -6508,10 +6513,10 @@ CREATE TABLE `seller` (
   `ADDRESS` varchar(255) DEFAULT NULL,
   `TELEPHONE` int(20) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
-  `MerId` int(32) DEFAULT '0' COMMENT '商户编号',
+  `MerId` int(32) DEFAULT NULL COMMENT '商户编号',
   `MerKey` varchar(255) DEFAULT NULL COMMENT '密钥',
   PRIMARY KEY (`ID_SELLER`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
@@ -6532,4 +6537,5 @@ INSERT INTO `seller` VALUES ('15', '0987', '8ae9c55967714bc6c45abe7333f227cc', '
 INSERT INTO `seller` VALUES ('16', '密码09876', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('17', 'mima0987', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('18', 'mima09876', '6531401f9a6807306651b87e44c05751', 'dfsdf的萨芬', null, null, null, 'hello', null, null, '01', '0', null);
-INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01', '0', null);
+INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01', '1213', 'xcxxc');
+INSERT INTO `seller` VALUES ('20', '密码0987654', '75f34b5502bec3c609734fdf4d37fa5c', null, null, null, null, 'hello', null, null, '01', '1213', 'xcxxc');

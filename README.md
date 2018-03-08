@@ -9,6 +9,9 @@
      商品搜索功能：               
                     http://localhost:8080/microsoul/goods/search.do
                     必须参数：title       可选参数：page
+     商品分类搜索功能：
+                    http://localhost:8080/microsoul/goods/searchCategory.do
+                    必须参数：category       可选参数：page
 
 商品首页显示管理员后台模块：
 
