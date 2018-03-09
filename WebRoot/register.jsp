@@ -66,6 +66,15 @@
   new Vue({
     el:'#app',
     data (){
+	var validatePass2 = (rule, value, callback) => {
+        if (value == '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value != this.form.password1) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
       return{
         form:{
           name:'',
@@ -90,7 +99,7 @@
             { required: true, message: '密码为空', trigger: 'blur' }
           ],
           password2: [
-            { required: true, message: '密码为空', trigger: 'change' }
+            { validator: validatePass2, trigger: 'blur' }
           ],
         }
       }
@@ -102,9 +111,9 @@
         var password = this.form.password1;
         var phone=this.form.phone;
         var email=this.form.email;
-        if(name == '' || password == ''){
+        if(name == '' || password == ''||phone==''||email==''){
           this.$message({
-            message : '账号或密码为空！',
+            message : '存在未填项，请填写完整！',
             type : 'error'
           });
           return;
@@ -120,7 +129,7 @@
           },
           success : function(data) {
             var result = data.result;
-            if(result == '99999'){
+            if(result == '100'){
               alert("注册成功 将跳转至登录界面");
               window.location.href='./login.jsp';
             }else {
@@ -134,13 +143,13 @@
         })
       },
       check2:function () {//卖家注册
-        var name = this.name;
-        var password = this.password1;
+        var name = this.form.name;
+        var password = this.form.password1;
         var phone=this.form.phone;
         var email=this.form.email;
-        if(name == '' || password == ''){
+        if(name == '' || password == ''||phone==''||email==''){
           this.$message({
-            message : '账号或密码为空！',
+            message : '存在未填项，请填写完整！',
             type : 'error'
           });
           return;
@@ -156,8 +165,9 @@
           },
           success : function(data) {
             var result = data.result;
-            if(result == '99999'){
-              alert("注册成功");
+            if(result == '100'){
+              alert("注册成功 将跳转至登录界面");
+			window.location.href='./login.jsp';
             }else {
               alert("注册失败");
             }
