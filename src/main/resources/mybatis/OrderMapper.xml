@@ -9,6 +9,8 @@
     
     <result column="BUYER_ID" jdbcType="INTEGER" property="buyerId" />
     <result column="SELLER_ID" jdbcType="INTEGER" property="sellerId" />
+    <result column="PAY_ID" jdbcType="VARCHAR" property="payId" />
+    <result column="TOTAL_PRICE" jdbcType="FLOAT" property="totalPrice" />
     <result column="SELLER_NAME" jdbcType="VARCHAR" property="sellerName" />
     <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
     <result column="PAY_TIME" jdbcType="TIMESTAMP" property="payTime" />
@@ -33,6 +35,9 @@
   <insert id="buyerCreateOrder" keyProperty="orderId" useGeneratedKeys="true" parameterType="orderModel">
     insert into order_table
     <trim prefix="(" suffix=")" suffixOverrides=",">
+    	  <if test="orderId != null">
+        ORDER_ID,
+      </if>
       <if test="state != null">
         STATE,
       </if>
@@ -45,6 +50,9 @@
       <if test="sellerId != null">
         SELLER_ID,
       </if>
+      <if test="totalPrice != null">
+        TOTAL_PRICE,
+      </if>
       <if test="orderTime != null">
         ORDER_TIME,
       </if>
@@ -56,6 +64,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId},
+      </if>
       <if test="state != null">
         #{state},
       </if>
@@ -67,6 +78,9 @@
       </if>
       <if test="sellerId != null">
         #{sellerId},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice},
       </if>
       <if test="orderTime != null">
         #{orderTime},
@@ -94,5 +108,9 @@
  
   <update id="updateOrderState" parameterType="OrderModel">
   	update order_table set STATE = #{state} where ORDER_ID =#{orderId}
+  </update>
+  
+  <update id="setPayId" parameterType="OrderModel">
+  	update order_table set PAY_ID = #{payId} ,STATE = #{state} where ORDER_ID =#{orderId}
   </update>
 </mapper>
