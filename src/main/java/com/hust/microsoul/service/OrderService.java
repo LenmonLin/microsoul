@@ -44,7 +44,7 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:07:06   
 	 * @version V1.0
 	 */
-	public void buyerPayOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,SellerModel sellerModel);
+	public void buyerPayOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,SellerModel sellerModel,Integer[] orderIds);
 
 	/**
 	 * @Description:买家为订单付款后的结果
@@ -52,7 +52,7 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:07:06   
 	 * @version V1.0
 	 */
-	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,String orderIds);
 	
 	/**
 	 * @Description:买家删除订单
