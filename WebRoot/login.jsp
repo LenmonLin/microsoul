@@ -93,6 +93,7 @@
             var result = data.code;
             if(result == '99999'){
               alert("登录成功");
+              window.location.href='http://localhost:8080/mainPage.jsp'
             }else {
               alert("登录失败");
             }

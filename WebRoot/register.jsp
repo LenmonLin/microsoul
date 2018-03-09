@@ -133,7 +133,7 @@
               alert("注册成功 将跳转至登录界面");
               window.location.href='./login.jsp';
             }else {
-              alert("注册失败 请重试");
+              alert("注册失败 用户名已被注册");
             }
           },
           error : function(data) {
@@ -169,7 +169,7 @@
               alert("注册成功 将跳转至登录界面");
 			window.location.href='./login.jsp';
             }else {
-              alert("注册失败");
+              alert("注册失败，用户名已被注册");
             }
           },
           error : function(data) {
