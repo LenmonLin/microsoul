@@ -70,7 +70,7 @@ public class GoodsServiceImpl  implements GoodsService{
 
         SellerModel sellerModel = sellerModelMapper.selectByPrimaryKey(sellerId);
 
-        Integer merid = sellerModel.getMerid();
+        String merid = sellerModel.getMerid();
         String merkey = sellerModel.getMerkey();
         if((goodsModel.getGoodsName().trim().length() == 0)||
                 goodsModel.getGoodsName() == null||
