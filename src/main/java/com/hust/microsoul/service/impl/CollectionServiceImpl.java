@@ -32,6 +32,10 @@ public class CollectionServiceImpl implements CollectionService {
     public void addCollection(HttpServletRequest request,HttpServletResponse response, Integer goodsID) {
 		HttpSession session = request.getSession();
 		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+		if(loginedBuyersID==null) {
+			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+		}
+		else {
 		CollectionModel collectionModel=new CollectionModel();
 		collectionModel.setBuyerId(loginedBuyersID);
 		collectionModel.setGoodsId(goodsID);
@@ -39,7 +43,7 @@ public class CollectionServiceImpl implements CollectionService {
 		Integer result=collectionModelMapper.insert(collectionModel);
 		if(result!=null)
 			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
-		
+		}
 	}
 	
 	@Override
