@@ -18,4 +18,5 @@ public interface OrderMapper {
     
     public List<OrderModel> getOrderList(OrderModel orderModel);
     
+    public Integer setPayId(OrderModel orderModel);
 }

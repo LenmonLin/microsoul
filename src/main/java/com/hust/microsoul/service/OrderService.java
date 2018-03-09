@@ -1,6 +1,5 @@
 package com.hust.microsoul.service;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.OrderModel;
+import com.hust.microsoul.model.SellerModel;
 
 /**
  * @Description:OrderService.java
@@ -44,8 +44,16 @@ public interface OrderService {
 	 * @date:   2018年2月26日 下午3:07:06   
 	 * @version V1.0
 	 */
-	public void buyerPayOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+	public void buyerPayOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,SellerModel sellerModel);
 
+	/**
+	 * @Description:买家为订单付款后的结果
+	 * @author: huwentao    
+	 * @date:   2018年2月26日 下午3:07:06   
+	 * @version V1.0
+	 */
+	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+	
 	/**
 	 * @Description:买家删除订单
 	 * @author: huwentao    

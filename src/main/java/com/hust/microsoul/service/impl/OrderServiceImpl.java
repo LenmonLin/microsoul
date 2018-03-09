@@ -1,5 +1,6 @@
 package com.hust.microsoul.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsModelMapper;
@@ -8,11 +9,14 @@ import com.hust.microsoul.mapper.OrderMapper;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.OrderGoodsModel;
 import com.hust.microsoul.model.OrderModel;
+import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.OrderService;
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
 import com.hust.microsoul.util.OrderStateCode;
+import com.hust.microsoul.util.PaymentUtil;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -66,14 +70,16 @@ public class OrderServiceImpl implements OrderService {
 			if(insertResult>0) {
 				Logger.error("插入订单成功！");
 				OrderGoodsModel orderGoodsModel = new OrderGoodsModel();
-				
+				Integer id = null;
 				for (int i = 0; i < goodsId.length; i++) {
 					orderGoodsModel.setGoodsId(goodsId[i]);
 					orderGoodsModel.setNum(nums[i]);
 					orderGoodsModel.setOrderId(orderModel.getOrderId());
-					orderGoodsMapper.insertOrderGoods(orderGoodsModel);
+					id = orderGoodsMapper.insertOrderGoods(orderGoodsModel);
 				}
-				JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("orderId", id);
+				JSONCommon.outputResultDataJson(CommonCode.SUCCESS, response, jsonObject);
 			} else {
 				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
 			}
@@ -117,9 +123,44 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
-	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,SellerModel sellerModel) {
 		
-		
+		String 	p0_Cmd="Buy",
+		p1_MerId=sellerModel.getMerid().toString(),
+		p2_Order=orderModel.getOrderId().toString(),
+		p3_Amt=orderModel.getTotalPrice().toString(),
+		p4_Cur="CNY",
+		p5_Pid="",
+		p6_Pcat="",
+		p7_Pdesc="",
+		p8_Url="http://localhost:8080/day21_2_pay/backServlet",
+		p9_SAF="",
+		pa_MP="",
+		pd_FrpId=request.getParameter("pd_FrpId"),
+		pr_NeedResponse="1";
+		String keyValue="69cl522AV6q613Ii4W6u8K6XuW8vM1N6bFgyv769220IuYe9u37N4y7rI4Pl";
+		String hmac=PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, keyValue);
+		String url="https://www.yeepay.com/app-merchant-proxy/node?"+
+		"&p0_Cmd="+p0_Cmd+
+		"&p1_MerId="+p1_MerId+
+		"&p2_Order="+p2_Order+
+		"&p3_Amt="+p3_Amt+
+		"&p4_Cur="+p4_Cur+
+		"&p5_Pid="+p5_Pid+
+		"&p6_Pcat="+p6_Pcat+
+		"&p7_Pdesc="+p7_Pdesc+
+		"&p8_Url="+p8_Url+
+		"&p9_SAF="+p9_SAF+
+		"&pa_MP="+pa_MP+
+		"&pd_FrpId="+pd_FrpId+
+		"&pr_NeedResponse="+pr_NeedResponse+
+		"&hmac="+hmac;
+		try {
+			response.sendRedirect(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * @Description:
@@ -290,6 +331,23 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			JSONCommon.outputResultCodeJson(CommonCode.SERVER_ERROR, response);
 			e.printStackTrace();
+		}
+	}
+	@Override
+	public String payOrderResult(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+		try {
+			orderModel.setState(OrderStateCode.UNDELIVERY);
+			orderModel.setPayId(request.getParameter("r6_Order"));
+			int updateResult = orderMapper.updateOrderState(orderModel);
+			
+			if(updateResult>0) {
+				return "paysuccess";
+			} else {
+				return "payfail";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "payfail";
 		}
 	}
 

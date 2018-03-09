@@ -23,6 +23,10 @@ public class OrderModel {
 
     private Integer sellerId;
     
+    private Float totalPrice;
+    
+    private String payId;
+    
     private String sellerName;
 
     private List<GoodsModel> goods;
@@ -119,5 +123,21 @@ public class OrderModel {
 
 	public void setSellerName(String sellerName) {
 		this.sellerName = sellerName;
+	}
+
+	public Float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getPayId() {
+		return payId;
+	}
+
+	public void setPayId(String payId) {
+		this.payId = payId;
 	}
 }

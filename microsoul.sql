@@ -6458,6 +6458,8 @@ CREATE TABLE `order_table` (
   `LOGISTIC_ID_REJECT` varchar(11) DEFAULT NULL COMMENT 'é€€è´§ç‰©æµå•å·',
   `BUYER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
   `SELLER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
+  `PAY_ID` varchar(11) NOT NULL COMMENT 'ä¹°å®¶ID',
+  `TOTAL_PRICE` varchar(11) NOT NULL COMMENT 'ä¹°å®¶ID',
   `ORDER_TIME` datetime NOT NULL COMMENT 'ä¸‹å•æ—¶é—´',
   `PAY_TIME` datetime DEFAULT NULL COMMENT 'ä»˜æ¬¾æ—¶é—´',
   `DELIVER_TIME` datetime DEFAULT NULL COMMENT 'å‘è´§æ—¶é—´',
