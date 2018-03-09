@@ -21,6 +21,7 @@
     添加内容选项：
                    http://localhost:8080/microsoul/content/insert.do
                    必须参数：categoryId ；广告位id=89，商品展示id=90
+                   可选参数：title，subTitle，titleDesc，content_price，content，pic
     删除内容选项：
                      http://localhost:8080/microsoul/content/delete.do
                      必须参数：contentId
