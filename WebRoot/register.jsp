@@ -128,8 +128,8 @@
             email:email,
           },
           success : function(data) {
-            var result = data.result;
-            if(result == '100'){
+            var result = data.code;
+            if(result == '99999'){
               alert("注册成功 将跳转至登录界面");
               window.location.href='./login.jsp';
             }else {
@@ -164,8 +164,8 @@
             email:email,
           },
           success : function(data) {
-            var result = data.result;
-            if(result == '100'){
+            var result = data.code;
+            if(result == '99999'){
               alert("注册成功 将跳转至登录界面");
 			window.location.href='./login.jsp';
             }else {
