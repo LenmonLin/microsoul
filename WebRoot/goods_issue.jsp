@@ -67,10 +67,8 @@
 </script>
 <script type="text/x-template" id='header1'>
 	<div class="header">灵微网
-          <el-button class="dd" size="mini" @click="dialogVisible1=true">注册</el-button>
-          <el-button size="mini" @click="dialogVisible = true">登录</el-button>
-
-      </div>
+    <el-button size="mini" @click="exit" class='dd'>退出账号</el-button>
+  </div>
 </script>
 <script type="text/x-template" id="goods_issue">
     <div>
@@ -155,6 +153,41 @@
       }
     },
     methods:{
+      exit(){
+      this.$confirm('此操作将退出登录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+        $.ajax({
+          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          type : 'post',
+          data:{
+          },
+          success : function(data) {
+            if(data.code == 100){
+              alert('退出成功');
+              window.location.href='http://localhost:8080/login.jsp';
+            }else {
+              alert("退出失败");
+              return;
+            }
+          },
+          error : function(data) {
+            alert(data);
+            return;
+          },
+          dataType : 'json',
+        });          
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消退出'
+          });
+        });
+        
+      }
 
     }
   });
