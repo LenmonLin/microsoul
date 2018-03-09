@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.mapper.OrderGoodsMapper;
 import com.hust.microsoul.mapper.OrderMapper;
+import com.hust.microsoul.mapper.SellerModelMapper;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.OrderGoodsModel;
 import com.hust.microsoul.model.OrderModel;
@@ -43,6 +44,9 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMapper orderMapper;
 	
 	@Autowired
+	private SellerModelMapper sellerModelMapper;
+	
+	@Autowired
 	private OrderGoodsMapper orderGoodsMapper;
 	
 	@Autowired
@@ -60,6 +64,10 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void buyerCreateOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer[] goodsId,Integer[] nums) {
 		try {
+			Integer buyerId = (Integer)request.getSession().getAttribute("loginedBuyersID");
+			
+			//测试使用
+			orderModel.setBuyerId(buyerId);
 			Logger.error(":"+orderModel.getBuyerId());
 			orderModel.setOrderTime(new Date(System.currentTimeMillis()));
 			orderModel.setState(OrderStateCode.UNPAID);
@@ -123,22 +131,31 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
-	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,SellerModel sellerModel) {
+	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,SellerModel sellerModel,Integer[] orderIds) {
 		
+		SellerModel sellerModel2  = sellerModelMapper.selectByPrimaryKey(sellerModel.getIdSeller());
+		String ids ="";
+		for (int i = 0; i < orderIds.length; i++) {
+			if(i<orderIds.length-1) {
+				ids +=orderIds[i]+",";
+			}else {
+				ids +=orderIds[i];
+			}
+		}
 		String 	p0_Cmd="Buy",
-		p1_MerId=sellerModel.getMerid().toString(),
-		p2_Order=orderModel.getOrderId().toString(),
+		p1_MerId=sellerModel2.getMerid(),
+		p2_Order="",
 		p3_Amt=orderModel.getTotalPrice().toString(),
 		p4_Cur="CNY",
 		p5_Pid="",
-		p6_Pcat="",
+		p6_Pcat="",	
 		p7_Pdesc="",
-		p8_Url="http://localhost:8080/day21_2_pay/backServlet",
+		p8_Url="http://localhost:8080/microsoul/order/payOrderResult.do?"+"orderIds="+ids,
 		p9_SAF="",
 		pa_MP="",
 		pd_FrpId=request.getParameter("pd_FrpId"),
 		pr_NeedResponse="1";
-		String keyValue="69cl522AV6q613Ii4W6u8K6XuW8vM1N6bFgyv769220IuYe9u37N4y7rI4Pl";
+		String keyValue=sellerModel2.getMerkey();
 		String hmac=PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, keyValue);
 		String url="https://www.yeepay.com/app-merchant-proxy/node?"+
 		"&p0_Cmd="+p0_Cmd+
@@ -334,17 +351,16 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 	@Override
-	public String payOrderResult(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel) {
+	public String payOrderResult(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,String orderIds) {
 		try {
-			orderModel.setState(OrderStateCode.UNDELIVERY);
-			orderModel.setPayId(request.getParameter("r6_Order"));
-			int updateResult = orderMapper.updateOrderState(orderModel);
-			
-			if(updateResult>0) {
-				return "paysuccess";
-			} else {
-				return "payfail";
+			String[] ids = orderIds.split(",");
+			for (int i = 0; i < ids.length; i++) {
+				orderModel.setState(OrderStateCode.UNDELIVERY);
+				orderModel.setPayId(request.getParameter("r6_Order"));
+				orderModel.setOrderId(Integer.parseInt(ids[i]));
+				orderMapper.updateOrderState(orderModel);
 			}
+			return "paysuccess";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "payfail";

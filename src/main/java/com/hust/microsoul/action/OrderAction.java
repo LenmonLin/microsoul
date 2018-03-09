@@ -165,13 +165,12 @@ public class OrderAction {
 	}
 	
 	@RequestMapping("payOrder")
-	public void payOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,SellerModel sellerModel) {
-		orderService.buyerPayOrder(request, response, orderModel,sellerModel);
+	public void payOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,SellerModel sellerModel,@RequestParam(value="orderIds",required=false)Integer[] orderIds) {
+		orderService.buyerPayOrder(request, response, orderModel,sellerModel,orderIds);
 	}
 	
 	@RequestMapping("payOrderResult")
-	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel) {
-
-		return orderService.payOrderResult(request, response, orderModel);
+	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,@RequestParam(value="orderIds",required=false)String orderIds) {
+		return orderService.payOrderResult(request, response, orderModel,orderIds);
 	}
 }
