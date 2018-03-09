@@ -176,7 +176,7 @@
           realName:info.realName,
           },
           success : function(data) {
-            that.form=data.extend.sellerModel;
+            
             var result=data.code;
             if(result == 100){
 				alert('个人信息修改成功');

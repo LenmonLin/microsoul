@@ -12,7 +12,7 @@
   <script src="https://unpkg.com/element-ui@2.0.11/lib/index.js"></script>
   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
   </script>
-  <link rel='stylesheet' href='./css/seller_center.css'>
+  
   <style>
     .el-row {
       margin-bottom: 20px;}
@@ -57,7 +57,7 @@
       <el-button id="login2" v-on:click="check2" style="width:100%" type="success">卖家登录</el-button>
     </el-col>
   </el-row>
-  <a href="./register">注册</a>
+  <a href="./register.jsp">注册</a>
 </div>
 
 </body>
@@ -93,6 +93,7 @@
             var result = data.code;
             if(result == '99999'){
               alert("登录成功");
+              window.location.href='http://localhost:8080/mainPage.jsp'
             }else {
               alert("登录失败");
             }

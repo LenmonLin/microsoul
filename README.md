@@ -3,7 +3,7 @@
 
 商品首页显示模块：
 
-    查看首页内容：
+     查看首页内容：
                     http://localhost:8080/microsoul/contentIndex/index.do
                     
      商品搜索功能：               
@@ -12,7 +12,8 @@
      商品分类搜索功能：
                     http://localhost:8080/microsoul/goods/searchCategory.do
                     必须参数：category       可选参数：page
-
+     商品详情页：http://localhost:8080/microsoul/goods/goodDesc.do
+                    必须参数：goodsId
 商品首页显示管理员后台模块：
 
 

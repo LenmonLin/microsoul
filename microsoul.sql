@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-03-08 15:39:03
+Date: 2018-03-09 10:52:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,7 +67,7 @@ CREATE TABLE `buyer` (
   `TELEPHONE` varchar(15) NOT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
   PRIMARY KEY (`BUYER_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of buyer
@@ -75,6 +75,7 @@ CREATE TABLE `buyer` (
 INSERT INTO `buyer` VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '01');
 INSERT INTO `buyer` VALUES ('2', '密码123', '202cb962ac59075b964b07152d234b70', null, '是问问', null, null, null, '12', '01');
 INSERT INTO `buyer` VALUES ('3', 'hlf', '202cb962ac59075b964b07152d234b70', null, '123', null, '林强', null, '123', '01');
+INSERT INTO `buyer` VALUES ('4', '000', 'c6f057b86584942e415435ffb1fa93d4', null, '1', null, null, null, '1', '01');
 
 -- ----------------------------
 -- Table structure for collection
@@ -6458,46 +6459,46 @@ CREATE TABLE `order_table` (
   `LOGISTIC_ID_REJECT` varchar(11) DEFAULT NULL COMMENT 'é€€è´§ç‰©æµå•å·',
   `BUYER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
   `SELLER_ID` int(11) NOT NULL COMMENT 'ä¹°å®¶ID',
-  `PAY_ID` varchar(11) NOT NULL COMMENT 'ä¹°å®¶ID',
-  `TOTAL_PRICE` varchar(11) NOT NULL COMMENT 'ä¹°å®¶ID',
   `ORDER_TIME` datetime NOT NULL COMMENT 'ä¸‹å•æ—¶é—´',
   `PAY_TIME` datetime DEFAULT NULL COMMENT 'ä»˜æ¬¾æ—¶é—´',
   `DELIVER_TIME` datetime DEFAULT NULL COMMENT 'å‘è´§æ—¶é—´',
+  `TOTAL_PRICE` float(10,0) NOT NULL COMMENT 'è®¢å•æ€»ä»·',
+  `PAY_ID` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`ORDER_ID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of order_table
 -- ----------------------------
-INSERT INTO `order_table` VALUES ('1', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
-INSERT INTO `order_table` VALUES ('2', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
-INSERT INTO `order_table` VALUES ('3', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('5', '2', '121221', null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-03-08 09:44:36');
-INSERT INTO `order_table` VALUES ('6', '8', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('7', '8', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('8', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
-INSERT INTO `order_table` VALUES ('9', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
-INSERT INTO `order_table` VALUES ('10', '0', '', '', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('11', '0', '', '', '2', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('12', '0', '', '', '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('13', '0', '', '', '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('14', '0', '', '', '2', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('15', '0', null, null, '2', '2', '2018-03-07 09:58:16', '2018-03-07 09:58:18', '2018-03-07 09:58:21');
-INSERT INTO `order_table` VALUES ('16', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('17', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('18', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('19', '0', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('20', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('21', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26');
-INSERT INTO `order_table` VALUES ('22', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04');
-INSERT INTO `order_table` VALUES ('23', '0', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('24', '1', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('25', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('26', '1', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('27', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('28', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('29', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
-INSERT INTO `order_table` VALUES ('30', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43');
+INSERT INTO `order_table` VALUES ('1', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26', '0', null);
+INSERT INTO `order_table` VALUES ('2', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04', '0', null);
+INSERT INTO `order_table` VALUES ('3', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('5', '2', '121221', null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-03-08 09:44:36', '0', null);
+INSERT INTO `order_table` VALUES ('6', '8', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('7', '8', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('8', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26', '0', null);
+INSERT INTO `order_table` VALUES ('9', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04', '0', null);
+INSERT INTO `order_table` VALUES ('10', '0', '', '', '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('11', '0', '', '', '2', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('12', '0', '', '', '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('13', '0', '', '', '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('14', '0', '', '', '2', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('15', '0', null, null, '2', '2', '2018-03-07 09:58:16', '2018-03-07 09:58:18', '2018-03-07 09:58:21', '0', null);
+INSERT INTO `order_table` VALUES ('16', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('17', '8', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('18', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('19', '0', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('20', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('21', '2', '123', null, '1', '2', '2018-03-07 09:18:21', '2018-03-07 09:18:23', '2018-03-07 09:18:26', '0', null);
+INSERT INTO `order_table` VALUES ('22', '2', '123', null, '1', '3', '2018-03-07 09:19:00', '2018-03-07 09:19:02', '2018-03-07 09:19:04', '0', null);
+INSERT INTO `order_table` VALUES ('23', '0', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('24', '1', null, null, '1', '1', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('25', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('26', '1', null, null, '1', '3', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('27', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('28', '1', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('29', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
+INSERT INTO `order_table` VALUES ('30', '0', null, null, '1', '2', '2018-01-24 16:11:39', '2018-01-24 16:11:41', '2018-01-24 16:11:43', '0', null);
 
 -- ----------------------------
 -- Table structure for seller
@@ -6515,15 +6516,15 @@ CREATE TABLE `seller` (
   `ADDRESS` varchar(255) DEFAULT NULL,
   `TELEPHONE` int(20) DEFAULT NULL,
   `STATE` int(2) unsigned zerofill NOT NULL,
-  `MerId` int(32) DEFAULT NULL COMMENT '商户编号',
+  `MerId` varchar(20) DEFAULT NULL COMMENT '????',
   `MerKey` varchar(255) DEFAULT NULL COMMENT '密钥',
   PRIMARY KEY (`ID_SELLER`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01', '0', null);
+INSERT INTO `seller` VALUES ('1', 'zhangsan', 'zhangsan', '1', '1', '1', '1', '1', '1', '1', '01', '10001126856', '69cl522AV6q613Ii4W6u8K6XuW8vM1N6bFgyv769220IuYe9u37N4y7rI4Pl');
 INSERT INTO `seller` VALUES ('2', 'hel', '1', null, null, null, null, '1', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('3', '2', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('4', '45', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', '0', null);
@@ -6539,5 +6540,13 @@ INSERT INTO `seller` VALUES ('15', '0987', '8ae9c55967714bc6c45abe7333f227cc', '
 INSERT INTO `seller` VALUES ('16', '密码09876', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('17', 'mima0987', '9e1e06ec8e02f0a0074f2fcc6b26303b', null, null, null, null, 'hello', null, null, '01', '0', null);
 INSERT INTO `seller` VALUES ('18', 'mima09876', '6531401f9a6807306651b87e44c05751', 'dfsdf的萨芬', null, null, null, 'hello', null, null, '01', '0', null);
-INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01', '1213', 'xcxxc');
-INSERT INTO `seller` VALUES ('20', '密码0987654', '75f34b5502bec3c609734fdf4d37fa5c', null, null, null, null, 'hello', null, null, '01', '1213', 'xcxxc');
+INSERT INTO `seller` VALUES ('19', '密码098765', 'a8698009bce6d1b8c2128eddefc25aad', 'dfsdf的萨芬二', null, null, null, 'hello', null, null, '01', '1213', 'xcxxc高规格的');
+INSERT INTO `seller` VALUES ('20', '密码0987654', 'c4ca4238a0b923820dcc509a6f75849b', null, '', null, '湖北', '历史', null, null, '01', '1213', 'xcxxc');
+INSERT INTO `seller` VALUES ('21', '1密码123', '202cb962ac59075b964b07152d234b70', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('22', '123456', 'e10adc3949ba59abbe56e057f20f883e', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('23', '密码321', 'caf1a3dfb505ffed0d024130f58c5cfa', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('24', '灵微网', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('25', '灵微网1', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('26', '灵微网123', 'c4ca4238a0b923820dcc509a6f75849b', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('27', '000', 'c6f057b86584942e415435ffb1fa93d4', null, null, null, null, 'hello', null, null, '01', null, null);
+INSERT INTO `seller` VALUES ('28', '001', 'dc5c7986daef50c1e02ab09b442ee34f', null, null, null, null, 'hello', null, null, '01', null, null);
