@@ -12,7 +12,7 @@
      商品分类搜索功能：
                     http://localhost:8080/microsoul/goods/searchCategory.do
                     必须参数：category       可选参数：page
-     商品详情页：http://localhost:8080/microsoul/goods/goodDes.do
+     商品详情页：http://localhost:8080/microsoul/goods/goodDesc.do
                     必须参数：goodsId
 商品首页显示管理员后台模块：
 
