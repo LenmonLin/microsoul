@@ -86,7 +86,7 @@ public class OrderServiceImpl implements OrderService {
 					id = orderGoodsMapper.insertOrderGoods(orderGoodsModel);
 				}
 				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("orderId", id);
+				jsonObject.put("orderId", orderGoodsModel.getOrderId());
 				JSONCommon.outputResultDataJson(CommonCode.SUCCESS, response, jsonObject);
 			} else {
 				JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
