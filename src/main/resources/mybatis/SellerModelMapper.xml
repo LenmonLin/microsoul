@@ -13,7 +13,7 @@
     <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
     <result column="TELEPHONE" jdbcType="INTEGER" property="telephone" />
     <result column="STATE" jdbcType="INTEGER" property="state" />
-    <result column="MerId" jdbcType="INTEGER" property="merid" />
+    <result column="MerId" jdbcType="VARCHAR" property="merid" />
     <result column="MerKey" jdbcType="VARCHAR" property="merkey" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -117,7 +117,7 @@
     values (#{idSeller,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{zhifubaoAccount,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qqAccount,jdbcType=INTEGER}, 
       #{district,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{merid,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{merid,jdbcType=VARCHAR}, 
       #{merkey,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.SellerModel">
@@ -198,7 +198,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="merid != null">
-        #{merid,jdbcType=INTEGER},
+        #{merid,jdbcType=VARCHAR},
       </if>
       <if test="merkey != null">
         #{merkey,jdbcType=VARCHAR},
@@ -248,7 +248,7 @@
         STATE = #{record.state,jdbcType=INTEGER},
       </if>
       <if test="record.merid != null">
-        MerId = #{record.merid,jdbcType=INTEGER},
+        MerId = #{record.merid,jdbcType=VARCHAR},
       </if>
       <if test="record.merkey != null">
         MerKey = #{record.merkey,jdbcType=VARCHAR},
@@ -271,7 +271,7 @@
       ADDRESS = #{record.address,jdbcType=VARCHAR},
       TELEPHONE = #{record.telephone,jdbcType=INTEGER},
       STATE = #{record.state,jdbcType=INTEGER},
-      MerId = #{record.merid,jdbcType=INTEGER},
+      MerId = #{record.merid,jdbcType=VARCHAR},
       MerKey = #{record.merkey,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -311,7 +311,7 @@
         STATE = #{state,jdbcType=INTEGER},
       </if>
       <if test="merid != null">
-        MerId = #{merid,jdbcType=INTEGER},
+        MerId = #{merid,jdbcType=VARCHAR},
       </if>
       <if test="merkey != null">
         MerKey = #{merkey,jdbcType=VARCHAR},
@@ -331,7 +331,7 @@
       ADDRESS = #{address,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=INTEGER},
       STATE = #{state,jdbcType=INTEGER},
-      MerId = #{merid,jdbcType=INTEGER},
+      MerId = #{merid,jdbcType=VARCHAR},
       MerKey = #{merkey,jdbcType=VARCHAR}
     where ID_SELLER = #{idSeller,jdbcType=INTEGER}
   </update>

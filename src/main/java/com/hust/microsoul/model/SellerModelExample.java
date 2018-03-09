@@ -844,52 +844,62 @@ public class SellerModelExample {
             return (Criteria) this;
         }
 
-        public Criteria andMeridEqualTo(Integer value) {
+        public Criteria andMeridEqualTo(String value) {
             addCriterion("MerId =", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridNotEqualTo(Integer value) {
+        public Criteria andMeridNotEqualTo(String value) {
             addCriterion("MerId <>", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridGreaterThan(Integer value) {
+        public Criteria andMeridGreaterThan(String value) {
             addCriterion("MerId >", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMeridGreaterThanOrEqualTo(String value) {
             addCriterion("MerId >=", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridLessThan(Integer value) {
+        public Criteria andMeridLessThan(String value) {
             addCriterion("MerId <", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridLessThanOrEqualTo(Integer value) {
+        public Criteria andMeridLessThanOrEqualTo(String value) {
             addCriterion("MerId <=", value, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridIn(List<Integer> values) {
+        public Criteria andMeridLike(String value) {
+            addCriterion("MerId like", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridNotLike(String value) {
+            addCriterion("MerId not like", value, "merid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMeridIn(List<String> values) {
             addCriterion("MerId in", values, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridNotIn(List<Integer> values) {
+        public Criteria andMeridNotIn(List<String> values) {
             addCriterion("MerId not in", values, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridBetween(Integer value1, Integer value2) {
+        public Criteria andMeridBetween(String value1, String value2) {
             addCriterion("MerId between", value1, value2, "merid");
             return (Criteria) this;
         }
 
-        public Criteria andMeridNotBetween(Integer value1, Integer value2) {
+        public Criteria andMeridNotBetween(String value1, String value2) {
             addCriterion("MerId not between", value1, value2, "merid");
             return (Criteria) this;
         }
