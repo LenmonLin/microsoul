@@ -1,8 +1,14 @@
 package com.hust.microsoul.action;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +16,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.model.SellerModel;
+import com.hust.microsoul.service.BuyerService;
 import com.hust.microsoul.service.OrderService;
+import com.hust.microsoul.util.MD5Utils;
 import com.hust.microsoul.util.Msg;
 
 /** 
@@ -31,7 +41,10 @@ public class OrderAction {
 	@Autowired
 	private OrderService orderService;
 	
-	private Logger Logger = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	private BuyerService buyerService;
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * 
 	 * @Description:买家下单
@@ -172,5 +185,66 @@ public class OrderAction {
 	@RequestMapping("payOrderResult")
 	public String payOrderResult(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,@RequestParam(value="orderIds",required=false)String orderIds) {
 		return orderService.payOrderResult(request, response, orderModel,orderIds);
+	}
+	
+	@RequestMapping("getOrderDetail")
+	@ResponseBody
+	public Msg getOrdergoods(HttpServletRequest request,HttpServletResponse response,@RequestParam(value="id")Integer id) {
+		
+		OrderModel orderModel = orderService.getOrderInfo(request, response, id);
+
+		List<GoodsModel> goods= orderService.getOrdergoods(request, response, orderModel.getOrderId());
+		orderModel.setGoods(goods);
+		BuyerModel buyerModel = buyerService.getBuyerInfo(request, response);
+		return Msg.success().add("orderModel", orderModel).add("buyerInfo", buyerModel);
+	}
+	
+	@RequestMapping("uploadImage")
+	public void uploadImage(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,@RequestParam(value="imgUrl",required = true)MultipartFile file) {
+		String upLoadedImgUrl = uploadImageCommon(file,response);
+		logger.error(upLoadedImgUrl);
+	}
+	
+	private String uploadImageCommon(MultipartFile file ,HttpServletResponse response){
+		String pictureUrl ="";
+
+
+		try {
+			if(null == file){
+				return null;
+			}
+			
+			//检测图片的类型是否符合规范
+			String fileName = file.getOriginalFilename();
+			String imgType = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
+			
+			logger.info(file.getSize() + "--文件的大小");
+			if (file.getSize() > 5 * 1024 * 1024) {
+				logger.info("文件大小超过5M");
+				return null;
+			}
+			
+			fileName = getFileNewName(fileName);
+			
+			File uploadFile = new File("/WebRoot/pic/"+fileName);
+			logger.info("*************************,getAbsolutePath:{}", uploadFile.getAbsolutePath());
+			FileOutputStream fos = FileUtils.openOutputStream(uploadFile);
+			IOUtils.copy( file.getInputStream(), fos); 
+			return uploadFile.getAbsolutePath();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pictureUrl;
+	}
+	
+	private String getFileNewName(String filename){
+		
+		long time = System.currentTimeMillis();
+		
+		String fileType = filename.substring(filename.lastIndexOf("."));
+		
+		MD5Utils md5 = new MD5Utils();
+		
+		return md5.md5(filename + time) + fileType;
 	}
 }

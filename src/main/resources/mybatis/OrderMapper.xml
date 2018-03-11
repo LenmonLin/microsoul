@@ -32,6 +32,14 @@
 				and a.SELLER_ID = #{sellerId} 
 			</if> 
 	</select>
+	<select id="getOrderInfo" resultMap="orderMap" parameterType="java.lang.Integer">
+		select
+			 *
+		from 
+			 order_table
+		where 
+			ORDER_ID = #{id}
+	</select>
   <insert id="buyerCreateOrder" keyProperty="orderId" useGeneratedKeys="true" parameterType="orderModel">
     insert into order_table
     <trim prefix="(" suffix=")" suffixOverrides=",">

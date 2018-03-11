@@ -118,4 +118,17 @@ public class BuyerServiceImpl implements BuyerService {
 			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
 	}
 
+	@Override
+	public BuyerModel getBuyerInfo(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			HttpSession session = request.getSession();
+			Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+			BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
+			return buyerModel;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

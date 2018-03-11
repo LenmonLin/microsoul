@@ -34,4 +34,5 @@ public interface GoodsModelMapper {
     List<GoodsModel> getcollectionList (CollectionModel collectionModel);
     
     List<GoodsModel>  getOrderGoodsList(@Param(value = "orderId")Integer orderId);
+    
 }

@@ -408,7 +408,7 @@
 			a.BUYER_ID = #{buyerId}
 	</select>
 	
-		<select id="getOrderGoodsList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	<select id="getOrderGoodsList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
 			a.num as PURCHASE_QUANTITY,b.*
 		from 

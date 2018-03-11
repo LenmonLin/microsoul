@@ -1,12 +1,16 @@
 package com.hust.microsoul.service;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
+import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.model.SellerModel;
 
@@ -132,4 +136,8 @@ public interface OrderService {
 	 * @version V1.0
 	 */
 	public void cancelOrder(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel);
+
+	public List<GoodsModel> getOrdergoods(HttpServletRequest request,HttpServletResponse response,Integer id);
+	
+	public OrderModel getOrderInfo(HttpServletRequest request,HttpServletResponse response,Integer id);
 }

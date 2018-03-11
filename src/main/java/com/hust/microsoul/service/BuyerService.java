@@ -62,4 +62,7 @@ public interface BuyerService {
 	
 	
 	public void disableBuyer(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
+	
+	public BuyerModel getBuyerInfo(HttpServletRequest request,HttpServletResponse response);
+
 }

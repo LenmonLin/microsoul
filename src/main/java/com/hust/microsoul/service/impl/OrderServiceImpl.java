@@ -366,5 +366,25 @@ public class OrderServiceImpl implements OrderService {
 			return "payfail";
 		}
 	}
+	@Override
+	public List<GoodsModel> getOrdergoods(HttpServletRequest request, HttpServletResponse response, Integer id) {
+		try {
+			List<GoodsModel> goods= 	goodsModelMapper.getOrderGoodsList(id);
+			return goods;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public OrderModel getOrderInfo(HttpServletRequest request, HttpServletResponse response, Integer id) {
+		try {
+			OrderModel orderModel = orderMapper.getOrderInfo(id);
+			return orderModel;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
