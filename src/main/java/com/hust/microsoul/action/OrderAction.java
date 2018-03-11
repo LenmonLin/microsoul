@@ -25,6 +25,7 @@ import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.BuyerService;
 import com.hust.microsoul.service.OrderService;
+import com.hust.microsoul.util.ImageUploadUtil;
 import com.hust.microsoul.util.MD5Utils;
 import com.hust.microsoul.util.Msg;
 
@@ -201,50 +202,11 @@ public class OrderAction {
 	
 	@RequestMapping("uploadImage")
 	public void uploadImage(HttpServletRequest request,HttpServletResponse response,OrderModel orderModel,@RequestParam(value="imgUrl",required = true)MultipartFile file) {
-		String upLoadedImgUrl = uploadImageCommon(file,response);
+		//图片保存路径为/WebRoot/pic/
+		//图片访问路径为项目路径/pic/image.jpg
+		//例如上传一张
+		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
+		
 		logger.error(upLoadedImgUrl);
-	}
-	
-	private String uploadImageCommon(MultipartFile file ,HttpServletResponse response){
-		String pictureUrl ="";
-
-
-		try {
-			if(null == file){
-				return null;
-			}
-			
-			//检测图片的类型是否符合规范
-			String fileName = file.getOriginalFilename();
-			String imgType = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-			
-			logger.info(file.getSize() + "--文件的大小");
-			if (file.getSize() > 5 * 1024 * 1024) {
-				logger.info("文件大小超过5M");
-				return null;
-			}
-			
-			fileName = getFileNewName(fileName);
-			
-			File uploadFile = new File("/WebRoot/pic/"+fileName);
-			logger.info("*************************,getAbsolutePath:{}", uploadFile.getAbsolutePath());
-			FileOutputStream fos = FileUtils.openOutputStream(uploadFile);
-			IOUtils.copy( file.getInputStream(), fos); 
-			return uploadFile.getAbsolutePath();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return pictureUrl;
-	}
-	
-	private String getFileNewName(String filename){
-		
-		long time = System.currentTimeMillis();
-		
-		String fileType = filename.substring(filename.lastIndexOf("."));
-		
-		MD5Utils md5 = new MD5Utils();
-		
-		return md5.md5(filename + time) + fileType;
 	}
 }
