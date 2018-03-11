@@ -44,6 +44,12 @@ public class BuyerAction {
 		logger.error("1111111");
 	}
 	
+	@RequestMapping("exit")
+	public void buyerExit(HttpServletRequest request,HttpServletResponse response){
+		buyerService.buyerExit(request, response);
+		logger.error("1111111");
+	}
+	
 	@RequestMapping("register")
 	public void buyerRegister(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel){
 		buyerService.buyerRegister(request, response,buyerModel);
@@ -77,10 +83,10 @@ public class BuyerAction {
 	
 	@RequestMapping("showcollectionlist")
 	@ResponseBody
-	public Msg checkCollection(HttpServletRequest request,HttpServletResponse response, CollectionModel collectionModel,
+	public Msg checkCollection(HttpServletRequest request,HttpServletResponse response,
 			@RequestParam(value = "page",defaultValue = "1") Integer page,
 			 @RequestParam(value = "rows",defaultValue = "30") Integer rows){
-		PageInfo<GoodsModel> collectionList=collectionService.collectionList(page, rows, collectionModel);
+		PageInfo<GoodsModel> collectionList=collectionService.collectionList(request,response,page, rows);
 		return Msg.success().add("collectionList",collectionList);
 	}
 		

@@ -17,5 +17,5 @@ public interface CollectionService {
 	
 	public void deleteCollection(HttpServletRequest request,HttpServletResponse response, Integer collectionID);
 	
-	public PageInfo<GoodsModel> collectionList(Integer page, Integer rows,CollectionModel collectionModel);
+	public PageInfo<GoodsModel> collectionList(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows);
 }
