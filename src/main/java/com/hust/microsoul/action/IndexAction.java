@@ -78,6 +78,7 @@ public class IndexAction {
                 goodsModel.setImageUrl(contentsModel.getUrl());
                 goodsModel.setUnitPrice(contentsModel.getContentPrice());
                 goodsModel.setTitle(contentsModel.getTitle());
+                goodsModel.setGoodsName(contentsModel.getTitle());
                 goodsModel.setSellpoint(contentsModel.getSubtitle());
                 //添加到节点列表
                 goodNodes.add(goodsModel);
