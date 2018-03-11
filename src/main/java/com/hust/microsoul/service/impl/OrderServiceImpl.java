@@ -131,26 +131,18 @@ public class OrderServiceImpl implements OrderService {
 	 * @version 1.0  
 	 */
 	@Override
-	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,SellerModel sellerModel,Integer[] orderIds) {
+	public void buyerPayOrder(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,SellerModel sellerModel,Integer orderId) {
 		
 		SellerModel sellerModel2  = sellerModelMapper.selectByPrimaryKey(sellerModel.getIdSeller());
-		String ids ="";
-		for (int i = 0; i < orderIds.length; i++) {
-			if(i<orderIds.length-1) {
-				ids +=orderIds[i]+",";
-			}else {
-				ids +=orderIds[i];
-			}
-		}
 		String 	p0_Cmd="Buy",
 		p1_MerId=sellerModel2.getMerid(),
-		p2_Order="",
+		p2_Order=orderId.toString(),
 		p3_Amt=orderModel.getTotalPrice().toString(),
 		p4_Cur="CNY",
 		p5_Pid="",
 		p6_Pcat="",	
 		p7_Pdesc="",
-		p8_Url="http://localhost:8080/microsoul/order/payOrderResult.do?"+"orderIds="+ids,
+		p8_Url="http://localhost:8080/microsoul/order/payOrderResult.do?"+"orderId="+orderId,
 		p9_SAF="",
 		pa_MP="",
 		pd_FrpId=request.getParameter("pd_FrpId"),
@@ -351,15 +343,12 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 	@Override
-	public String payOrderResult(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,String orderIds) {
+	public String payOrderResult(HttpServletRequest request, HttpServletResponse response, OrderModel orderModel,Integer orderId) {
 		try {
-			String[] ids = orderIds.split(",");
-			for (int i = 0; i < ids.length; i++) {
-				orderModel.setState(OrderStateCode.UNDELIVERY);
-				orderModel.setPayId(request.getParameter("r6_Order"));
-				orderModel.setOrderId(Integer.parseInt(ids[i]));
-				orderMapper.updateOrderState(orderModel);
-			}
+			orderModel.setState(OrderStateCode.UNDELIVERY);
+			orderModel.setPayId(request.getParameter("r6_Order"));
+			orderModel.setOrderId(orderId);
+			orderMapper.updateOrderState(orderModel);
 			return "paysuccess";
 		} catch (Exception e) {
 			e.printStackTrace();
