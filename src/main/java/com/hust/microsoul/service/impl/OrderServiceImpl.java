@@ -136,7 +136,7 @@ public class OrderServiceImpl implements OrderService {
 		SellerModel sellerModel2  = sellerModelMapper.selectByPrimaryKey(sellerModel.getIdSeller());
 		String 	p0_Cmd="Buy",
 		p1_MerId=sellerModel2.getMerid(),
-		p2_Order=orderId.toString(),
+		p2_Order="",
 		p3_Amt=orderModel.getTotalPrice().toString(),
 		p4_Cur="CNY",
 		p5_Pid="",
