@@ -74,21 +74,7 @@
             <el-button style="margin-top: 50px" type="primary" plain @click="handleSearch">搜索</el-button>
         </el-col>
         <el-col :span="6" offset="2">
-            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
-                     active-text-color="#000000">
-                <el-submenu index="1" active-text-color="#000000">
-                    <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
-                                                 style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
-                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
-                    </el-menu-item>
-                </el-submenu>
-                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
-                                           style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
-                                           style="text-decoration: none">购物车</a></el-menu-item>
-            </el-menu>
+            <div style="float: right;margin-right:8%;margin-top: 20px;"><a href="javascript:void(0);" onclick="logIn()">登&nbsp;录</a></div>
         </el-col>
     </el-row>
     <el-row style="width: 100%;margin-top: 20px">
@@ -142,7 +128,7 @@
                         <img :src="item.imageUrl" style="width: 100%;height: 100%">
                     </a>
                     <div style="text-align: center">
-                        <a  v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
+                        <a v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
                     </div>
                     <div style="text-align: center;margin: 10px 20px 20px 20px">
                         <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
@@ -161,25 +147,13 @@
 
 <script>
     // 组件实例化############################################################
-    function loginOut() {
-        $.ajax({
-            url: '/microsoul/buyer/exit.do',
-            type: "Post",
-            data: {},
-            success(data) {
-                let result = data.code;
-                if (result == 99999) {
-                    window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
-                }
-                else{
-                    alert('操作失败，请重试');
-                }
-            },
-            error() {
-                alert('操作失败，请重试');
-            },
-            dataType: 'json'
-        })
+    function logIn() {
+        window.location.href = 'http://localhost:8080'
+    }
+
+    function toDetail(detail) {
+        console.log(detail)
+//        window.location.href = detail
     }
 
     function handelSearch1() {
@@ -253,9 +227,6 @@
             })
         },
         methods: {
-            toDetail(goodsId) {
-                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
-            },
             handleSearch() {
                 window.location.href = 'http://localhost:8080/searchResult.jsp?title=' + this.input;
             },
