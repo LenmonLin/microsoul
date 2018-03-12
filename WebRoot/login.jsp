@@ -21,7 +21,7 @@
     }
 
 .22{
-
+margin-left:20%;
 }
     .login-box {
       margin-top:15%;
@@ -37,7 +37,6 @@
 </head>
 <body>
 <div class='22'><h1>灵微网</h1></div>
-<h1>灵微网</h1>
 <div class="login-box" id="app">
   <el-row>
     <el-col :span="10">

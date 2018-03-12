@@ -73,7 +73,7 @@
             <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
-            <div class="title" style="margin-top: 65px;font-size: x-large">用户信息</div>
+            
         </el-col>
         <el-col :span="6" offset="7">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
