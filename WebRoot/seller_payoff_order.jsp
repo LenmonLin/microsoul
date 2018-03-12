@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>灵微网卖家个人中心</title>
+  <meta charset="UTF-8">
+  <title>灵微网卖家个人中心</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script><!--vue核心库-->
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.0.11/lib/theme-chalk/index.css">
@@ -15,61 +15,78 @@
 </head>
 <body>
 
-  <el-container id="app">
-    <el-header><myheader></myheader></el-header>
-    <el-container>
-      <el-aside width="200px"><myaside></myaside></el-aside>
-      <el-main>
-        <div>
-          <h1>已付款订单</h1>
-          <el-table :data="payoff_info" :stripe="true" style="width: 100%">
-            <el-table-column prop="id" label="订单号" width="180px"></el-table-column>
-            <el-table-column prop="name" label="买家" width="180px"></el-table-column>
-            <el-table-column prop="price" label="总价格" width="180px"></el-table-column>
-            <el-table-column prop="num" label="商品种类数" width="180px"></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  @click="handleInfo(scope.$index)">查看详情</el-button>
-                <!--订单详情弹出框-->
-                <el-dialog title="订单详情" :visible.sync="dialogTableVisible">
-                  <el-table :data="orderdata">
-                    <el-table-column property="name" label="商品名" width="200"></el-table-column>
-                    <el-table-column property="num" label="数量" width="100"></el-table-column>
-                    <el-table-column property="price" label="单价"></el-table-column>
-                  </el-table>
-                </el-dialog>
-                <el-button
-                  size="mini"
-                  type="primary"
-                  @click="handleDeliver(scope.$index)">发货</el-button>
-                <!--发货信息填写框-->
-                <el-dialog title="发货" :visible.sync="dialogFormVisible">
-                  <el-form :model="deliverdata">
-                    <el-form-item label="物流单号" :label-width="150">
-                      <el-input v-model="deliverdata.delivernum" auto-complete="off"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-                  </div>
-                </el-dialog>
-              </template>
-            </el-table-column>
-          </el-table>
+<el-container id="app">
+  <el-header><myheader></myheader></el-header>
+  <el-container>
+    <el-aside width="200px"><myaside></myaside></el-aside>
+    <el-main>
+      <div>
+        <h1>已付款订单</h1>
+        <el-table :data="info" :stripe="true" style="width: 100%">
+          <el-table-column prop="orderId" label="订单号" width="100px"></el-table-column>
+          <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
+          <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
+          <el-table-column prop="num" label="物流单号" width="180px"></el-table-column>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleInfo(scope.$index,scope.row)">查看详情</el-button>
+              <!--订单详情弹出框-->
+              <el-dialog title="订单详情" :visible.sync="dialogTableVisible">
+                <el-row>
+                  <el-col><span>收货人:{{orderdata.buyer.realName}}</span><span>联系电话:{{orderdata.buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
+                </el-row>
+                <el-row>
+                  <el-col><span>配送地址：{{orderdata.buyer.address}}</span></el-col>
+                </el-row>
+                <el-table :data="goodsList">
+                  <el-table-column property="title" label="商品名" width="150"></el-table-column>
+                  <el-table-column property="purchaseQuantity" label="购买数量" width="100"></el-table-column>
+                  <el-table-column property="unitPrice" label="单价"></el-table-column>
+                  <el-table-column label="总价">
+                    <template slot-scope="scope">{{scope.row.unitPrice*scope.row.purchaseQuantity}}</template>
+                  </el-table-column>
+                </el-table>
+              </el-dialog>
+              <el-button
+                size="mini"
+                type="primary"
+                @click="handleDeliver(scope.$index,scope.row)">发货</el-button>
+              <!--发货信息填写框-->
+              <el-dialog title="发货" :visible.sync="dialogFormVisible">
+                <el-form :model="deliverdata">
+                  <el-form-item label="物流单号" :label-width="150">
+                    <el-input v-model="deliverdata.delivernum" ></el-input>
+                  </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="dialogFormVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="deliver">确 定</el-button>
+                </div>
+              </el-dialog>
+            </template>
+          </el-table-column>
+        </el-table>
+        <div class="block" align="center">
+          <el-pagination
+            layout="prev, pager, next"
+            page-size="10"
+            @current-change="handleCurrentChange"
+            :current-page.sync="currentPage"
+            :total="total">
+          </el-pagination>
         </div>
-      </el-main>
-    </el-container>
-    <el-footer></el-footer>
+      </div>
+    </el-main>
   </el-container>
+  <el-footer></el-footer>
+</el-container>
 
-  </body>
+</body>
 <script type="text/x-template" id='header1'>
   <div class="header">灵微网
-    <el-button class="dd" size="mini" >注册</el-button>
-    <el-button size="mini" >登录</el-button>
+    <el-button size="mini" @click="exit" class='dd'>退出账号</el-button>
   </div>
 </script>
 <script type="text/x-template" id='aside'>
@@ -85,25 +102,25 @@
             <i class="el-icon-location"></i>
             <span>订单管理</span>
           </template>
-          <el-menu-item index="1-1"><a href="./seller_unpaid_order.html" >未付款订单</a></el-menu-item>
-          <el-menu-item index="1-2"><a href="./seller_payoff_order.html" >已付款订单</a></el-menu-item>
-          <el-menu-item index="1-3"><a href="./seller_delivery_order.html" >配送中订单</a></el-menu-item>
-          <el-menu-item index="1-4"><a href="./seller_completed_order.html" >已完成订单</a></el-menu-item>
+          <el-menu-item index="1-1"><a href="./seller_unpaid_order.jsp" >未付款订单</a></el-menu-item>
+          <el-menu-item index="1-2"><a href="./seller_payoff_order.jsp" >已付款订单</a></el-menu-item>
+          <el-menu-item index="1-3"><a href="./seller_delivery_order.jsp" >配送中订单</a></el-menu-item>
+          <el-menu-item index="1-4"><a href="./seller_completed_order.jsp" >已完成订单</a></el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-menu"></i>
             <span>商品管理</span>
           </template>
-          <el-menu-item index="2-1"><a href="./goods_issue.html" >商品发布</a></el-menu-item>
-          <el-menu-item index="2-2"><a href="./goods_manege.html" >商品管理</a></el-menu-item>
+          <el-menu-item index="2-1"><a href="./goods_issue.jsp" >商品发布</a></el-menu-item>
+          <el-menu-item index="2-2"><a href="./goods_manege.jsp" >商品管理</a></el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-setting"></i>
             <span>设置</span>
           </template>
-          <el-menu-item index="3-1"><a href="./seller_info.html">个人信息</a></el-menu-item>
+          <el-menu-item index="3-1"><a href="./seller_info.jsp">个人信息</a></el-menu-item>
         </el-submenu>
       </el-menu>
     </el-col>
@@ -126,7 +143,7 @@
       }
     }
   });
-  Vue.component('myheader',{
+ Vue.component('myheader',{
     template:'#header1',
     data() {
       return {
@@ -134,6 +151,41 @@
       }
     },
     methods:{
+      exit(){
+      this.$confirm('此操作将退出登录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+        $.ajax({
+          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          type : 'post',
+          data:{
+          },
+          success : function(data) {
+            if(data.code == 100){
+              alert('退出成功');
+              window.location.href='http://localhost:8080/login.jsp';
+            }else {
+              alert("退出失败");
+              return;
+            }
+          },
+          error : function(data) {
+            alert(data);
+            return;
+          },
+          dataType : 'json',
+        });          
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消退出'
+          });
+        });
+        
+      }
 
     }
   });
@@ -143,35 +195,115 @@
       return{
         dialogTableVisible: false,
         dialogFormVisible: false,
-        payoff_info:[//已付款订单信息
-          {
-            name:'',
-            id:''
-          }
+        currentPage:1,
+        total:0,
+        index:0,
+        info:[//已付款订单信息
+
         ],
-        orderdata:[
+        orderdata:
           {
-            num:'',
-            price:"",
-            name:''
-          }
-        ]//订单详细信息
-        ,
+           
+          },
+        //订单详细信息
+        goodsList:[//订单商品信息
+        ],
         deliverdata:{//发货信息
-        delivernum:''
+          delivernum:''
         }
       }
     },
     methods:{
-      handleDeliver(index){
+      handleDeliver(index,row){
+
+        this.index=index;
         this.dialogFormVisible=true;
       },
-      handleInfo(index){
+      deliver(){
+        var that=this;
+        $.ajax({
+          url : 'http://localhost:8080/microsoul/order/sellersetlogisticid.do',
+          type : 'post',
+          data:{
+            orderId:that.info[that.index].orderId,
+            logisticId:that.deliverdata.delivernum,
+          },
+          success : function(data) {
+            var result=data.code;
+            if(result == 99999){
+              alert('成功');
+            }else {
+              alert("失败");
+            }
+          },
+          error : function(data) {
+            alert(data);
+          },
+          dataType : 'json',
+        })
+        this.dialogFormVisible = false;
+      },
+      handleInfo(index,row){      
+        this.orderdata=this.info[index];
+        this.goodsList=this.info[index].goods;        
         this.dialogTableVisible=true;
-      }
-    },
-    created:function(){//挂载数据
+      },
 
+      handleCurrentChange(currentPage){//页码切换
+        var that=this;
+        $.ajax({
+          url : 'http://localhost:8080/microsoul/order/getOrderList.do',
+          type : 'post',
+          data:{
+            state:2,
+            page:currentPage,
+            rows:10
+          },
+          success : function(data) {
+            that.total=data.extend.orderList.total;
+            var list=data.extend.orderList.list;
+            that.info = list;
+            var result=data.code;
+            if(result == 100){
+
+            }else {
+              alert("商品加载失败");
+            }
+          },
+          error : function(data) {
+            alert(data);
+          },
+          dataType : 'json',
+        })
+
+      },
+    },
+    mounted:function(){//挂载数据
+      var that=this;
+      $.ajax({
+        url : 'http://localhost:8080/microsoul/order/getOrderList.do',
+        type : 'post',
+        data:{
+          page:1,
+          state:0,
+          rows:10
+        },
+        success : function(data) {
+          that.total=data.extend.orderList.total;
+          var list=data.extend.orderList.list;
+          that.info = list;
+          var result=data.code;
+          if(result == 100){
+
+          }else {
+            alert("商品加载失败");
+          }
+        },
+        error : function(data) {
+          alert(data);
+        },
+        dataType : 'json',
+      })
     }
   });
 </script>
