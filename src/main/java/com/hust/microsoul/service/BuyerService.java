@@ -3,6 +3,7 @@ package com.hust.microsoul.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.BuyerModel;
 import org.springframework.stereotype.Service;
 
@@ -61,10 +62,12 @@ public interface BuyerService {
 	 * @param
 	 * @return
 	 */
-	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response);
+	public PageInfo<BuyerModel> buyerSelectInfo(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows);
 	
 	
 	public void disableBuyer(HttpServletRequest request,HttpServletResponse response,BuyerModel buyerModel);
+	
+	public void deleteBuyer(HttpServletRequest request,HttpServletResponse response,Integer buyerId);
 	
 	public BuyerModel getBuyerInfo(HttpServletRequest request,HttpServletResponse response);
 

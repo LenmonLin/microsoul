@@ -342,4 +342,10 @@
  		 set STATE=0
  		 where BUYER_ID = #{buyersId,jdbcType=INTEGER}
  		 </update>
+ 		 <select id="selectAllBuyer" resultMap="BaseResultMap">
+   		 select 
+			*
+   		 from buyer
+   		 order by BUYER_ID 	
+  		 </select>
 </mapper>

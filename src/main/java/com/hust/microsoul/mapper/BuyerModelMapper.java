@@ -19,6 +19,8 @@ public interface BuyerModelMapper {
     int insertSelective(BuyerModel record);
 
     List<BuyerModel> selectByExample(BuyerModelExample example);
+    
+    List<BuyerModel> selectAllBuyer();
 
     BuyerModel selectByPrimaryKey(Integer buyersId);
 
