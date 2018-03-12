@@ -43,6 +43,7 @@
 			<if test="sellerId !=null">
 				and a.SELLER_ID = #{sellerId} 
 			</if> 
+		order by a.ORDER_TIME desc
 	</select>
 	<select id="getOrderInfo" resultMap="orderMap" parameterType="java.lang.Integer">
 		select
