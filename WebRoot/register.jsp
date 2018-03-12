@@ -90,7 +90,7 @@
           ],
           phone: [
             { required: true, message: '请填入手机号', trigger: 'blur' },
-            { min:11,max:11, message: '请填入11位手机号', trigger: 'blur' }
+            { min:10,max:11, message: '请填入11位手机号', trigger: 'blur' }
           ],
           email: [
             { type: 'email', required: true, message: '请填写正确邮箱地址', trigger: 'blur' }

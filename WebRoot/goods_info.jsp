@@ -148,7 +148,7 @@
             if(result == 100){
              alert('加入购物车成功');
             }else {
-              alert("加入购物车失败");
+              alert("加入购物车失败，请登录");
             }
           },
           error : function(data) {
