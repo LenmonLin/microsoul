@@ -88,7 +88,9 @@
                     <el-form-item label="商品名称" prop='goodsName'>
                         <el-input v-model="info.goodsName"></el-input>
                     </el-form-item>
-
+					<el-form-item label="商品title" prop='goodsName'>
+                        <el-input v-model="info.title"></el-input>
+                    </el-form-item>
                     <el-form-item label="商品单价" prop='unitPrice'>
                         <el-input v-model="info.unitPrice"></el-input>
                     </el-form-item>
@@ -236,7 +238,8 @@
           store:0,
           purchaseQuantity:1,
           status:false,
-          detail:''
+          detail:'',
+          title:'',
         },
         rules:{
       goodsName: [
@@ -270,6 +273,7 @@
           var formData = new FormData();
    			formData.append('upLoadedImgUrl', file);
           	formData.append('goodsName', info.goodsName);
+          	formData.append('title', info.title);
           	formData.append('unitPrice', info.unitPrice);
           	formData.append('category', info.category);
           	formData.append('purchaseQuantity', info.purchaseQuantity);
