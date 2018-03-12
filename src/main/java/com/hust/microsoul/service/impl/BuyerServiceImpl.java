@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.JSONCommon;
 import com.hust.microsoul.util.MD5Utils;
+import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.BuyerModelMapper;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.BuyerModelExample;
@@ -103,15 +104,10 @@ public class BuyerServiceImpl implements BuyerService {
 	} 
 	
     @Override
-	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response) {
-    	HttpSession session = request.getSession();
-		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
-		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
-		String email=buyerModel.getEmail();
-		Integer qqAccount=buyerModel.getQqAccount();
-		String realName=buyerModel.getRealName();
-		Integer telephone=buyerModel.getTelephone();
-		String address=buyerModel.getAddress();
+	public PageInfo<BuyerModel> buyerSelectInfo(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows) {
+    List<BuyerModel> buyerList = buyerModelMapper.selectAllBuyer();
+    PageInfo pageInfo = new PageInfo(buyerList);
+    return pageInfo;
     }
     
     
@@ -125,6 +121,13 @@ public class BuyerServiceImpl implements BuyerService {
 		}
 		else
 			JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
+	}
+	
+	@Override
+	public void deleteBuyer(HttpServletRequest request,HttpServletResponse response,Integer buyerId) {
+		int deleteResult=buyerModelMapper.deleteByPrimaryKey(buyerId);
+		if (deleteResult!=0)
+			JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
 	}
 
 	@Override
