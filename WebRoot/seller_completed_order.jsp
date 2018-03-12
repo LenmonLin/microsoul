@@ -156,14 +156,14 @@
           center: true
         }).then(() => {
         $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          url : '/microsoul/goods/showGoodsList.do',
           type : 'post',
           data:{
           },
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='http://localhost:8080/login.jsp';
+              window.location.href='./login.jsp';
             }else {
               alert("退出失败");
               return;
@@ -220,7 +220,7 @@
       deliver(){
         var that=this;
         $.ajax({
-          url : 'http://localhost:8080/microsoul/order/sellersetlogisticid.do',
+          url : '/microsoul/order/sellersetlogisticid.do',
           type : 'post',
           data:{
             orderId:that.info[that.index].orderId,
@@ -251,7 +251,7 @@
       handleCurrentChange(currentPage){//页码切换
         var that=this;
         $.ajax({
-          url : 'http://localhost:8080/microsoul/order/getOrderList.do',
+          url : '/microsoul/order/getOrderList.do',
           type : 'post',
           data:{
             state:9,
@@ -280,7 +280,7 @@
     mounted:function(){//挂载数据
       var that=this;
       $.ajax({
-        url : 'http://localhost:8080/microsoul/order/getOrderList.do',
+        url : '/microsoul/order/getOrderList.do',
         type : 'post',
         data:{
           page:1,

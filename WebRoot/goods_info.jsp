@@ -137,7 +137,7 @@
       add_cart:function(){//加入购物车
         var that=this;        
         $.ajax({
-          url : 'http://localhost:8080/microsoul/cart/addCartItem.do',
+          url : '/microsoul/cart/addCartItem.do',
           type : 'post',
           data:{
             goodsId: that.goodsId,
@@ -160,7 +160,7 @@
       add_collection:function(){//加入收藏夹
         var that=this;
         $.ajax({
-          url : 'http://localhost:8080/microsoul/buyer/addcollection.do',
+          url : '/microsoul/buyer/addcollection.do',
           type : 'post',
           data:{
             goodsID:that.gooodsId,
@@ -188,7 +188,7 @@
 　    　 if(r!=null)  
 		this.goodsId=unescape(r[2]);
       $.ajax({
-        url : 'http://localhost:8080/microsoul/goods/goodDesc.do',
+        url : '/microsoul/goods/goodDesc.do',
         type : 'post',
         data:{
           goodsId:that.goodsId,

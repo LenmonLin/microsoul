@@ -158,14 +158,14 @@
           center: true
         }).then(() => {
         $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          url : '/microsoul/goods/showGoodsList.do',
           type : 'post',
           data:{
           },
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='http://localhost:8080/login.jsp';
+              window.location.href='./login.jsp';
             }else {
               alert("退出失败");
               return;

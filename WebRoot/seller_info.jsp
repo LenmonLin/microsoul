@@ -164,7 +164,7 @@
           type: 'warning'
         }).then(() => {
           $.ajax({
-          url : 'http://localhost:8080/microsoul/seller/sellerInfo.do',
+          url : '/microsoul/seller/sellerInfo.do',
           type : 'post',
           data:{         
           telephone:info.telephone,
@@ -208,7 +208,7 @@
             });
           return;}
 		$.ajax({
-          url : 'http://localhost:8080/microsoul/seller/sellerChangePassword.do',
+          url : '/microsoul/seller/sellerChangePassword.do',
           type : 'post',
           data:{
           accountName:that.form.accountName,
@@ -220,7 +220,7 @@
             if(result == 100){
 				alert('密码修改成功');
 				that.dialogVisible=false;
-				window.location.href='http://localhost:8080/login.jsp'
+				window.location.href='./login.jsp'
             }else {
               alert("密码修改失败");
             }
@@ -236,7 +236,7 @@
     mounted:function(){
         var that=this;
         $.ajax({
-          url : 'http://localhost:8080/microsoul/seller/showSeller.do',
+          url : '/microsoul/seller/showSeller.do',
           type : 'post',
           data:{
        
@@ -273,14 +273,14 @@
           center: true
         }).then(() => {
         $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          url : '/microsoul/goods/showGoodsList.do',
           type : 'post',
           data:{
           },
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='http://localhost:8080/login.jsp';
+              window.location.href='./login.jsp';
             }else {
               alert("退出失败");
               return;

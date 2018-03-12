@@ -245,7 +245,7 @@
           var index=this.index;
           var that=this;
           $.ajax({
-            url :'http://localhost:8080/microsoul/goods/updateGoodsModel.do',
+            url :'/microsoul/goods/updateGoodsModel.do',
             type :'post',            
             data:{goodsId:info.goodsId,
             goodsName:info.goodsName,
@@ -278,7 +278,7 @@
         handleCurrentChange(currentPage){//页码切换
         	var that=this;       
           $.ajax({
-            url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+            url : '/microsoul/goods/showGoodsList.do',
             type : 'post',
             data:{
               sellerId:1,
@@ -318,7 +318,7 @@
           type:'warning'
         }).then(()=>{
         	$.ajax({
-        	      url : 'http://localhost:8080/microsoul/goods/deleteGoodsModel.do',
+        	      url : '/microsoul/goods/deleteGoodsModel.do',
         	      type : 'post',
         	      data:{
         	    	  goodsId:goodsId
@@ -342,7 +342,7 @@
     mounted:function(){
  var that=this;
     $.ajax({
-      url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+      url : '/microsoul/goods/showGoodsList.do',
       type : 'post',
       data:{
         sellerId:1,
@@ -389,14 +389,14 @@
           center: true
         }).then(() => {
         $.ajax({
-          url : 'http://localhost:8080/microsoul/goods/showGoodsList.do',
+          url : '/microsoul/goods/showGoodsList.do',
           type : 'post',
           data:{
           },
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='http://localhost:8080/login.jsp';
+              window.location.href='./login.jsp';
             }else {
               alert("退出失败");
               return;

@@ -96,7 +96,7 @@ margin-left:20%;
             var result = data.code;
             if(result == '99999'){
               alert("登录成功");
-              window.location.href='http://localhost:8080/mainPage.jsp'
+              window.location.href='./mainPage.jsp'
             }else {
               alert("登录失败");
             }
@@ -118,7 +118,7 @@ margin-left:20%;
           return;
         }
         $.ajax({
-          url : 'http://localhost:8080/microsoul/seller/login.do',
+          url : '/microsoul/seller/login.do',
           type : 'post',
           data : {
             accountName : name,
@@ -128,7 +128,7 @@ margin-left:20%;
             var result = data.code;
             if(result ==99999){
               alert("登录成功");
-              window.location.href='http://localhost:8080/goods_manege.jsp';
+              window.location.href='./goods_manege.jsp';
             }else {
               alert("登录失败");
             }
