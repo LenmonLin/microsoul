@@ -110,7 +110,7 @@
               <el-col :span="8" :offset='4'>
                 <el-form :model="info" label-width="100px">
                   <el-form-item label="商品名称">
-                    <el-input v-model="info.goodsName"></el-input>
+                    <el-input v-model="info.title"></el-input>
                   </el-form-item>
 
                   <el-form-item label="商品单价">
