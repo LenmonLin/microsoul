@@ -266,7 +266,7 @@
             this.info.status='1';
           else this.info.status='2';
           var info=this.info;  
-        var that=this;
+          var that=this;
           $.ajax({
             url :'http://localhost:8080/microsoul/goods/insertGoodsModel.do',
             type :'post',            
