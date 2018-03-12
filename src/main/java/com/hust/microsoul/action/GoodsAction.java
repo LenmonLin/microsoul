@@ -44,14 +44,18 @@ public class GoodsAction {
 	 */
 	@RequestMapping("insertGoodsModel")
 	@ResponseBody
-	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request){
+	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request,
+								 @RequestParam(value="upLoadedImgUrl",required = true)MultipartFile file){
 
 		Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
+
+		//图片上传
+		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
 
 		if (existUserId==null){
 			return Msg.fail();
 		}
-		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId);
+		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId,upLoadedImgUrl);
 		if (exitGoods == null){
 			return Msg.fail();
 		}

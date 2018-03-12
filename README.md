@@ -62,7 +62,8 @@
 			category;store;discount;status;sellerId;
 
 	添加商品：http://localhost:8080/microsoul/goods/insertGoodsModel.do
-			必须参数：goodsName ; unitPrice  ; category  ; store   ; status  ; sellerId
+			必须参数：goodsName ; unitPrice  ; category  ; store   ; status  ; sellerId;
+			upLoadedImgUrl
 			
 卖家模块：
 

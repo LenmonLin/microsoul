@@ -51,7 +51,7 @@ public class GoodsServiceImpl  implements GoodsService{
      *@date  2018/1/23
      */
     @Override
-    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId) {
+    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId,String upLoadedImgUrl) {
 
 
         //1、补全goodsModel的属性
@@ -83,6 +83,8 @@ public class GoodsServiceImpl  implements GoodsService{
         /*java.sql.Date只包含年月日信息
             java.util.Date 包含年月日时分秒毫秒
         */
+        //插入图片
+        goodsModel.setImageUrl(upLoadedImgUrl);
         goodsModel.setSellerId(sellerId);
         goodsModel.setCreated(new Date());
         goodsModel.setUpdated(new Date());
