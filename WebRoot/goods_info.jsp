@@ -90,11 +90,12 @@
         </el-col>
         <el-col :span="10">
             <el-row>
-              <el-col><h2>{{info.goodsName}}</h2></el-col>
+              <el-col><h2>{{info.goodsName}}</h2>
+              <p>{{info.title}}</p></el-col>
             </el-row>
             <el-row>
-              <el-col offset="2">
-                <p>单价：{{info.unitPrice}}</p>
+              <el-col :offset="2">
+                <p>单价：{{info.unitPrice|filterMoney}}</p>
                 <p>类别：{{info.category}}</p>
                 <p>剩余库存：{{info.store}}</p>
                 <p>最小购买数量：{{info.purchaseQuantity}}</p>
@@ -180,7 +181,13 @@
           dataType : 'json',
         })
   }
+ 
     },
+     filters: {
+            filterMoney: function (value) {
+                return '￥' + value/100;
+            }
+        },
     mounted:function(){
       var that=this;
       var reg = new RegExp("(^|&)"+ 'goodsId' +"=([^&]*)(&|$)");
@@ -214,6 +221,25 @@
     }
   })
 
-
+ function loginOut() {
+        $.ajax({
+            url: '/microsoul/buyer/exit.do',
+            type: "Post",
+            data: {},
+            success(data) {
+                let result = data.code;
+                if (result == 99999) {
+                    window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                }
+                else{
+                    alert('操作失败，请重试');
+                }
+            },
+            error() {
+                alert('操作失败，请重试');
+            },
+            dataType: 'json'
+        })
+    }
 </script>
 </html>
