@@ -254,7 +254,7 @@
           url : 'http://localhost:8080/microsoul/order/getOrderList.do',
           type : 'post',
           data:{
-            state:3,
+            state:9,
             page:currentPage,
             rows:10
           },
@@ -284,7 +284,7 @@
         type : 'post',
         data:{
           page:1,
-          state:3,
+          state:9,
           rows:10
         },
         success : function(data) {

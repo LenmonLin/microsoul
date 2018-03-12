@@ -95,19 +95,8 @@
           <el-dialog title="编辑" width="60%"
                      :visible.sync="dialogVisible">
             <el-row>
-              <!--action为上传地址-->
-              <el-col :span="10">
-                <el-upload
-                  class="upload-demo"
-                  drag
-                  action="http://localhost:8080/static/"
-                  multiple>
-                  <i class="el-icon-upload"></i>
-                  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
-                </el-upload>
-              </el-col>
-              <el-col :span="8" :offset='4'>
+              <!--action为上传地址-->            
+              <el-col :span="8" :offset='6'>
                 <el-form :model="info" label-width="100px">
                   <el-form-item label="商品名称">
                     <el-input v-model="info.title"></el-input>
