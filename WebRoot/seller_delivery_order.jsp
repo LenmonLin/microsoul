@@ -26,7 +26,7 @@
           <el-table-column prop="orderId" label="订单号" width="100px"></el-table-column>
           <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
           <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
-          <el-table-column prop="num" label="物流单号" width="180px"></el-table-column>
+          <el-table-column prop="logisticId" label="物流单号" width="180px"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button

@@ -78,15 +78,10 @@
         <el-row>
           <!--action为上传地址-->
             <el-col :span="8">
-                <el-upload
-                        class="upload-demo"
-                        drag
-                        action="http://localhost:8080/MicroSoul/WebRoot/pic"
-                        multiple>
-                    <i class="el-icon-upload"></i>
-                    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                    <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
-                </el-upload>
+                
+ 			 <input type="file" id = "imgUrl" />
+ 			 <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+
             </el-col>
             <el-col :span="10" :offset='2'>
                 <el-form :model="info" :rules='rules' label-width="100px">
@@ -196,6 +191,7 @@
     template:'#goods_issue',
     data(){
       return{
+      fileList2:[],
         options:[
           {
             value:1,
@@ -264,6 +260,8 @@
     },
     methods:{
       issue:function () {
+      var file = document.getElementById("file").files[0];
+      
       if(this.info.status==true)
             this.info.status='1';
           else this.info.status='2';
@@ -281,7 +279,8 @@
             store:info.store,
             purchaseQuantity:info.purchaseQuantity,
             status:info.status,
-            detail:info.detail           
+            detail:info.detail,
+            upLoadedImgUrl:file,         
             },
             success : function(data) {
               var result=data.code;

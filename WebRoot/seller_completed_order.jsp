@@ -26,7 +26,7 @@
           <el-table-column prop="orderId" label="订单号" width="180px"></el-table-column>
           <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
           <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
-          <el-table-column prop="num" label="物流单号" width="180px"></el-table-column>
+          <el-table-column prop="logisticId" label="物流单号" width="180px"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
@@ -35,10 +35,10 @@
               <!--订单详情弹出框-->
               <el-dialog title="订单详情" :visible.sync="dialogTableVisible">
                 <el-row>
-                  <el-col><span>收货人:{{orderdata.buyer.realName}}</span><span>联系电话:{{orderdata.buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
+                  <el-col><span>收货人:{{buyer.realName}}</span><span>联系电话:{{buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
                 </el-row>
                 <el-row>
-                  <el-col><span>配送地址：{{orderdata.buyer.address}}</span></el-col>
+                  <el-col><span>配送地址：{{buyer.address}}</span></el-col>
                 </el-row>
                 <el-table :data="goodsList">
                   <el-table-column property="title" label="商品名" width="150"></el-table-column>
@@ -203,6 +203,7 @@
            
           },
         //订单详细信息
+        buyer:{},
         goodsList:[//订单商品信息
         ],
         deliverdata:{//发货信息
@@ -241,7 +242,8 @@
         this.dialogFormVisible = false;
       },
       handleInfo(index,row){      
-        this.orderdata=this.info[index];
+         this.orderdata=this.info[index];
+        this.buyer=this.info[index].buyer
         this.goodsList=this.info[index].goods;        
         this.dialogTableVisible=true;
       },

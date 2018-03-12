@@ -34,10 +34,10 @@
               <!--订单详情弹出框-->
               <el-dialog title="订单详情" :visible.sync="dialogTableVisible">
                 <el-row>
-                  <el-col><span>收货人:{{orderdata.buyer.realName}}</span><span>联系电话:{{orderdata.buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
+                  <el-col><span>收货人:{{buyer.realName}}</span><span>联系电话:{{buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
                 </el-row>
                 <el-row>
-                  <el-col><span>配送地址：{{orderdata.buyer.address}}</span></el-col>
+                  <el-col><span>配送地址：{{buyer.address}}</span></el-col>
                 </el-row>
                 <el-table :data="goodsList">
                   <el-table-column property="title" label="商品名" width="150"></el-table-column>
@@ -205,6 +205,7 @@
            
           },
         //订单详细信息
+        buyer:{},
         goodsList:[//订单商品信息
         ],
         deliverdata:{//发货信息
@@ -231,7 +232,7 @@
             var result=data.code;
             if(result == 99999){
               alert('成功');
-				that.info.splice(index,1);
+				that.info.splice(that.index,1);
             }else {
               alert("失败");
             }
@@ -244,9 +245,10 @@
         this.dialogFormVisible = false;
       },
       handleInfo(index,row){      
-        this.orderdata=this.info[index];
-        this.goodsList=this.info[index].goods;        
-        this.dialogTableVisible=true;
+    	  this.orderdata=this.info[index];
+          this.buyer=this.info[index].buyer
+          this.goodsList=this.info[index].goods;        
+          this.dialogTableVisible=true;
       },
 
       handleCurrentChange(currentPage){//页码切换
