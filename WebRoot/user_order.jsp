@@ -118,7 +118,7 @@
                 </el-tab-pane>
                 <el-tab-pane label="待收货" name="2">
                 </el-tab-pane>
-                <el-tab-pane label="已完成" name="3">
+                <el-tab-pane label="已完成" name="9">
                 </el-tab-pane>
                 <el-tab-pane label="已取消" name="8">
                 </el-tab-pane>
@@ -132,10 +132,10 @@
                     <a v-on:onclick="orderPay(item.orderId)" style="float: right;font-size: smaller">查看详情</a>
                     <el-button size="small" type="danger" plain v-if="item.state == 0" @click="handleCancel(item)" style="float: right; margin-right: 2%;">取消订单</el-button>
                     <el-button size="small" type="success" plain v-if="item.state == 0" @click="handlePay(item)" style="float: right; margin-right: 2%;">付款</el-button>
-                    <el-button size="small" type="warning" plain v-if="item.state == 2" @click="confirmGoods(item)" style="float: right">确认收货</el-button>
+                    <el-button size="small" type="warning" plain v-if="item.state == 2" @click="confirmGoods(item)" style="float: right;margin-right: 2%">确认收货</el-button>
 
                     <span v-if="item.state == 8" style="float: right;margin-right: 2%">已取消</span>
-                    <span v-if="item.state == 3" style="float: right">已完成</span>
+                    <span v-if="item.state == 9" style="float: right;margin-right: 2%">已完成</span>
                 </div>
                 <el-table
                         style="width: 100%"
@@ -314,13 +314,13 @@
                         let result = data.code;
                         if (result == 99999 || result == true) {
                             if (confirm("确认已收货？")) {
-                                item.state = 3
+                                item.state = 9
                             }
                         } else {
                             alert("操作失败 请稍后重试");
                         }
                     },
-                    error: function (data) {
+                    error: function () {
                         alert("操作失败 请稍后重试");
                     },
                     dataType: 'json',

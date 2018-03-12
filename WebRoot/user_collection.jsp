@@ -97,9 +97,9 @@
                             <div style="text-align: center">
                                 <a v-on:onclick="toDetail(item.goodsId)">{{item.goodsName}}</a>
                             </div>
-                            <div style="text-align: center;margin: 10px 20px 20px 20px">
+                            <div style="text-align: center;margin: 10px 20px 10px 20px">
                                 <span>{{item.unitPrice | filterMoney}}</span>
-                                <a href="">取消收藏</a>
+                                <div><i class="fa fa-heart" style="font-size:20px;color:red;float: right;margin-bottom:9px"></i></div>
                             </div>
                         </el-card>
                     </div>
