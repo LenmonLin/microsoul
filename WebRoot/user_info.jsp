@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
@@ -70,23 +71,26 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
-            
+            <div class="title" style="margin-top: 65px;font-size: x-large">用户信息</div>
         </el-col>
         <el-col :span="6" offset="7">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -110,28 +114,38 @@
         </el-col>
         <el-col :span="18" offset="3">
             <div style="width:50%; margin-top: 90px">
-                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                <el-form :model="userInfo" status-icon :rules="rules1" ref="userInfo" label-width="100px"
                          class="demo-ruleForm">
-                    <el-form-item label="用户名" prop="userName">
-                        <el-input v-model="userInfo.userName" auto-complete="off"></el-input>
+                    <el-form-item label="用户名:" prop="accountName">
+                        <span>{{userInfo.accountName}}</span>
                     </el-form-item>
-                    <el-form-item label="性别" prop="sex">
-                        <el-radio-group v-model="userInfo.sex">
-                            <el-radio :label="1">男</el-radio>
-                            <el-radio :label="2">女</el-radio>
-                            <el-radio :label="3">保密</el-radio>
-                        </el-radio-group>
+                    <el-form-item label="手机号" prop="telephone">
+                        <el-input v-model="userInfo.telephone" auto-complete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="生日" prop="birthDay">
-                        <el-input v-model="userInfo.birthDay" auto-complete="off"></el-input>
+                    <el-form-item label="邮箱" prop="email">
+                        <el-input v-model="userInfo.email" auto-complete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机号" prop="phone">
-                        <el-input v-model="userInfo.phone" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="邮箱" prop="eMail">
-                        <el-input v-model="userInfo.eMail" auto-complete="off"></el-input>
-                    </el-form-item>
-                    <a href="#" style="color: #ff9c51;margin-top: 40px">更改账户密码</a>
+                    <el-button size="mini" @click="dialogVisible=true" type="warning" plain>修改密码</el-button>
+                    <el-dialog width="30%" title="密码修改"
+                               :visible.sync="dialogVisible"
+                               center="true">
+                        <el-form :model="pass" status-icon :rules="rules2" ref="pass" label-width="10px">
+                            <el-form-item>
+                                <el-input type="password" v-model="password" placeholder="请输入旧密码" auto-complete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-input type="password" v-model="password1" placeholder="请输入新密码" auto-complete="off"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-input type="password" v-model="password2" placeholder="请再次输入新密码" auto-complete="off"></el-input>
+                            </el-form-item>
+                        </el-form>
+                        <el-row>
+                            <el-col offset="9"><span><el-button type="primary" @click="changePassword()">确认</el-button>
+                                </span></el-col>
+                        </el-row>
+
+                    </el-dialog>
 
                     <el-form-item style="margin-left: 30%; margin-top: 50px">
                         <el-button type="primary" @click="submitForm('ruleForm')">保存</el-button>
@@ -144,27 +158,36 @@
 </body>
 
 <script>
+    function changePassword() {
+        window.location.href = 'http://localhost:8080/microsoul/buyer/modifypsw.do'
+    }
+
     new Vue({
         el: '#center',
         data() {
             return {
-                userInfo: {
-                    userName: '',
-                    sex: 3,
-                    birthDay: '',
-                    phone: '',
-                    eMail: '',
-                    passWord: ''
+                dialogVisible:false,
+                pass:{
+                    password:'',
+                    password1:'',
+                    password2:'',
                 },
-                rules: {
-                    userName: [
-                        {required: true, message: '请输入收货人姓名', trigger: 'blur'},
-                    ],
-                    phone: [
+                userInfo: {
+                },
+                rules1: {
+                    telephone: [
                         {required: true, message: '请输入收货人手机号', trigger: 'blur'},
                         {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
+                    ]
+                },
+                rules2: {
+                    password: [
+                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ],
-                    passWord: [
+                    password1: [
+                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
+                    ],
+                    password2: [
                         {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ]
                 }
@@ -174,21 +197,57 @@
             let that = this;
             $.ajax({
                 type: 'Post',
-                url: '/microsoul/buyer/showcollectionlist.do',
-                data:{},
+                url: 'http://localhost:8080/microsoul/buyer/getbuyerinfo.do',
+                data: {},
                 dataType: 'json',
                 success: function (data) {
-                    let result = data.result;
-                    if(result == 99999 || result ==true){
-                        that.goodsList = data.extend.pageInfo.list;     ///////
-                    }
-
+                        that.userInfo = data;
+                        console.log(that.userInfo)///////
                 }
             })
         },
         methods: {
             submitForm(form) {
 
+            },
+            changePassword(){
+                let that=this;
+                let password=this.password;
+                let password1=this.password1;
+                let password2=this.password2;
+                if(password==''||password2==''|| password1==''){
+                    this.$message({
+                        message : '密码为空！',
+                        type : 'error'
+                    });
+                    return;}
+                if(password2!=password1) {
+                    this.$message({
+                        message: '两次密码输入不一致！',
+                        type: 'error'
+                    });
+                    return;}
+                $.ajax({
+                    url : 'http://localhost:8080/microsoul/buyer/modifypsw.do',
+                    type : 'post',
+                    data:{
+                        oldpsw:that.password,
+                        newpsw:that.password1,
+                    },
+                    success : function(data) {
+                        let result=data.code;
+                        if(result == 100){
+                            alert('密码修改成功');
+                            that.dialogVisible=false;
+                        }else {
+                            alert("操作失败，请重试！");
+                        }
+                    },
+                    error : function() {
+                        alert('操作失败，请重试！');
+                    },
+                    dataType : 'json',
+                })
             }
         }
     })

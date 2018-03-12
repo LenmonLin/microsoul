@@ -69,7 +69,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">订单管理</div>
@@ -79,13 +80,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -125,13 +128,13 @@
                     <span style="">{{item.orderTime}}</span>
                     <span style="margin-left: 10%">订单号：{{item.orderId}}</span>
                     <span style="margin-left: 10%">商家：{{item.sellerName}}</span>
-                    <span style="margin-left: 10%">订单总额：￥{{item.totalPrice}}</span>
-                    <a href="javascript:void(0);" onclick="orderPay(item.orderId)" style="float: right;font-size: smaller">查看详情</a>
+                    <span style="margin-left: 10%">订单总额：￥{{item.totalPrice/100}}</span>
+                    <a v-on:onclick="orderPay(item.orderId)" style="float: right;font-size: smaller">查看详情</a>
                     <el-button size="small" type="danger" plain v-if="item.state == 0" @click="handleCancel(item)" style="float: right; margin-right: 2%;">取消订单</el-button>
                     <el-button size="small" type="success" plain v-if="item.state == 0" @click="handlePay(item)" style="float: right; margin-right: 2%;">付款</el-button>
                     <el-button size="small" type="warning" plain v-if="item.state == 2" @click="confirmGoods(item)" style="float: right">确认收货</el-button>
 
-                    <span v-if="item.state == 8" style="float: right">已取消</span>
+                    <span v-if="item.state == 8" style="float: right;margin-right: 2%">已取消</span>
                     <span v-if="item.state == 3" style="float: right">已完成</span>
                 </div>
                 <el-table
@@ -143,7 +146,7 @@
                             width="90">
                         <template slot-scope="scope">
                             <div class="img" style="width: 100%;height: 80px">
-                                <a href="#" class="logo"><img src="scope.row.imageUrl" width="80"
+                                <a v-on:onclick="toDetail(scope.row.goodsId)" class="logo"><img src="scope.row.imageUrl" width="80"
                                                               height="80"></a>
                             </div>
                         </template>
@@ -155,6 +158,7 @@
                     </el-table-column>
                     <el-table-column
                             prop="unitPrice"
+                            :formatter="tbMoney"
                             width="261"
                             align="center">
                     </el-table-column>
@@ -164,7 +168,6 @@
                             align="center">
                     </el-table-column>
                 </el-table>
-                <%--<hr style="height:1px;border:none;border-top:1px solid #818181;" />--%>
             </el-row>
 
             <div class="page" style="margin-top: 30px; margin-left: 30%;">
@@ -223,6 +226,9 @@
             })
         },
         methods: {
+            toDetail(goodsId) {
+                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+            },
             handleTabClick() {
                 let that = this;
                 $.ajax({
@@ -280,8 +286,9 @@
                         orderId:item.orderId
                     },
                     success: function (data) {
+                        console.log(data);
                         let result = data.code;
-                        if (result == 100 || result == true) {
+                        if (result == 99999 || result == true) {
                             if (confirm("确定取消该订单？")) {
                                 item.state = 8
                             }
@@ -318,6 +325,9 @@
                     },
                     dataType: 'json',
                 })
+            },
+            tbMoney(row, column) {
+                return '￥' + row[column.property]/100;
             }
         },
     })

@@ -63,22 +63,28 @@
 
 <body>
 <div class="top" id="app" style=" width :1226px; margin: auto;">
-    <el-row id="page-top" style="width:100%;height:100px">
+    <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
-        <el-col :span="6" offset="13">
+        <el-col :span="6" offset="1">
+            <div class="title" style="margin-top: 65px;font-size: x-large"></div>
+        </el-col>
+        <el-col :span="6" offset="7">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -88,25 +94,34 @@
             <div class="cata" style="height: 500px">
                 <div class="blank" style="height: 50px;"></div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch1()" style="">女&emsp;&emsp;装</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch2()" style="">男&emsp;&emsp;装</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch3()" style="">个护美妆</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch4()" style="">手机数码</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch5()" style="">母婴玩具</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch6()" style="">零食茶酒</a>
                 </div>
                 <div style="height: 8%;width:50%;margin-left: 20%;">
-                    <a href="#" style="">品类1</a>
+                    <a href="javascript:void(0);" onclick="handelSearch7()" style="">生活家电</a>
+                </div>
+                <div style="height: 8%;width:50%;margin-left: 20%;">
+                    <a href="javascript:void(0);" onclick="handelSearch8()" style="">汽车配件</a>
+                </div>
+                <div style="height: 8%;width:50%;margin-left: 20%;">
+                    <a href="javascript:void(0);" onclick="handelSearch9()" style="">图书音像</a>
+                </div>
+                <div style="height: 8%;width:50%;margin-left: 20%;">
+                    <a href="javascript:void(0);" onclick="handelSearch10()" style="">其&emsp;&emsp;他</a>
                 </div>
             </div>
         </el-col>
@@ -115,14 +130,14 @@
                 <el-col :span="4" v-for="(item, index) in goodsList" :offset="(index%5) > 0 ? 1 : 0">
                     <div class="card" style="margin-top: 10px">
                         <el-card :body-style="{ padding: '0px'}">
-                            <a href="#" style="height: 80%">
+                            <a v-on:click="toDetail(item.goodsId)" style="height: 80%">
                                 <img :src="item.imageUrl" style="width: 100%;height: 100%">
                             </a>
                             <div style="text-align: center">
-                                <a herf="#">{{item.goodsName}}</a>
+                                <a v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
                             </div>
                             <div style="text-align: center;margin: 10px 20px 20px 20px">
-                                <span>{{item.unitPrice}}</span>
+                                <span>{{item.unitPrice | filterMoney}}</span>
                             </div>
                         </el-card>
                     </div>
@@ -134,7 +149,7 @@
                         @current-change="handlePageChange"
                         :current-page.sync="currentPage"
                         :page-size="30"
-                        layout="prev, pager, next"
+                        layout="total, prev, pager, next"
                         :total="total">
                 </el-pagination>
             </div>
@@ -150,6 +165,46 @@
 <script>
 
     // 组件实例化############################################################
+    function handelSearch1() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=1'
+    }
+
+    function handelSearch2() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=2'
+    }
+
+    function handelSearch3() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=3'
+    }
+
+    function handelSearch4() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=4'
+    }
+
+    function handelSearch5() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=5'
+    }
+
+    function handelSearch6() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=6'
+    }
+
+    function handelSearch7() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=7'
+    }
+
+    function handelSearch8() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=8'
+    }
+
+    function handelSearch9() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=9'
+    }
+
+    function handelSearch10() {
+        window.location.href = 'http://localhost:8080/searchCategory.jsp?category=10'
+    }
+
     new Vue({
         el: '#app',
         data() {
@@ -192,6 +247,9 @@
             })
         },
         methods: {
+            toDetail(goodsId) {
+                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+            },
             handlePageChange() {
                 let that = this;
                 $.ajax({
@@ -210,6 +268,11 @@
                     },
                     dataType: 'json',
                 })
+            }
+        },
+        filters: {
+            filterMoney: function (value) {
+                return '￥' + value/100;
             }
         }
     })

@@ -64,7 +64,8 @@
 <div class="top" id="cart" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:90px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="./static/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 55px;font-size: x-large">我的购物车</div>
@@ -74,13 +75,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -101,7 +104,7 @@
                 align="center">
             <template slot-scope="scope">
                 <div class="img" style="width: 100%;height: 50px">
-                    <a href="#" class="logo"><img src="scope.row.imageUrl" width="90%" height="50"></a>
+                    <a  v-on:click="toDetail(scope.row.goodsId)" class="logo"><img src="scope.row.imageUrl" width="90%" height="50"></a>
                 </div>
             </template>
         </el-table-column>
@@ -135,7 +138,7 @@
                 width="184"
                 align="center">
             <template slot-scope="scope">
-                <p>￥{{scope.row.purchaseQuantity*scope.row.unitPrice}}</p>
+                <p>￥{{scope.row.purchaseQuantity*scope.row.unitPrice/100}}</p>
             </template>
         </el-table-column>
         <el-table-column
@@ -143,7 +146,7 @@
                 width="184"
                 align="center">
             <template slot-scope="scope">
-                <el-button type="danger" @click="handleRemove(scope.$index)">
+                <el-button type="danger" @click="handleRemove(scope.row.goodsId, scope.$index)">
                     删除<i class="el-icon-delete2 el-icon--right"></i>
                 </el-button>
             </template>
@@ -192,11 +195,16 @@
                 data: {},
                 dataType: 'json',
                 success: function (data) {
-                    that.cartList = data.extend.pageInfo.list;
+                    console.log(data);
+                    that.cartList = data.extend.goodsModelList;
+                    console.log(that.cartList);
                 }
             })
         },
         methods: {
+            toDetail(goodsId) {
+                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+            },
             handleNumberChange(id, num) {        /*to server*/
                 $.ajax({
                     url: '/microsoul/cart/update.do',
@@ -290,7 +298,7 @@
                 window.location.href = 'http://localhost:8080/user_order.jsp';
             },
             tbMoney(row, column) {
-                return '￥' + row[column.property];
+                return '￥' + row[column.property]/100;
             }
         },
         computed: {
@@ -311,7 +319,7 @@
         },
         filters: {
             filterMoney: function (value) {
-                return '￥' + value;
+                return '￥' + value/100;
             }
         }
     })

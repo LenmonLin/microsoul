@@ -16,7 +16,7 @@
     <title>收藏管理</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 
     <style>
         .tabs_left .el-tabs--left .el-tabs__header.is-left{
@@ -43,7 +43,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">收藏管理</div>
@@ -53,13 +54,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -82,18 +85,21 @@
             </div>
         </el-col>
         <el-col :span="20" offset="1">
-            <el-row style="margin-top: 20px">
-                <el-col :span="4" v-for="(item, index) in collectionList" :key="index" :offset="(index%5) > 0 ? 1 : 0">
+            <el-row style="margin-top: 50px">
+                <el-col :span="4" v-for="(item, index) in goodsList" :offset="(index%5) > 0 ? 1 : 0">
                     <div class="card" style="margin-top: 10px">
                         <el-card :body-style="{ padding: '0px'}">
-                            <a href="#" style="height: 80%">
-                                <img src="../img/gift.png" style="width: 100%;height: 100%">
+
+                            <a v-on:onclick="toDetail(item.goodsId)" style="height: 80%">
+
+                                <img :src="item.imageUrl" style="width: 100%;height: 100%">
                             </a>
                             <div style="text-align: center">
-                                <a herf="#">name</a>
+                                <a v-on:onclick="toDetail(item.goodsId)">{{item.goodsName}}</a>
                             </div>
                             <div style="text-align: center;margin: 10px 20px 20px 20px">
-                                <span>price</span>
+                                <span>{{item.unitPrice | filterMoney}}</span>
+                                <a href="">取消收藏</a>
                             </div>
                         </el-card>
                     </div>
@@ -105,7 +111,7 @@
                         @current-change="handlePageChange"
                         :current-page.sync="currentPage"
                         :page-size="30"
-                        layout="prev, pager, next"
+                        layout="total, prev, pager, next"
                         :total="total">
                 </el-pagination>
             </div>
@@ -130,29 +136,45 @@
                 type: 'Post',
                 url: '/microsoul/buyer/showcollectionlist.do',
                 dataType: 'json',
+                data: {
+                    page: '1',
+                },
                 success: function (data) {
+                    console.log(data);
                     that.goodsList = data.extend.collectionList.list;
+                    that.total = data.extend.collectionList.total;
+                },
+                error: function (data) {
+                    alert(data);
                 }
             })
         },
         methods: {
+            toDetail(goodsId) {
+                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+            },
             handlePageChange() {
                 let that = this;
                 $.ajax({
-                    url: '/microsoul/goods/search.do',
+                    url: '/microsoul/buyer/showcollectionlist.do',
                     type: 'post',
                     data: {
-                        title: that.input,
                         page: that.currentPage,
                     },
                     success: function (data) {
-                        that.goodsList = data.extend.goodsModelPageInfo.list;
+                        that.goodsList = data.extend.collectionList.list;
+
                     },
                     error: function (data) {
                         alert(data);
                     },
                     dataType: 'json',
                 })
+            }
+        },
+        filters: {
+            filterMoney: function (value) {
+                return '￥' + value;
             }
         }
     })

@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
@@ -70,7 +71,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+                                                                           height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">地址管理</div>
@@ -80,13 +82,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -113,17 +117,17 @@
             <div style="width:50%; margin-top: 70px">
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
                          class="demo-ruleForm">
-                    <el-form-item label="姓名" prop="name">
-                        <el-input v-model="ruleForm.name" auto-complete="off"></el-input>
+                    <el-form-item label="姓名" prop="realName">
+                        <el-input v-model="ruleForm.realName" auto-complete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机号" prop="phone">
-                        <el-input v-model="ruleForm.phone" auto-complete="off"></el-input>
+                    <el-form-item label="手机号" prop="telephone">
+                        <el-input v-model="ruleForm.telephone" auto-complete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="收货地址" prop="address">
                         <el-input type="textarea" v-model="ruleForm.address"></el-input>
                     </el-form-item>
                     <el-form-item style="margin-left: 30%; margin-top: 50px">
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                        <el-button type="primary" @click="submitForm()">提交</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -138,15 +142,12 @@
         data() {
             return {
                 ruleForm: {
-                    name: '',
-                    phone: '',
-                    address: ''
                 },
                 rules: {
-                    name: [
+                    realName: [
                         {required: true, message: '请输入收货人姓名', trigger: 'blur'},
                     ],
-                    phone: [
+                    telephone: [
                         {required: true, message: '请输入收货人手机号', trigger: 'blur'},
                         {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
                     ],
@@ -156,9 +157,43 @@
                 }
             };
         },
+        mounted(){
+            let that = this;
+            $.ajax({
+                type: 'Post',
+                url: 'http://localhost:8080/microsoul/buyer/getbuyerinfo.do',
+                data: {},
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    that.ruleForm = data;
+                    console.log(that.ruleForm);
+                }
+            })
+        },
         methods: {
-            submitForm(form) {
-
+            submitForm() {
+                let that = this;
+                $.ajax({
+                    type: 'Post',
+                    url: '/microsoul/buyer/selectinfo.do',
+                    data: {
+                        name: that.name,
+                        phone: that.phone,
+                        address: that.address
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        let result = data.result;
+                        if (result == 99999 || result == true) {
+                            console.log(data);
+//                        that.ruleForm = data.extend.pageInfo.list;     ///////
+                        }
+                        else{
+                            alert(data);
+                        }
+                    }
+                })
             }
         }
     })
