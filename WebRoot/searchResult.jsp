@@ -141,8 +141,8 @@
         </el-col>
     </el-row>
 </div>
-<el-row id="site-footer" style="height: 40px;">
-    <div class="footer">这里要改</div>
+<el-row id="site-footer">
+    <div class="footer"  style="height: 100px"></div>
 </el-row>
 </body>
 

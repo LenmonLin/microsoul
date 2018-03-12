@@ -52,9 +52,11 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 	
 	@Override
-	public PageInfo<GoodsModel> collectionList(Integer page, Integer rows,CollectionModel collectionModel){
+	public PageInfo<GoodsModel> collectionList(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows){
 		  PageHelper.startPage(page,rows);
-	        List<GoodsModel> collectionList = goodsModelMapper.getcollectionList(collectionModel);
+		    HttpSession session = request.getSession();
+			Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
+	        List<GoodsModel> collectionList = goodsModelMapper.getcollectionList(loginedBuyersID);
 	        //返回查询结果
 	        PageInfo pageInfo = new PageInfo(collectionList);
 

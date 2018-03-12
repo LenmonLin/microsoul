@@ -75,9 +75,13 @@ public class IndexAction {
         List<GoodsModel> goodNodes = new ArrayList<>();
         for (ContentsModel contentsModel : contentsModelList2){
                 GoodsModel goodsModel = new GoodsModel();
-                goodsModel.setImageUrl(contentsModel.getUrl());
+                //商品详情页图片
+                goodsModel.setImageUrl(contentsModel.getPic());
+                //商品详情页的链接跳转
+                goodsModel.setDetail(contentsModel.getUrl());
                 goodsModel.setUnitPrice(contentsModel.getContentPrice());
                 goodsModel.setTitle(contentsModel.getTitle());
+                goodsModel.setGoodsName(contentsModel.getTitle());
                 goodsModel.setSellpoint(contentsModel.getSubtitle());
                 //添加到节点列表
                 goodNodes.add(goodsModel);

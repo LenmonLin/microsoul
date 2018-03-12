@@ -193,9 +193,9 @@
       GOODS_ID = #{goodsId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  	<select id="getcollectionList" resultMap="BaseResultMap" parameterType="com.hust.microsoul.model.CollectionModel">
+  	<select id="getcollectionList" resultMap="BaseResultMap" parameterType="Integer">
 		select
-			 a.* , b.*
+		b.*
 		from 
 			collection a,goods b
 		where 

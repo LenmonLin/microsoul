@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
@@ -140,8 +141,7 @@
     <div style="margin-left: 80%">优惠：</div>
     <div style="margin-left: 80%">运费：</div>
     <div style="margin-left: 80%">应付总额：</div>
-    <el-button style="margin-left: 80%;margin-top: 20px">付款</el-button>
-
+    <el-button @click="handlePay" style="margin-left: 80%;margin-top: 20px">付款</el-button>
 </div>
 </body>
 
@@ -150,109 +150,52 @@
         el: '#center',
         data() {
             return {
-                orderList: [{
-                    "orderId": 10,
-                    "state": 0,
-                    "logisticId": 0,
-                    "logisticIdReject": 0,
-                    "buyerId": 1,
-                    "sellerId": 1,
-                    "sellerName": "huawei",
-                    "goods": [{
-                        "goodsId": 1,
-                        "goodsName": "更新1",
-                        "title": null,
-                        "sellpoint": null,
-                        "unitPrice": 1,
-                        "purchaseQuantity": 2,
-                        "barcode": null,
-                        "imageUrl": "1",
-                        "category": null,
-                        "store": 20,
-                        "detail": null,
-                        "discount": null,
-                        "status": null,
-                        "created": null,
-                        "updated": null,
-                        "collectionId": null,
-                        "sellerId": null
-                    },
-                        {
-                            "goodsId": 3,
-                            "goodsName": "更新1",
-                            "title": null,
-                            "sellpoint": null,
-                            "unitPrice": 1,
-                            "purchaseQuantity": 2,
-                            "barcode": null,
-                            "imageUrl": "1",
-                            "category": null,
-                            "store": 20,
-                            "detail": null,
-                            "discount": null,
-                            "status": null,
-                            "created": null,
-                            "updated": null,
-                            "collectionId": null,
-                            "sellerId": null
-                        }]
-                },
-                    {
-                        "orderId": 11,
-                        "state": 0,
-                        "logisticId": 0,
-                        "logisticIdReject": 0,
-                        "buyerId": 1,
-                        "sellerId": 1,
-                        "sellerName": "apple",
-                        "goods": [{
-                            "goodsId": 2,
-                            "goodsName": "ipad",
-                            "title": null,
-                            "sellpoint": null,
-                            "unitPrice": 1,
-                            "purchaseQuantity": 2,
-                            "barcode": null,
-                            "imageUrl": "1",
-                            "category": null,
-                            "store": 30,
-                            "detail": null,
-                            "discount": null,
-                            "status": null,
-                            "created": null,
-                            "updated": null,
-                            "collectionId": null,
-                            "sellerId": null
-                        },
-                            {
-                                "goodsId": 4,
-                                "goodsName": "更新1",
-                                "title": null,
-                                "sellpoint": null,
-                                "unitPrice": 1,
-                                "purchaseQuantity": 2,
-                                "barcode": null,
-                                "imageUrl": "1",
-                                "category": null,
-                                "store": 20,
-                                "detail": null,
-                                "discount": null,
-                                "status": null,
-                                "created": null,
-                                "updated": null,
-                                "collectionId": null,
-                                "sellerId": null
-                            }]
-                    }]
+                totalPrice: 0,
+                orderId: [],
+                sellerId: [],
+                pd_FrpId: '',
+                orderList: []
             }
         },
-
-        methods: {
-
+        mounted() {
+            <%--<% let orderId = session.getAttribute("orderId"); %>--%>
+            console.log(this.orderId);
+            let that = this;
+            $.ajax({
+                type: 'Post',
+                url: '/microsoul/order/payOrder.do',
+                data:{
+                  orderId:that.orderId,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    that.orderList = data.extend.pageInfo.list;
+                }
+            })
         },
-        filters: {
-            filterMoney: function (value) {
-                return '￥' + value;
+        methods: {
+            handlePay(){
+                let that = this;
+                $.ajax({
+                    type: 'Post',
+                    url: '/microsoul/order/payOrder.do',
+                    data:{
+                        orderIds:that.orderId,
+                        totalPrice:that.totalPrice,
+                        idSeller: that.sellerId,
+                        pd_FrpId:that.pd_FrpId
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        let result = data.result;
+                        if (result == 99999 || result == true) {
+                            //跳转第三方
+                        }
+                    }
+                })
+            },
+            filterMoney(row, column) {
+                return '￥' + row[column.property];
             }
         }
     })

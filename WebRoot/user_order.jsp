@@ -121,19 +121,22 @@
                 </el-tab-pane>
             </el-tabs>
             <el-row v-for="item in list">
-                <div>
-                    <span>{{item.orderTime}}</span>
-                    <span>{{item.orderId}}</span>
-                    <span>{{item.sellerName}}</span>
-                    <span>￥{{item.totalPrice}}</span>
-                    <el-button v-if="item.state == 0">付款</el-button>
-                    <el-button v-if="item.state == 2" @click="confirmGoods(item)">确认收货</el-button>
-                    <el-button v-if="item.state == 0" @click="handleCancel(item)">取消订单</el-button>
-                    <span v-if="item.state == 8">已取消</span>
-                    <span v-if="item.state == 8">已完成</span>
+                <div style="margin-top: 50px">
+                    <span style="">{{item.orderTime}}</span>
+                    <span style="margin-left: 10%">订单号：{{item.orderId}}</span>
+                    <span style="margin-left: 10%">商家：{{item.sellerName}}</span>
+                    <span style="margin-left: 10%">订单总额：￥{{item.totalPrice}}</span>
+                    <a href="javascript:void(0);" onclick="orderPay(item.orderId)" style="float: right;font-size: smaller">查看详情</a>
+                    <el-button size="small" type="danger" plain v-if="item.state == 0" @click="handleCancel(item)" style="float: right; margin-right: 2%;">取消订单</el-button>
+                    <el-button size="small" type="success" plain v-if="item.state == 0" @click="handlePay(item)" style="float: right; margin-right: 2%;">付款</el-button>
+                    <el-button size="small" type="warning" plain v-if="item.state == 2" @click="confirmGoods(item)" style="float: right">确认收货</el-button>
+
+                    <span v-if="item.state == 8" style="float: right">已取消</span>
+                    <span v-if="item.state == 3" style="float: right">已完成</span>
                 </div>
                 <el-table
-                        style="width: 100%;margin-top:50px"
+                        style="width: 100%"
+                        :show-header="false"
                         :data="item.goods">
                     <el-table-column
                             label=""
@@ -161,6 +164,7 @@
                             align="center">
                     </el-table-column>
                 </el-table>
+                <%--<hr style="height:1px;border:none;border-top:1px solid #818181;" />--%>
             </el-row>
 
             <div class="page" style="margin-top: 30px; margin-left: 30%;">
@@ -176,9 +180,16 @@
     </el-row>
 
 </div>
+<el-row id="site-footer">
+    <div class="footer"  style="height: 100px"></div>
+</el-row>
 </body>
 
 <script>
+    function orderPay() {
+        window.location.href = 'http://localhost:8080'
+    }
+
     new Vue({
         el: '#center',
         data() {
@@ -254,6 +265,12 @@
                     },
                     dataType: 'json',
                 })
+            },
+            handlePay(item){
+                window.location.href =
+                    'http://localhost:8080/microsoul/order/payOrder.do?orderId='
+                    +item.orderId+'&idSeller='
+                    +item.sellerId+'&totalPrice=0.01&pd_FrpId=CCB-NET-B2C';
             },
             handleCancel(item){
                 $.ajax({
