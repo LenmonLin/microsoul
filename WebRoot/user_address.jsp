@@ -71,8 +71,9 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px"
+                                                                           src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">地址管理</div>
@@ -105,7 +106,7 @@
                     <a href="http://localhost:8080/user_collection.jsp">收藏管理</a>
                 </div>
                 <div style="height: 8%;width:50%;margin: 30px 0px;text-align: center">
-                    <a href="http://localhost:8080/user_address.jsp"  style="color: #409EFF">地址管理</a>
+                    <a href="http://localhost:8080/user_address.jsp" style="color: #409EFF">地址管理</a>
                 </div>
                 <div style="height: 8%;width:50%;margin: 30px 0px;text-align: center">
                     <a href="http://localhost:8080/user_info.jsp">用户信息</a>
@@ -127,7 +128,7 @@
                         <el-input type="textarea" v-model="ruleForm.address"></el-input>
                     </el-form-item>
                     <el-form-item style="margin-left: 30%; margin-top: 50px">
-                        <el-button type="primary" @click="submitForm()">提交</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -140,24 +141,48 @@
     new Vue({
         el: '#center',
         data() {
+            let checkName = (rule, value, callback) => {
+                if (!value) {
+                    return callback(new Error('收货人不能为空'));
+                }
+                else {
+                    callback();
+                }
+            };
+            let checkPhone = (rule, value, callback) => {
+                if (value.length !== 11) {
+                    callback(new Error('请输入11位手机号'));
+                } else {
+                    callback();
+                }
+            };
+            let checkAddress = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('收货地址不能为空'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 ruleForm: {
+                    realName:'',
+                    telephone:'',
+                    address:'',
                 },
                 rules: {
                     realName: [
-                        {required: true, message: '请输入收货人姓名', trigger: 'blur'},
+                        {validator: checkName, trigger: 'blur'}
                     ],
                     telephone: [
-                        {required: true, message: '请输入收货人手机号', trigger: 'blur'},
-                        {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
+                        {validator: checkPhone, trigger: 'blur'}
                     ],
                     address: [
-                        {required: true, message: '请输入收货地址', trigger: 'blur'},
+                        {validator: checkAddress, trigger: 'blur'}
                     ]
                 }
             };
         },
-        mounted(){
+        mounted() {
             let that = this;
             $.ajax({
                 type: 'Post',
@@ -167,33 +192,41 @@
                 success: function (data) {
                     console.log(data);
                     that.ruleForm = data;
-                    console.log(that.ruleForm);
                 }
             })
-        },
+        }
+        ,
         methods: {
-            submitForm() {
-                let that = this;
-                $.ajax({
-                    type: 'Post',
-                    url: '/microsoul/buyer/selectinfo.do',
-                    data: {
-                        name: that.name,
-                        phone: that.phone,
-                        address: that.address
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        let result = data.result;
-                        if (result == 99999 || result == true) {
-                            console.log(data);
-//                        that.ruleForm = data.extend.pageInfo.list;     ///////
-                        }
-                        else{
-                            alert(data);
-                        }
+            submitForm(ruleForm) {
+                this.$refs[ruleForm].validate((valid) => {
+                    if (valid) {
+                        let that = this;
+                        $.ajax({
+                            type: 'Post',
+                            url: '/microsoul/buyer/updateinfo.do',
+                            data: {
+                                realName: that.realName,
+                                telephone: that.telephone,
+                                address: that.address
+                            },
+                            dataType: 'json',
+                            success: function (data) {
+                                console.log(data);
+                                let result = data.result;
+                                if (result == 99999 || result == true) {
+
+                                    that.ruleForm = data;
+                                }
+                                else {
+                                    alert('shibai');
+                                }
+                            }
+                        })
+                    } else {
+                        alert('shibai');
+                        return false;
                     }
-                })
+                });
             }
         }
     })

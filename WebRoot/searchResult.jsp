@@ -65,8 +65,8 @@
 <div class="top" id="app" style=" width :1226px; margin: auto;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large"></div>

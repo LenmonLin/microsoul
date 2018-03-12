@@ -64,8 +64,8 @@
 <div class="top" id="app" style=" width :1226px; margin: auto;">
     <el-row id="page-top" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="9" offset="1">
             <el-input v-model="input" style="margin-top: 50px"></el-input>

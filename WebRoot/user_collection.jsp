@@ -43,8 +43,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">收藏管理</div>
@@ -90,16 +90,16 @@
                     <div class="card" style="margin-top: 10px">
                         <el-card :body-style="{ padding: '0px'}">
 
-                            <a v-on:onclick="toDetail(item.goodsId)" style="height: 80%">
+                            <a v-on:click="toDetail(item.goodsId)" style="height: 80%">
 
                                 <img :src="item.imageUrl" style="width: 100%;height: 100%">
                             </a>
                             <div style="text-align: center">
-                                <a v-on:onclick="toDetail(item.goodsId)">{{item.goodsName}}</a>
+                                <a v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
                             </div>
                             <div style="text-align: center;margin: 10px 20px 10px 20px">
-                                <span>{{item.unitPrice | filterMoney}}</span>
-                                <div><i class="fa fa-heart" style="font-size:20px;color:red;float: right;margin-bottom:9px"></i></div>
+                                <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
+                                <div><i @click="dislike(item.collectionId,index)" class="fa fa-heart" style="font-size:20px;color:red;float: right;margin-bottom:9px"></i></div>
                             </div>
                         </el-card>
                     </div>
@@ -151,26 +151,53 @@
         },
         methods: {
             toDetail(goodsId) {
-                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+                window.location.href = '/goods_info.jsp?goodsId=' + goodsId;
+            },
+            dislike(collectionId,index){
+                console.log(collectionId,index);
+                if (confirm("取消收藏？")) {
+                    let that = this;
+                    $.ajax({
+                        url: '/microsoul/buyer/deletecollection.do',
+                        type: 'post',
+                        data: {
+                            collectionID: collectionId,
+                        },
+                        success: function (data) {
+                            let result = data.code;
+                            console.log(data);
+                            if (result == 99999 || result == true) {
+                                that.goodsList.splice(index, 1)
+                            } else {
+                                alert("操作失败！");
+                            }
+                        },
+                        error: function (data) {
+                            alert('操作失败');
+                        },
+                        dataType: 'json',
+                    })
+                }
+
             },
             handlePageChange() {
                 let that = this;
-                $.ajax({
-                    url: '/microsoul/buyer/showcollectionlist.do',
-                    type: 'post',
-                    data: {
-                        page: that.currentPage,
-                    },
-                    success: function (data) {
-                        that.goodsList = data.extend.collectionList.list;
+                    $.ajax({
+                        url: '/microsoul/buyer/showcollectionlist.do',
+                        type: 'post',
+                        data: {
+                            page: that.currentPage,
+                        },
+                        success: function (data) {
+                            that.goodsList = data.extend.collectionList.list;
 
-                    },
-                    error: function (data) {
-                        alert(data);
-                    },
-                    dataType: 'json',
-                })
-            }
+                        },
+                        error: function (data) {
+                            alert(data);
+                        },
+                        dataType: 'json',
+                    })
+                }
         },
         filters: {
             filterMoney: function (value) {

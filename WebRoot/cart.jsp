@@ -64,7 +64,7 @@
 <div class="top" id="cart" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:90px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="static/Logo.png" width="90"
                                                                            height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
@@ -104,7 +104,8 @@
                 align="center">
             <template slot-scope="scope">
                 <div class="img" style="width: 100%;height: 50px">
-                    <a  v-on:click="toDetail(scope.row.goodsId)" class="logo"><img src="scope.row.imageUrl" width="90%" height="50"></a>
+                    <a  v-on:click="toDetail(scope.row.goodsId)" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                                   height="45"></a>
                 </div>
             </template>
         </el-table-column>
@@ -225,28 +226,28 @@
                 this.checkList = val;
             },
             handleRemove(id, index) {
-                let that = this;
-                $.ajax({
-                    url: '/microsoul/cart/delete.do',
-                    type: 'post',
-                    data: {
-                        goodsId: id,
-                    },
-                    success: function (data) {
-                        let result = data.code;
-                        if (result == 99999 || result == true) {
-                            if (confirm("确定移除该商品？")) {
+                if (confirm("确定移除该商品？")) {
+                    let that = this;
+                    $.ajax({
+                        url: '/microsoul/cart/delete.do',
+                        type: 'post',
+                        data: {
+                            goodsId: id,
+                        },
+                        success: function (data) {
+                            let result = data.code;
+                            if (result == 99999 || result == true) {
                                 that.cartList.splice(index, 1)
+                            } else {
+                                alert("删除失败！");
                             }
-                        } else {
-                            alert("删除失败！");
-                        }
-                    },
-                    error: function (data) {
-                        alert(data);
-                    },
-                    dataType: 'json',
-                })
+                        },
+                        error: function (data) {
+                            alert(data);
+                        },
+                        dataType: 'json',
+                    })
+                }
             },
             submitOrder() {
                 let that = this;

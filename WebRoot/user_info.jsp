@@ -16,7 +16,6 @@
     <title>用户信息</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <style>
         .tabs_left .el-tabs--left .el-tabs__header.is-left {
@@ -71,8 +70,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="./static/logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 65px;font-size: x-large">用户信息</div>
@@ -114,7 +113,7 @@
         </el-col>
         <el-col :span="18" offset="3">
             <div style="width:50%; margin-top: 90px">
-                <el-form :model="userInfo" status-icon :rules="rules1" ref="userInfo" label-width="100px"
+                <el-form :model="userInfo" status-icon :rules="rules" ref="userInfo" label-width="100px"
                          class="demo-ruleForm">
                     <el-form-item label="用户名:" prop="accountName">
                         <span>{{userInfo.accountName}}</span>
@@ -129,7 +128,7 @@
                     <el-dialog width="30%" title="密码修改"
                                :visible.sync="dialogVisible"
                                center="true">
-                        <el-form :model="pass" status-icon :rules="rules2" ref="pass" label-width="10px">
+                        <el-form :model="userInfo" status-icon :rules="rules" ref="userInfo" label-width="10px">
                             <el-form-item>
                                 <el-input type="password" v-model="password" placeholder="请输入旧密码" auto-complete="off"></el-input>
                             </el-form-item>
@@ -148,7 +147,7 @@
                     </el-dialog>
 
                     <el-form-item style="margin-left: 30%; margin-top: 50px">
-                        <el-button type="primary" @click="submitForm('ruleForm')">保存</el-button>
+                        <el-button type="primary" @click="submitForm(userInfo)">保存</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -167,20 +166,18 @@
         data() {
             return {
                 dialogVisible:false,
-                pass:{
+                userInfo: {
+                    telephone: '',
+                    email: '',
                     password:'',
                     password1:'',
                     password2:'',
-                },
-                userInfo: {
                 },
                 rules1: {
                     telephone: [
                         {required: true, message: '请输入收货人手机号', trigger: 'blur'},
                         {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
-                    ]
-                },
-                rules2: {
+                    ],
                     password: [
                         {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ],
@@ -190,7 +187,7 @@
                     password2: [
                         {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ]
-                }
+                },
             };
         },
         mounted() {
@@ -207,8 +204,35 @@
             })
         },
         methods: {
-            submitForm(form) {
-
+            submitForm(userInfo) {
+                this.$refs[userInfo].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+//                let that = this;
+//                $.ajax({
+//                    url: '/microsoul/buyer/updateinfo.do',
+//                    type: 'post',
+//                    data: {
+//                        telephone: userInfo.telephone,
+//                        email: userInfo.email,
+//                    },
+//                    success: function (data) {
+//                        let result = data.code;
+//                        console.log(data);
+//                        if (result == 99999 || result == true) {
+//                            alert("保存成功");
+//                        }
+//                    },
+//                    error: function () {
+//                        alert('操作失败');
+//                    },
+//                    dataType: 'json',
+//                })
             },
             changePassword(){
                 let that=this;
