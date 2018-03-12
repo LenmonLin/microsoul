@@ -21,11 +21,12 @@
     <el-aside width="200px"><myaside></myaside></el-aside>
     <el-main>
       <div>
-        <h1>已付款订单</h1>
+        <h1>配送中订单</h1>
         <el-table :data="info" :stripe="true" style="width: 100%">
-          <el-table-column prop="orderId" label="订单号" width="180px"></el-table-column>
+          <el-table-column prop="orderId" label="订单号" width="100px"></el-table-column>
           <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
           <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
+          <el-table-column prop="num" label="物流单号" width="180px"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
@@ -34,10 +35,10 @@
               <!--订单详情弹出框-->
               <el-dialog title="订单详情" :visible.sync="dialogTableVisible">
                 <el-row>
-                  <el-col><span>收货人:{{orderdata.buyer.realName}}</span><span>联系电话:{{orderdata.buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
+                  <el-col><span>收货人:{{buyer.realName}}</span><span>联系电话:{{buyer.telephone}}</span> <span>支付总价：{{orderdata.totalPrice/100.0+'元'}}</span></el-col>
                 </el-row>
                 <el-row>
-                  <el-col><span>配送地址：{{orderdata.buyer.address}}</span></el-col>
+                  <el-col><span>配送地址：{{buyer.address}}</span></el-col>
                 </el-row>
                 <el-table :data="goodsList">
                   <el-table-column property="title" label="商品名" width="150"></el-table-column>
@@ -48,10 +49,7 @@
                   </el-table-column>
                 </el-table>
               </el-dialog>
-              <el-button
-                size="mini"
-                type="primary"
-                @click="handleDeliver(scope.$index,scope.row)">发货</el-button>
+              
               <!--发货信息填写框-->
               <el-dialog title="发货" :visible.sync="dialogFormVisible">
                 <el-form :model="deliverdata">
@@ -204,6 +202,9 @@
           {
            
           },
+          buyer:{
+          
+          },
         //订单详细信息
         goodsList:[//订单商品信息
         ],
@@ -231,7 +232,6 @@
             var result=data.code;
             if(result == 99999){
               alert('成功');
-				that.info.splice(index,1);
             }else {
               alert("失败");
             }
@@ -245,6 +245,7 @@
       },
       handleInfo(index,row){      
         this.orderdata=this.info[index];
+        this.buyer=this.info[index].buyer
         this.goodsList=this.info[index].goods;        
         this.dialogTableVisible=true;
       },
@@ -285,7 +286,7 @@
         type : 'post',
         data:{
           page:1,
-          state:0,
+          state:2,
           rows:10
         },
         success : function(data) {

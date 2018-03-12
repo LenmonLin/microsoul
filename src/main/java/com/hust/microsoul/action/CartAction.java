@@ -148,7 +148,7 @@ public class CartAction {
                 /*
         * pn显示第几页，pageSize每页显示的记录数
         * */
-        PageHelper.startPage(pn,6);
+        PageHelper.startPage(pn,30);
 
 
         //从cookie中取出购物车列表
@@ -158,6 +158,6 @@ public class CartAction {
 //        用pageInfo对结果进行包装,之后只要将pageInfo交给前端页面就可以
 //        pageInfo封装了详细的分页信息,navigatePages传入连续显示的页数
         PageInfo pageInfo = new PageInfo(goodsModelList);
-        return Msg.success().add("pageInfo", pageInfo);
+        return Msg.success().add("goodsModelList", goodsModelList);
     }
 }
