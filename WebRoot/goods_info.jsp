@@ -96,7 +96,7 @@
             alert(data);
           },
           dataType : 'json',
-        })
+        }) 
       },
       add_collection:function(){//加入收藏夹
         var that=this;
