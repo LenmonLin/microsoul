@@ -29,7 +29,7 @@ public class GoodsAction {
 
 	@Autowired
 	private GoodsService goodsService;
-
+	
 
 	@RequestMapping("hello")
 	public String HelloWorld(HttpServletRequest request,HttpServletResponse response) {
@@ -45,13 +45,13 @@ public class GoodsAction {
 	@RequestMapping("insertGoodsModel")
 	@ResponseBody
 	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request,
-								 @RequestParam(value="upLoadedImgUrl",required = true)MultipartFile file){
+								 @RequestParam(value="upLoadedImgUrl",required = false)MultipartFile file){
 
 		Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
 
 		//图片上传
 		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
-
+		System.out.println("url-----"+upLoadedImgUrl);
 		if (existUserId==null){
 			return Msg.fail();
 		}

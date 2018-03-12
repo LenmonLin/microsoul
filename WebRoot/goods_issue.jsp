@@ -267,21 +267,22 @@
           else this.info.status='2';
           var info=this.info;  
           var that=this;
+          var formData = new FormData();
+   			formData.append('upLoadedImgUrl', file);
+          	formData.append('goodsName', info.goodsName);
+          	formData.append('unitPrice', info.unitPrice);
+          	formData.append('category', info.category);
+          	formData.append('purchaseQuantity', info.purchaseQuantity);
+          	formData.append('status', info.status);
+          	formData.append('detail', info.detail);
+          	formData.append('store', info.store);
           $.ajax({
-            url :'http://localhost:8080/microsoul/goods/insertGoodsModel.do',
+            url :'/microsoul/goods/insertGoodsModel.do',
             type :'post',            
-            data:{
-            sellerId:1,
-            goodsId:info.goodsId,
-            goodsName:info.goodsName,
-            unitPrice:info.unitPrice,
-            category:info.category,
-            store:info.store,
-            purchaseQuantity:info.purchaseQuantity,
-            status:info.status,
-            detail:info.detail,
-            upLoadedImgUrl:file,         
-            },
+            data:formData,
+            contentType: false,
+            processData: false,
+            mimeType: "multipart/form-data",
             success : function(data) {
               var result=data.code;
               if(result == 100){
@@ -294,7 +295,7 @@
               }
             },
             error : function(data) {
-              alert(data);
+              alert(data.code);
             },
             dataType : 'json',
           }) 
