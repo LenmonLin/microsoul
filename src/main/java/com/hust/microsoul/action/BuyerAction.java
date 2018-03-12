@@ -2,6 +2,7 @@ package com.hust.microsoul.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,8 +80,8 @@ public class BuyerAction {
 	}
 	
 	@RequestMapping("deletecollection")
-	public void deleteCollection(HttpServletRequest request,HttpServletResponse response, @RequestParam(value = "collectionID")Integer collectionID){
-		collectionService.addCollection(request, response, collectionID);
+	public void deleteCollection(HttpServletRequest request,HttpServletResponse response, @RequestParam(value = "goodsId")Integer goodsId){
+		collectionService.deleteCollection(request, response, goodsId);
 	}
 	
 	@RequestMapping("showcollectionlist")

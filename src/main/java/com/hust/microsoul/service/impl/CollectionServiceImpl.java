@@ -47,8 +47,11 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 	
 	@Override
-	public void deleteCollection(HttpServletRequest request,HttpServletResponse response, Integer collectionID) {
-		collectionModelMapper.deleteByPrimaryKey(collectionID);
+	public void deleteCollection(HttpServletRequest request,HttpServletResponse response,Integer goodsId) {
+		HttpSession session = request.getSession();
+		Integer buyerId = (Integer)session.getAttribute("loginedBuyersID");
+		collectionModelMapper.deleteByPrimaryKey(buyerId,goodsId);
+		JSONCommon.outputResultCodeJson(CommonCode.SUCCESS, response);
 	}
 	
 	@Override

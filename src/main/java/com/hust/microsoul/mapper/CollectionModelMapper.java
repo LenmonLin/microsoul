@@ -12,7 +12,7 @@ public interface CollectionModelMapper {
 
     int deleteByExample(CollectionModelExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(@Param("buyerId") Integer buyerId,@Param("goodsId")Integer goodsId);
 
     int insert(CollectionModel record);
 

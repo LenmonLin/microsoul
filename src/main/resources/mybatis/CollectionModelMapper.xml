@@ -88,9 +88,10 @@
     from collection
     where ID = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" >
     delete from collection
-    where ID = #{id,jdbcType=INTEGER}
+    where BUYER_ID = #{buyerId,jdbcType=INTEGER}
+    and   GOODS_ID = #{goodsId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hust.microsoul.model.CollectionModelExample">
     delete from collection
