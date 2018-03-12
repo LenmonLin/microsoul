@@ -60,14 +60,14 @@
 
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="#" class="logo"><img src="../img/logo.png" width="50px" height="50px"></a>
         </el-col>      
         <el-col :span="6" offset="14">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="https://www.ele.me" target="_blank"
+                    <el-menu-item index="1-1"><a href="href="http://localhost:8080/user_order.jsp" target="_blank"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
                     <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
                 </el-submenu>
@@ -81,12 +81,12 @@
     
 
       <el-row>
-        <el-col span="9" offset="2">
+        <el-col :span="9" :offset="2">
           <div style="margin-top: 10%">
               <img :src="info.imageUrl" width="300px">
           </div>
         </el-col>
-        <el-col span="10">
+        <el-col :span="10">
             <el-row>
               <el-col><h2>{{info.goodsName}}</h2></el-col>
             </el-row>
