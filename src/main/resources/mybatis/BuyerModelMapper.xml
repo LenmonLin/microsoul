@@ -91,7 +91,9 @@
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
+    BUYER_ID, ACCOUNT_NAME,
+    ZHIFUBAO_ACCOUNT, EMAIL, QQ_ACCOUNT, 
+    REAL_NAME, ADDRESS, TELEPHONE
     from buyer
     where BUYER_ID = #{buyersId,jdbcType=INTEGER}
   </select>

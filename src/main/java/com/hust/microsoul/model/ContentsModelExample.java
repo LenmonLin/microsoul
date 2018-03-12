@@ -225,6 +225,66 @@ public class ContentsModelExample {
             return (Criteria) this;
         }
 
+        public Criteria andGoodIdIsNull() {
+            addCriterion("good_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdIsNotNull() {
+            addCriterion("good_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdEqualTo(Integer value) {
+            addCriterion("good_id =", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdNotEqualTo(Integer value) {
+            addCriterion("good_id <>", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdGreaterThan(Integer value) {
+            addCriterion("good_id >", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("good_id >=", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdLessThan(Integer value) {
+            addCriterion("good_id <", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdLessThanOrEqualTo(Integer value) {
+            addCriterion("good_id <=", value, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdIn(List<Integer> values) {
+            addCriterion("good_id in", values, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdNotIn(List<Integer> values) {
+            addCriterion("good_id not in", values, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdBetween(Integer value1, Integer value2) {
+            addCriterion("good_id between", value1, value2, "goodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("good_id not between", value1, value2, "goodId");
+            return (Criteria) this;
+        }
+
         public Criteria andTitleIsNull() {
             addCriterion("title is null");
             return (Criteria) this;

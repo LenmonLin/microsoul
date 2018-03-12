@@ -8,12 +8,14 @@ import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.GoodsDescModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.service.GoodsService;
+import com.hust.microsoul.util.ImageUploadUtil;
 import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Description:GoodsAction.java
@@ -82,6 +84,15 @@ public class GoodsAction {
 		goodsService.updateByExampleSelective(record);
 		return Msg.success();
 	}
+
+	@RequestMapping("testImgUpload")
+	@ResponseBody
+	public Msg testImgUpload(@RequestParam(value="imgUrl",required = true)MultipartFile file){
+		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
+		System.out.println(upLoadedImgUrl);
+		return Msg.success();
+	}
+
 
 	@RequestMapping("showGoodsList")
 	@ResponseBody
