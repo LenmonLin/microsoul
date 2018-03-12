@@ -67,13 +67,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="href="http://localhost:8080/user_order.jsp" target="_blank"
+                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="#" style="text-decoration: none">退出登录</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
+                    </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank"
+                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
