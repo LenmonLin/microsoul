@@ -63,6 +63,30 @@ public class GoodsAction {
 		return Msg.success();
 	}
 
+
+	/**
+	 *@Description  插入商品记录不添加图片
+	 *@params
+	 *@author LemonLin
+	 *@date  2018/2/28
+	 */
+	@RequestMapping("insertGoodsModelnotImg")
+	@ResponseBody
+	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request){
+
+		Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
+
+		if (existUserId==null){
+			return Msg.fail();
+		}
+		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId);
+		if (exitGoods == null){
+			return Msg.fail();
+		}
+
+		return Msg.success();
+	}
+
 	/**
 	 *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
 	 *@params

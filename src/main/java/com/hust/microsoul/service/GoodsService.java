@@ -21,13 +21,16 @@ import java.util.List;
 public interface GoodsService {
 
     /**
-     *@Description 添加商品
+     *@Description 添加商品图片上传
      *@params
      *@author LemonLin
      *@date  2018/2/28
      */
     public GoodsModel insert(GoodsModel record,Integer sellerId,String upLoadedImgUrl);
 
+
+    //添加商品不上传图片
+    public GoodsModel insert(GoodsModel record,Integer sellerId);
     public List<GoodsModel> selectByCriteria(GoodsModelExample example);
 
     public  int deleteByPrimaryKeySelective(Integer goodsId);
