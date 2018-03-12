@@ -48,6 +48,11 @@ public class BuyerServiceImpl implements BuyerService {
     		JSONCommon.outputResultCodeJson(CommonCode.FAIL, response);
     	}
 	}
+    @Override
+    public void buyerExit(HttpServletRequest request,HttpServletResponse response) {
+    	request.getSession().removeAttribute("loginedBuyersID");
+    	 JSONCommon.outputResultCodeJson(CommonCode.SUCCESS,response);
+    }
 
 	@Override
 	public void buyerRegister(HttpServletRequest request,
@@ -102,7 +107,11 @@ public class BuyerServiceImpl implements BuyerService {
     	HttpSession session = request.getSession();
 		Integer loginedBuyersID = (Integer)session.getAttribute("loginedBuyersID");
 		BuyerModel buyerModel=buyerModelMapper.selectByPrimaryKey(loginedBuyersID);
-		String zhifubaoAccount=buyerModel.getZhifubaoAccount();
+		String email=buyerModel.getEmail();
+		Integer qqAccount=buyerModel.getQqAccount();
+		String realName=buyerModel.getRealName();
+		Integer telephone=buyerModel.getTelephone();
+		String address=buyerModel.getAddress();
     }
     
     
@@ -130,5 +139,4 @@ public class BuyerServiceImpl implements BuyerService {
 		}
 		return null;
 	}
-
 }

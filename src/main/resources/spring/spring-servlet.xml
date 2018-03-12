@@ -35,7 +35,9 @@
 	
 	<!-- 激活非注册bean的annotation功能 -->
 	<context:spring-configured />
-
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+	    <property name="maxUploadSize" value="1048576" />    
+	</bean>  
     <bean id="viewResolver" 
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass">

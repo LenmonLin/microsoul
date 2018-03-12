@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
@@ -82,7 +83,7 @@
         </el-col>
         <el-col :span="20" offset="1">
             <el-row style="margin-top: 20px">
-                <el-col :span="4" v-for="(item, index) in 10" :key="index" :offset="(index%5) > 0 ? 1 : 0">
+                <el-col :span="4" v-for="(item, index) in collectionList" :key="index" :offset="(index%5) > 0 ? 1 : 0">
                     <div class="card" style="margin-top: 10px">
                         <el-card :body-style="{ padding: '0px'}">
                             <a href="#" style="height: 80%">
@@ -98,6 +99,16 @@
                     </div>
                 </el-col>
             </el-row>
+            <div class="block" style="margin-top: 30px; margin-left: 35%">
+                <el-pagination
+                        background
+                        @current-change="handlePageChange"
+                        :current-page.sync="currentPage"
+                        :page-size="30"
+                        layout="prev, pager, next"
+                        :total="total">
+                </el-pagination>
+            </div>
         </el-col>
     </el-row>
 </div>
@@ -108,17 +119,41 @@
         el: '#center',
         data() {
             return {
-                activeName: 'first',
+                currentPage: 1,
+                total: 0,
                 goodsList: [],
             }
         },
-        methods: {
-            handleClick(tab, event) {
-                console.log(tab, event);
-            }
+        mounted() {
+            let that = this;
+            $.ajax({
+                type: 'Post',
+                url: '/microsoul/buyer/showcollectionlist.do',
+                dataType: 'json',
+                success: function (data) {
+                    that.goodsList = data.extend.collectionList.list;
+                }
+            })
         },
-        computed:{
-
+        methods: {
+            handlePageChange() {
+                let that = this;
+                $.ajax({
+                    url: '/microsoul/goods/search.do',
+                    type: 'post',
+                    data: {
+                        title: that.input,
+                        page: that.currentPage,
+                    },
+                    success: function (data) {
+                        that.goodsList = data.extend.goodsModelPageInfo.list;
+                    },
+                    error: function (data) {
+                        alert(data);
+                    },
+                    dataType: 'json',
+                })
+            }
         }
     })
 </script>

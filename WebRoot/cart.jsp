@@ -64,7 +64,7 @@
 <div class="top" id="cart" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:90px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="../img/logo.png" width="90" height="90"></a>
+            <a href="#" class="logo"><img src="./static/logo.png" width="90" height="90"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 55px;font-size: x-large">我的购物车</div>
@@ -161,6 +161,9 @@
         </el-col>
     </el-row>
 </div>
+<el-row id="site-footer">
+    <div class="footer"  style="height: 100px"></div>
+</el-row>
 </body>
 
 
@@ -179,14 +182,14 @@
             return {
                 cartList: [],
                 checkList: [],
-                orderId: []
-        }
+            }
         },
         mounted() {
             let that = this;
             $.ajax({
                 type: 'Post',
                 url: '/microsoul/cart/cartList.do',
+                data: {},
                 dataType: 'json',
                 success: function (data) {
                     that.cartList = data.extend.pageInfo.list;
@@ -249,9 +252,7 @@
                 }
                 while (1) {
                     let j = 0;
-                    for (; index[j] == '1';) {
-                        j++;
-                    }
+                    for (; index[j] == '1'; j++) ;
                     if (j == len)
                         break;
                     let id = that.checkList[j].sellerId;
@@ -268,6 +269,8 @@
                     $.ajax({
                         url: '/microsoul/order/create.do',
                         type: 'post',
+                        async:false,
+                        traditional: true,
                         data: {
                             sellerId: sellerOrder.sellerId,
                             goodsId: sellerOrder.goodsIdList,
@@ -275,16 +278,16 @@
                             totalPrice: sellerOrder.totalPrice
                         },
                         success: function (data) {
-                            console.log(data);
-//                            that.orderId.push(data);                //改成添加订单Id
-                            <%--<% session.setAttribute("orderId",orderId); %>--%>
+                            let result = data.code;
+                            console.log(result);
                         },
                         error: function (data) {
-                            alert(data);
+                            alert(data.code);
                         },
                         dataType: 'json',
-                    })
+                    });
                 }
+                window.location.href = 'http://localhost:8080/user_order.jsp';
             },
             tbMoney(row, column) {
                 return '￥' + row[column.property];

@@ -150,11 +150,11 @@
             return {
                 userInfo: {
                     userName: '',
-                    sex: 2,
+                    sex: 3,
                     birthDay: '',
-                    phone:'',
-                    eMail:'',
-                    passWord:''
+                    phone: '',
+                    eMail: '',
+                    passWord: ''
                 },
                 rules: {
                     userName: [
@@ -165,10 +165,26 @@
                         {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
                     ],
                     passWord: [
-                        {required: true,min: 8, max: 16,message: '请输入8-16位密码',trigger: 'blur'},
+                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ]
                 }
             };
+        },
+        mounted() {
+            let that = this;
+            $.ajax({
+                type: 'Post',
+                url: '/microsoul/buyer/showcollectionlist.do',
+                data:{},
+                dataType: 'json',
+                success: function (data) {
+                    let result = data.result;
+                    if(result == 99999 || result ==true){
+                        that.goodsList = data.extend.pageInfo.list;     ///////
+                    }
+
+                }
+            })
         },
         methods: {
             submitForm(form) {
