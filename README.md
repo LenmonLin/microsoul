@@ -65,6 +65,8 @@
 			必须参数：goodsName ; unitPrice  ; category  ; store   ; status  ; sellerId;
 			upLoadedImgUrl
 			
+    添加商品不添加图片：http://localhost:8080/microsoul/goods/insertGoodsModelnotImg.do
+			必须参数：goodsName ; unitPrice  ; category  ; store   ; status  ; sellerId;
 卖家模块：
 
 	登录：http://localhost:8080/microsoul/seller/login.do

@@ -45,7 +45,61 @@ public class GoodsServiceImpl  implements GoodsService{
     }
 
     /**
-     *@Description 插入商品记录
+     *@Description 插入商品记录不添加图片
+     *@params
+     *@author LemonLin
+     *@date  2018/1/23
+     */
+    @Override
+    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId) {
+
+
+        //1、补全goodsModel的属性
+/*        goodsModel.setGoodsName(goodsModel.getGoodsName());
+        goodsModel.setUnitPrice(goodsModel.getUnitPrice());
+        goodsModel.setCategory(goodsModel.getCategory());
+        goodsModel.setStore(goodsModel.getStore());
+        goodsModel.setSellerId(goodsModel.getSellerId());*/
+
+        //1、判断必须属性是否传入，没有返回空，有的话，返回goodsModel，
+        //这里不用重新get之后再set,因为最后插入的是insert(goodsModel)
+        //所以model附带进来的属性就都能插入
+
+        System.out.println("测试商品名输入为空的做法"+goodsModel.getGoodsName()+"是否是空格");
+        System.out.println("测试商品名输入为空的做法===="+goodsModel.getGoodsName().trim()+"是否是空格");
+
+        SellerModel sellerModel = sellerModelMapper.selectByPrimaryKey(sellerId);
+
+        String merid = sellerModel.getMerid();
+        String merkey = sellerModel.getMerkey();
+        if((goodsModel.getGoodsName().trim().length() == 0)||
+                goodsModel.getGoodsName() == null||
+                (goodsModel.getUnitPrice()==null)||
+                (goodsModel.getCategory()==null)||
+                (goodsModel.getStore()==null)||
+                merid==null||merkey== null){
+            return null;
+        }
+        /*java.sql.Date只包含年月日信息
+            java.util.Date 包含年月日时分秒毫秒
+        */
+        //插入图片
+        goodsModel.setSellerId(sellerId);
+        goodsModel.setCreated(new Date());
+        goodsModel.setUpdated(new Date());
+
+        //设置商品的状态，1在售2下架3删除
+        goodsModel.setStatus(1);
+
+        //2、向商品表插入数据
+        goodsModelMapper.insert(goodsModel);
+        //3、返回结果
+
+        return goodsModel;
+    }
+
+    /**
+     *@Description 插入商品记录添加图片
      *@params
      *@author LemonLin
      *@date  2018/1/23
