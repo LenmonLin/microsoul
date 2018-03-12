@@ -37,6 +37,8 @@ public class OrderModel {
 
     private Date deliverTime;
 
+    private BuyerModel buyer;
+    
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -139,5 +141,13 @@ public class OrderModel {
 
 	public void setPayId(String payId) {
 		this.payId = payId;
+	}
+
+	public BuyerModel getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(BuyerModel buyer) {
+		this.buyer = buyer;
 	}
 }
