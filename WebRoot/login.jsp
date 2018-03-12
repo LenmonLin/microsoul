@@ -34,6 +34,7 @@
 
 </head>
 <body>
+<h1>灵微网</h1>
 <div class="login-box" id="app">
   <el-row>
     <el-col :span="10">
