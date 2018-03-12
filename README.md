@@ -97,7 +97,7 @@
      增加/更新个人信息：http://localhost:8080/microsoul/buyer/updateinfo.do
      可选参数：zhifubaoAccount; email;qqAccount;realName;address;telephone;
      
-     查看个人信息：http://localhost:8080/microsoul/buyer/selectinfo.do
+     查看个人信息：http://localhost:8080/microsoul/buyer/getbuyerinfo.do
      无参数
      
      加入收藏夹：http://localhost:8080/microsoul/buyer/addcollection.do
