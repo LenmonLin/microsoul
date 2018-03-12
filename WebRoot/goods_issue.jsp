@@ -88,7 +88,7 @@
                     <el-form-item label="商品名称" prop='goodsName'>
                         <el-input v-model="info.goodsName"></el-input>
                     </el-form-item>
-					<el-form-item label="商品title" prop='goodsName'>
+					<el-form-item label="商品title" prop='title'>
                         <el-input v-model="info.title"></el-input>
                     </el-form-item>
                     <el-form-item label="商品单价" prop='unitPrice'>
