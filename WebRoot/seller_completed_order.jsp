@@ -21,11 +21,12 @@
     <el-aside width="200px"><myaside></myaside></el-aside>
     <el-main>
       <div>
-        <h1>已付款订单</h1>
+        <h1>已完成订单</h1>
         <el-table :data="info" :stripe="true" style="width: 100%">
           <el-table-column prop="orderId" label="订单号" width="180px"></el-table-column>
           <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
           <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
+          <el-table-column prop="num" label="物流单号" width="180px"></el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button
@@ -48,10 +49,7 @@
                   </el-table-column>
                 </el-table>
               </el-dialog>
-              <el-button
-                size="mini"
-                type="primary"
-                @click="handleDeliver(scope.$index,scope.row)">发货</el-button>
+              
               <!--发货信息填写框-->
               <el-dialog title="发货" :visible.sync="dialogFormVisible">
                 <el-form :model="deliverdata">
@@ -231,7 +229,6 @@
             var result=data.code;
             if(result == 99999){
               alert('成功');
-				that.info.splice(index,1);
             }else {
               alert("失败");
             }
@@ -255,7 +252,7 @@
           url : 'http://localhost:8080/microsoul/order/getOrderList.do',
           type : 'post',
           data:{
-            state:2,
+            state:3,
             page:currentPage,
             rows:10
           },
@@ -285,7 +282,7 @@
         type : 'post',
         data:{
           page:1,
-          state:0,
+          state:3,
           rows:10
         },
         success : function(data) {
