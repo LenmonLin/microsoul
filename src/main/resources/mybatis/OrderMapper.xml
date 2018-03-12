@@ -15,14 +15,26 @@
     <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
     <result column="PAY_TIME" jdbcType="TIMESTAMP" property="payTime" />
     <result column="DELIVER_TIME" jdbcType="TIMESTAMP" property="deliverTime" />
+     <association property="buyer" javaType="buyerModel">   
+            <id column="BUYER_ID" jdbcType="INTEGER" property="buyersId" />
+		    <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+		    <result column="ZHIFUBAO_ACCOUNT" jdbcType="VARCHAR" property="zhifubaoAccount" />
+		    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		    <result column="QQ_ACCOUNT" jdbcType="INTEGER" property="qqAccount" />
+		    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+		    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+		    <result column="TELEPHONE" jdbcType="INTEGER" property="telephone" />
+        </association>
   </resultMap>
 	<select id="getOrderList" resultMap="orderMap" parameterType="orderModel">
 		select
-			 a.* ,b.REAL_NAME as SELLER_NAME
+			 a.* ,b.REAL_NAME as SELLER_NAME,c.*
 		from 
-			 order_table a ,SELLER b
+			 order_table a ,SELLER b,buyer c
 		where
 			b.ID_SELLER = a.SELLER_ID
+		and
+			a.BUYER_ID =c.BUYER_ID
 		and 
 			a.state = #{state} 
 			<if test="buyerId !=null">
