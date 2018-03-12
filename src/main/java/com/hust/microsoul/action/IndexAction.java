@@ -84,6 +84,8 @@ public class IndexAction {
                 goodsModel.setGoodsName(contentsModel.getTitle());
                 goodsModel.setSellpoint(contentsModel.getSubtitle());
                 //添加到节点列表
+
+                goodsModel.setGoodsId(contentsModel.getGoodId());
                 goodNodes.add(goodsModel);
         }
 

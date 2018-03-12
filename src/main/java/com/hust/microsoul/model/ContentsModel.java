@@ -7,6 +7,8 @@ public class ContentsModel {
 
     private Integer categoryId;
 
+    private Integer goodId;
+
     private String title;
 
     private String subtitle;
@@ -41,6 +43,14 @@ public class ContentsModel {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Integer getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(Integer goodId) {
+        this.goodId = goodId;
     }
 
     public String getTitle() {
