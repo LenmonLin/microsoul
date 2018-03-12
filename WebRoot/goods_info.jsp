@@ -67,15 +67,15 @@
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
+                    <el-menu-item index="1-1"><a href="./user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
                     <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
                                                  style="text-decoration: none"><span id="loginOut">退出登录</span></a>
                     </el-menu-item>
                 </el-submenu>
-                <el-menu-item index="2"><a href="http://localhost:8080/user_order.jsp"
+                <el-menu-item index="2"><a href="./user_order.jsp"
                                            style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
+                <el-menu-item index="3"><a href="./cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
         </el-col>
@@ -164,10 +164,9 @@
           url : '/microsoul/buyer/addcollection.do',
           type : 'post',
           data:{
-            goodsID:that.gooodsId,
+            goodsID:that.goodsId,
           },
           success : function(data) {
-
             var result=data.code;
             if(result == 99999){
               alert('收藏成功')
@@ -176,7 +175,7 @@
             }
           },
           error : function(data) {
-            alert(data);
+            alert(data.info);
           },
           dataType : 'json',
         })
@@ -229,7 +228,7 @@
             success(data) {
                 let result = data.code;
                 if (result == 99999) {
-                    window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                    window.location.href = './mainPage_unLogin.jsp'
                 }
                 else{
                     alert('操作失败，请重试');
