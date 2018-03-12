@@ -66,9 +66,10 @@ public class BuyerAction {
 		buyerService.buyerUpdateInfo(request, response,buyerModel);
 	}
 	
-	@RequestMapping("selectinfo")
-	public void buyerSelectInfo(HttpServletRequest request,HttpServletResponse response){
-		buyerService.buyerSelectInfo(request, response);
+	@RequestMapping("getbuyerinfo")
+	public BuyerModel getBuyerInfo(HttpServletRequest request,HttpServletResponse response){
+		BuyerModel infoResult=buyerService.getBuyerInfo(request, response);
+		return infoResult;
 	}
 	
 	@RequestMapping("addcollection")
