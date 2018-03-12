@@ -67,6 +67,7 @@ public class BuyerAction {
 	}
 	
 	@RequestMapping("getbuyerinfo")
+	@ResponseBody
 	public BuyerModel getBuyerInfo(HttpServletRequest request,HttpServletResponse response){
 		BuyerModel infoResult=buyerService.getBuyerInfo(request, response);
 		return infoResult;
