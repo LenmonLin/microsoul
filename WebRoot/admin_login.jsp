@@ -34,7 +34,7 @@
 
 
 <script type="text/x-template" id='header1'>
-    <div class="header">灵微网
+    <div class="header">管理登陆
 
         <el-button size="mini" @click="dialogVisible = true">登录</el-button>
         <el-dialog title="登录" :visible.sync="dialogVisible" width="30%">

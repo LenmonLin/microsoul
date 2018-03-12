@@ -260,7 +260,7 @@
     },
     methods:{
       issue:function () {
-      var file = document.getElementById("file").files[0];
+      var file = document.getElementById("imgUrl").files[0];
       
       if(this.info.status==true)
             this.info.status='1';
