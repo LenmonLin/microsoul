@@ -875,6 +875,66 @@ public class GoodsModelExample {
             return (Criteria) this;
         }
 
+        public Criteria andDiscountQuantityIsNull() {
+            addCriterion("DISCOUNT_QUANTITY is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityIsNotNull() {
+            addCriterion("DISCOUNT_QUANTITY is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityEqualTo(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY =", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityNotEqualTo(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY <>", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityGreaterThan(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY >", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityGreaterThanOrEqualTo(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY >=", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityLessThan(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY <", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityLessThanOrEqualTo(Integer value) {
+            addCriterion("DISCOUNT_QUANTITY <=", value, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityIn(List<Integer> values) {
+            addCriterion("DISCOUNT_QUANTITY in", values, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityNotIn(List<Integer> values) {
+            addCriterion("DISCOUNT_QUANTITY not in", values, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityBetween(Integer value1, Integer value2) {
+            addCriterion("DISCOUNT_QUANTITY between", value1, value2, "discountQuantity");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountQuantityNotBetween(Integer value1, Integer value2) {
+            addCriterion("DISCOUNT_QUANTITY not between", value1, value2, "discountQuantity");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("STATUS is null");
             return (Criteria) this;

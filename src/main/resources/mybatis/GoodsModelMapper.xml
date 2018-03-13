@@ -14,6 +14,7 @@
     <result column="STORE" jdbcType="INTEGER" property="store" />
     <result column="DETAIL" jdbcType="VARCHAR" property="detail" />
     <result column="DISCOUNT" jdbcType="INTEGER" property="discount" />
+    <result column="DISCOUNT_QUANTITY" jdbcType="INTEGER" property="discountQuantity" />
     <result column="STATUS" jdbcType="INTEGER" property="status" />
     <result column="CREATED" jdbcType="TIMESTAMP" property="created" />
     <result column="UPDATED" jdbcType="TIMESTAMP" property="updated" />
@@ -80,7 +81,8 @@
   </sql>
   <sql id="Base_Column_List">
     GOODS_ID, GOODS_NAME, TITLE, SELLPOINT, UNIT_PRICE, PURCHASE_QUANTITY, BARCODE, IMAGE_URL, 
-    CATEGORY, STORE, DETAIL, DISCOUNT, STATUS, CREATED, UPDATED, COLLECTION_ID, SELLER_ID
+    CATEGORY, STORE, DETAIL, DISCOUNT, DISCOUNT_QUANTITY, STATUS, CREATED, UPDATED, COLLECTION_ID, 
+    SELLER_ID
   </sql>
   <select id="selectByExample" parameterType="com.hust.microsoul.model.GoodsModelExample" resultMap="BaseResultMap">
     select
@@ -117,14 +119,16 @@
       SELLPOINT, UNIT_PRICE, PURCHASE_QUANTITY, 
       BARCODE, IMAGE_URL, CATEGORY, 
       STORE, DETAIL, DISCOUNT, 
-      STATUS, CREATED, UPDATED, 
-      COLLECTION_ID, SELLER_ID)
+      DISCOUNT_QUANTITY, STATUS, CREATED, 
+      UPDATED, COLLECTION_ID, SELLER_ID
+      )
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{sellpoint,jdbcType=VARCHAR}, #{unitPrice,jdbcType=INTEGER}, #{purchaseQuantity,jdbcType=INTEGER}, 
       #{barcode,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{category,jdbcType=INTEGER}, 
       #{store,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}, #{discount,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
-      #{collectionId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER})
+      #{discountQuantity,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{collectionId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.GoodsModel">
     insert into goods
@@ -164,6 +168,9 @@
       </if>
       <if test="discount != null">
         DISCOUNT,
+      </if>
+      <if test="discountQuantity != null">
+        DISCOUNT_QUANTITY,
       </if>
       <if test="status != null">
         STATUS,
@@ -217,6 +224,9 @@
       </if>
       <if test="discount != null">
         #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="discountQuantity != null">
+        #{discountQuantity,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -280,6 +290,9 @@
       <if test="record.discount != null">
         DISCOUNT = #{record.discount,jdbcType=INTEGER},
       </if>
+      <if test="record.discountQuantity != null">
+        DISCOUNT_QUANTITY = #{record.discountQuantity,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null">
         STATUS = #{record.status,jdbcType=INTEGER},
       </if>
@@ -314,6 +327,7 @@
       STORE = #{record.store,jdbcType=INTEGER},
       DETAIL = #{record.detail,jdbcType=VARCHAR},
       DISCOUNT = #{record.discount,jdbcType=INTEGER},
+      DISCOUNT_QUANTITY = #{record.discountQuantity,jdbcType=INTEGER},
       STATUS = #{record.status,jdbcType=INTEGER},
       CREATED = #{record.created,jdbcType=TIMESTAMP},
       UPDATED = #{record.updated,jdbcType=TIMESTAMP},
@@ -359,6 +373,9 @@
       <if test="discount != null">
         DISCOUNT = #{discount,jdbcType=INTEGER},
       </if>
+      <if test="discountQuantity != null">
+        DISCOUNT_QUANTITY = #{discountQuantity,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         STATUS = #{status,jdbcType=INTEGER},
       </if>
@@ -390,6 +407,7 @@
       STORE = #{store,jdbcType=INTEGER},
       DETAIL = #{detail,jdbcType=VARCHAR},
       DISCOUNT = #{discount,jdbcType=INTEGER},
+      DISCOUNT_QUANTITY = #{discountQuantity,jdbcType=INTEGER},
       STATUS = #{status,jdbcType=INTEGER},
       CREATED = #{created,jdbcType=TIMESTAMP},
       UPDATED = #{updated,jdbcType=TIMESTAMP},
@@ -397,7 +415,7 @@
       SELLER_ID = #{sellerId,jdbcType=INTEGER}
     where GOODS_ID = #{goodsId,jdbcType=INTEGER}
   </update>
-    	<select id="getcollectionList" resultMap="BaseResultMap" parameterType="Integer">
+    	<select id="getcollectionList" parameterType="Integer" resultMap="BaseResultMap">
 		select
 			b.*
 		from 
@@ -408,7 +426,7 @@
 			a.BUYER_ID = #{buyerId}
 	</select>
 	
-	<select id="getOrderGoodsList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	<select id="getOrderGoodsList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select
 			a.num as PURCHASE_QUANTITY,b.*
 		from 

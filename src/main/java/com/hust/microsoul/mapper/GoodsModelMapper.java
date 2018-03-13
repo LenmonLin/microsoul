@@ -1,6 +1,5 @@
 package com.hust.microsoul.mapper;
 
-import com.hust.microsoul.model.CollectionModel;
 import com.hust.microsoul.model.GoodsModel;
 import com.hust.microsoul.model.GoodsModelExample;
 import java.util.List;
@@ -30,9 +29,4 @@ public interface GoodsModelMapper {
     int updateByPrimaryKeySelective(GoodsModel record);
 
     int updateByPrimaryKey(GoodsModel record);
-    
-    List<GoodsModel> getcollectionList (Integer buyerIds);
-    
-    List<GoodsModel>  getOrderGoodsList(@Param(value = "orderId")Integer orderId);
-    
 }
