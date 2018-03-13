@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.microsoul.mapper.GoodsDescModelMapper">
   <resultMap id="BaseResultMap" type="com.hust.microsoul.model.GoodsDescModel">
-    <id column="good_desc_id" jdbcType="INTEGER" property="goodDescId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="good_id" jdbcType="INTEGER" property="goodId" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    good_desc_id, good_id, created, updated
+    id, good_id, created, updated
   </sql>
   <sql id="Blob_Column_List">
     good_desc
@@ -110,11 +110,11 @@
     ,
     <include refid="Blob_Column_List" />
     from goods_desc
-    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from goods_desc
-    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hust.microsoul.model.GoodsDescModelExample">
     delete from goods_desc
@@ -123,16 +123,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hust.microsoul.model.GoodsDescModel">
-    insert into goods_desc (good_desc_id, good_id, created, 
+    insert into goods_desc (id, good_id, created, 
       updated, good_desc)
-    values (#{goodDescId,jdbcType=INTEGER}, #{goodId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{goodId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
       #{updated,jdbcType=TIMESTAMP}, #{goodDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.GoodsDescModel">
     insert into goods_desc
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="goodDescId != null">
-        good_desc_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="goodId != null">
         good_id,
@@ -148,8 +148,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="goodDescId != null">
-        #{goodDescId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="goodId != null">
         #{goodId,jdbcType=INTEGER},
@@ -174,8 +174,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update goods_desc
     <set>
-      <if test="record.goodDescId != null">
-        good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.goodId != null">
         good_id = #{record.goodId,jdbcType=INTEGER},
@@ -196,7 +196,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update goods_desc
-    set good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=INTEGER},
       good_id = #{record.goodId,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
@@ -207,7 +207,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update goods_desc
-    set good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=INTEGER},
       good_id = #{record.goodId,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
@@ -231,7 +231,7 @@
         good_desc = #{goodDesc,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hust.microsoul.model.GoodsDescModel">
     update goods_desc
@@ -239,13 +239,13 @@
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
       good_desc = #{goodDesc,jdbcType=LONGVARCHAR}
-    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hust.microsoul.model.GoodsDescModel">
     update goods_desc
     set good_id = #{goodId,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
-    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

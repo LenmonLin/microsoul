@@ -272,9 +272,11 @@ public class GoodsServiceImpl  implements GoodsService{
         GoodsDescModelExample goodsDescModelExample = new GoodsDescModelExample();
         GoodsDescModelExample.Criteria criteria = goodsDescModelExample.createCriteria();
         criteria.andGoodIdEqualTo(goodsId);
-        List<GoodsDescModel> goodsDescModels = goodsDescModelMapper.selectByExample(goodsDescModelExample);
-        GoodsDescModel goodsDescModel = goodsDescModels.get(0);
-        return goodsDescModel;
+        List<GoodsDescModel> goodsDescModels = goodsDescModelMapper.selectByExampleWithBLOBs(goodsDescModelExample);
+        if (goodsDescModels!=null&&goodsDescModels.size()>0){
+            return goodsDescModels.get(0);
+        }
+        return null;
     }
 
 

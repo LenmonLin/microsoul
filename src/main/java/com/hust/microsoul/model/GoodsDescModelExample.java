@@ -105,63 +105,63 @@ public class GoodsDescModelExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andGoodDescIdIsNull() {
-            addCriterion("good_desc_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdIsNotNull() {
-            addCriterion("good_desc_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdEqualTo(Integer value) {
-            addCriterion("good_desc_id =", value, "goodDescId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdNotEqualTo(Integer value) {
-            addCriterion("good_desc_id <>", value, "goodDescId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdGreaterThan(Integer value) {
-            addCriterion("good_desc_id >", value, "goodDescId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("good_desc_id >=", value, "goodDescId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdLessThan(Integer value) {
-            addCriterion("good_desc_id <", value, "goodDescId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdLessThanOrEqualTo(Integer value) {
-            addCriterion("good_desc_id <=", value, "goodDescId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdIn(List<Integer> values) {
-            addCriterion("good_desc_id in", values, "goodDescId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdNotIn(List<Integer> values) {
-            addCriterion("good_desc_id not in", values, "goodDescId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdBetween(Integer value1, Integer value2) {
-            addCriterion("good_desc_id between", value1, value2, "goodDescId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andGoodDescIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("good_desc_id not between", value1, value2, "goodDescId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 

@@ -3,7 +3,7 @@ package com.hust.microsoul.model;
 import java.util.Date;
 
 public class GoodsDescModel {
-    private Integer goodDescId;
+    private Integer id;
 
     private Integer goodId;
 
@@ -13,12 +13,12 @@ public class GoodsDescModel {
 
     private String goodDesc;
 
-    public Integer getGoodDescId() {
-        return goodDescId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setGoodDescId(Integer goodDescId) {
-        this.goodDescId = goodDescId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getGoodId() {

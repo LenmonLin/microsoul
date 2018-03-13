@@ -59,6 +59,7 @@ public class GoodsAction {
 		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId,upLoadedImgUrl);
 
 		//插入商品详情
+		System.out.println(exitGoods);
 		Integer goodsId = exitGoods.getGoodsId();
 		System.out.println("插入的商品id，需要再商品详情查看"+goodsId);
 		goodsService.insertGoodsDesc(goodDesc,goodsId);
@@ -155,6 +156,7 @@ public class GoodsAction {
 
 		//商品详情
 		GoodsDescModel goodsDescById = goodsService.getGoodsDescById(goodsId);
+		System.out.println("获取商品详情"+goodsDescById);
 		//商品信息
 		GoodsModel goodsModel = goodsService.selectByPrimaryKey(goodsId);
 

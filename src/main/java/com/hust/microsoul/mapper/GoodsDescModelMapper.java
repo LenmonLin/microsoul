@@ -12,7 +12,7 @@ public interface GoodsDescModelMapper {
 
     int deleteByExample(GoodsDescModelExample example);
 
-    int deleteByPrimaryKey(Integer goodDescId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(GoodsDescModel record);
 
@@ -22,7 +22,7 @@ public interface GoodsDescModelMapper {
 
     List<GoodsDescModel> selectByExample(GoodsDescModelExample example);
 
-    GoodsDescModel selectByPrimaryKey(Integer goodDescId);
+    GoodsDescModel selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") GoodsDescModel record, @Param("example") GoodsDescModelExample example);
 
