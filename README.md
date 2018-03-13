@@ -119,3 +119,10 @@
       
       冻结买家: http://localhost:8080/microsoul/admin/disablebuyer.do
       必须参数:buyersId
+      
+      查看所有买家信息： http://localhost:8080/microsoul/admin/selectbuyerinfo.do
+      无参数
+      
+      删除买家：http://localhost:8080/microsoul/admin/deletebuyer.do
+      必须参数：buyerId
+      
