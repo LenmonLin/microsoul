@@ -77,24 +77,16 @@
 <script type="text/x-template" id="goods_manage">
   <div>
     <h1>商品管理</h1>
-    <el-row>
-    	<el-col :span='8' :offset='4'>
-    	<el-input v-model='search'><el-input>
-    	</el-col>
-    	<el-button @click='searchGoods'>搜索</el-button>
-    	
-    </el-row>
-    <el-table :data="goods_info" :stripe="true" style="width: 100% ">
-    <el-table-column label="图片" width="150px">
-        <template slot-scope="scope">
-          <img :src='scope.row.imageUrl' width='60px' ></img>
-        </template>
-      </el-table-column>
-      <el-table-column prop="title" label="商品名称" width="150px"></el-table-column>
+    <el-table :data="goods_info" :stripe="true" style="width: 100%">
+      <el-table-column prop="goodsName" label="商品名称" width="150px"></el-table-column>
       <el-table-column prop="unitPrice" label="单价" width="150px"></el-table-column>
       <el-table-column prop="store" label="库存" width="150px"></el-table-column>
       <el-table-column prop="status" label="上架状态" width="150px"></el-table-column>
-      
+      <el-table-column label="总价" width="150px">
+        <template slot-scope="scope">
+          <p>{{scope.row.unitPrice*scope.row.store}}</p>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -191,7 +183,6 @@
           currentPage:1,
           total:0,
           index:0,
-          search:'',
           goods_info:[//需要传入的数据
 
           ],
@@ -234,7 +225,6 @@
           ],
           info:{
             goodsName:'',
-            title:'',
             unitPrice:'',
             category:'',
             store:0,
@@ -252,37 +242,6 @@
           else this.info.status=false;
           this.dialogVisible=true;
           this.index=index;
-        },
-        searchGoods(){
-        var that=this;
-    $.ajax({
-      url : '/microsoul/goods/search.do',
-      type : 'post',
-      data:{
-        title:that.search
-     },
-    success : function(data) {     
-      var list=data.extend.goodsModelPageInfo.list;
-      for (var i=0;i<list.length;i++)
-      {
-        if(list[i].status==1)
-          list[i].status='是';
-        else list[i].status='否';
-      }
-      that.goods_info = list;
-      var result=data.code;
-      if(result == 100){
-
-      }else {
-        alert("商品加载失败");
-      }
-    },
-    error : function(data) {
-      alert(data);
-    },
-    dataType : 'json',
-  })
-  
         },
         goodsEdit(){
          var file = document.getElementById("imgUrl").files[0];
@@ -446,7 +405,7 @@
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='.e/login.jsp';
+              window.location.href='./login.jsp';
             }else {
               alert("退出失败");
               return;

@@ -146,7 +146,7 @@
                             width="90">
                         <template slot-scope="scope">
                             <div class="img" style="width: 100%;height: 80px">
-                                <a v-on:click="toDetail(scope.row.goodsId)" class="logo"><img src="scope.row.imageUrl" width="80"
+                                <a @click="toDetail(scope.row.goodsId)" class="logo"><img :src="scope.row.imageUrl" width="80"
                                                               height="80"></a>
                             </div>
                         </template>
