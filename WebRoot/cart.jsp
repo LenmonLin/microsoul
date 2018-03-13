@@ -64,8 +64,8 @@
 <div class="top" id="cart" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:90px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="80"
-                                                                           height="80"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 55px;font-size: x-large">我的购物车</div>
@@ -103,10 +103,9 @@
                 width="80"
                 align="center">
             <template slot-scope="scope">
-                <div class="img" style="width: 100%;height: 50px">
-                    <a @click="toDetail(scope.row.goodsId)" class="logo"><img style="margin-top: 30px"
-                                                                              :src="scope.row.imageUrl" width="135"
-                                                                                  height="45"></a>
+                <div class="img" style="width: 100%;height: 85px">
+                    <a @click="toDetail(scope.row.goodsId)" class="logo"><img :src="scope.row.imageUrl" width="80"
+                                                                                  height="80"></a>
                 </div>
             </template>
         </el-table-column>
