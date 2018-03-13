@@ -102,7 +102,7 @@ public class GoodsServiceImpl  implements GoodsService{
      *@date  2018/1/23
      */
     @Override
-    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId,String upLoadedImgUrl) {
+    public int  insert(GoodsModel goodsModel,Integer sellerId,String upLoadedImgUrl) {
 
 
         //1、补全goodsModel的属性
@@ -129,7 +129,7 @@ public class GoodsServiceImpl  implements GoodsService{
                 (goodsModel.getCategory()==null)||
                 (goodsModel.getStore()==null)||
                 merid==null||merkey== null){
-            return null;
+            return 0;
         }
         /*java.sql.Date只包含年月日信息
             java.util.Date 包含年月日时分秒毫秒
@@ -144,10 +144,15 @@ public class GoodsServiceImpl  implements GoodsService{
         goodsModel.setStatus(1);
 
         //2、向商品表插入数据
-        goodsModelMapper.insert(goodsModel);
+        int returnWhat = goodsModelMapper.insert(goodsModel);
+
+        int lastInsertId = goodsModelMapper.selectLastInsertId();
+
+        System.out.println("测试插入之后，返回的是什么值==="+returnWhat);
+        System.out.println("测试插入之后，返回的是什么值==="+lastInsertId);
         //3、返回结果
 
-        return goodsModel;
+        return lastInsertId;
     }
 
     public GoodsDescModel insertGoodsDesc(String goodDesc,Integer goodId){

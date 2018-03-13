@@ -196,4 +196,28 @@ public class GoodsModel {
     public void setSellerId(Integer sellerId) {
         this.sellerId = sellerId;
     }
+
+    @Override
+    public String toString() {
+        return "GoodsModel{" +
+                "goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", title='" + title + '\'' +
+                ", sellpoint='" + sellpoint + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", purchaseQuantity=" + purchaseQuantity +
+                ", barcode=" + barcode +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", store=" + store +
+                ", detail='" + detail + '\'' +
+                ", discount=" + discount +
+                ", discountQuantity=" + discountQuantity +
+                ", status=" + status +
+                ", created=" + created +
+                ", updated=" + updated +
+                ", collectionId=" + collectionId +
+                ", sellerId=" + sellerId +
+                '}';
+    }
 }

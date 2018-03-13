@@ -56,14 +56,11 @@ public class GoodsAction {
 		if (existUserId==null){
 			return Msg.fail();
 		}
-		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId,upLoadedImgUrl);
+		int lastInsertId = goodsService.insert(goodsModel,existUserId,upLoadedImgUrl);
 
 		//插入商品详情
-		System.out.println(exitGoods);
-		Integer goodsId = exitGoods.getGoodsId();
-		System.out.println("插入的商品id，需要再商品详情查看"+goodsId);
-		goodsService.insertGoodsDesc(goodDesc,goodsId);
-		if (exitGoods == null){
+		goodsService.insertGoodsDesc(goodDesc,lastInsertId);
+		if (lastInsertId == 0){
 			return Msg.fail();
 		}
 

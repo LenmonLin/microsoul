@@ -26,7 +26,7 @@ public interface GoodsService {
      *@author LemonLin
      *@date  2018/2/28
      */
-    public GoodsModel insert(GoodsModel record,Integer sellerId,String upLoadedImgUrl);
+    public int insert(GoodsModel record,Integer sellerId,String upLoadedImgUrl);
 
 
     //添加商品不上传图片
