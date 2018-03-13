@@ -107,9 +107,13 @@ public class GoodsAction {
 	 */
 	@RequestMapping("updateGoodsModel")
 	@ResponseBody
-	public Msg updateByExampleSelective(GoodsModel record) {
+	public Msg updateByExampleSelective(GoodsModel record,
+										@RequestParam(value="upLoadedImgUrl",required = false)MultipartFile file) {
 //		goodsService.updateByPrimaryKeySelective(record);
-		goodsService.updateByExampleSelective(record);
+
+		//修改图片
+		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
+		goodsService.updateByExampleSelective(record,upLoadedImgUrl);
 		return Msg.success();
 	}
 

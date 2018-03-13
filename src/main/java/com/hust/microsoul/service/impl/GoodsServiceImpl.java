@@ -199,6 +199,8 @@ public class GoodsServiceImpl  implements GoodsService{
         goodsModel.setStatus(record.getStatus());
         goodsModel.setSellerId(record.getSellerId());
         goodsModel.setUpdated(new Date());
+
+
         //更新该记录到数据库
         return goodsModelMapper.updateByPrimaryKeySelective(goodsModel);
     }
@@ -209,11 +211,13 @@ public class GoodsServiceImpl  implements GoodsService{
      *@author LemonLin
      *@date  2018/3/1
      */
-    public int updateByExampleSelective(GoodsModel record){
+    public int updateByExampleSelective(GoodsModel record,String upLoadedImgUrl){
         GoodsModelExample goodsModelExample = new GoodsModelExample();
 
         GoodsModelExample.Criteria criteria = goodsModelExample.createCriteria();
 
+        //更新图片
+        record.setImageUrl(upLoadedImgUrl);
         record.setUpdated(new Date());
         criteria.andGoodsIdEqualTo(record.getGoodsId());
         return goodsModelMapper.updateByExampleSelective(record,goodsModelExample);

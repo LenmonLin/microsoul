@@ -38,7 +38,7 @@ public interface GoodsService {
     public int updateByPrimaryKeySelective(GoodsModel record);
 
 
-    public int updateByExampleSelective(GoodsModel record);
+    public int updateByExampleSelective(GoodsModel record,String upLoadedImgUrl);
 
     GoodsModel selectByPrimaryKey(Integer goodsId);
 
