@@ -19,6 +19,18 @@ public class GoodsModel {
 
     private String imageUrl;
 
+    /*商品分类：
+ -        女装 1
+ -        男装 2
+ -        美妆 3
+ -        手机数码 4
+ -        母婴玩具 5
+ -        零食茶酒 6
+ -        家电 7
+ -        汽车配件用品 8
+ -        图书音像 9
+ -        其他 10*/
+
     private Integer category;
 
     private Integer store;
@@ -28,6 +40,8 @@ public class GoodsModel {
     private Integer discount;
 
     private Integer discountQuantity;
+
+    /*商品状态1在售2下架3删除*/
 
     private Integer status;
 

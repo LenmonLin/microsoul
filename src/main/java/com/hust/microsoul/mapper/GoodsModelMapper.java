@@ -29,4 +29,8 @@ public interface GoodsModelMapper {
     int updateByPrimaryKeySelective(GoodsModel record);
 
     int updateByPrimaryKey(GoodsModel record);
+
+    List<GoodsModel> getcollectionList (Integer buyerIds);
+
+    List<GoodsModel>  getOrderGoodsList(@Param(value = "orderId")Integer orderId);
 }
