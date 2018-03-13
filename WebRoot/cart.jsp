@@ -64,8 +64,8 @@
 <div class="top" id="cart" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:90px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img src="static/Logo.png" width="90"
-                                                                           height="90"></a>
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="80"
+                                                                           height="80"></a>
         </el-col>
         <el-col :span="6" offset="1">
             <div class="title" style="margin-top: 55px;font-size: x-large">我的购物车</div>
@@ -104,14 +104,15 @@
                 align="center">
             <template slot-scope="scope">
                 <div class="img" style="width: 100%;height: 50px">
-                    <a  v-on:click="toDetail(scope.row.goodsId)" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
-                                                                                   height="45"></a>
+                    <a @click="toDetail(scope.row.goodsId)" class="logo"><img style="margin-top: 30px"
+                                                                              :src="scope.row.imageUrl" width="135"
+                                                                                  height="45"></a>
                 </div>
             </template>
         </el-table-column>
         <el-table-column
                 prop="goodsName"
-                label="商品名"
+                label="商品描述"
                 width="354"
                 align="center">
         </el-table-column>
@@ -166,7 +167,7 @@
     </el-row>
 </div>
 <el-row id="site-footer">
-    <div class="footer"  style="height: 100px"></div>
+    <div class="footer" style="height: 100px"></div>
 </el-row>
 </body>
 
@@ -278,7 +279,7 @@
                     $.ajax({
                         url: '/microsoul/order/create.do',
                         type: 'post',
-                        async:false,
+                        async: false,
                         traditional: true,
                         data: {
                             sellerId: sellerOrder.sellerId,
@@ -299,7 +300,7 @@
                 window.location.href = 'http://localhost:8080/user_order.jsp';
             },
             tbMoney(row, column) {
-                return '￥' + row[column.property]/100;
+                return '￥' + row[column.property] / 100;
             }
         },
         computed: {
@@ -316,11 +317,18 @@
                     num += item.purchaseQuantity * item.unitPrice
                 });
                 return num;
+            },
+            discountPrice: function () {
+                let num = 0;
+                this.checkList.forEach((item) => {
+                    num += item.purchaseQuantity *item.unitPrice
+                });
+                return num;
             }
         },
         filters: {
             filterMoney: function (value) {
-                return '￥' + value/100;
+                return '￥' + value / 100;
             }
         }
     })

@@ -60,7 +60,7 @@
 
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="static/logo1.png" width="100px" height="50px"></a>
+            <a href="#" class="logo"><img src="static/Logo.png" width="50px" height="50px"></a>
         </el-col>      
         <el-col :span="6" offset="14">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
