@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hust.microsoul.mapper.GoodsDescModelMapper">
   <resultMap id="BaseResultMap" type="com.hust.microsoul.model.GoodsDescModel">
-    <id column="good_id" jdbcType="BIGINT" property="goodId" />
+    <id column="good_desc_id" jdbcType="INTEGER" property="goodDescId" />
+    <result column="good_id" jdbcType="INTEGER" property="goodId" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
     <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    good_id, created, updated
+    good_desc_id, good_id, created, updated
   </sql>
   <sql id="Blob_Column_List">
     good_desc
@@ -103,17 +104,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from goods_desc
-    where good_id = #{goodId,jdbcType=BIGINT}
+    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from goods_desc
-    where good_id = #{goodId,jdbcType=BIGINT}
+    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hust.microsoul.model.GoodsDescModelExample">
     delete from goods_desc
@@ -122,14 +123,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.hust.microsoul.model.GoodsDescModel">
-    insert into goods_desc (good_id, created, updated, 
-      good_desc)
-    values (#{goodId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
-      #{goodDesc,jdbcType=LONGVARCHAR})
+    insert into goods_desc (good_desc_id, good_id, created, 
+      updated, good_desc)
+    values (#{goodDescId,jdbcType=INTEGER}, #{goodId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{goodDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hust.microsoul.model.GoodsDescModel">
     insert into goods_desc
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodDescId != null">
+        good_desc_id,
+      </if>
       <if test="goodId != null">
         good_id,
       </if>
@@ -144,8 +148,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodDescId != null">
+        #{goodDescId,jdbcType=INTEGER},
+      </if>
       <if test="goodId != null">
-        #{goodId,jdbcType=BIGINT},
+        #{goodId,jdbcType=INTEGER},
       </if>
       <if test="created != null">
         #{created,jdbcType=TIMESTAMP},
@@ -167,8 +174,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update goods_desc
     <set>
+      <if test="record.goodDescId != null">
+        good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+      </if>
       <if test="record.goodId != null">
-        good_id = #{record.goodId,jdbcType=BIGINT},
+        good_id = #{record.goodId,jdbcType=INTEGER},
       </if>
       <if test="record.created != null">
         created = #{record.created,jdbcType=TIMESTAMP},
@@ -186,7 +196,8 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update goods_desc
-    set good_id = #{record.goodId,jdbcType=BIGINT},
+    set good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+      good_id = #{record.goodId,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP},
       good_desc = #{record.goodDesc,jdbcType=LONGVARCHAR}
@@ -196,7 +207,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update goods_desc
-    set good_id = #{record.goodId,jdbcType=BIGINT},
+    set good_desc_id = #{record.goodDescId,jdbcType=INTEGER},
+      good_id = #{record.goodId,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -206,6 +218,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hust.microsoul.model.GoodsDescModel">
     update goods_desc
     <set>
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=INTEGER},
+      </if>
       <if test="created != null">
         created = #{created,jdbcType=TIMESTAMP},
       </if>
@@ -216,19 +231,21 @@
         good_desc = #{goodDesc,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where good_id = #{goodId,jdbcType=BIGINT}
+    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hust.microsoul.model.GoodsDescModel">
     update goods_desc
-    set created = #{created,jdbcType=TIMESTAMP},
+    set good_id = #{goodId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP},
       good_desc = #{goodDesc,jdbcType=LONGVARCHAR}
-    where good_id = #{goodId,jdbcType=BIGINT}
+    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hust.microsoul.model.GoodsDescModel">
     update goods_desc
-    set created = #{created,jdbcType=TIMESTAMP},
+    set good_id = #{goodId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
-    where good_id = #{goodId,jdbcType=BIGINT}
+    where good_desc_id = #{goodDescId,jdbcType=INTEGER}
   </update>
 </mapper>

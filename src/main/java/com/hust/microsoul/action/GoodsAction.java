@@ -45,7 +45,8 @@ public class GoodsAction {
 	@RequestMapping("insertGoodsModel")
 	@ResponseBody
 	public  Msg insertGoodsModel(GoodsModel goodsModel,HttpServletRequest request,
-								 @RequestParam(value="upLoadedImgUrl",required = false)MultipartFile file){
+								 @RequestParam(value="upLoadedImgUrl",required = false)MultipartFile file,
+								 String goodDesc){
 
 		Integer existUserId=(Integer)request.getSession().getAttribute("existUserId");
 
@@ -56,6 +57,11 @@ public class GoodsAction {
 			return Msg.fail();
 		}
 		GoodsModel exitGoods = goodsService.insert(goodsModel,existUserId,upLoadedImgUrl);
+
+		//插入商品详情
+		Integer goodsId = exitGoods.getGoodsId();
+		System.out.println("插入的商品id，需要再商品详情查看"+goodsId);
+		goodsService.insertGoodsDesc(goodDesc,goodsId);
 		if (exitGoods == null){
 			return Msg.fail();
 		}

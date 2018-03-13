@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsDescModelMapper;
 import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.mapper.SellerModelMapper;
-import com.hust.microsoul.model.GoodsDescModel;
-import com.hust.microsoul.model.GoodsModel;
-import com.hust.microsoul.model.GoodsModelExample;
-import com.hust.microsoul.model.SellerModel;
+import com.hust.microsoul.model.*;
 import com.hust.microsoul.service.GoodsService;
 import com.hust.microsoul.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,6 +150,17 @@ public class GoodsServiceImpl  implements GoodsService{
         return goodsModel;
     }
 
+    public GoodsDescModel insertGoodsDesc(String goodDesc,Integer goodId){
+
+        GoodsDescModel goodsDescModel = new GoodsDescModel();
+        goodsDescModel.setGoodId(goodId);
+        goodsDescModel.setGoodDesc(goodDesc);
+        goodsDescModel.setCreated(new Date());
+        goodsDescModel.setUpdated(new Date());
+        goodsDescModelMapper.insertSelective(goodsDescModel);
+        return goodsDescModel;
+    }
+
     /**
      *@Description  删除商品记录把商品状态设置为删除即可，不在数据库中做真正的删除操作
      *@params
@@ -259,8 +267,13 @@ public class GoodsServiceImpl  implements GoodsService{
      *@author LemonLin
      *@date  2018/3/5
      */
-    public GoodsDescModel getGoodsDescById(long goodsId) {
-        GoodsDescModel goodsDescModel = goodsDescModelMapper.selectByPrimaryKey(goodsId);
+    public GoodsDescModel getGoodsDescById(Integer goodsId) {
+
+        GoodsDescModelExample goodsDescModelExample = new GoodsDescModelExample();
+        GoodsDescModelExample.Criteria criteria = goodsDescModelExample.createCriteria();
+        criteria.andGoodIdEqualTo(goodsId);
+        List<GoodsDescModel> goodsDescModels = goodsDescModelMapper.selectByExample(goodsDescModelExample);
+        GoodsDescModel goodsDescModel = goodsDescModels.get(0);
         return goodsDescModel;
     }
 

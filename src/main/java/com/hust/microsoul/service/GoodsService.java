@@ -53,8 +53,9 @@ public interface GoodsService {
     public PageInfo<GoodsModel> showGoodsList(Integer page, Integer rows);
 
     //商品详情页的展示
-    public GoodsDescModel getGoodsDescById(long goodsId);
+    public GoodsDescModel getGoodsDescById(Integer goodsId);
 
+    public GoodsDescModel insertGoodsDesc(String goodDesc,Integer goodId);
 
     public PageInfo<GoodsModel> searchGoods(String title,Integer page);
 
