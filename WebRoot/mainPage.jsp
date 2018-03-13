@@ -142,7 +142,7 @@
                         <img :src="item.imageUrl" style="width: 100%;height: 100%">
                     </a>
                     <div style="text-align: center">
-                        <a  v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
+                        <a  v-on:click="toDetail(item.goodsId)">{{item.title}}</a>
                     </div>
                     <div style="text-align: center;margin: 10px 20px 20px 20px">
                         <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>

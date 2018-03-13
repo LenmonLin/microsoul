@@ -99,7 +99,7 @@
                             </div>
                             <div style="text-align: center;margin: 10px 20px 10px 20px">
                                 <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
-                                <div><i @click="dislike(item.collectionId,index)" class="fa fa-heart" style="font-size:20px;color:red;float: right;margin-bottom:9px"></i></div>
+                                <div><i @click="dislike(item.goodsId,index)" class="fa fa-heart" style="font-size:20px;color:red;float: right;margin-bottom:9px"></i></div>
                             </div>
                         </el-card>
                     </div>
@@ -126,7 +126,7 @@
         data() {
             return {
                 currentPage: 1,
-                total: 0,
+                total:'0',
                 goodsList: [],
             }
         },
@@ -137,7 +137,7 @@
                 url: '/microsoul/buyer/showcollectionlist.do',
                 dataType: 'json',
                 data: {
-                    page: '1',
+                    page: 1,
                 },
                 success: function (data) {
                     console.log(data);
@@ -153,21 +153,22 @@
             toDetail(goodsId) {
                 window.location.href = '/goods_info.jsp?goodsId=' + goodsId;
             },
-            dislike(collectionId,index){
-                console.log(collectionId,index);
+            dislike(goodsId,index){
+                console.log(goodsId,index);
                 if (confirm("取消收藏？")) {
                     let that = this;
                     $.ajax({
                         url: '/microsoul/buyer/deletecollection.do',
                         type: 'post',
                         data: {
-                            collectionID: collectionId,
+                            goodsId: goodsId,
                         },
                         success: function (data) {
                             let result = data.code;
                             console.log(data);
                             if (result == 99999 || result == true) {
-                                that.goodsList.splice(index, 1)
+                                that.goodsList.splice(index, 1);
+                                that.total -=1;
                             } else {
                                 alert("操作失败！");
                             }
