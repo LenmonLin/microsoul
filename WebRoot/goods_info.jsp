@@ -57,10 +57,9 @@
 </head>
 <body>
 <div id="app">
-
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="#" class="logo"><img src="static/Logo.png" width="50px" height="50px"></a>
+            <a href="/mainPage.jsp" class="logo"><img src="static/logo1.png" width="100px" height="50px"></a>
         </el-col>      
         <el-col :span="6" offset="14">
             <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
@@ -80,19 +79,21 @@
             </el-menu>
         </el-col>
     </el-row>
-    
 
       <el-row>
-        <el-col :span="9" :offset="2">
+        <el-col :span="9" :offset="4">
           <div style="margin-top: 10%">
               <img :src="info.imageUrl" width="300px">
           </div>
         </el-col>
         <el-col :span="10">
             <el-row>
-              <el-col><h2>{{info.goodsName}}</h2>
-              <p>{{info.title}}</p></el-col>
+              <el-col><h2>{{info.title}}</h2>
+                  </el-col>
+                <el-row><el-col offset="1"><span>{{info.goodsName}}</span><span style="color: #e85916"> 折扣信息：满{{info.discountQuantity}}件{{info.discount}}折</span></el-col></el-row>
+
             </el-row>
+
             <el-row>
               <el-col :offset="2">
                 <p>单价：{{info.unitPrice|filterMoney}}</p>
@@ -117,9 +118,6 @@
 
     </el-row>
   </div>
-
-
-
 
 </div>
 </body>
@@ -202,11 +200,14 @@
         success : function(data) {
 
           var list=data.extend.goodsModel;
-          var doc=data.extend.goodsDescById.goodDesc;
+          var doc=null;
+          if(data.extend.goodsDescById!=null)
+           doc=data.extend.goodsDescById.goodDesc;
 
           that.info = list;
           var result=data.code;
           if(result == 100){
+          if(doc!=null)
             $("#abc").append(doc);
           }else {
             alert("商品加载失败");

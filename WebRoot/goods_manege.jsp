@@ -77,16 +77,24 @@
 <script type="text/x-template" id="goods_manage">
   <div>
     <h1>商品管理</h1>
-    <el-table :data="goods_info" :stripe="true" style="width: 100%">
-      <el-table-column prop="goodsName" label="商品名称" width="150px"></el-table-column>
+    <el-row>
+    	<el-col :span='8' :offset='4'>
+    	<el-input v-model='search'><el-input>
+    	</el-col>
+    	<el-button @click='searchGoods'>搜索</el-button>
+    	
+    </el-row>
+    <el-table :data="goods_info" :stripe="true" style="width: 100% ">
+    <el-table-column label="图片" width="150px">
+        <template slot-scope="scope">
+          <img :src='scope.row.imageUrl' width='60px' ></img>
+        </template>
+      </el-table-column>
+      <el-table-column prop="title" label="商品名称" width="150px"></el-table-column>
       <el-table-column prop="unitPrice" label="单价" width="150px"></el-table-column>
       <el-table-column prop="store" label="库存" width="150px"></el-table-column>
       <el-table-column prop="status" label="上架状态" width="150px"></el-table-column>
-      <el-table-column label="总价" width="150px">
-        <template slot-scope="scope">
-          <p>{{scope.row.unitPrice*scope.row.store}}</p>
-        </template>
-      </el-table-column>
+      
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
@@ -95,7 +103,13 @@
           <el-dialog title="编辑" width="60%"
                      :visible.sync="dialogVisible">
             <el-row>
-              <!--action为上传地址-->            
+              <!--action为上传地址-->   
+              <el-col :span="8">
+                
+ 			 <input type="file" id = "imgUrl" />
+ 			 <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+
+            </el-col>         
               <el-col :span="8" :offset='6'>
                 <el-form :model="info" label-width="100px">
                   <el-form-item label="商品名称">
@@ -177,6 +191,7 @@
           currentPage:1,
           total:0,
           index:0,
+          search:'',
           goods_info:[//需要传入的数据
 
           ],
@@ -219,6 +234,7 @@
           ],
           info:{
             goodsName:'',
+            title:'',
             unitPrice:'',
             category:'',
             store:0,
@@ -237,25 +253,59 @@
           this.dialogVisible=true;
           this.index=index;
         },
+        searchGoods(){
+        var that=this;
+    $.ajax({
+      url : '/microsoul/goods/search.do',
+      type : 'post',
+      data:{
+        title:that.search
+     },
+    success : function(data) {     
+      var list=data.extend.goodsModelPageInfo.list;
+      for (var i=0;i<list.length;i++)
+      {
+        if(list[i].status==1)
+          list[i].status='是';
+        else list[i].status='否';
+      }
+      that.goods_info = list;
+      var result=data.code;
+      if(result == 100){
+
+      }else {
+        alert("商品加载失败");
+      }
+    },
+    error : function(data) {
+      alert(data);
+    },
+    dataType : 'json',
+  })
+  
+        },
         goodsEdit(){
+         var file = document.getElementById("imgUrl").files[0];
           if(this.info.status==true)
             this.info.status='1';
           else this.info.status='2';
           var info=this.info;  
           var index=this.index;
           var that=this;
+          var formData = new FormData();
+   			formData.append('upLoadedImgUrl', file);
+          	formData.append('goodsName', info.goodsName);
+          	formData.append('title', info.title);
+          	formData.append('unitPrice', info.unitPrice);
+          	formData.append('category', info.category);
+          	formData.append('purchaseQuantity', info.purchaseQuantity);
+          	formData.append('status', info.status);
+          	formData.append('detail', info.detail);
+          	formData.append('store', info.store);
           $.ajax({
             url :'/microsoul/goods/updateGoodsModel.do',
             type :'post',            
-            data:{goodsId:info.goodsId,
-            goodsName:info.goodsName,
-            unitPrice:info.unitPrice,
-            category:info.category,
-            store:info.store,
-            purchaseQuantity:info.purchaseQuantity,
-            status:info.status,
-            detail:info.detail           
-            },
+            data:formData,
             success : function(data) {
               var result=data.code;
               if(result == 100){
@@ -396,7 +446,7 @@
           success : function(data) {
             if(data.code == 100){
               alert('退出成功');
-              window.location.href='./login.jsp';
+              window.location.href='.e/login.jsp';
             }else {
               alert("退出失败");
               return;

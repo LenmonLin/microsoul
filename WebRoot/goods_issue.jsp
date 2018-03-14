@@ -76,7 +76,7 @@
         <h1>商品发布</h1>
 
         <el-row>
-          <!--action为上传地址-->
+          
             <el-col :span="8">
                 
  			 <input type="file" id = "imgUrl" />
