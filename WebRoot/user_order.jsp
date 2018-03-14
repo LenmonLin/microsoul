@@ -223,7 +223,7 @@
                     if(result == 66666){
                         window.location.href = '/login.jsp'
                     }
-                    else if(result == 99999){
+                    else if(result == 100){
                         that.list = data.extend.orderList.list;
                         that.total = data.extend.orderList.total;
                     }
