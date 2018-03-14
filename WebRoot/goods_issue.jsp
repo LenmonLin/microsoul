@@ -81,6 +81,12 @@
                 
  			 <input type="file" id = "imgUrl" />
  			 <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                <el-input
+                        type="textarea"
+                        :autosize="{ minRows:4}"
+                        placeholder="请输入商品详情html"
+                        v-model="info.goodsDesc">
+                </el-input>
 
             </el-col>
             <el-col :span="10" :offset='2'>
@@ -105,6 +111,10 @@
 
                     <el-form-item label="最小批发数量">
                         <el-input-number v-model="info.purchaseQuantity"></el-input-number>
+                    </el-form-item>
+                    <el-form-item label="打折信息">
+                        <span>买够</span><el-input-number size="mini" v-model="info.discount"></el-input-number><span>件，</span><br />
+                        <span> &nbsp;&nbsp;&nbsp;打</span><el-input-number  max=100 size="mini" v-model="info.discountQuantity"></el-input-number><span>折</span>
                     </el-form-item>
                     <el-form-item label="是否上架" prop='status'>
                         <el-switch v-model="info.status"></el-switch>
@@ -240,6 +250,9 @@
           status:false,
           detail:'',
           title:'',
+            discount:100,
+            discountQuantity:90,
+            goodsDesc:'',
         },
         rules:{
       goodsName: [
@@ -274,12 +287,15 @@
    			formData.append('upLoadedImgUrl', file);
           	formData.append('goodsName', info.goodsName);
           	formData.append('title', info.title);
-          	formData.append('unitPrice', info.unitPrice);
+          	formData.append('unitPrice', info.unitPrice*100);
           	formData.append('category', info.category);
           	formData.append('purchaseQuantity', info.purchaseQuantity);
           	formData.append('status', info.status);
           	formData.append('detail', info.detail);
           	formData.append('store', info.store);
+          formData.append('discountQuantity', info.discountQuantity);
+          formData.append('discount', info.discount);
+          formData.append('goodDesc', info.goodsDesc);
           $.ajax({
             url :'/microsoul/goods/insertGoodsModel.do',
             type :'post',            
