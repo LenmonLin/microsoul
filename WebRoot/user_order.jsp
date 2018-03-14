@@ -219,9 +219,14 @@
                 },
                 success: function (data) {
                     console.log(data);
-                    that.list = data.extend.orderList.list;
-                    that.total = data.extend.orderList.total;
-
+                    let result =data.code;
+                    if(result == 66666){
+                        window.location.href = '/login.jsp'
+                    }
+                    else if(result == 99999){
+                        that.list = data.extend.orderList.list;
+                        that.total = data.extend.orderList.total;
+                    }
                 },
                 error: function (data) {
                     alert(data);

@@ -214,7 +214,7 @@
                 success(data) {
                     console.log(data);
                     let result = data.code;
-                    if (result == 100) {
+                    if (result == 66666) {
                         that.goodsList = data.extend.goodNodes;
                         that.adsList = data.extend.ad1Nodes;
                     }

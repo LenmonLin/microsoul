@@ -195,7 +195,7 @@
                 checkList: [],
             }
         },
-        mounted() {
+        beforeMounted() {
             let that = this;
             $.ajax({
                 type: 'Post',
@@ -204,8 +204,14 @@
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
-                    that.cartList = data.extend.goodsModelList;
-                    console.log(that.cartList);
+                    let result = data.code;
+                    if(result == 66666){
+                        window.location.href = '/login.jsp'
+                    }
+                    else if(result == 99999) {
+                        that.cartList = data.extend.goodsModelList;
+                        console.log(that.cartList);
+                    }
                 }
             })
         },

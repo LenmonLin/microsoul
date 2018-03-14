@@ -218,11 +218,10 @@
                 })
             },
             submitForm(ruleForm) {
+                let taht = this;
                 this.$refs[ruleForm].validate((valid) => {
-                	
                     if (valid) {
                         let that = this;
-                        alert( that.realName);
                         $.ajax({
                             type: 'Post',
                             url: '/microsoul/buyer/updateinfo.do',
