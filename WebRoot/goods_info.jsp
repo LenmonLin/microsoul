@@ -57,13 +57,11 @@
 </head>
 <body>
 <div id="app">
-    <header></header>
-    <header1></header1>
-    <div v-if="user">
-        <header></header>
+    <div v-if="user==true">
+        <myheader></myheader>
     </div>
     <div v-else>
-        <header1></header1>
+        <myheader1></myheader1>
     </div>
       <el-row>
         <el-col :span="9" :offset="4">
@@ -118,7 +116,7 @@
                     <template slot="title">用户名</template>
                     <el-menu-item index="1-1"><a href="./user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" @click="loginOut"
                                                  style="text-decoration: none"><span>退出登录</span></a>
                     </el-menu-item>
                 </el-submenu>
@@ -144,7 +142,7 @@
     </el-row>
 </script>
 <script>
-    Vue.component('header',{
+    Vue.component('myheader',{
         template:'#header',
         methods:{
             loginOut(){
@@ -169,7 +167,7 @@
     }
         }
     });
-    Vue.component('header1',{
+    Vue.component('myheader1',{
         template:'#header1',
         methods:{
              logIn(){
@@ -244,7 +242,7 @@
         },
     mounted:function(){
       var that=this;
-        var userid = '<%=session.getAttribute("userid")%>';
+        var userid = '<%=session.getAttribute("loginedBuyersID")%>';
         if(userid == "null"){//注意此处为"null"非null
             this.user=false;
         }
