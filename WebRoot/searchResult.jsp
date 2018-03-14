@@ -249,7 +249,7 @@
         methods: {
             loginOut() {
                 $.ajax({
-                    url: '/microsoul/buyer/exit.do',
+                    url: '/user/buyer/exit.do',
                     type: "Post",
                     data: {},
                     success(data) {
