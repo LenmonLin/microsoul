@@ -85,7 +85,7 @@
                     <template slot="title">用户名</template>
                     <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                    <el-menu-item index="1-2"><a @click="loginOut()"
                                                  style="text-decoration: none"><span id="loginOut">退出登录</span></a>
                     </el-menu-item>
                 </el-submenu>
@@ -197,6 +197,26 @@
         }
         ,
         methods: {
+            loginOut() {
+                $.ajax({
+                    url: '/microsoul/buyer/exit.do',
+                    type: "Post",
+                    data: {},
+                    success(data) {
+                        let result = data.code;
+                        if (result == 99999) {
+                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                        }
+                        else{
+                            alert('操作失败，请重试');
+                        }
+                    },
+                    error() {
+                        alert('操作失败，请重试');
+                    },
+                    dataType: 'json'
+                })
+            },
             submitForm(ruleForm) {
                 this.$refs[ruleForm].validate((valid) => {
                     if (valid) {
@@ -214,7 +234,6 @@
                                 console.log(data);
                                 let result = data.result;
                                 if (result == 99999 || result == true) {
-
                                     that.ruleForm = data;
                                 }
                                 else {

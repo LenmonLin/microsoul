@@ -116,7 +116,7 @@
 
         </el-col>
         <el-col :span="18" class="cata-nav">
-            <a href="https://item.mi.com/product/10000083.html"><img src="https://i1.mifile.cn/a4/xmad_15206013034135_gOSej.jpg" width="100%" height="500"></a>
+            <a @click="toDetail(this.goodsId)"><img :src="this.adsList[0].src" width="100%" height="500"></a>
         </el-col>
     </el-row>
     <el-row style="margin-top: 50px">
@@ -124,11 +124,11 @@
             <div class="card" style="margin-top: 20px">
                 <el-card :body-style="{ padding: '0px'}">
 
-                    <a v-on:click="toDetail(item.goodsId)" style="height: 80%">
+                    <a @click="toDetail(item.goodsId)">
                         <img :src="item.imageUrl" style="width: 100%;height: 100%">
                     </a>
                     <div style="text-align: center">
-                        <a v-on:click="toDetail(item.goodsId)">{{item.goodsName}}</a>
+                        <a  @click="toDetail(item.goodsId)">{{item.title}}</a>
                     </div>
                     <div style="text-align: center;margin: 10px 20px 20px 20px">
                         <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
@@ -227,6 +227,9 @@
             })
         },
         methods: {
+            toDetail(goodsId) {
+                window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
+            },
             handleSearch() {
                 window.location.href = 'http://localhost:8080/searchResult.jsp?title=' + this.input;
             },

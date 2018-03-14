@@ -82,7 +82,7 @@
                     <template slot="title">用户名</template>
                     <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                    <el-menu-item index="1-2"><a @click="loginOut()"
                                                  style="text-decoration: none"><span id="loginOut">退出登录</span></a>
                     </el-menu-item>
                 </el-submenu>
@@ -157,10 +157,14 @@
                             align="center">
                     </el-table-column>
                     <el-table-column
-                            prop="unitPrice"
                             :formatter="tbMoney"
                             width="261"
                             align="center">
+                        <template slot-scope="scope">
+                            <div v-if="scope.row.purchaseQuantity<scope.row.discountQuantity">{{scope.row.unitPrice|filterMoney}}
+                            </div>
+                            <div v-else style="color: coral"><span>优惠价&emsp;</span>{{scope.row.unitPrice*scope.row.discount/100|filterMoney}}</div>
+                        </template>
                     </el-table-column>
                     <el-table-column
                             prop="purchaseQuantity"
@@ -226,6 +230,26 @@
             })
         },
         methods: {
+            loginOut() {
+                $.ajax({
+                    url: '/microsoul/buyer/exit.do',
+                    type: "Post",
+                    data: {},
+                    success(data) {
+                        let result = data.code;
+                        if (result == 99999) {
+                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                        }
+                        else{
+                            alert('操作失败，请重试');
+                        }
+                    },
+                    error() {
+                        alert('操作失败，请重试');
+                    },
+                    dataType: 'json'
+                })
+            },
             toDetail(goodsId) {
                 window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
             },
@@ -326,10 +350,13 @@
                     dataType: 'json',
                 })
             },
-            tbMoney(row, column) {
-                return '￥' + row[column.property]/100;
-            }
         },
+        filters: {
+            filterMoney: function (value) {
+                let num = parseFloat(value).toFixed(2);
+                return '￥' + num / 100;
+            }
+        }
     })
 </script>
 </html>

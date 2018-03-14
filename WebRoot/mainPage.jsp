@@ -80,7 +80,7 @@
                     <template slot="title">用户名</template>
                     <el-menu-item index="1-1"><a href="http://localhost:8080/user_order.jsp"
                                                  style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                    <el-menu-item index="1-2"><a @click="loginOut()"
                                                  style="text-decoration: none"><span id="loginOut">退出登录</span></a>
                     </el-menu-item>
                 </el-submenu>
@@ -130,7 +130,7 @@
 
         </el-col>
         <el-col :span="18" class="cata-nav">
-            <a v-on:click="toDetail('1')"><img :src="this.adsList[0].src" width="100%" height="500"></a>
+            <a @click="toDetail(this.goodsId)"><img :src="this.adsList[0].src" width="100%" height="500"></a>
         </el-col>
     </el-row>
     <el-row style="margin-top: 50px">
@@ -138,11 +138,11 @@
             <div class="card" style="margin-top: 20px">
                 <el-card :body-style="{ padding: '0px'}">
 
-                    <a v-on:click="toDetail(item.goodsId)">
+                    <a @click="toDetail(item.goodsId)">
                         <img :src="item.imageUrl" style="width: 100%;height: 100%">
                     </a>
                     <div style="text-align: center">
-                        <a  v-on:click="toDetail(item.goodsId)">{{item.title}}</a>
+                        <a  @click="toDetail(item.goodsId)">{{item.title}}</a>
                     </div>
                     <div style="text-align: center;margin: 10px 20px 20px 20px">
                         <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
@@ -161,27 +161,6 @@
 
 <script>
     // 组件实例化############################################################
-    function loginOut() {
-        $.ajax({
-            url: '/microsoul/buyer/exit.do',
-            type: "Post",
-            data: {},
-            success(data) {
-                let result = data.code;
-                if (result == 99999) {
-                    window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
-                }
-                else{
-                    alert('操作失败，请重试');
-                }
-            },
-            error() {
-                alert('操作失败，请重试');
-            },
-            dataType: 'json'
-        })
-    }
-
     function handelSearch1() {
         window.location.href = 'http://localhost:8080/searchCategory.jsp?category=1'
     }
@@ -228,7 +207,8 @@
             return {
                 input: '',
                 goodsList: [],
-                adsList: []
+                adsList: [],
+                goodsId: '',
             }
         },
         mounted() {
@@ -243,6 +223,8 @@
                     if (result == 100) {
                         that.goodsList = data.extend.goodNodes;
                         that.adsList = data.extend.ad1Nodes;
+                        that.goodsId = data.extend.ad1Nodes[0].href.split('=')[1];
+                        console.log(that.goodsId);
                     }
                     console.log(that.adsList);
                 },
@@ -253,6 +235,26 @@
             })
         },
         methods: {
+            loginOut() {
+                $.ajax({
+                    url: '/microsoul/buyer/exit.do',
+                    type: "Post",
+                    data: {},
+                    success(data) {
+                        let result = data.code;
+                        if (result == 99999) {
+                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                        }
+                        else{
+                            alert('操作失败，请重试');
+                        }
+                    },
+                    error() {
+                        alert('操作失败，请重试');
+                    },
+                    dataType: 'json'
+                })
+            },
             toDetail(goodsId) {
                 window.location.href = 'http://localhost:8080/goods_info.jsp?goodsId=' + goodsId;
             },
