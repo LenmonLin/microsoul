@@ -87,7 +87,7 @@
                         placeholder="请输入商品详情html"
                         v-model="info.goodsDesc">
                 </el-input>
-
+ 
             </el-col>
             <el-col :span="10" :offset='2'>
                 <el-form :model="info" :rules='rules' label-width="100px">
