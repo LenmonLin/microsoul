@@ -195,7 +195,7 @@
                 checkList: [],
             }
         },
-        Mounted() {
+        mounted() {
             let that = this;
             $.ajax({
                 type: 'Post',
@@ -208,7 +208,7 @@
                     if(result == 66666){
                         window.location.href = '/login.jsp'
                     }
-                    else if(result == 99999) {
+                    else if(result == 100) {
                         that.cartList = data.extend.goodsModelList;
                         console.log(that.cartList);
                     }
