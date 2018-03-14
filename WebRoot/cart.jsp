@@ -195,7 +195,7 @@
                 checkList: [],
             }
         },
-        beforeMounted() {
+        Mounted() {
             let that = this;
             $.ajax({
                 type: 'Post',
@@ -224,7 +224,7 @@
                     success(data) {
                         let result = data.code;
                         if (result == 99999) {
-                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                            window.location.href = 'http://localhost:8080/mainPage.jsp'
                         }
                         else{
                             alert('操作失败，请重试');

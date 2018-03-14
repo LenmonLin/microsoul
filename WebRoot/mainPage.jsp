@@ -64,7 +64,8 @@
 <div class="top" id="app" style=" width :1226px; margin: auto;">
     <el-row id="page-top" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px"
+                                                                           src="./static/logo1.png" width="135"
                                                                            height="45"></a>
         </el-col>
         <el-col :span="9" offset="1">
@@ -74,7 +75,7 @@
             <el-button style="margin-top: 50px" type="primary" plain @click="handleSearch">搜索</el-button>
         </el-col>
         <el-col :span="6" offset="2">
-            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
+            <el-menu v-if="logined" :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
@@ -89,6 +90,7 @@
                 <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
+            <div v-if="!logined" style="float: right;margin-right:8%;margin-top: 20px;"><a href="javascript:void(0);" onclick="logIn()">登&nbsp;录</a></div>
         </el-col>
     </el-row>
     <el-row style="width: 100%;margin-top: 20px">
@@ -142,7 +144,7 @@
                         <img :src="item.imageUrl" style="width: 100%;height: 100%">
                     </a>
                     <div style="text-align: center">
-                        <a  @click="toDetail(item.goodsId)">{{item.title}}</a>
+                        <a @click="toDetail(item.goodsId)">{{item.title}}</a>
                     </div>
                     <div style="text-align: center;margin: 10px 20px 20px 20px">
                         <span style="color: crimson">{{item.unitPrice | filterMoney}}</span>
@@ -161,6 +163,10 @@
 
 <script>
     // 组件实例化############################################################
+    function logIn() {
+        window.location.href = 'http://localhost:8080'
+    }
+
     function handelSearch1() {
         window.location.href = 'http://localhost:8080/searchCategory.jsp?category=1'
     }
@@ -209,10 +215,17 @@
                 goodsList: [],
                 adsList: [],
                 goodsId: '',
+                logined: false,
             }
         },
         mounted() {
             let that = this;
+            let userId = '<%=session.getAttribute("loginedBuyersID")%>';
+            if (userId == "null") {               //注意此处为"null"非null
+                this.logined = false;
+            }
+            else
+                this.logined = true;
             $.ajax({
                 url: '/microsoul/contentIndex/index.do',
                 type: "Post",
@@ -243,9 +256,9 @@
                     success(data) {
                         let result = data.code;
                         if (result == 99999) {
-                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                            window.location.href = 'http://localhost:8080/mainPage.jsp'
                         }
-                        else{
+                        else {
                             alert('操作失败，请重试');
                         }
                     },
@@ -264,7 +277,7 @@
         },
         filters: {
             filterMoney: function (value) {
-                return '￥' + value/100;
+                return '￥' + value / 100;
             }
         }
     })
