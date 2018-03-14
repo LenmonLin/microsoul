@@ -51,10 +51,14 @@ public class UserLoginInterceptor implements HandlerInterceptor{
 		exp.put("/microsoul/goods/searchCategory.do", "/microsoul/goods/searchCategory.do");
 		exp.put("/microsoul/goods/goodDesc.do", "/microsoul/goods/goodDesc.do");
 		if(uri.startsWith("/microsoul")){
+			if(uri.equals(exp.get(uri))) {
+				return true;
+			}
 			HttpHeaderUtil head = new HttpHeaderUtil(request);
 			boolean isAjax = head.isAjax();
 			Integer buyerid = (Integer)request.getSession().getAttribute("loginedBuyersID");
 			Integer sellerid = (Integer)request.getSession().getAttribute("existUserId");
+			
 			if(buyerid==null && sellerid==null) {
 				if (isAjax) {
 					JSONCommon.outputResultCodeJson(CommonCode.NEED_LOGIN, response);
