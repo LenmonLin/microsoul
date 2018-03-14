@@ -34,6 +34,12 @@ public class CommonCode {
 	/** 500 EXCPTION V*/
 	public static String SERVER_ERROR_VALUE = "服务器异常";
 	
+	/** 10001 */
+	public static String NEED_LOGIN = "66666";
+	
+	/** 10001 */
+	public static String NEED_LOGIN_VALUE = "需要登录";
+
 	/** 状态码存储列表 */
 	public static Map<String, String> allCodeMap = new HashMap<String, String>();
 	
@@ -43,6 +49,7 @@ public class CommonCode {
 		allCodeMap.put(FAIL, FAIL_VALUE);
 		allCodeMap.put(SUCCESS, SUCCESS_VALUE);
 		allCodeMap.put(CLASS_PWD_ERROR, CLASS_PWD_ERROR_VALUE);
+		allCodeMap.put(NEED_LOGIN, NEED_LOGIN_VALUE);
 	}
 	
 	/**

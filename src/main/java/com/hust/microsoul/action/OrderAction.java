@@ -1,14 +1,10 @@
 package com.hust.microsoul.action;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.BuyerModel;
 import com.hust.microsoul.model.GoodsModel;
@@ -25,8 +22,9 @@ import com.hust.microsoul.model.OrderModel;
 import com.hust.microsoul.model.SellerModel;
 import com.hust.microsoul.service.BuyerService;
 import com.hust.microsoul.service.OrderService;
+import com.hust.microsoul.util.CommonCode;
 import com.hust.microsoul.util.ImageUploadUtil;
-import com.hust.microsoul.util.MD5Utils;
+import com.hust.microsoul.util.JSONCommon;
 import com.hust.microsoul.util.Msg;
 
 /** 
@@ -206,7 +204,10 @@ public class OrderAction {
 		//图片访问路径为项目路径/pic/image.jpg
 		//例如上传一张
 		String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
-		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("url", upLoadedImgUrl);
+		JSONCommon.outputResultDataJson(CommonCode.SUCCESS
+				, response, jsonObject);
 		logger.error(upLoadedImgUrl);
 	}
 }

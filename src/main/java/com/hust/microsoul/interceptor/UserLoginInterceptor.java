@@ -12,6 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hust.microsoul.util.CommonCode;
+import com.hust.microsoul.util.HttpHeaderUtil;
+import com.hust.microsoul.util.JSONCommon;
+
 /**
  * 
  * @author huwentao ----1111sqsqsq
@@ -38,9 +42,21 @@ public class UserLoginInterceptor implements HandlerInterceptor{
 			logger.error("参数名:"+entry.getKey()+"；参数值："+entry.getValue()[0]);
 		}
 		String uri = request.getRequestURI();
-		
+		System.out.println("uri-----"+uri);
 		if(uri.startsWith("/microsoul")){
-			return true;
+			HttpHeaderUtil head = new HttpHeaderUtil(request);
+			boolean isAjax = head.isAjax();
+			Integer buyerid = (Integer)request.getSession().getAttribute("loginedBuyersID");
+			Integer sellerid = (Integer)request.getSession().getAttribute("existUserId");
+			if(buyerid==null && sellerid==null) {
+				if (isAjax) {
+					JSONCommon.outputResultCodeJson(CommonCode.NEED_LOGIN, response);
+				} else {
+					response.sendRedirect("/login.jsp");
+				}
+			} else {
+				return true;
+			}
 		} else if(uri.startsWith("/user")){
 			return true;
 		} else {
