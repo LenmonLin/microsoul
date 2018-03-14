@@ -31,7 +31,7 @@ public class ContentServiceImpl  implements ContentService{
             return null;
         }
 
-        contentsModel.setUrl(upLoadedImgUrl);
+        contentsModel.setPic(upLoadedImgUrl);
         contentsModel.setCreated(new Date());
         contentsModel.setUpdated(new Date());
 
