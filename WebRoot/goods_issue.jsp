@@ -113,8 +113,8 @@
                         <el-input-number v-model="info.purchaseQuantity"></el-input-number>
                     </el-form-item>
                     <el-form-item label="打折信息">
-                        <span>买够</span><el-input-number size="mini" v-model="info.discount"></el-input-number><span>件，</span><br />
-                        <span> &nbsp;&nbsp;&nbsp;打</span><el-input-number  max=100 size="mini" v-model="info.discountQuantity"></el-input-number><span>折</span>
+                        <span>买够</span><el-input-number size="mini" v-model="info.discountQuantity"></el-input-number><span>件，</span><br />
+                        <span> &nbsp;&nbsp;&nbsp;打</span><el-input-number  max=100 size="mini" v-model="info.discount"></el-input-number><span>折</span>
                     </el-form-item>
                     <el-form-item label="是否上架" prop='status'>
                         <el-switch v-model="info.status"></el-switch>
