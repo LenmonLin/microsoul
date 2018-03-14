@@ -25,6 +25,11 @@
         <el-table :data="info" :stripe="true" style="width: 100%">
           <el-table-column prop="orderId" label="订单号" width="180px"></el-table-column>
           <el-table-column prop="buyerId" label="买家ID" width="180px"></el-table-column>
+          <el-table-column label="收货人" width="180px">
+        <template slot-scope="scope">
+          <span  >{{scope.row.buyer.realName}}</span>
+        </template>
+        </el-table-column>
           <el-table-column prop="totalPrice" label="总价格" width="180px"></el-table-column>
           <el-table-column prop="logisticId" label="物流单号" width="180px"></el-table-column>
           <el-table-column label="操作">
