@@ -86,7 +86,7 @@ margin-left:20%;
           return;
         }
         $.ajax({
-          url : '/microsoul/buyer/login.do',
+          url : '/user/buyer/login.do ',
           type : 'post',
           data : {
             accountName : name,
@@ -118,7 +118,7 @@ margin-left:20%;
           return;
         }
         $.ajax({
-          url : '/microsoul/seller/login.do',
+          url : '/user/seller/login.do',
           type : 'post',
           data : {
             accountName : name,

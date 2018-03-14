@@ -119,7 +119,7 @@
           return;
         }
         $.ajax({
-          url : '/microsoul/buyer/register.do',
+          url : '/user/buyer/register.do',
           type : 'post',
           data : {
             accountName : name,
@@ -155,7 +155,7 @@
           return;
         }
         $.ajax({
-          url : '/microsoul/seller/register.do',
+          url : '/user/seller/register.do',
           type : 'post',
           data : {
             accountName : name,

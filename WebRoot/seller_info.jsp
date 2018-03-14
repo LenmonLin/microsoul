@@ -273,7 +273,7 @@
           center: true
         }).then(() => {
         $.ajax({
-          url : '/microsoul/goods/showGoodsList.do',
+          url : '/user/seller/exit.do',
           type : 'post',
           data:{
           },

@@ -57,29 +57,14 @@
 </head>
 <body>
 <div id="app">
-    <el-row id="top-cart" style="width:100%;height:100px">
-        <el-col :span="4">
-            <a href="/mainPage.jsp" class="logo"><img src="static/logo1.png" width="100px" height="50px"></a>
-        </el-col>      
-        <el-col :span="6" offset="14">
-            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
-                     active-text-color="#000000">
-                <el-submenu index="1" active-text-color="#000000">
-                    <template slot="title">用户名</template>
-                    <el-menu-item index="1-1"><a href="./user_order.jsp"
-                                                 style="text-decoration: none">用户中心</a></el-menu-item>
-                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
-                                                 style="text-decoration: none"><span id="loginOut">退出登录</span></a>
-                    </el-menu-item>
-                </el-submenu>
-                <el-menu-item index="2"><a href="./user_order.jsp"
-                                           style="text-decoration: none">订单管理</a></el-menu-item>
-                <el-menu-item index="3"><a href="./cart.jsp"
-                                           style="text-decoration: none">购物车</a></el-menu-item>
-            </el-menu>
-        </el-col>
-    </el-row>
-
+    <header></header>
+    <header1></header1>
+    <div v-if="user">
+        <header></header>
+    </div>
+    <div v-else>
+        <header1></header1>
+    </div>
       <el-row>
         <el-col :span="9" :offset="4">
           <div style="margin-top: 10%">
@@ -121,11 +106,83 @@
 
 </div>
 </body>
+<script type="text/x-template" id="header">
+    <el-row id="top-cart" style="width:100%;height:100px">
+        <el-col :span="4">
+            <a href="/mainPage.jsp" class="logo"><img src="static/logo1.png" width="100px" height="50px"></a>
+        </el-col>
+        <el-col :span="6" offset="14">
+            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
+                     active-text-color="#000000">
+                <el-submenu index="1" active-text-color="#000000">
+                    <template slot="title">用户名</template>
+                    <el-menu-item index="1-1"><a href="./user_order.jsp"
+                                                 style="text-decoration: none">用户中心</a></el-menu-item>
+                    <el-menu-item index="1-2"><a href="javascript:void(0);" onclick="loginOut()"
+                                                 style="text-decoration: none"><span>退出登录</span></a>
+                    </el-menu-item>
+                </el-submenu>
+                <el-menu-item index="2"><a href="./user_order.jsp"
+                                           style="text-decoration: none">订单管理</a></el-menu-item>
+                <el-menu-item index="3"><a href="./cart.jsp"
+                                           style="text-decoration: none">购物车</a></el-menu-item>
+            </el-menu>
+        </el-col>
+    </el-row>
+</script>
+<script type="text/x-template" id="head1">
+    <el-row id="page-top" style="width:100%;height:100px">
+        <el-col :span="4">
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+                                                                           height="45"></a>
+        </el-col>
+
+        </el-col>
+        <el-col :span="6" offset="12">
+            <div style="float: right;margin-right:8%;margin-top: 20px;"><a href="javascript:void(0);" onclick="logIn()">登&nbsp;录</a></div>
+        </el-col>
+    </el-row>
+</script>
 <script>
+    Vue.component('header',{
+        template:'#header',
+        methods:{
+            loginOut(){
+        $.ajax({
+            url: '/user/buyer/exit.do',
+            type: "Post",
+            data: {},
+            success(data) {
+                let result = data.code;
+                if (result == 99999) {
+                    window.location.href = './mainPage_unLogin.jsp'
+                }
+                else{
+                    alert('操作失败，请重试');
+                }
+            },
+            error() {
+                alert('操作失败，请重试');
+            },
+            dataType: 'json'
+        })
+    }
+        }
+    });
+    Vue.component('header1',{
+        template:'#header1',
+        methods:{
+             logIn(){
+        window.location.href = 'http://localhost:8080'
+    }
+        }
+
+    });
   new Vue({
     el:'#app',
     data(){
       return{
+          user:false,
       goodsId:'',
         info:{
           goodsName:'',
@@ -187,6 +244,11 @@
         },
     mounted:function(){
       var that=this;
+        var userid = '<%=session.getAttribute("userid")%>';
+        if(userid == "null"){//注意此处为"null"非null
+            this.user=false;
+        }
+        else this.user=true;
       var reg = new RegExp("(^|&)"+ 'goodsId' +"=([^&]*)(&|$)");
 　　     var r = window.location.search.substr(1).match(reg);
 　    　 if(r!=null)  
@@ -221,25 +283,6 @@
     }
   })
 
- function loginOut() {
-        $.ajax({
-            url: '/microsoul/buyer/exit.do',
-            type: "Post",
-            data: {},
-            success(data) {
-                let result = data.code;
-                if (result == 99999) {
-                    window.location.href = './mainPage_unLogin.jsp'
-                }
-                else{
-                    alert('操作失败，请重试');
-                }
-            },
-            error() {
-                alert('操作失败，请重试');
-            },
-            dataType: 'json'
-        })
-    }
+
 </script>
 </html>
