@@ -3,6 +3,7 @@ package com.hust.microsoul.action;
 import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.model.ContentsModel;
 import com.hust.microsoul.service.ContentService;
+import com.hust.microsoul.util.ImageUploadUtil;
 import com.hust.microsoul.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author LemonLin
@@ -28,9 +30,12 @@ public class ContentAction {
 
     @RequestMapping("insert")
     @ResponseBody
-    public Msg insert(ContentsModel contentsModel){
+    public Msg insert(ContentsModel contentsModel,
+                      @RequestParam(value="upLoadedImgUrl",required = false)MultipartFile file){
 
-        ContentsModel exitContents = contentService.addContent(contentsModel);
+        //上传广告图片
+        String upLoadedImgUrl = ImageUploadUtil.uploadImageCommon(file);
+        ContentsModel exitContents = contentService.addContent(contentsModel,upLoadedImgUrl);
 
         if (exitContents == null){
             return Msg.fail();

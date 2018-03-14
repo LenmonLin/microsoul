@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Service
 public interface ContentService {
-    ContentsModel addContent(ContentsModel contentsModel);
+    ContentsModel addContent(ContentsModel contentsModel,String upLoadedImgUrl);
 
 
 //    管理员后台分页显示商品首页内容

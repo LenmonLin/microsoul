@@ -25,12 +25,13 @@ public class ContentServiceImpl  implements ContentService{
     private ContentsModelMapper contentsModelMapper;
 
     @Override
-    public ContentsModel addContent(ContentsModel contentsModel) {
+    public ContentsModel addContent(ContentsModel contentsModel,String upLoadedImgUrl) {
         //补全model的属性；主键自增长，不用管，只要补全前端不会传过来的代码即可
         if (contentsModel.getCategoryId()==null){
             return null;
         }
 
+        contentsModel.setUrl(upLoadedImgUrl);
         contentsModel.setCreated(new Date());
         contentsModel.setUpdated(new Date());
 
