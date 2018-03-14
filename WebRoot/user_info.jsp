@@ -70,7 +70,8 @@
 <div class="top" id="center" style="margin: auto;width: 1226px;">
     <el-row id="top-cart" style="width:100%;height:100px">
         <el-col :span="4">
-            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px" src="./static/logo1.png" width="135"
+            <a href="http://localhost:8080/mainPage.jsp" class="logo"><img style="margin-top: 30px"
+                                                                           src="./static/logo1.png" width="135"
                                                                            height="45"></a>
         </el-col>
         <el-col :span="6" offset="1">
@@ -124,32 +125,36 @@
                     <el-form-item label="邮箱" prop="email">
                         <el-input v-model="userInfo.email" auto-complete="off"></el-input>
                     </el-form-item>
-                    <el-button size="mini" @click="dialogVisible=true" type="warning" plain>修改密码</el-button>
-                    <el-dialog width="30%" title="密码修改"
-                               :visible.sync="dialogVisible"
-                               center="true">
-                        <el-form :model="userInfo" status-icon :rules="rules" ref="userInfo" label-width="10px">
-                            <el-form-item>
-                                <el-input type="password" v-model="password" placeholder="请输入旧密码" auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-input type="password" v-model="password1" placeholder="请输入新密码" auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-input type="password" v-model="password2" placeholder="请再次输入新密码" auto-complete="off"></el-input>
-                            </el-form-item>
-                        </el-form>
-                        <el-row>
-                            <el-col offset="9"><span><el-button type="primary" @click="changePassword()">确认</el-button>
-                                </span></el-col>
-                        </el-row>
-
-                    </el-dialog>
 
                     <el-form-item style="margin-left: 30%; margin-top: 50px">
                         <el-button type="primary" @click="submitForm(userInfo)">保存</el-button>
                     </el-form-item>
                 </el-form>
+                <el-button size="mini" @click="dialogVisible=true" type="warning" plain>修改密码</el-button>
+                <el-dialog width="30%" title="密码修改"
+                           :visible.sync="dialogVisible"
+                           center="true">
+                    <el-form :model="userInfo" status-icon :rules="rules" ref="userInfo" label-width="10px">
+                        <el-form-item>
+                            <el-input type="password" v-model="userInfo.password" placeholder="请输入旧密码"
+                                      auto-complete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-input type="password" v-model="userInfo.password1" placeholder="请输入新密码"
+                                      auto-complete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-input type="password" v-model="userInfo.password2" placeholder="请再次输入新密码"
+                                      auto-complete="off"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <el-row>
+                        <el-col offset="9"><span><el-button type="primary" @click="changePassword()">确认</el-button>
+                                </span></el-col>
+                    </el-row>
+
+                </el-dialog>
+
             </div>
         </el-col>
     </el-row>
@@ -165,27 +170,19 @@
         el: '#center',
         data() {
             return {
-                dialogVisible:false,
+                dialogVisible: false,
                 userInfo: {
                     telephone: '',
                     email: '',
-                    password:'',
-                    password1:'',
-                    password2:'',
+                    password: '',
+                    password1: '',
+                    password2: '',
+
                 },
-                rules1: {
+                rules: {
                     telephone: [
                         {required: true, message: '请输入收货人手机号', trigger: 'blur'},
                         {min: 11, max: 11, message: '请输入有效的11位手机号', trigger: 'blur'}
-                    ],
-                    password: [
-                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
-                    ],
-                    password1: [
-                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
-                    ],
-                    password2: [
-                        {required: true, min: 8, max: 16, message: '请输入8-16位密码', trigger: 'blur'},
                     ]
                 },
             };
@@ -198,8 +195,8 @@
                 data: {},
                 dataType: 'json',
                 success: function (data) {
-                        that.userInfo = data;
-                        console.log(that.userInfo)///////
+                    that.userInfo = data;
+                    console.log(that.userInfo)///////
                 }
             })
         },
@@ -214,7 +211,7 @@
                         if (result == 99999) {
                             window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
                         }
-                        else{
+                        else {
                             alert('操作失败，请重试');
                         }
                     },
@@ -225,14 +222,6 @@
                 })
             },
             submitForm(userInfo) {
-                this.$refs[userInfo].validate((valid) => {
-                    if (valid) {
-                        alert('submit!');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
 //                let that = this;
 //                $.ajax({
 //                    url: '/microsoul/buyer/updateinfo.do',
@@ -254,44 +243,7 @@
 //                    dataType: 'json',
 //                })
             },
-            changePassword(){
-                let that=this;
-                let password=this.password;
-                let password1=this.password1;
-                let password2=this.password2;
-                if(password==''||password2==''|| password1==''){
-                    this.$message({
-                        message : '密码为空！',
-                        type : 'error'
-                    });
-                    return;}
-                if(password2!=password1) {
-                    this.$message({
-                        message: '两次密码输入不一致！',
-                        type: 'error'
-                    });
-                    return;}
-                $.ajax({
-                    url : 'http://localhost:8080/microsoul/buyer/modifypsw.do',
-                    type : 'post',
-                    data:{
-                        oldpsw:that.password,
-                        newpsw:that.password1,
-                    },
-                    success : function(data) {
-                        let result=data.code;
-                        if(result == 100){
-                            alert('密码修改成功');
-                            that.dialogVisible=false;
-                        }else {
-                            alert("操作失败，请重试！");
-                        }
-                    },
-                    error : function() {
-                        alert('操作失败，请重试！');
-                    },
-                    dataType : 'json',
-                })
+            changePassword() {
             }
         }
     })

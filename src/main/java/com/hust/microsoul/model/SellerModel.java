@@ -19,7 +19,7 @@ public class SellerModel {
 
     private String address;
 
-    private Integer telephone;
+    private String telephone;
 
     private Integer state;
 
@@ -99,12 +99,12 @@ public class SellerModel {
         this.address = address == null ? null : address.trim();
     }
 
-    public Integer getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone == null ? null : telephone.trim();
     }
 
     public Integer getState() {

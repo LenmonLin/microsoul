@@ -218,6 +218,7 @@
                 })
             },
             submitForm(ruleForm) {
+                let taht = this;
                 this.$refs[ruleForm].validate((valid) => {
                     if (valid) {
                         let that = this;
