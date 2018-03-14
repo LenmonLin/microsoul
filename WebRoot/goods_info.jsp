@@ -73,7 +73,7 @@
             <el-row>
               <el-col><h2>{{info.title}}</h2>
                   </el-col>
-                <el-row><el-col offset="1"><span>{{info.goodsName}}</span><span style="color: #e85916"> 折扣信息：满{{info.discountQuantity}}件{{info.discount}}折</span></el-col></el-row>
+                <el-row><el-col offset="1"><span>{{info.goodsName}}</span><span style="color: #e85916"> 折扣信息：满{{info.discountQuantity}}件{{info.discount/10}}折</span></el-col></el-row>
 
             </el-row>
 
