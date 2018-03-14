@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.hust.microsoul.mapper.GoodsDescModelMapper;
 import com.hust.microsoul.mapper.GoodsModelMapper;
 import com.hust.microsoul.mapper.SellerModelMapper;
-import com.hust.microsoul.model.GoodsDescModel;
-import com.hust.microsoul.model.GoodsModel;
-import com.hust.microsoul.model.GoodsModelExample;
-import com.hust.microsoul.model.SellerModel;
+import com.hust.microsoul.model.*;
 import com.hust.microsoul.service.GoodsService;
 import com.hust.microsoul.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +102,7 @@ public class GoodsServiceImpl  implements GoodsService{
      *@date  2018/1/23
      */
     @Override
-    public GoodsModel  insert(GoodsModel goodsModel,Integer sellerId,String upLoadedImgUrl) {
+    public int  insert(GoodsModel goodsModel,Integer sellerId,String upLoadedImgUrl) {
 
 
         //1、补全goodsModel的属性
@@ -132,7 +129,7 @@ public class GoodsServiceImpl  implements GoodsService{
                 (goodsModel.getCategory()==null)||
                 (goodsModel.getStore()==null)||
                 merid==null||merkey== null){
-            return null;
+            return 0;
         }
         /*java.sql.Date只包含年月日信息
             java.util.Date 包含年月日时分秒毫秒
@@ -147,10 +144,26 @@ public class GoodsServiceImpl  implements GoodsService{
         goodsModel.setStatus(1);
 
         //2、向商品表插入数据
-        goodsModelMapper.insert(goodsModel);
+        int returnWhat = goodsModelMapper.insert(goodsModel);
+
+        int lastInsertId = goodsModelMapper.selectLastInsertId();
+
+        System.out.println("测试插入之后，返回的是什么值==="+returnWhat);
+        System.out.println("测试插入之后，返回的是什么值==="+lastInsertId);
         //3、返回结果
 
-        return goodsModel;
+        return lastInsertId;
+    }
+
+    public GoodsDescModel insertGoodsDesc(String goodDesc,Integer goodId){
+
+        GoodsDescModel goodsDescModel = new GoodsDescModel();
+        goodsDescModel.setGoodId(goodId);
+        goodsDescModel.setGoodDesc(goodDesc);
+        goodsDescModel.setCreated(new Date());
+        goodsDescModel.setUpdated(new Date());
+        goodsDescModelMapper.insertSelective(goodsDescModel);
+        return goodsDescModel;
     }
 
     /**
@@ -259,9 +272,16 @@ public class GoodsServiceImpl  implements GoodsService{
      *@author LemonLin
      *@date  2018/3/5
      */
-    public GoodsDescModel getGoodsDescById(long goodsId) {
-        GoodsDescModel goodsDescModel = goodsDescModelMapper.selectByPrimaryKey(goodsId);
-        return goodsDescModel;
+    public GoodsDescModel getGoodsDescById(Integer goodsId) {
+
+        GoodsDescModelExample goodsDescModelExample = new GoodsDescModelExample();
+        GoodsDescModelExample.Criteria criteria = goodsDescModelExample.createCriteria();
+        criteria.andGoodIdEqualTo(goodsId);
+        List<GoodsDescModel> goodsDescModels = goodsDescModelMapper.selectByExampleWithBLOBs(goodsDescModelExample);
+        if (goodsDescModels!=null&&goodsDescModels.size()>0){
+            return goodsDescModels.get(0);
+        }
+        return null;
     }
 
 

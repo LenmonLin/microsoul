@@ -436,4 +436,8 @@
 		and 
 			a.ORDER_ID = #{orderId}
 	</select>
+  
+  <select id="selectLastInsertId" resultType="java.lang.Integer">
+    select last_insert_id()
+  </select>
 </mapper>
