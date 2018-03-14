@@ -1,6 +1,7 @@
 package com.hust.microsoul.interceptor;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -43,6 +44,12 @@ public class UserLoginInterceptor implements HandlerInterceptor{
 		}
 		String uri = request.getRequestURI();
 		System.out.println("uri-----"+uri);
+		HashMap<String, String> exp = new HashMap<String,String>();
+		exp.put("/microsoul/goods/showGoodsList.do", "/microsoul/goods/showGoodsList.do");
+		exp.put("/microsoul/goods/search.do", "/microsoul/goods/search.do");
+		exp.put("/microsoul/contentIndex/index.do", "/microsoul/contentIndex/index.do");
+		exp.put("/microsoul/goods/searchCategory.do", "/microsoul/goods/searchCategory.do");
+		exp.put("/microsoul/goods/goodDesc.do", "/microsoul/goods/goodDesc.do");
 		if(uri.startsWith("/microsoul")){
 			HttpHeaderUtil head = new HttpHeaderUtil(request);
 			boolean isAjax = head.isAjax();
