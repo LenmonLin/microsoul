@@ -17,11 +17,12 @@
 商品首页显示管理员后台模块：
 
 
-
     添加内容选项：
                    http://localhost:8080/microsoul/content/insert.do
                    必须参数：categoryId ；广告位id=89，商品展示id=90
-                   可选参数：title，subTitle，titleDesc，content_price，content，pic
+                   可选参数：title，subTitle，titleDesc，content_price，content，
+                   广告对应的商品详情链接：url
+                   图片上传参数：upLoadedImgUrl
     删除内容选项：
                      http://localhost:8080/microsoul/content/delete.do
                      必须参数：contentId
