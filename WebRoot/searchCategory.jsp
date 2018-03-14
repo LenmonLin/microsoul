@@ -72,7 +72,7 @@
             <div class="title" style="margin-top: 65px;font-size: x-large"></div>
         </el-col>
         <el-col :span="6" offset="7">
-            <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
+            <el-menu v-if="logined" :default-active="'1'" class="el-menu-demo" mode="horizontal" size="mini"
                      active-text-color="#000000">
                 <el-submenu index="1" active-text-color="#000000">
                     <template slot="title">用户名</template>
@@ -87,6 +87,7 @@
                 <el-menu-item index="3"><a href="http://localhost:8080/cart.jsp"
                                            style="text-decoration: none">购物车</a></el-menu-item>
             </el-menu>
+            <div v-if="!logined" style="float: right;margin-right:8%;margin-top: 20px;"><a href="javascript:void(0);" onclick="logIn()">登&nbsp;录</a></div>
         </el-col>
     </el-row>
     <el-row id="page-middle" style="width: 100%;margin-top: 60px">
@@ -165,6 +166,10 @@
 <script>
 
     // 组件实例化############################################################
+    function logIn() {
+        window.location.href = 'http://localhost:8080'
+    }
+
     function handelSearch1() {
         window.location.href = 'http://localhost:8080/searchCategory.jsp?category=1'
     }
@@ -254,7 +259,7 @@
                     success(data) {
                         let result = data.code;
                         if (result == 99999) {
-                            window.location.href = 'http://localhost:8080/mainPage_unLogin.jsp'
+                            window.location.href = 'http://localhost:8080/mainPage.jsp'
                         }
                         else{
                             alert('操作失败，请重试');
