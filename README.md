@@ -1,5 +1,15 @@
 # microsoul
-灵微网
+灵微网新手搭建指南：
+    
+    1、从笔者的Github上把项目下载到本地；
+    2、利用navicat新建一个数据库，命名为microsoul
+    3、在Navicat中导入项目中的microsoul.sql文件，即导入数据到数据库中
+    4、用idea开发工具打开下载的microsoul这个项目，配置下idea中的Git和maven。
+    5、在idea下启动项目，注意这个项目使用配置的是jetty,不是Tomcat。
+    6、在浏览器中输入localhost:8080
+    7、默认提供的买家账号：123密码            password:123
+                        卖家账号：mima09876     password:09876
+    Have fun~
 
 商品首页显示模块：
 
